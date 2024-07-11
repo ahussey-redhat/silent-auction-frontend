@@ -1,0 +1,336 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2024-06-30 19:09+1000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/routes/__main/members/data-list.tsx:115
+#: src/routes/__main/plans/data-list.tsx:78
+msgid "Action"
+msgstr "Action"
+
+#: src/routes/__main/members/[id]/page.tsx:59
+#: src/routes/__main/members/data-list.tsx:110
+#: src/routes/__main/plans/data-list.tsx:73
+msgid "Actions"
+msgstr "Actions"
+
+#: src/components/Member/DescriptionList.tsx:93
+#: src/routes/__main/members/[id]/member-plans-data-list.tsx:61
+#: src/routes/__main/members/[id]/page.tsx:36
+#: src/routes/__main/members/data-list.tsx:78
+#: src/routes/__main/members/toolbar.tsx:34
+#: src/routes/__main/plans/[id]/plan-members-data-list.tsx:62
+msgid "Active"
+msgstr "Active"
+
+#: src/routes/__main/members/[id]/page.tsx:54
+#: src/routes/__main/plans/[id]/page.tsx:37
+msgid "Click me!"
+msgstr "Click me!"
+
+#: src/components/Member/DescriptionList.tsx:30
+msgid "Customer Reference"
+msgstr "Customer Reference"
+
+#: src/containers/sidebar.tsx:30
+#: src/routes/__main/layout.config.ts:4
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: src/components/Member/DescriptionList.tsx:82
+msgid "Date of Birth"
+msgstr "Date of Birth"
+
+#: src/routes/__main/members/[id]/page.tsx:67
+msgid "Delete member"
+msgstr "Delete member"
+
+#: src/routes/__main/plans/[id]/page.tsx:49
+msgid "Delete plan"
+msgstr "Delete plan"
+
+#: src/routes/__main/members/[id]/page.tsx:77
+#: src/routes/__main/plans/[id]/page.tsx:59
+msgid "Details"
+msgstr "Details"
+
+#: src/components/Member/DescriptionList.tsx:59
+msgid "Doctor"
+msgstr "Doctor"
+
+#: src/routes/__main/members/[id]/page.tsx:62
+msgid "Edit member"
+msgstr "Edit member"
+
+#: src/routes/__main/plans/[id]/page.tsx:44
+msgid "Edit plan"
+msgstr "Edit plan"
+
+#: src/models/i18n.ts:10
+#~ msgid "English"
+#~ msgstr "English"
+
+#: src/components/Member/DescriptionList.tsx:75
+msgid "Female"
+msgstr "Female"
+
+#: src/components/Member/DescriptionList.tsx:69
+msgid "Gender"
+msgstr "Gender"
+
+#: src/components/Member/DescriptionList.tsx:46
+msgid "Given Names"
+msgstr "Given Names"
+
+#: src/containers/masthead.tsx:126
+msgid "Global navigation"
+msgstr "Global navigation"
+
+#: src/routes/__main/members/toolbar.tsx:42
+msgid "High"
+msgstr "High"
+
+#: src/routes/__main/members/data-list.tsx:101
+#: src/routes/__main/plans/[id]/plan-members-data-list.tsx:85
+msgid "High Risk"
+msgstr "High Risk"
+
+#: src/components/Member/DescriptionList.tsx:98
+msgid "High Risk Member"
+msgstr "High Risk Member"
+
+#: src/components/Member/DescriptionList.tsx:93
+#: src/routes/__main/members/[id]/member-plans-data-list.tsx:61
+#: src/routes/__main/members/[id]/page.tsx:43
+#: src/routes/__main/members/data-list.tsx:78
+#: src/routes/__main/members/toolbar.tsx:35
+#: src/routes/__main/plans/[id]/plan-members-data-list.tsx:62
+msgid "Inactive"
+msgstr "Inactive"
+
+#: src/components/Plan/DescriptionList.tsx:27
+#: src/routes/__main/plans/data-list.tsx:63
+#: src/routes/__main/plans/toolbar.tsx:34
+msgid "Industry"
+msgstr "Industry"
+
+#: src/routes/__auth/login/page.tsx:70
+msgid "Invalid login credentials"
+msgstr "Invalid login credentials"
+
+#: src/routes/__main/members/[id]/member-plans-data-list.tsx:46
+msgid "Join Date: {joinDate}"
+msgstr "Join Date: {joinDate}"
+
+#: src/routes/__main/members/[id]/page.tsx:123
+#~ msgid "Joined Date: {joinDate}"
+#~ msgstr "Joined Date: {joinDate}"
+
+#: src/routes/__main/members/[id]/page.tsx:27
+#: src/routes/__main/members/[id]/page.tsx:103
+#: src/routes/__main/members/page.tsx:175
+#: src/routes/__main/plans/[id]/page.tsx:25
+#: src/routes/__main/plans/[id]/page.tsx:85
+#: src/routes/__main/plans/page.tsx:166
+msgid "Loading"
+msgstr "Loading"
+
+#: src/routes/__auth/login/page.tsx:56
+msgid "Log in to your account"
+msgstr "Log in to your account"
+
+#: src/routes/__auth/login/page.tsx:54
+#: src/routes/__auth/login/page.tsx:80
+msgid "Login"
+msgstr "Login"
+
+#: src/containers/masthead.tsx:116
+msgid "Logout"
+msgstr "Logout"
+
+#: src/routes/__main/members/toolbar.tsx:40
+msgid "Low"
+msgstr "Low"
+
+#: src/routes/__main/members/data-list.tsx:99
+#: src/routes/__main/plans/[id]/plan-members-data-list.tsx:83
+msgid "Low Risk"
+msgstr "Low Risk"
+
+#: src/components/Member/DescriptionList.tsx:74
+msgid "Male"
+msgstr "Male"
+
+#: src/routes/__main/members/toolbar.tsx:41
+msgid "Medium"
+msgstr "Medium"
+
+#: src/routes/__main/members/data-list.tsx:100
+#: src/routes/__main/plans/[id]/plan-members-data-list.tsx:84
+msgid "Medium Risk"
+msgstr "Medium Risk"
+
+#: src/components/Member/DescriptionList.tsx:22
+msgid "Member"
+msgstr "Member"
+
+#: src/routes/__main/member/[id]/page.tsx:47
+#~ msgid "Member details"
+#~ msgstr "Member details"
+
+#: src/routes/__main/members/[id]/layout.config.ts:4
+msgid "Member Details"
+msgstr "Member Details"
+
+#: src/routes/__main/members/[id]/member-plans-data-list.tsx:26
+#: src/routes/__main/plans/[id]/plan-members-data-list.tsx:27
+msgid "Member plans list"
+msgstr "Member plans list"
+
+#: src/containers/sidebar.tsx:39
+#: src/routes/__main/members/layout.config.ts:4
+#: src/routes/__main/members/page.tsx:149
+#: src/routes/__main/members/page.tsx:153
+#: src/routes/__main/plans/[id]/page.tsx:74
+msgid "Members"
+msgstr "Members"
+
+#: src/routes/__main/members/data-list.tsx:43
+msgid "Members list"
+msgstr "Members list"
+
+#: src/components/Member/DescriptionList.tsx:61
+msgid "Miss"
+msgstr "Miss"
+
+#: src/components/Member/DescriptionList.tsx:62
+msgid "Misses"
+msgstr "Misses"
+
+#: src/components/Member/DescriptionList.tsx:60
+msgid "Mister"
+msgstr "Mister"
+
+#: src/routes/__auth/login/page.tsx:61
+msgid "Need an account? <0>Sign up.</0>"
+msgstr "Need an account? <0>Sign up.</0>"
+
+#: src/components/Member/DescriptionList.tsx:101
+msgid "No"
+msgstr "No"
+
+#: src/routes/__auth/login/page.tsx:76
+msgid "Password"
+msgstr "Password"
+
+#: src/routes/__main/plans/[id]/layout.config.ts:4
+msgid "Plan Details"
+msgstr "Plan Details"
+
+#: src/containers/sidebar.tsx:48
+#: src/routes/__main/members/[id]/page.tsx:92
+#: src/routes/__main/plans/layout.config.ts:4
+#: src/routes/__main/plans/page.tsx:140
+#: src/routes/__main/plans/page.tsx:144
+msgid "Plans"
+msgstr "Plans"
+
+#: src/routes/__main/plans/data-list.tsx:36
+msgid "Plans list"
+msgstr "Plans list"
+
+#: src/routes/__main/members/[id]/page.tsx:52
+#: src/routes/__main/plans/[id]/page.tsx:35
+msgid "Primary action"
+msgstr "Primary action"
+
+#: src/models/i18n.ts:6
+#~ msgid "Pseudo English"
+#~ msgstr "Pseudo English"
+
+#: src/routes/__main/members/[id]/error.tsx:22
+#: src/routes/__main/members/error.tsx:22
+#: src/routes/__main/plans/[id]/error.tsx:22
+#: src/routes/__main/plans/error.tsx:22
+msgid "Refresh"
+msgstr "Refresh"
+
+#: src/components/Plan/DescriptionList.tsx:28
+#: src/routes/__main/plans/data-list.tsx:64
+#: src/routes/__main/plans/toolbar.tsx:35
+msgid "Retail"
+msgstr "Retail"
+
+#: src/routes/__main/members/toolbar.tsx:39
+msgid "Risk"
+msgstr "Risk"
+
+#: src/routes/__main/members/toolbar.tsx:191
+msgid "Risk select"
+msgstr "Risk select"
+
+#: src/routes/__main/members/toolbar.tsx:154
+#: src/routes/__main/plans/toolbar.tsx:124
+msgid "Search button for search input"
+msgstr "Search button for search input"
+
+#: src/routes/__main/members/toolbar.tsx:145
+#: src/routes/__main/plans/toolbar.tsx:115
+msgid "Search input"
+msgstr "Search input"
+
+#: src/containers/masthead.tsx:137
+msgid "SILENT AUCTION"
+msgstr "SILENT AUCTION"
+
+#: src/routes/__auth/login/page.tsx:58
+msgid "SILENT AUCTION Logo"
+msgstr "SILENT AUCTION Logo"
+
+#: src/components/Member/DescriptionList.tsx:90
+#: src/routes/__main/members/toolbar.tsx:33
+msgid "Status"
+msgstr "Status"
+
+#: src/routes/__main/members/toolbar.tsx:165
+msgid "Status select"
+msgstr "Status select"
+
+#: src/components/Member/DescriptionList.tsx:38
+msgid "Surname"
+msgstr "Surname"
+
+#: src/components/Member/DescriptionList.tsx:54
+msgid "Title"
+msgstr "Title"
+
+#: src/containers/masthead.tsx:181
+msgid "Toolbar menu"
+msgstr "Toolbar menu"
+
+#: src/components/Plan/DescriptionList.tsx:22
+#: src/routes/__main/plans/toolbar.tsx:33
+msgid "Type"
+msgstr "Type"
+
+#: src/routes/__main/plans/toolbar.tsx:135
+msgid "Type select"
+msgstr "Type select"
+
+#: src/routes/__auth/login/page.tsx:72
+msgid "Username"
+msgstr "Username"
+
+#: src/components/Member/DescriptionList.tsx:101
+msgid "Yes"
+msgstr "Yes"
