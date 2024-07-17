@@ -13,7 +13,7 @@ components:
         - exposure: public
           name: nodejs
           protocol: http
-          targetPort: 3000
+          targetPort: 8080
       command:
         - sleep
         - infinity
