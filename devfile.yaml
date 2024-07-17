@@ -3,15 +3,9 @@ schemaVersion: 2.2.0
 metadata:
   name: silent-auction-demo-frontend
 components:
-  - name: tools
-    container:
-      image: 'registry.redhat.io/devspaces/udi-rhel8:latest'
-      memoryLimit: 1G
-      mountSources: true
-      sourceMapping: /projects
   - name: nodejs
     container:
-      image: 'registry.redhat.io/ubi9/nodejs-18:latest'
+      image: 'quay.io/tstasse/silent-auction-demo-frontend:latest'
       mountSources: true
       sourceMapping: /projects
       memoryLimit: 2G
@@ -25,42 +19,18 @@ components:
         - infinity
 commands:
   - exec:
-      commandLine: npm install
+      commandLine: pnpm install
       component: nodejs
       group:
         kind: build
-      label: Download dependencies
+      label: Install
       workingDir: '${PROJECTS_ROOT}/silent-auction-demo-frontend'
-    id: 1-dependencies
+    id: 1-install
   - exec:
-      commandLine: npm run start:dev
+      commandLine: pnpm dev
       component: nodejs
       group:
         kind: run
-      label: Run the web app
+      label: Start dev server
       workingDir: '${PROJECTS_ROOT}/silent-auction-demo-frontend'
-    id: 2-run
-  - exec:
-      commandLine: npm install; npm run start:dev
-      component: nodejs
-      group:
-        kind: run
-      label: Run the web app (and download dependencies)
-      workingDir: '${PROJECTS_ROOT}/silent-auction-demo-frontend'
-    id: 3-install-and-run
-  - exec:
-      commandLine: nodemon --inspect app.js
-      component: tools
-      group:
-        isDefault: true
-        kind: debug
-      label: Run the web app (debugging enabled)
-      workingDir: '${PROJECTS_ROOT}/silent-auction-demo-frontend'
-    id: 4-debug
-  - exec:
-      commandLine: 'node_server_pids=$(pgrep -fx ''.*nodemon (--inspect )?app.js'' | tr "\\n" " ") && echo "Stopping node server with PIDs: ${node_server_pids}" &&  kill -15 ${node_server_pids} &>/dev/null && echo ''Done.'''
-      component: tools
-      group:
-        kind: run
-      label: Stop the web app
-    id: 5-stopapp
+    id: 2-dev
