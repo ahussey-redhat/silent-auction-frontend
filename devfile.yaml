@@ -3,12 +3,6 @@ schemaVersion: 2.2.0
 metadata:
   name: silent-auction-demo-frontend
 components:
-  - name: tools
-    container:
-      image: 'registry.redhat.io/devspaces/udi-rhel8:latest'
-      memoryLimit: 1G
-      mountSources: true
-      sourceMapping: /projects
   - name: nodejs
     container:
       image: 'quay.io/tstasse/silent-auction-demo-frontend:latest'
