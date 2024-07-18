@@ -12,7 +12,7 @@ components:
       endpoints:
         - exposure: public
           name: nodejs
-          protocol: http
+          protocol: https
           targetPort: 8080
       command:
         - sleep
