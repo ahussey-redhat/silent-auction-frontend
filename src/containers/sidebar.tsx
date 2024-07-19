@@ -8,10 +8,11 @@ import {
   PageSidebar,
   PageSidebarBody,
 } from '@patternfly/react-core';
-import { LocaleLink } from '@/components';
+import { LocaleLink, useAuth } from '@/components';
 import sidebarModel from '@/models/sidebar';
 
 export default () => {
+  const { hasRole } = useAuth();
   const [{ isSidebarOpen }] = useModel(sidebarModel);
   const location = useLocation();
   const locationPathname = location.pathname.toLowerCase();
@@ -39,15 +40,17 @@ export default () => {
                 <Trans>Members</Trans>
               </LocaleLink>
             </NavItem>
-            <NavItem
-              id="nav-sidebar-link-plans"
-              itemID="2"
-              isActive={locationPathname.startsWith('/plans')}
-            >
-              <LocaleLink prefetch="intent" to="/plans">
-                <Trans>Plans</Trans>
-              </LocaleLink>
-            </NavItem>
+            {hasRole('admin') ? (
+              <NavItem
+                id="nav-sidebar-link-plans"
+                itemID="2"
+                isActive={locationPathname.startsWith('/plans')}
+              >
+                <LocaleLink prefetch="intent" to="/plans">
+                  <Trans>Plans</Trans>
+                </LocaleLink>
+              </NavItem>
+            ) : null}
           </NavList>
         </Nav>
       </PageSidebarBody>

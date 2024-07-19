@@ -32,7 +32,7 @@ import PlanDetailsPanel from './details-panel';
 import PlanToolbar from './toolbar';
 import { DeferredLoaderData, searchParams } from './page.data';
 import './page.css';
-import { PageTitle } from '@/components';
+import { PageTitle, RequireRole } from '@/components';
 import { usePathWithParams } from '@/hooks';
 import { Plan } from '@/types';
 
@@ -136,51 +136,53 @@ export default () => {
   );
 
   return (
-    <>
-      <PageTitle title={_(msg`Plans`)} />
-      <PageSection>
-        <TextContent>
-          <Text component="h1">
-            <Trans>Plans</Trans>
-          </Text>
-        </TextContent>
-      </PageSection>
-      <Divider component="div" />
-      <PageSection className="plans-page">
-        <Drawer isExpanded={isDrawerExpanded} isInline>
-          <DrawerContent
-            panelContent={
-              selectedPlan ? (
-                <PlanDetailsPanel
-                  plan={selectedPlan}
-                  onCloseDrawer={onCloseDrawer}
-                />
-              ) : null
-            }
-          >
-            <DrawerContentBody>
-              <>
-                <PlanToolbar />
-                <Suspense
-                  fallback={
-                    <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
-                  }
-                >
-                  <Await resolve={data.plans}>
-                    {(plans: Plan[]) => (
-                      <PlanDataList
-                        plans={plans}
-                        selectedPlanId={selectedPlanId}
-                        onSelectPlan={onSelectPlan}
-                      />
-                    )}
-                  </Await>
-                </Suspense>
-              </>
-            </DrawerContentBody>
-          </DrawerContent>
-        </Drawer>
-      </PageSection>
-    </>
+    <RequireRole role="admin">
+      <>
+        <PageTitle title={_(msg`Plans`)} />
+        <PageSection>
+          <TextContent>
+            <Text component="h1">
+              <Trans>Plans</Trans>
+            </Text>
+          </TextContent>
+        </PageSection>
+        <Divider component="div" />
+        <PageSection className="plans-page">
+          <Drawer isExpanded={isDrawerExpanded} isInline>
+            <DrawerContent
+              panelContent={
+                selectedPlan ? (
+                  <PlanDetailsPanel
+                    plan={selectedPlan}
+                    onCloseDrawer={onCloseDrawer}
+                  />
+                ) : null
+              }
+            >
+              <DrawerContentBody>
+                <>
+                  <PlanToolbar />
+                  <Suspense
+                    fallback={
+                      <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
+                    }
+                  >
+                    <Await resolve={data.plans}>
+                      {(plans: Plan[]) => (
+                        <PlanDataList
+                          plans={plans}
+                          selectedPlanId={selectedPlanId}
+                          onSelectPlan={onSelectPlan}
+                        />
+                      )}
+                    </Await>
+                  </Suspense>
+                </>
+              </DrawerContentBody>
+            </DrawerContent>
+          </Drawer>
+        </PageSection>
+      </>
+    </RequireRole>
   );
 };
