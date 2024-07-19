@@ -40,6 +40,9 @@ const authModel = model<State>('auth').define((_, { use }) => ({
 
       setInitialised(true);
     }),
+    loadUserProfile: keycloakEffect(use, keycloak =>
+      keycloak.loadUserProfile(),
+    ),
     login: keycloakEffect(use, keycloak => keycloak.login()),
     logout: keycloakEffect(use, keycloak => keycloak.logout()),
   },

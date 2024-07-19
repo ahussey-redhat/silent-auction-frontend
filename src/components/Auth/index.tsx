@@ -35,8 +35,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 export const useAuth = () => useContext(AuthContext);
 
 export const RequireAuth = ({ children }: { children: JSX.Element }) => {
-  const [{ authenticated, initialised }, { initialise, login }] =
-    useModel(authModel);
+  const [
+    { authenticated, initialised, profile },
+    { initialise, loadUserProfile, login },
+  ] = useModel(authModel);
 
   useAsync(async () => {
     if (!initialised) {
@@ -45,10 +47,16 @@ export const RequireAuth = ({ children }: { children: JSX.Element }) => {
   }, [initialise, initialised]);
 
   useAsync(async () => {
-    if (initialised && !authenticated) {
-      await login();
+    if (!initialised) {
+      return;
     }
-  }, [authenticated, initialised, login]);
+
+    if (!authenticated) {
+      await login();
+    } else if (profile === undefined) {
+      await loadUserProfile();
+    }
+  }, [authenticated, initialised, loadUserProfile, login, profile]);
 
   return children;
 };
