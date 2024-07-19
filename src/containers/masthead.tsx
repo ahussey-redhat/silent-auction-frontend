@@ -21,11 +21,11 @@ import {
   ToolbarGroup,
   ToolbarItem,
 } from '@patternfly/react-core';
-import imgAvatar from '@patternfly/react-core/src/components/assets/avatarImg.svg';
+import avatarImgSrc from '@patternfly/react-core/src/components/assets/avatarImg.svg';
 import { BarsIcon } from '@patternfly/react-icons/dist/esm/icons/bars-icon';
 import { EllipsisVIcon } from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
 import { MouseEvent as ReactMouseEvent, useCallback, useState } from 'react';
-import { useEffectOnce } from 'react-use';
+import { useAsync, useEffectOnce } from 'react-use';
 import { LocaleLink, logoImgSrc, useAuth } from '@/components';
 import { useLocationWithParams } from '@/hooks';
 import i18nModel, { locales } from '@/models/i18n';
@@ -108,6 +108,26 @@ export default () => {
     },
     [logout],
   );
+
+  const { value: avatarUrl = avatarImgSrc as string } =
+    useAsync(async (): Promise<string | undefined> => {
+      if (!profile?.email) {
+        return undefined;
+      }
+
+      const hash = Array.from(
+        new Uint8Array(
+          await crypto.subtle.digest(
+            'SHA-256',
+            new TextEncoder().encode(profile.email),
+          ),
+        ),
+      )
+        .map(byte => byte.toString(16).padStart(2, '0'))
+        .join('');
+
+      return `https://gravatar.com/avatar/${hash}?s=32&d=identicon`;
+    }, [profile?.email]);
 
   const userDropdownItems = [
     <DropdownItem key="logout" onClick={onClickLogout}>
@@ -196,7 +216,9 @@ export default () => {
                       ref={toggleRef}
                       isExpanded={isUserDropdownOpen}
                       onClick={onUserDropdownToggle}
-                      icon={<Avatar src={imgAvatar} alt="" />}
+                      icon={
+                        <Avatar src={avatarUrl} alt={_(msg`Avatar image`)} />
+                      }
                       isFullHeight
                     >
                       {profile?.username ?? <Trans>Anonymous</Trans>}
