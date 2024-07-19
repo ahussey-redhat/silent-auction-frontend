@@ -33,6 +33,10 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
+#: src/containers/masthead.tsx:202
+msgid "Anonymous"
+msgstr ""
+
 #: src/routes/__main/members/[id]/page.tsx:54
 #: src/routes/__main/plans/[id]/page.tsx:37
 msgid "Click me!"
@@ -92,7 +96,7 @@ msgstr ""
 msgid "Given Names"
 msgstr ""
 
-#: src/containers/masthead.tsx:126
+#: src/containers/masthead.tsx:124
 msgid "Global navigation"
 msgstr ""
 
@@ -124,10 +128,6 @@ msgstr ""
 msgid "Industry"
 msgstr ""
 
-#: src/routes/__auth/login/page.tsx:70
-msgid "Invalid login credentials"
-msgstr ""
-
 #: src/routes/__main/members/[id]/member-plans-data-list.tsx:46
 msgid "Join Date: {joinDate}"
 msgstr ""
@@ -145,16 +145,7 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
-#: src/routes/__auth/login/page.tsx:56
-msgid "Log in to your account"
-msgstr ""
-
-#: src/routes/__auth/login/page.tsx:54
-#: src/routes/__auth/login/page.tsx:80
-msgid "Login"
-msgstr ""
-
-#: src/containers/masthead.tsx:116
+#: src/containers/masthead.tsx:114
 msgid "Logout"
 msgstr ""
 
@@ -221,16 +212,8 @@ msgstr ""
 msgid "Mister"
 msgstr ""
 
-#: src/routes/__auth/login/page.tsx:61
-msgid "Need an account? <0>Sign up.</0>"
-msgstr ""
-
 #: src/components/Member/DescriptionList.tsx:101
 msgid "No"
-msgstr ""
-
-#: src/routes/__auth/login/page.tsx:76
-msgid "Password"
 msgstr ""
 
 #: src/routes/__main/plans/[id]/layout.config.ts:4
@@ -289,12 +272,8 @@ msgstr ""
 msgid "Search input"
 msgstr ""
 
-#: src/containers/masthead.tsx:137
+#: src/containers/masthead.tsx:135
 msgid "SILENT AUCTION"
-msgstr ""
-
-#: src/routes/__auth/login/page.tsx:58
-msgid "SILENT AUCTION Logo"
 msgstr ""
 
 #: src/components/Member/DescriptionList.tsx:90
@@ -314,7 +293,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: src/containers/masthead.tsx:181
+#: src/containers/masthead.tsx:179
 msgid "Toolbar menu"
 msgstr ""
 
@@ -325,10 +304,6 @@ msgstr ""
 
 #: src/routes/__main/plans/toolbar.tsx:135
 msgid "Type select"
-msgstr ""
-
-#: src/routes/__auth/login/page.tsx:72
-msgid "Username"
 msgstr ""
 
 #: src/components/Member/DescriptionList.tsx:101

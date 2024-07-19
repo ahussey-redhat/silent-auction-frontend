@@ -1,11 +1,14 @@
-import { GetModelState, useModel } from '@modern-js/runtime/model';
-import { Navigate, useLocation } from '@modern-js/runtime/router';
-import { createContext, PropsWithChildren, useContext, useEffect } from 'react';
-import { usePathWithParams } from '@/hooks';
+import { GetModelActions, useModel } from '@modern-js/runtime/model';
+import type { KeycloakProfile } from 'keycloak-js';
+import { createContext, PropsWithChildren, useContext } from 'react';
+import { useAsync } from 'react-use';
 import authModel from '@/models/auth';
 
 type AuthContextType = {
-  user: NonNullable<GetModelState<typeof authModel>['user']>;
+  profile?: KeycloakProfile;
+  token?: string;
+  login: GetModelActions<typeof authModel>['login'];
+  logout: GetModelActions<typeof authModel>['logout'];
 };
 
 const AuthContext = createContext<AuthContextType>(null!);
@@ -13,12 +16,17 @@ const AuthContext = createContext<AuthContextType>(null!);
 export type AuthProviderProps = PropsWithChildren;
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [{ user }, { loadFromLocalStorage }] = useModel(authModel);
-
-  useEffect(() => loadFromLocalStorage(), []);
+  const [{ profile, token }, { login, logout }] = useModel(authModel);
 
   return (
-    <AuthContext.Provider value={{ user: user! }}>
+    <AuthContext.Provider
+      value={{
+        profile,
+        token,
+        login,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -27,17 +35,28 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 export const useAuth = () => useContext(AuthContext);
 
 export const RequireAuth = ({ children }: { children: JSX.Element }) => {
-  const auth = useAuth();
-  const location = useLocation();
-  const to = usePathWithParams('/login', ['locale']);
+  const [{ authenticated, initialised }, { initialise, login }] =
+    useModel(authModel);
 
-  if (!auth.user) {
-    // Redirect them to the /login page, but save the current location they were
-    // trying to go to when they were redirected. This allows us to send them
-    // along to that page after they login, which is a nicer user experience
-    // than dropping them off on the home page.
-    return <Navigate to={to} state={{ from: location }} replace />;
-  }
+  useAsync(async () => {
+    if (!initialised) {
+      console.log('initialising');
+      await initialise();
+    } else {
+      console.log('initialised');
+      console.log({ authenticated, initialised });
+    }
+  }, [initialise, initialised]);
+
+  useAsync(async () => {
+    if (initialised && !authenticated) {
+      console.log('login');
+      await login();
+    } else {
+      console.log('waiting to initialise before attempting login');
+      console.log({ authenticated, initialised });
+    }
+  }, [authenticated, initialised, login]);
 
   return children;
 };

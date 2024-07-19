@@ -33,6 +33,10 @@ msgstr "Actions"
 msgid "Active"
 msgstr "Active"
 
+#: src/containers/masthead.tsx:202
+msgid "Anonymous"
+msgstr "Anonymous"
+
 #: src/routes/__main/members/[id]/page.tsx:54
 #: src/routes/__main/plans/[id]/page.tsx:37
 msgid "Click me!"
@@ -92,7 +96,7 @@ msgstr "Gender"
 msgid "Given Names"
 msgstr "Given Names"
 
-#: src/containers/masthead.tsx:126
+#: src/containers/masthead.tsx:124
 msgid "Global navigation"
 msgstr "Global navigation"
 
@@ -124,10 +128,6 @@ msgstr "Inactive"
 msgid "Industry"
 msgstr "Industry"
 
-#: src/routes/__auth/login/page.tsx:70
-msgid "Invalid login credentials"
-msgstr "Invalid login credentials"
-
 #: src/routes/__main/members/[id]/member-plans-data-list.tsx:46
 msgid "Join Date: {joinDate}"
 msgstr "Join Date: {joinDate}"
@@ -145,16 +145,7 @@ msgstr "Join Date: {joinDate}"
 msgid "Loading"
 msgstr "Loading"
 
-#: src/routes/__auth/login/page.tsx:56
-msgid "Log in to your account"
-msgstr "Log in to your account"
-
-#: src/routes/__auth/login/page.tsx:54
-#: src/routes/__auth/login/page.tsx:80
-msgid "Login"
-msgstr "Login"
-
-#: src/containers/masthead.tsx:116
+#: src/containers/masthead.tsx:114
 msgid "Logout"
 msgstr "Logout"
 
@@ -221,17 +212,9 @@ msgstr "Misses"
 msgid "Mister"
 msgstr "Mister"
 
-#: src/routes/__auth/login/page.tsx:61
-msgid "Need an account? <0>Sign up.</0>"
-msgstr "Need an account? <0>Sign up.</0>"
-
 #: src/components/Member/DescriptionList.tsx:101
 msgid "No"
 msgstr "No"
-
-#: src/routes/__auth/login/page.tsx:76
-msgid "Password"
-msgstr "Password"
 
 #: src/routes/__main/plans/[id]/layout.config.ts:4
 msgid "Plan Details"
@@ -289,13 +272,9 @@ msgstr "Search button for search input"
 msgid "Search input"
 msgstr "Search input"
 
-#: src/containers/masthead.tsx:137
+#: src/containers/masthead.tsx:135
 msgid "SILENT AUCTION"
 msgstr "SILENT AUCTION"
-
-#: src/routes/__auth/login/page.tsx:58
-msgid "SILENT AUCTION Logo"
-msgstr "SILENT AUCTION Logo"
 
 #: src/components/Member/DescriptionList.tsx:90
 #: src/routes/__main/members/toolbar.tsx:33
@@ -314,7 +293,7 @@ msgstr "Surname"
 msgid "Title"
 msgstr "Title"
 
-#: src/containers/masthead.tsx:181
+#: src/containers/masthead.tsx:179
 msgid "Toolbar menu"
 msgstr "Toolbar menu"
 
@@ -326,10 +305,6 @@ msgstr "Type"
 #: src/routes/__main/plans/toolbar.tsx:135
 msgid "Type select"
 msgstr "Type select"
-
-#: src/routes/__auth/login/page.tsx:72
-msgid "Username"
-msgstr "Username"
 
 #: src/components/Member/DescriptionList.tsx:101
 msgid "Yes"

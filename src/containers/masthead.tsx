@@ -28,7 +28,6 @@ import { MouseEvent as ReactMouseEvent, useCallback, useState } from 'react';
 import { useEffectOnce } from 'react-use';
 import { LocaleLink, logoImgSrc, useAuth } from '@/components';
 import { useLocationWithParams } from '@/hooks';
-import authModel from '@/models/auth';
 import i18nModel, { locales } from '@/models/i18n';
 import sidebarModel from '@/models/sidebar';
 
@@ -46,8 +45,7 @@ const LocaleDropdownItem = ({ value, ...props }: DropdownItemProps) => {
 
 export default () => {
   const { _ } = useLingui();
-  const { user } = useAuth();
-  const [, authActions] = useModel(authModel);
+  const { profile, logout } = useAuth();
   const [{ locale }] = useModel(i18nModel);
   const [
     { isSidebarOpen },
@@ -106,9 +104,9 @@ export default () => {
   const onClickLogout = useCallback(
     (event: ReactMouseEvent<Element, MouseEvent>) => {
       event.preventDefault();
-      authActions.logoutUser();
+      logout();
     },
-    [authActions.logoutUser],
+    [logout],
   );
 
   const userDropdownItems = [
@@ -201,7 +199,7 @@ export default () => {
                       icon={<Avatar src={imgAvatar} alt="" />}
                       isFullHeight
                     >
-                      {user.username}
+                      {profile?.username ?? <Trans>Anonymous</Trans>}
                     </MenuToggle>
                   )}
                 >

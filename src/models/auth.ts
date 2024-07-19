@@ -1,38 +1,48 @@
-import { model } from '@modern-js/runtime/model';
-
-export type User = {
-  username: string;
-};
-
-export const isUser = (value: unknown): value is User =>
-  typeof value === 'object' && value !== null && 'username' in value;
+import { model, useModel } from '@modern-js/runtime/model';
+import Keycloak from 'keycloak-js';
 
 type State = {
-  user: User | null;
+  keycloak: Keycloak;
+  initialised: boolean;
 };
+
+const keycloakEffect =
+  <T>(use: typeof useModel, callback: (keycloak: Keycloak) => Promise<T>) =>
+  async () => {
+    const [{ keycloak }, { setKeycloak }] = use(authModel);
+
+    const result = await callback(keycloak);
+
+    setKeycloak(keycloak);
+
+    return result;
+  };
 
 const authModel = model<State>('auth').define((_, { use }) => ({
   state: {
-    user: null,
+    keycloak: new Keycloak({
+      clientId: process.env.KEYCLOAK_CLIENT_ID!,
+      realm: process.env.KEYCLOAK_REALM!,
+      url: process.env.KEYCLOAK_URL!,
+    }),
+    initialised: false,
+  },
+  computed: {
+    authenticated: ({ keycloak }) => keycloak.authenticated ?? false,
+    // initialised: ({ keycloak }) => keycloak.authenticated !== undefined,
+    profile: ({ keycloak }) => keycloak.profile,
+    token: ({ keycloak }) => keycloak.token,
   },
   effects: {
-    loadFromLocalStorage() {
-      const [, { setUser }] = use(authModel);
-      const user = localStorage.getItem('user');
-      setUser(user ? JSON.parse(user) : null);
-    },
-    logoutUser() {
-      const [, { setUser, removeFromLocalStorage }] = use(authModel);
-      removeFromLocalStorage();
-      setUser(null);
-    },
-    saveToLocalStorage() {
-      const [{ user }] = use(authModel);
-      localStorage.setItem('user', JSON.stringify(user));
-    },
-    removeFromLocalStorage() {
-      localStorage.removeItem('user');
-    },
+    initialise: keycloakEffect(use, async keycloak => {
+      const [, { setInitialised }] = use(authModel);
+
+      await keycloak.init({ checkLoginIframe: false });
+
+      setInitialised(true);
+    }),
+    login: keycloakEffect(use, keycloak => keycloak.login()),
+    logout: keycloakEffect(use, keycloak => keycloak.logout()),
   },
 }));
 
