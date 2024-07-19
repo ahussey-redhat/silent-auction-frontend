@@ -40,21 +40,13 @@ export const RequireAuth = ({ children }: { children: JSX.Element }) => {
 
   useAsync(async () => {
     if (!initialised) {
-      console.log('initialising');
       await initialise();
-    } else {
-      console.log('initialised');
-      console.log({ authenticated, initialised });
     }
   }, [initialise, initialised]);
 
   useAsync(async () => {
     if (initialised && !authenticated) {
-      console.log('login');
       await login();
-    } else {
-      console.log('waiting to initialise before attempting login');
-      console.log({ authenticated, initialised });
     }
   }, [authenticated, initialised, login]);
 

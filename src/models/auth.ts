@@ -29,7 +29,6 @@ const authModel = model<State>('auth').define((_, { use }) => ({
   },
   computed: {
     authenticated: ({ keycloak }) => keycloak.authenticated ?? false,
-    // initialised: ({ keycloak }) => keycloak.authenticated !== undefined,
     profile: ({ keycloak }) => keycloak.profile,
     token: ({ keycloak }) => keycloak.token,
   },
