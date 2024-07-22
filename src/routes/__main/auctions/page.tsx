@@ -36,7 +36,7 @@ export default () => {
   const [{ token }] = useModel(authModel);
   const location = useLocation();
   const navigate = useNavigate();
-  const to = usePathWithParams(location.pathname, [
+  const to = usePathWithParams(location, [
     'locale',
     'search',
     'status',

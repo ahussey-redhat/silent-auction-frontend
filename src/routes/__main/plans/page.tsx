@@ -62,7 +62,7 @@ export default () => {
   const { _ } = useLingui();
   const location = useLocation();
   const navigate = useNavigate();
-  const to = usePathWithParams(location.pathname, [
+  const to = usePathWithParams(location, [
     'locale',
     'search',
     'type',

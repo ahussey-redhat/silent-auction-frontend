@@ -3,8 +3,15 @@ import Keycloak from 'keycloak-js';
 
 type State = {
   keycloak: Keycloak;
-  initialised: boolean;
 };
+
+const keycloak = new Keycloak({
+  clientId: process.env.KEYCLOAK_CLIENT_ID!,
+  realm: process.env.KEYCLOAK_REALM!,
+  url: process.env.KEYCLOAK_URL!,
+});
+
+await keycloak.init({ checkLoginIframe: false });
 
 const keycloakEffect =
   <T>(use: typeof useModel, callback: (keycloak: Keycloak) => Promise<T>) =>
@@ -20,12 +27,7 @@ const keycloakEffect =
 
 const authModel = model<State>('auth').define((_, { use }) => ({
   state: {
-    keycloak: new Keycloak({
-      clientId: process.env.KEYCLOAK_CLIENT_ID!,
-      realm: process.env.KEYCLOAK_REALM!,
-      url: process.env.KEYCLOAK_URL!,
-    }),
-    initialised: false,
+    keycloak,
   },
   computed: {
     authenticated: ({ keycloak }) => keycloak.authenticated ?? false,
@@ -33,13 +35,6 @@ const authModel = model<State>('auth').define((_, { use }) => ({
     token: ({ keycloak }) => keycloak.token,
   },
   effects: {
-    initialise: keycloakEffect(use, async keycloak => {
-      const [, { setInitialised }] = use(authModel);
-
-      await keycloak.init({ checkLoginIframe: false });
-
-      setInitialised(true);
-    }),
     loadUserProfile: keycloakEffect(use, keycloak =>
       keycloak.loadUserProfile(),
     ),

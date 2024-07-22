@@ -49,28 +49,16 @@ export type RequireAuthProps = { children: JSX.Element };
 export const RequireAuth: FunctionComponent<RequireAuthProps> = ({
   children,
 }) => {
-  const [
-    { authenticated, initialised, profile },
-    { initialise, loadUserProfile, login },
-  ] = useModel(authModel);
+  const [{ authenticated, profile }, { loadUserProfile, login }] =
+    useModel(authModel);
 
   useAsync(async () => {
-    if (!initialised) {
-      await initialise();
-    }
-  }, [initialise, initialised]);
-
-  useAsync(async () => {
-    if (!initialised) {
-      return;
-    }
-
     if (!authenticated) {
       await login();
     } else if (profile === undefined) {
       await loadUserProfile();
     }
-  }, [authenticated, initialised, loadUserProfile, login, profile]);
+  }, [authenticated, loadUserProfile, login, profile]);
 
   return children;
 };
