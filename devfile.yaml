@@ -8,7 +8,7 @@ components:
       image: 'quay.io/tstasse/silent-auction-demo-frontend:latest'
       mountSources: true
       sourceMapping: /projects
-      memoryLimit: 5G
+      memoryLimit: 8G
       endpoints:
         - exposure: public
           name: nodejs
