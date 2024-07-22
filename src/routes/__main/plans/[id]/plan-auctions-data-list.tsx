@@ -1,4 +1,4 @@
-import { msg, Trans } from '@lingui/macro';
+import { msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import {
   DataList,
@@ -8,11 +8,7 @@ import {
   DataListItemRow,
   Flex,
   FlexItem,
-  Label,
 } from '@patternfly/react-core';
-import { CheckCircleIcon } from '@patternfly/react-icons/dist/esm/icons/check-circle-icon';
-import { ExclamationTriangleIcon } from '@patternfly/react-icons/dist/esm/icons/exclamation-triangle-icon';
-import { TimesCircleIcon } from '@patternfly/react-icons/dist/esm/icons/times-circle-icon';
 import type { PlanAuction } from '@/types';
 import { LocaleLink } from '@/components';
 
@@ -29,13 +25,12 @@ export default ({ planAuctions }: DataListProps) => {
         ({
           id,
           auctionId,
-          auctionNumber,
-          givenNames,
-          surname,
-          active,
-          risk,
+          item_name,
+          auction_start,
+          auction_end,
+          image_path,
         }) => (
-          <DataListItem key={id} id={id}>
+          <DataListItem key={id} id={id.toString()}>
             <DataListItemRow>
               <DataListItemCells
                 dataListCells={[
@@ -50,51 +45,16 @@ export default ({ planAuctions }: DataListProps) => {
                             prefetch="intent"
                             to={`/auctions/${auctionId}`}
                           >
-                            {surname}, {givenNames}
+                            {item_name}
                           </LocaleLink>
                         </p>
-                        <small>{auctionNumber}</small>
                       </FlexItem>
                     </Flex>
                   </DataListCell>,
-                  <DataListCell key="status">
-                    <Label
-                      icon={
-                        active ? (
-                          <CheckCircleIcon color="var(--pf-t--color--green--60)" />
-                        ) : (
-                          <TimesCircleIcon color="var(--pf-t--color--red--60)" />
-                        )
-                      }
-                    >
-                      {active ? <Trans>Active</Trans> : <Trans>Inactive</Trans>}
-                    </Label>
+                  <DataListCell key="start-end">
+                    {auction_start} - {auction_end}
                   </DataListCell>,
-                  <DataListCell key="risk">
-                    <Label
-                      icon={
-                        {
-                          low: (
-                            <CheckCircleIcon color="var(--pf-t--color--green--60)" />
-                          ),
-                          medium: (
-                            <ExclamationTriangleIcon color="var(--pf-t--color--yellow--40)" />
-                          ),
-                          high: (
-                            <TimesCircleIcon color="var(--pf-t--color--red--60)" />
-                          ),
-                        }[risk]
-                      }
-                    >
-                      {
-                        {
-                          low: <Trans>Low Risk</Trans>,
-                          medium: <Trans>Medium Risk</Trans>,
-                          high: <Trans>High Risk</Trans>,
-                        }[risk]
-                      }
-                    </Label>
-                  </DataListCell>,
+                  <DataListCell key="image">{image_path}</DataListCell>,
                 ]}
               />
             </DataListItemRow>

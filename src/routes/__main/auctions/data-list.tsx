@@ -11,20 +11,16 @@ import {
   DataListItemRow,
   Flex,
   FlexItem,
-  Label,
   Stack,
   StackItem,
 } from '@patternfly/react-core';
-import { CheckCircleIcon } from '@patternfly/react-icons/dist/esm/icons/check-circle-icon';
-import { ExclamationTriangleIcon } from '@patternfly/react-icons/dist/esm/icons/exclamation-triangle-icon';
-import { TimesCircleIcon } from '@patternfly/react-icons/dist/esm/icons/times-circle-icon';
 import { KeyboardEvent, MouseEvent as ReactMouseEvent } from 'react';
 import type { Auction } from '@/types';
 import { LocaleLink } from '@/components';
 
 export type DataListProps = {
   auctions: Auction[];
-  selectedAuctionId: Auction['id'];
+  selectedAuctionId: string;
   onSelectAuction: (
     event: ReactMouseEvent<Element, MouseEvent> | KeyboardEvent<Element>,
     id: string,
@@ -45,8 +41,8 @@ export default ({
       onSelectDataListItem={onSelectAuction}
     >
       {auctions.map(
-        ({ id, auctionNumber, givenNames, surname, active, risk }) => (
-          <DataListItem key={id} id={id}>
+        ({ id, item_name, auction_start, auction_end, image_path }) => (
+          <DataListItem key={id} id={id.toString()}>
             <DataListItemRow>
               <DataListItemCells
                 dataListCells={[
@@ -58,51 +54,16 @@ export default ({
                       <FlexItem>
                         <p>
                           <LocaleLink prefetch="intent" to={`/auctions/${id}`}>
-                            {surname}, {givenNames}
+                            {item_name}
                           </LocaleLink>
                         </p>
-                        <small>{auctionNumber}</small>
                       </FlexItem>
                     </Flex>
                   </DataListCell>,
-                  <DataListCell key="status">
-                    <Label
-                      icon={
-                        active ? (
-                          <CheckCircleIcon color="var(--pf-t--color--green--60)" />
-                        ) : (
-                          <TimesCircleIcon color="var(--pf-t--color--red--60)" />
-                        )
-                      }
-                    >
-                      {active ? <Trans>Active</Trans> : <Trans>Inactive</Trans>}
-                    </Label>
+                  <DataListCell key="start-end">
+                    {auction_start} - {auction_end}
                   </DataListCell>,
-                  <DataListCell key="risk">
-                    <Label
-                      icon={
-                        {
-                          low: (
-                            <CheckCircleIcon color="var(--pf-t--color--green--60)" />
-                          ),
-                          medium: (
-                            <ExclamationTriangleIcon color="var(--pf-t--color--yellow--40)" />
-                          ),
-                          high: (
-                            <TimesCircleIcon color="var(--pf-t--color--red--60)" />
-                          ),
-                        }[risk]
-                      }
-                    >
-                      {
-                        {
-                          low: <Trans>Low Risk</Trans>,
-                          medium: <Trans>Medium Risk</Trans>,
-                          high: <Trans>High Risk</Trans>,
-                        }[risk]
-                      }
-                    </Label>
-                  </DataListCell>,
+                  <DataListCell key="image">{image_path}</DataListCell>,
                   <DataListAction
                     key="actions"
                     aria-labelledby={`${id} ${id}-action`}

@@ -23,7 +23,7 @@ export default ({ auction, onCloseDrawer }: DetailsPanelProps) => (
       <Title headingLevel="h2" size="xl">
         {auction ? (
           <LocaleLink prefetch="intent" to={`/auctions/${auction?.id}`}>
-            {auction?.surname}, {auction?.givenNames}
+            {auction?.item_name}
           </LocaleLink>
         ) : (
           ''

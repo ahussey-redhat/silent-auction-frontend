@@ -1,5 +1,4 @@
-import { msg, Trans } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+import { Trans } from '@lingui/macro';
 import {
   DescriptionList,
   DescriptionListDescription,
@@ -13,92 +12,46 @@ export type AuctionDescriptionListProps = {
 };
 
 export default ({ auction }: AuctionDescriptionListProps) => {
-  const { _ } = useLingui();
-
   return (
     <DescriptionList isHorizontal>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Auction</Trans>
+          <Trans>Name</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {auction?.auctionNumber}
+          {auction?.item_name}
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Customer Reference</Trans>
+          <Trans>Description</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {auction?.customerReference}
+          {auction?.description}
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Surname</Trans>
+          <Trans>Start</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {auction?.surname}
+          {auction?.auction_start}
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Given Names</Trans>
+          <Trans>End</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {auction?.givenNames}
+          {auction?.auction_end}
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Title</Trans>
+          <Trans>Image</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {auction
-            ? {
-                Doctor: <Trans>Doctor</Trans>,
-                Mister: <Trans>Mister</Trans>,
-                Miss: <Trans>Miss</Trans>,
-                Misses: <Trans>Misses</Trans>,
-              }[auction.title]
-            : null}
-        </DescriptionListDescription>
-      </DescriptionListGroup>
-      <DescriptionListGroup>
-        <DescriptionListTerm>
-          <Trans>Gender</Trans>
-        </DescriptionListTerm>
-        <DescriptionListDescription>
-          {auction
-            ? {
-                Male: <Trans>Male</Trans>,
-                Female: <Trans>Female</Trans>,
-              }[auction.gender]
-            : null}
-        </DescriptionListDescription>
-      </DescriptionListGroup>
-      <DescriptionListGroup>
-        <DescriptionListTerm>
-          <Trans>Date of Birth</Trans>
-        </DescriptionListTerm>
-        <DescriptionListDescription>
-          {auction?.dateOfBirth}
-        </DescriptionListDescription>
-      </DescriptionListGroup>
-      <DescriptionListGroup>
-        <DescriptionListTerm>
-          <Trans>Status</Trans>
-        </DescriptionListTerm>
-        <DescriptionListDescription>
-          {auction?.active ? _(msg`Active`) : _(msg`Inactive`)}
-        </DescriptionListDescription>
-      </DescriptionListGroup>
-      <DescriptionListGroup>
-        <DescriptionListTerm>
-          <Trans>High Risk Auction</Trans>
-        </DescriptionListTerm>
-        <DescriptionListDescription>
-          {auction?.risk === 'high' ? _(msg`Yes`) : _(msg`No`)}
+          {auction?.image_path}
         </DescriptionListDescription>
       </DescriptionListGroup>
     </DescriptionList>

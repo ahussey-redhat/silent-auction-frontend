@@ -1,12 +1,8 @@
 export type Auction = {
-  id: string;
-  auctionNumber: string;
-  customerReference: string;
-  surname: string;
-  givenNames: string;
-  title: 'Doctor' | 'Mister' | 'Miss' | 'Misses';
-  gender: 'Male' | 'Female';
-  dateOfBirth: string;
-  active: boolean;
-  risk: 'low' | 'medium' | 'high';
+  id: number;
+  item_name: string;
+  description: string;
+  auction_start: string;
+  auction_end: string;
+  image_path: string;
 };

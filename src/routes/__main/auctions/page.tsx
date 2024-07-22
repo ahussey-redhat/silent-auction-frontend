@@ -36,7 +36,7 @@ export default () => {
   const [{ token }] = useModel(authModel);
   const location = useLocation();
   const navigate = useNavigate();
-  const to = usePathWithParams(location, [
+  const to = usePathWithParams(location.pathname, [
     'locale',
     'search',
     'status',
@@ -67,7 +67,7 @@ export default () => {
   });
   const [isDrawerExpanded, setIsDrawerExpanded] = useState(false);
   const selectedAuction = useMemo(
-    () => auctions?.find(({ id }) => id === selectedAuctionId),
+    () => auctions?.find(({ id }) => id.toString() === selectedAuctionId),
     [auctions, selectedAuctionId],
   );
 
@@ -155,7 +155,7 @@ export default () => {
             <DrawerContentBody>
               <>
                 <AuctionToolbar />
-                {loadingAuctions ? (
+                {!auctions ? (
                   <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
                 ) : (
                   <AuctionDataList
