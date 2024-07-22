@@ -24,9 +24,9 @@ export default defineConfig<'rspack'>({
   tools: {
     devServer: {
       client: {
-        host: process.env.DEVSPACE_URL || 'localhost',
-        port: process.env.DEVSPACE_PORT || '80',
-        protocol: (process.env.DEVSPACE_PROTO as 'ws' | 'wss') || 'ws',
+        host: process.env.DEVSPACE_URL,
+        port: process.env.DEVSPACE_PORT,
+        protocol: process.env.DEVSPACE_PROTO as 'ws' | 'wss',
       },
     },
     swc: {
