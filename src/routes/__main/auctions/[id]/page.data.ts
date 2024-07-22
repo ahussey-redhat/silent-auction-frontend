@@ -1,17 +1,17 @@
 import { defer, LoaderFunctionArgs } from '@modern-js/runtime/router';
-import type { DeferredData, Member, MemberPlan } from '@/types';
+import type { DeferredData, Auction, AuctionPlan } from '@/types';
 
 export type LoaderData = {
-  member: Member;
-  memberPlans: MemberPlan[];
+  auction: Auction;
+  auctionPlans: AuctionPlan[];
 };
 
 export type DeferredLoaderData = DeferredData<LoaderData>;
 
 export const loader = async ({ params: { id } }: LoaderFunctionArgs) =>
   defer({
-    member: (async (): Promise<LoaderData['member']> => {
-      const response = await fetch(`/api/members/${id}`);
+    auction: (async (): Promise<LoaderData['auction']> => {
+      const response = await fetch(`/api/auctions/${id}`);
 
       if (process.env.NODE_ENV !== 'development' && response.status !== 200) {
         throw response;
@@ -19,8 +19,8 @@ export const loader = async ({ params: { id } }: LoaderFunctionArgs) =>
 
       return await response.json();
     })(),
-    memberPlans: (async (): Promise<LoaderData['memberPlans']> => {
-      const response = await fetch(`/api/members/${id}/plans`);
+    auctionPlans: (async (): Promise<LoaderData['auctionPlans']> => {
+      const response = await fetch(`/api/auctions/${id}/plans`);
 
       if (process.env.NODE_ENV !== 'development' && response.status !== 200) {
         throw response;

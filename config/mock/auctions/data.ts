@@ -1,39 +1,42 @@
 import Chance from 'chance';
 import { generateAccount } from '../account';
-import { planMembers, plans } from '../plans';
-import type { Member, MemberPlan, Plan } from '@/types';
+import { planAuctions, plans } from '../plans';
+import type { Auction, AuctionPlan, Plan } from '@/types';
 
 const chance = new Chance();
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
 
-const members: Member[] = [];
-let _memberPlans: MemberPlan[] = [];
+const auctions: Auction[] = [];
+let _auctionPlans: AuctionPlan[] = [];
 
-const generateMemberPlans = (
-  memberId: Member['id'],
+const generateAuctionPlans = (
+  auctionId: Auction['id'],
   plan: Plan,
   minJoinDate: Date,
   maxJoinDate: Date,
 ) => {
-  const memberPlans = chance.pickset(plans, chance.integer({ min: 0, max: 5 }));
+  const auctionPlans = chance.pickset(
+    plans,
+    chance.integer({ min: 0, max: 5 }),
+  );
 
-  if (!memberPlans.some(({ id }) => id === plan.id)) {
-    memberPlans.push(plan);
-    memberPlans.reverse();
+  if (!auctionPlans.some(({ id }) => id === plan.id)) {
+    auctionPlans.push(plan);
+    auctionPlans.reverse();
   }
 
-  return memberPlans.map(plan =>
-    generateMemberPlan(memberId, plan, minJoinDate, maxJoinDate),
+  return auctionPlans.map(plan =>
+    generateAuctionPlan(auctionId, plan, minJoinDate, maxJoinDate),
   );
 };
 
-const generateMemberPlan = (
-  memberId: Member['id'],
+const generateAuctionPlan = (
+  auctionId: Auction['id'],
   plan: Plan,
   minJoinDate: Date,
   maxJoinDate: Date,
-): MemberPlan => {
+): AuctionPlan => {
   const joinDate = chance.date({
     min: minJoinDate,
     max: maxJoinDate,
@@ -47,7 +50,7 @@ const generateMemberPlan = (
   return {
     ...plan,
     id: chance.guid(),
-    memberId,
+    auctionId,
     planId: plan.id,
     active: chance.bool({
       likelihood: activeLikelihood,
@@ -61,10 +64,10 @@ const generateMemberPlan = (
   };
 };
 
-export const generateMemberData = (plan: Plan): [Member, MemberPlan[]] => {
-  const memberId = chance.guid();
-  const gender = chance.gender() as Member['gender'];
-  const genderOption = gender.toLowerCase() as Lowercase<Member['gender']>;
+export const generateAuctionData = (plan: Plan): [Auction, AuctionPlan[]] => {
+  const auctionId = chance.guid();
+  const gender = chance.gender() as Auction['gender'];
+  const genderOption = gender.toLowerCase() as Lowercase<Auction['gender']>;
   const surname = chance.last();
   const givenNames = chance.name({ gender: genderOption });
   const dateOfBirth = chance.birthday({
@@ -83,16 +86,16 @@ export const generateMemberData = (plan: Plan): [Member, MemberPlan[]] => {
   const isHighRisk = chance.bool({ likelihood: 10 });
   const otherRisk = chance.bool() ? 'medium' : 'low';
 
-  const memberPlans: MemberPlan[] = generateMemberPlans(
-    memberId,
+  const auctionPlans: AuctionPlan[] = generateAuctionPlans(
+    auctionId,
     plan,
     eighteenthBirthday > currentDate ? currentDate : eighteenthBirthday,
     eightiethBirthday > currentDate ? currentDate : eightiethBirthday,
   );
 
-  const member: Member = {
-    id: memberId,
-    memberNumber: chance.integer({ min: 10000000, max: 99999999 }).toString(),
+  const auction: Auction = {
+    id: auctionId,
+    auctionNumber: chance.integer({ min: 10000000, max: 99999999 }).toString(),
     customerReference: chance
       .integer({ min: 10000000, max: 99999999 })
       .toString(),
@@ -101,39 +104,39 @@ export const generateMemberData = (plan: Plan): [Member, MemberPlan[]] => {
     title: chance.prefix({
       gender: genderOption,
       full: true,
-    }) as Member['title'],
+    }) as Auction['title'],
     gender,
     dateOfBirth: [
       dateOfBirth.getDate(),
       dateOfBirth.getMonth() + 1,
       dateOfBirth.getFullYear(),
     ].join('/'),
-    active: memberPlans.some(({ active }) => active),
+    active: auctionPlans.some(({ active }) => active),
     risk: isHighRisk ? 'high' : otherRisk,
   };
 
-  memberPlans.forEach(memberPlan => {
-    planMembers.push({
-      ...member,
+  auctionPlans.forEach(auctionPlan => {
+    planAuctions.push({
+      ...auction,
       id: chance.guid(),
-      planId: memberPlan.planId,
-      memberId: memberPlan.memberId,
-      active: memberPlan.active,
-      joinDate: memberPlan.joinDate,
+      planId: auctionPlan.planId,
+      auctionId: auctionPlan.auctionId,
+      active: auctionPlan.active,
+      joinDate: auctionPlan.joinDate,
     });
   });
 
-  return [member, memberPlans];
+  return [auction, auctionPlans];
 };
 
 plans.forEach(plan => {
   for (let i = 0; i < chance.integer({ min: 1, max: 2 }); i++) {
-    const [member, memberPlans] = generateMemberData(plan);
-    members.push(member);
-    _memberPlans = _memberPlans.concat(memberPlans);
+    const [auction, auctionPlans] = generateAuctionData(plan);
+    auctions.push(auction);
+    _auctionPlans = _auctionPlans.concat(auctionPlans);
   }
 });
 
-const memberPlans = _memberPlans;
+const auctionPlans = _auctionPlans;
 
-export { members, memberPlans };
+export { auctions, auctionPlans };

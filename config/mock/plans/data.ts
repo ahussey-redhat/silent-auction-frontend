@@ -1,5 +1,5 @@
 import Chance from 'chance';
-import type { Plan, PlanMember } from '@/types';
+import type { Plan, PlanAuction } from '@/types';
 
 const chance = new Chance();
 
@@ -225,6 +225,6 @@ plans.sort((a, b) => {
   return 0;
 });
 
-const planMembers: PlanMember[] = [];
+const planAuctions: PlanAuction[] = [];
 
-export { plans, planMembers };
+export { plans, planAuctions };

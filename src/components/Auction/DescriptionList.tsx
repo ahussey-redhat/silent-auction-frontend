@@ -6,23 +6,23 @@ import {
   DescriptionListGroup,
   DescriptionListTerm,
 } from '@patternfly/react-core';
-import { Member } from '@/types';
+import { Auction } from '@/types';
 
-export type MemberDescriptionListProps = {
-  member: Member;
+export type AuctionDescriptionListProps = {
+  auction: Auction;
 };
 
-export default ({ member }: MemberDescriptionListProps) => {
+export default ({ auction }: AuctionDescriptionListProps) => {
   const { _ } = useLingui();
 
   return (
     <DescriptionList isHorizontal>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Member</Trans>
+          <Trans>Auction</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {member?.memberNumber}
+          {auction?.auctionNumber}
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
@@ -30,7 +30,7 @@ export default ({ member }: MemberDescriptionListProps) => {
           <Trans>Customer Reference</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {member?.customerReference}
+          {auction?.customerReference}
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
@@ -38,7 +38,7 @@ export default ({ member }: MemberDescriptionListProps) => {
           <Trans>Surname</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {member?.surname}
+          {auction?.surname}
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
@@ -46,7 +46,7 @@ export default ({ member }: MemberDescriptionListProps) => {
           <Trans>Given Names</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {member?.givenNames}
+          {auction?.givenNames}
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
@@ -54,13 +54,13 @@ export default ({ member }: MemberDescriptionListProps) => {
           <Trans>Title</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {member
+          {auction
             ? {
                 Doctor: <Trans>Doctor</Trans>,
                 Mister: <Trans>Mister</Trans>,
                 Miss: <Trans>Miss</Trans>,
                 Misses: <Trans>Misses</Trans>,
-              }[member.title]
+              }[auction.title]
             : null}
         </DescriptionListDescription>
       </DescriptionListGroup>
@@ -69,11 +69,11 @@ export default ({ member }: MemberDescriptionListProps) => {
           <Trans>Gender</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {member
+          {auction
             ? {
                 Male: <Trans>Male</Trans>,
                 Female: <Trans>Female</Trans>,
-              }[member.gender]
+              }[auction.gender]
             : null}
         </DescriptionListDescription>
       </DescriptionListGroup>
@@ -82,7 +82,7 @@ export default ({ member }: MemberDescriptionListProps) => {
           <Trans>Date of Birth</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {member?.dateOfBirth}
+          {auction?.dateOfBirth}
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
@@ -90,15 +90,15 @@ export default ({ member }: MemberDescriptionListProps) => {
           <Trans>Status</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {member?.active ? _(msg`Active`) : _(msg`Inactive`)}
+          {auction?.active ? _(msg`Active`) : _(msg`Inactive`)}
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>High Risk Member</Trans>
+          <Trans>High Risk Auction</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {member?.risk === 'high' ? _(msg`Yes`) : _(msg`No`)}
+          {auction?.risk === 'high' ? _(msg`Yes`) : _(msg`No`)}
         </DescriptionListDescription>
       </DescriptionListGroup>
     </DescriptionList>

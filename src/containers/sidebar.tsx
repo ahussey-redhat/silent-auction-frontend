@@ -32,12 +32,12 @@ export default () => {
               </LocaleLink>
             </NavItem>
             <NavItem
-              id="nav-sidebar-link-members"
+              id="nav-sidebar-link-auctions"
               itemID="1"
-              isActive={locationPathname.startsWith('/members')}
+              isActive={locationPathname.startsWith('/auctions')}
             >
-              <LocaleLink prefetch="intent" to="/members">
-                <Trans>Members</Trans>
+              <LocaleLink prefetch="intent" to="/auctions">
+                <Trans>Auctions</Trans>
               </LocaleLink>
             </NavItem>
             {hasRole('admin') ? (

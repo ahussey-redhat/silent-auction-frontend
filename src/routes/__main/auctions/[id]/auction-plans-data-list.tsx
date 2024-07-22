@@ -12,19 +12,19 @@ import {
 } from '@patternfly/react-core';
 import { CheckCircleIcon } from '@patternfly/react-icons/dist/esm/icons/check-circle-icon';
 import { TimesCircleIcon } from '@patternfly/react-icons/dist/esm/icons/times-circle-icon';
-import type { MemberPlan } from '@/types';
+import type { AuctionPlan } from '@/types';
 import { LocaleLink } from '@/components';
 
 export type DataListProps = {
-  memberPlans: MemberPlan[];
+  auctionPlans: AuctionPlan[];
 };
 
-export default ({ memberPlans }: DataListProps) => {
+export default ({ auctionPlans }: DataListProps) => {
   const { _ } = useLingui();
 
   return (
-    <DataList aria-label={_(msg`Member plans list`)}>
-      {memberPlans.map(({ id, planId, description, joinDate, active }) => (
+    <DataList aria-label={_(msg`Auction plans list`)}>
+      {auctionPlans.map(({ id, planId, description, joinDate, active }) => (
         <DataListItem key={id} id={id}>
           <DataListItemRow>
             <DataListItemCells

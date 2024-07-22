@@ -28,14 +28,14 @@ import {
   useState,
 } from 'react';
 import { useAsync, useUpdateEffect } from 'react-use';
-import MemberDataList from './data-list';
-import MemberDetailsPanel from './details-panel';
-import MemberToolbar from './toolbar';
+import AuctionDataList from './data-list';
+import AuctionDetailsPanel from './details-panel';
+import AuctionToolbar from './toolbar';
 import { DeferredLoaderData, searchParams } from './page.data';
 import './page.css';
 import { PageTitle } from '@/components';
 import { usePathWithParams } from '@/hooks';
-import { Member } from '@/types';
+import { Auction } from '@/types';
 
 export const shouldRevalidate: ShouldRevalidateFunction = ({
   currentUrl,
@@ -68,30 +68,30 @@ export default () => {
     'search',
     'status',
     'risk',
-    'selectedMemberId',
+    'selectedAuctionId',
   ]);
   const toSearchParams = useMemo(
     () => new URLSearchParams(to.search),
     [to.search],
   );
-  const selectedMemberId = toSearchParams.get('selectedMemberId') ?? '';
+  const selectedAuctionId = toSearchParams.get('selectedAuctionId') ?? '';
   const data = useLoaderData() as DeferredLoaderData;
   const [isDrawerExpanded, setIsDrawerExpanded] = useState(false);
-  const { value: members, loading: loadingMembers } = useAsync(
-    () => data.members,
-    [data.members],
+  const { value: auctions, loading: loadingAuctions } = useAsync(
+    () => data.auctions,
+    [data.auctions],
   );
-  const selectedMember = useMemo(
-    () => members?.find(({ id }) => id === selectedMemberId),
-    [members, selectedMemberId],
+  const selectedAuction = useMemo(
+    () => auctions?.find(({ id }) => id === selectedAuctionId),
+    [auctions, selectedAuctionId],
   );
 
-  const selectMember = useCallback(
-    (memberId: string) => {
-      if (memberId) {
-        toSearchParams.set('selectedMemberId', memberId);
-      } else if (toSearchParams.has('selectedMemberId')) {
-        toSearchParams.delete('selectedMemberId');
+  const selectAuction = useCallback(
+    (auctionId: string) => {
+      if (auctionId) {
+        toSearchParams.set('selectedAuctionId', auctionId);
+      } else if (toSearchParams.has('selectedAuctionId')) {
+        toSearchParams.delete('selectedAuctionId');
       }
 
       navigate({
@@ -99,69 +99,69 @@ export default () => {
         search: toSearchParams.toString(),
       });
     },
-    [selectedMemberId, navigate, to, toSearchParams],
+    [selectedAuctionId, navigate, to, toSearchParams],
   );
 
   useEffect(() => {
-    if (loadingMembers) {
+    if (loadingAuctions) {
       return;
     }
 
-    if (selectedMember) {
-      selectMember(selectedMemberId);
+    if (selectedAuction) {
+      selectAuction(selectedAuctionId);
     } else {
-      selectMember('');
+      selectAuction('');
     }
-  }, [loadingMembers]);
+  }, [loadingAuctions]);
 
   useUpdateEffect(() => {
-    if (selectedMember) {
+    if (selectedAuction) {
       setIsDrawerExpanded(true);
     } else {
-      selectMember('');
+      selectAuction('');
       setIsDrawerExpanded(false);
     }
-  }, [selectedMember, setIsDrawerExpanded]);
+  }, [selectedAuction, setIsDrawerExpanded]);
 
-  const onSelectMember = useCallback(
+  const onSelectAuction = useCallback(
     (
       _: ReactMouseEvent<Element, MouseEvent> | KeyboardEvent<Element>,
-      memberId: string,
+      auctionId: string,
     ) => {
-      if (memberId !== selectedMemberId) {
-        selectMember(memberId);
+      if (auctionId !== selectedAuctionId) {
+        selectAuction(auctionId);
       }
     },
-    [selectedMemberId, selectMember],
+    [selectedAuctionId, selectAuction],
   );
 
   const onCloseDrawer = useCallback(
     (_?: ReactMouseEvent<HTMLDivElement>) => {
-      if (selectedMemberId !== '') {
-        selectMember('');
+      if (selectedAuctionId !== '') {
+        selectAuction('');
       }
     },
-    [selectedMemberId, selectMember],
+    [selectedAuctionId, selectAuction],
   );
 
   return (
     <>
-      <PageTitle title={_(msg`Members`)} />
+      <PageTitle title={_(msg`Auctions`)} />
       <PageSection>
         <TextContent>
           <Text component="h1">
-            <Trans>Members</Trans>
+            <Trans>Auctions</Trans>
           </Text>
         </TextContent>
       </PageSection>
       <Divider component="div" />
-      <PageSection className="members-page">
+      <PageSection className="auctions-page">
         <Drawer isExpanded={isDrawerExpanded} isInline>
           <DrawerContent
             panelContent={
-              selectedMember ? (
-                <MemberDetailsPanel
-                  member={selectedMember}
+              selectedAuction ? (
+                <AuctionDetailsPanel
+                  auction={selectedAuction}
                   onCloseDrawer={onCloseDrawer}
                 />
               ) : null
@@ -169,18 +169,18 @@ export default () => {
           >
             <DrawerContentBody>
               <>
-                <MemberToolbar />
+                <AuctionToolbar />
                 <Suspense
                   fallback={
                     <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
                   }
                 >
-                  <Await resolve={data.members}>
-                    {(members: Member[]) => (
-                      <MemberDataList
-                        members={members}
-                        selectedMemberId={selectedMemberId}
-                        onSelectMember={onSelectMember}
+                  <Await resolve={data.auctions}>
+                    {(auctions: Auction[]) => (
+                      <AuctionDataList
+                        auctions={auctions}
+                        selectedAuctionId={selectedAuctionId}
+                        onSelectAuction={onSelectAuction}
                       />
                     )}
                   </Await>

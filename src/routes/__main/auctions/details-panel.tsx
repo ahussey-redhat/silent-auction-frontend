@@ -9,21 +9,21 @@ import {
   Title,
 } from '@patternfly/react-core';
 import { MouseEventHandler } from 'react';
-import { LocaleLink, MemberDescriptionList } from '@/components';
-import type { Member } from '@/types';
+import { LocaleLink, AuctionDescriptionList } from '@/components';
+import type { Auction } from '@/types';
 
 export type DetailsPanelProps = {
-  member: Member;
+  auction: Auction;
   onCloseDrawer: MouseEventHandler<HTMLDivElement>;
 };
 
-export default ({ member, onCloseDrawer }: DetailsPanelProps) => (
+export default ({ auction, onCloseDrawer }: DetailsPanelProps) => (
   <DrawerPanelContent>
     <DrawerHead>
       <Title headingLevel="h2" size="xl">
-        {member ? (
-          <LocaleLink prefetch="intent" to={`/members/${member?.id}`}>
-            {member?.surname}, {member?.givenNames}
+        {auction ? (
+          <LocaleLink prefetch="intent" to={`/auctions/${auction?.id}`}>
+            {auction?.surname}, {auction?.givenNames}
           </LocaleLink>
         ) : (
           ''
@@ -39,7 +39,7 @@ export default ({ member, onCloseDrawer }: DetailsPanelProps) => (
         direction={{ default: 'column' }}
       >
         <FlexItem>
-          <MemberDescriptionList member={member} />
+          <AuctionDescriptionList auction={auction} />
         </FlexItem>
       </Flex>
     </DrawerPanelBody>

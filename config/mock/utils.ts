@@ -43,9 +43,9 @@ export const handleGetId = <T extends { id: string }>(list: T[]) =>
         }
 
         const pathSegments = url.pathname.split('/');
-        const memberId = pathSegments[pathSegments.length - 1];
+        const auctionId = pathSegments[pathSegments.length - 1];
 
-        resolve(list.find(({ id }) => id === memberId));
+        resolve(list.find(({ id }) => id === auctionId));
       });
     });
   });

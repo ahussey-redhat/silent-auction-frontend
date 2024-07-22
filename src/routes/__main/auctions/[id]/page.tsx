@@ -13,8 +13,8 @@ import { CheckCircleIcon } from '@patternfly/react-icons/dist/esm/icons/check-ci
 import { TimesCircleIcon } from '@patternfly/react-icons/dist/esm/icons/times-circle-icon';
 import { Suspense } from 'react';
 import { DeferredLoaderData, LoaderData } from './page.data';
-import MemberPlansDataList from './member-plans-data-list';
-import { MemberDescriptionList } from '@/components';
+import AuctionPlansDataList from './auction-plans-data-list';
+import { AuctionDescriptionList } from '@/components';
 import './page.css';
 
 export default () => {
@@ -26,12 +26,12 @@ export default () => {
       <Suspense
         fallback={<EmptyState titleText={_(msg`Loading`)} icon={Spinner} />}
       >
-        <Await resolve={data.member}>
-          {(member: LoaderData['member']) => (
+        <Await resolve={data.auction}>
+          {(auction: LoaderData['auction']) => (
             <DetailsPage
               pageHeading={{
-                title: `${member.surname}, ${member.givenNames}`,
-                label: member.active
+                title: `${auction.surname}, ${auction.givenNames}`,
+                label: auction.active
                   ? {
                       children: <Trans>Active</Trans>,
                       icon: (
@@ -55,18 +55,18 @@ export default () => {
                 },
               ]}
               actionMenu={{
-                id: 'member-details-page-action-menu',
+                id: 'auction-details-page-action-menu',
                 label: _(msg`Actions`),
                 actions: [
                   {
-                    children: <Trans>Edit member</Trans>,
-                    itemId: 'member-details-page-action-menu-example-1',
-                    onClick: () => console.log('Edit member clicked'),
+                    children: <Trans>Edit auction</Trans>,
+                    itemId: 'auction-details-page-action-menu-example-1',
+                    onClick: () => console.log('Edit auction clicked'),
                   },
                   {
-                    children: <Trans>Delete member</Trans>,
-                    itemId: 'member-details-page-action-menu-example-2',
-                    onClick: () => console.log('Delete member clicked'),
+                    children: <Trans>Delete auction</Trans>,
+                    itemId: 'auction-details-page-action-menu-example-2',
+                    onClick: () => console.log('Delete auction clicked'),
                     isDisabled: true,
                   },
                 ],
@@ -82,17 +82,17 @@ export default () => {
                       direction={{ default: 'column' }}
                     >
                       <FlexItem>
-                        <MemberDescriptionList member={member} />
+                        <AuctionDescriptionList auction={auction} />
                       </FlexItem>
                     </Flex>
                   ),
                 },
                 {
-                  eventKey: 'member-plans',
+                  eventKey: 'auction-plans',
                   title: <Trans>Plans</Trans>,
                   children: (
                     <Flex
-                      className="member-plans-tab"
+                      className="auction-plans-tab"
                       spaceItems={{ default: 'spaceItemsLg' }}
                       direction={{ default: 'column' }}
                     >
@@ -105,9 +105,11 @@ export default () => {
                             />
                           }
                         >
-                          <Await resolve={data.memberPlans}>
-                            {(memberPlans: LoaderData['memberPlans']) => (
-                              <MemberPlansDataList memberPlans={memberPlans} />
+                          <Await resolve={data.auctionPlans}>
+                            {(auctionPlans: LoaderData['auctionPlans']) => (
+                              <AuctionPlansDataList
+                                auctionPlans={auctionPlans}
+                              />
                             )}
                           </Await>
                         </Suspense>

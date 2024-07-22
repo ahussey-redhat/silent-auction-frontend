@@ -1,9 +1,9 @@
 import loginHandlers from './login';
-import memberHandlers from './members';
+import auctionHandlers from './auctions';
 import planHandlers from './plans';
 
 export default {
   ...loginHandlers,
-  ...memberHandlers,
+  ...auctionHandlers,
   ...planHandlers,
 };

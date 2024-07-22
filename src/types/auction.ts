@@ -1,6 +1,6 @@
-export type Member = {
+export type Auction = {
   id: string;
-  memberNumber: string;
+  auctionNumber: string;
   customerReference: string;
   surname: string;
   givenNames: string;

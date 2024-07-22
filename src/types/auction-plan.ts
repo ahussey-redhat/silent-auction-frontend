@@ -1,9 +1,9 @@
 import { Account } from './account';
-import { Member } from './member';
+import { Auction } from './auction';
 import { Plan } from './plan';
 
-export type MemberPlan = Plan & {
-  memberId: Member['id'];
+export type AuctionPlan = Plan & {
+  auctionId: Auction['id'];
   planId: Plan['id'];
   joinDate: string;
   active: boolean;

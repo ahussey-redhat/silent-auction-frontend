@@ -131,7 +131,7 @@ export default () => {
   );
 
   return (
-    <Toolbar id="member-data-toolbar" usePageInsets>
+    <Toolbar id="auction-data-toolbar" usePageInsets>
       <ToolbarContent>
         <ToolbarToggleGroup toggleIcon={<FilterIcon />} breakpoint="xl">
           <Flex alignItems={{ default: 'alignItemsCenter' }}>
@@ -139,8 +139,8 @@ export default () => {
               <InputGroup>
                 <InputGroupItem isFill>
                   <TextInput
-                    name="member-data-toolbar-search-input"
-                    id="member-data-toolbar-search-input"
+                    name="auction-data-toolbar-search-input"
+                    id="auction-data-toolbar-search-input"
                     type="search"
                     aria-label={_(msg`Search input`)}
                     onChange={onSearchInputChanged}

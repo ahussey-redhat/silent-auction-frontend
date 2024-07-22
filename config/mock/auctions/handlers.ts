@@ -1,9 +1,9 @@
 import { simulatedLatency, simulateError, simulateNotFound } from '../simulate';
 import { handleGet, handleGetId } from '../utils';
-import { members, memberPlans } from './data';
+import { auctions, auctionPlans } from './data';
 
 export default {
-  '/api/members': handleGet(url => {
+  '/api/auctions': handleGet(url => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (simulateError) {
@@ -17,16 +17,16 @@ export default {
         const riskParam = url.searchParams.get('risk')?.toLowerCase();
 
         if (!searchParam && !statusParam && !riskParam) {
-          resolve(members);
+          resolve(auctions);
         }
 
         resolve(
-          members.filter(
+          auctions.filter(
             ({
               active,
               customerReference,
               givenNames,
-              memberNumber,
+              auctionNumber,
               risk,
               surname,
             }) => {
@@ -40,7 +40,9 @@ export default {
                   (customerReference
                     .toLowerCase()
                     .includes(lowerCaseSearchParam) ||
-                    memberNumber.toLowerCase().includes(lowerCaseSearchParam) ||
+                    auctionNumber
+                      .toLowerCase()
+                      .includes(lowerCaseSearchParam) ||
                     givenNames.toLowerCase().includes(lowerCaseSearchParam) ||
                     surname.toLowerCase().includes(lowerCaseSearchParam));
               }
@@ -67,8 +69,8 @@ export default {
       }, simulatedLatency);
     });
   }),
-  '/api/members/:id': handleGetId(members),
-  '/api/members/:id/plans': handleGet(url => {
+  '/api/auctions/:id': handleGetId(auctions),
+  '/api/auctions/:id/plans': handleGet(url => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (simulateError) {
@@ -78,10 +80,12 @@ export default {
         }
 
         const pathSegments = url.pathname.split('/');
-        const memberId = pathSegments[pathSegments.length - 2];
+        const auctionId = pathSegments[pathSegments.length - 2];
 
         resolve(
-          memberPlans.filter(memberPlan => memberPlan.memberId === memberId),
+          auctionPlans.filter(
+            auctionPlan => auctionPlan.auctionId === auctionId,
+          ),
         );
       }, simulatedLatency);
     });

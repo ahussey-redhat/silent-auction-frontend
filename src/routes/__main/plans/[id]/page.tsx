@@ -11,7 +11,7 @@ import {
 } from '@patternfly/react-core';
 import { Suspense } from 'react';
 import { DeferredLoaderData, LoaderData } from './page.data';
-import PlanMembersDataList from './plan-members-data-list';
+import PlanAuctionsDataList from './plan-auctions-data-list';
 import './page.css';
 import { PlanDescriptionList } from '@/components';
 
@@ -70,11 +70,11 @@ export default () => {
                   ),
                 },
                 {
-                  eventKey: 'plan-members',
-                  title: <Trans>Members</Trans>,
+                  eventKey: 'plan-auctions',
+                  title: <Trans>Auctions</Trans>,
                   children: (
                     <Flex
-                      className="plan-members-tab"
+                      className="plan-auctions-tab"
                       spaceItems={{ default: 'spaceItemsLg' }}
                       direction={{ default: 'column' }}
                     >
@@ -87,9 +87,11 @@ export default () => {
                             />
                           }
                         >
-                          <Await resolve={data.planMembers}>
-                            {(planMembers: LoaderData['planMembers']) => (
-                              <PlanMembersDataList planMembers={planMembers} />
+                          <Await resolve={data.planAuctions}>
+                            {(planAuctions: LoaderData['planAuctions']) => (
+                              <PlanAuctionsDataList
+                                planAuctions={planAuctions}
+                              />
                             )}
                           </Await>
                         </Suspense>

@@ -1,6 +1,6 @@
 import { simulatedLatency, simulateError, simulateNotFound } from '../simulate';
 import { handleGet, handleGetId } from '../utils';
-import { planMembers, plans } from './data';
+import { planAuctions, plans } from './data';
 
 export default {
   '/api/plans': handleGet(url => {
@@ -40,7 +40,7 @@ export default {
     });
   }),
   '/api/plans/:id': handleGetId(plans),
-  '/api/plans/:id/members': handleGet(url => {
+  '/api/plans/:id/auctions': handleGet(url => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (simulateError) {
@@ -52,7 +52,9 @@ export default {
         const pathSegments = url.pathname.split('/');
         const planId = pathSegments[pathSegments.length - 2];
 
-        resolve(planMembers.filter(planMember => planMember.planId === planId));
+        resolve(
+          planAuctions.filter(planAuction => planAuction.planId === planId),
+        );
       }, simulatedLatency);
     });
   }),

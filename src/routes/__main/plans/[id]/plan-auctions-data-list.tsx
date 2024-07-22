@@ -1,10 +1,7 @@
 import { msg, Trans } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import {
-  Button,
-  ButtonVariant,
   DataList,
-  DataListAction,
   DataListCell,
   DataListItem,
   DataListItemCells,
@@ -12,40 +9,32 @@ import {
   Flex,
   FlexItem,
   Label,
-  Stack,
-  StackItem,
 } from '@patternfly/react-core';
 import { CheckCircleIcon } from '@patternfly/react-icons/dist/esm/icons/check-circle-icon';
 import { ExclamationTriangleIcon } from '@patternfly/react-icons/dist/esm/icons/exclamation-triangle-icon';
 import { TimesCircleIcon } from '@patternfly/react-icons/dist/esm/icons/times-circle-icon';
-import { KeyboardEvent, MouseEvent as ReactMouseEvent } from 'react';
-import type { Member } from '@/types';
+import type { PlanAuction } from '@/types';
 import { LocaleLink } from '@/components';
 
 export type DataListProps = {
-  members: Member[];
-  selectedMemberId: Member['id'];
-  onSelectMember: (
-    event: ReactMouseEvent<Element, MouseEvent> | KeyboardEvent<Element>,
-    id: string,
-  ) => void;
+  planAuctions: PlanAuction[];
 };
 
-export default ({
-  members,
-  selectedMemberId,
-  onSelectMember,
-}: DataListProps) => {
+export default ({ planAuctions }: DataListProps) => {
   const { _ } = useLingui();
 
   return (
-    <DataList
-      aria-label={_(msg`Members list`)}
-      selectedDataListItemId={selectedMemberId}
-      onSelectDataListItem={onSelectMember}
-    >
-      {members.map(
-        ({ id, memberNumber, givenNames, surname, active, risk }) => (
+    <DataList aria-label={_(msg`Auction plans list`)}>
+      {planAuctions.map(
+        ({
+          id,
+          auctionId,
+          auctionNumber,
+          givenNames,
+          surname,
+          active,
+          risk,
+        }) => (
           <DataListItem key={id} id={id}>
             <DataListItemRow>
               <DataListItemCells
@@ -57,11 +46,14 @@ export default ({
                     >
                       <FlexItem>
                         <p>
-                          <LocaleLink prefetch="intent" to={`/members/${id}`}>
+                          <LocaleLink
+                            prefetch="intent"
+                            to={`/auctions/${auctionId}`}
+                          >
                             {surname}, {givenNames}
                           </LocaleLink>
                         </p>
-                        <small>{memberNumber}</small>
+                        <small>{auctionNumber}</small>
                       </FlexItem>
                     </Flex>
                   </DataListCell>,
@@ -103,20 +95,6 @@ export default ({
                       }
                     </Label>
                   </DataListCell>,
-                  <DataListAction
-                    key="actions"
-                    aria-labelledby={`${id} ${id}-action`}
-                    id={`${id}-action`}
-                    aria-label={_(msg`Actions`)}
-                  >
-                    <Stack>
-                      <StackItem>
-                        <Button variant={ButtonVariant.secondary}>
-                          <Trans>Action</Trans>
-                        </Button>
-                      </StackItem>
-                    </Stack>
-                  </DataListAction>,
                 ]}
               />
             </DataListItemRow>

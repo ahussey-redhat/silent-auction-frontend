@@ -1,17 +1,17 @@
 import { defer, LoaderFunctionArgs } from '@modern-js/runtime/router';
-import type { DeferredData, Member } from '@/types';
+import type { DeferredData, Auction } from '@/types';
 
 export const searchParams = ['search', 'status', 'risk'];
 
 export type LoaderData = {
-  members: Member[];
+  auctions: Auction[];
 };
 
 export type DeferredLoaderData = DeferredData<LoaderData>;
 
 export const loader = async ({ request }: LoaderFunctionArgs) =>
   defer({
-    members: (async (): Promise<LoaderData['members']> => {
+    auctions: (async (): Promise<LoaderData['auctions']> => {
       const requestUrl = new URL(request.url);
       const params = new URLSearchParams(
         searchParams
@@ -23,7 +23,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) =>
       );
 
       const response = await fetch(
-        `/api/members${params.size > 0 ? `?${params}` : ''}`,
+        `/api/auctions${params.size > 0 ? `?${params}` : ''}`,
       );
 
       if (process.env.NODE_ENV !== 'development' && response.status !== 200) {
