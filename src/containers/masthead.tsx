@@ -221,7 +221,9 @@ export default () => {
                       }
                       isFullHeight
                     >
-                      {`${profile?.firstName} ${profile?.lastName}` ?? (
+                      {profile ? (
+                        `${profile?.firstName} ${profile?.lastName}`
+                      ) : (
                         <Trans>Guest</Trans>
                       )}
                     </MenuToggle>
