@@ -18,9 +18,17 @@ export default defineConfig<'rspack'>({
       'process.env.KEYCLOAK_CLIENT_ID': process.env.KEYCLOAK_CLIENT_ID,
       'process.env.KEYCLOAK_REALM': process.env.KEYCLOAK_REALM,
       'process.env.KEYCLOAK_URL': process.env.KEYCLOAK_URL,
+      'process.env.BACKEND_URL': process.env.BACKEND_URL,
     },
   },
   tools: {
+    devServer: {
+      client: {
+        host: process.env.DEVSPACE_URL || 'localhost',
+        port: process.env.DEVSPACE_PORT || '80',
+        protocol: (process.env.DEVSPACE_PROTO as 'ws' | 'wss') || 'ws',
+      },
+    },
     swc: {
       jsc: {
         experimental: {

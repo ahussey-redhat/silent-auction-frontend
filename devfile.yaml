@@ -9,6 +9,9 @@ components:
       mountSources: true
       sourceMapping: /projects
       memoryLimit: 8G
+      env:
+        - name: MODERN_ENV
+          value: devspaces
       endpoints:
         - exposure: public
           name: nodejs
