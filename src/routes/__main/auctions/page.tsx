@@ -33,7 +33,7 @@ import authModel from '@/models/auth';
 
 export default () => {
   const { _ } = useLingui();
-  const [{ token }, { updateToken }] = useModel(authModel);
+  const [{ token }, { clearToken, updateToken }] = useModel(authModel);
   const location = useLocation();
   const navigate = useNavigate();
   const to = usePathWithParams(location.pathname, [
@@ -50,7 +50,13 @@ export default () => {
   const selectedAuctionId = toSearchParams.get('selectedAuctionId') ?? '';
   const [{ value: auctions, loading: loadingAuctions }, fetchAuctions] =
     useAsyncFn(async () => {
-      await updateToken();
+      try {
+        await updateToken();
+      } catch (error) {
+        await clearToken();
+        return [];
+      }
+
       const response = await fetch(`${process.env.BACKEND_URL}/auctions`, {
         headers: {
           Authorization: `Bearer ${token}`,

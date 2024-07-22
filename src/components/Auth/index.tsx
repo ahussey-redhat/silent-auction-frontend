@@ -18,6 +18,7 @@ type AuthContextType = {
   hasRole: Keycloak['hasRealmRole'];
   login: GetModelActions<typeof authModel>['login'];
   logout: GetModelActions<typeof authModel>['logout'];
+  clearToken: GetModelActions<typeof authModel>['clearToken'];
   updateToken: GetModelActions<typeof authModel>['updateToken'];
 };
 
@@ -26,8 +27,10 @@ const AuthContext = createContext<AuthContextType>(null!);
 export type AuthProviderProps = PropsWithChildren;
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [{ keycloak, profile, token }, { login, logout, updateToken }] =
-    useModel(authModel);
+  const [
+    { keycloak, profile, token },
+    { login, logout, clearToken, updateToken },
+  ] = useModel(authModel);
 
   return (
     <AuthContext.Provider
@@ -37,6 +40,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         hasRole: keycloak.hasRealmRole.bind(keycloak),
         login,
         logout,
+        clearToken,
         updateToken,
       }}
     >

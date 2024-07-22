@@ -18,10 +18,16 @@ import authModel from '@/models/auth';
 
 export default () => {
   const { _ } = useLingui();
-  const [{ token }, { updateToken }] = useModel(authModel);
+  const [{ token }, { clearToken, updateToken }] = useModel(authModel);
   const { id: auctionId } = useParams();
   const [{ value: auction }, fetchAuction] = useAsyncFn(async () => {
-    await updateToken();
+    try {
+      await updateToken();
+    } catch (error) {
+      await clearToken();
+      return undefined;
+    }
+
     const response = await fetch(
       `${process.env.BACKEND_URL}/auctions/${auctionId}`,
       {
