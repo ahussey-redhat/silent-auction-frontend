@@ -1,12 +1,6 @@
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import {
-  Await,
-  ShouldRevalidateFunction,
-  useLoaderData,
-  useLocation,
-  useNavigate,
-} from '@modern-js/runtime/router';
+import { useLocation, useNavigate } from '@modern-js/runtime/router';
 import {
   Divider,
   Drawer,
@@ -21,46 +15,25 @@ import {
 import {
   KeyboardEvent,
   MouseEvent as ReactMouseEvent,
-  Suspense,
   useCallback,
   useEffect,
   useMemo,
   useState,
 } from 'react';
-import { useAsync, useUpdateEffect } from 'react-use';
+import { useAsyncFn, useEffectOnce, useUpdateEffect } from 'react-use';
+import { useModel } from '@modern-js/runtime/model';
 import AuctionDataList from './data-list';
 import AuctionDetailsPanel from './details-panel';
 import AuctionToolbar from './toolbar';
-import { DeferredLoaderData, searchParams } from './page.data';
 import './page.css';
 import { PageTitle } from '@/components';
 import { usePathWithParams } from '@/hooks';
 import { Auction } from '@/types';
-
-export const shouldRevalidate: ShouldRevalidateFunction = ({
-  currentUrl,
-  defaultShouldRevalidate,
-  nextUrl,
-}) => {
-  if (currentUrl.pathname === nextUrl.pathname) {
-    const currentParams = new URLSearchParams(
-      searchParams.map(param => [
-        param,
-        currentUrl.searchParams.get(param) ?? '',
-      ]),
-    ).toString();
-    const nextParams = new URLSearchParams(
-      searchParams.map(param => [param, nextUrl.searchParams.get(param) ?? '']),
-    ).toString();
-
-    return currentParams !== nextParams;
-  } else {
-    return defaultShouldRevalidate;
-  }
-};
+import authModel from '@/models/auth';
 
 export default () => {
   const { _ } = useLingui();
+  const [{ token }] = useModel(authModel);
   const location = useLocation();
   const navigate = useNavigate();
   const to = usePathWithParams(location.pathname, [
@@ -75,12 +48,24 @@ export default () => {
     [to.search],
   );
   const selectedAuctionId = toSearchParams.get('selectedAuctionId') ?? '';
-  const data = useLoaderData() as DeferredLoaderData;
+  const [{ value: auctions, loading: loadingAuctions }, fetchAuctions] =
+    useAsyncFn(async () => {
+      const response = await fetch(`${process.env.BACKEND_URL}/auctions`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (process.env.NODE_ENV !== 'development' && response.status !== 200) {
+        throw response;
+      }
+
+      return (await response.json()) as Auction[];
+    }, [token]);
+  useEffectOnce(() => {
+    fetchAuctions();
+  });
   const [isDrawerExpanded, setIsDrawerExpanded] = useState(false);
-  const { value: auctions, loading: loadingAuctions } = useAsync(
-    () => data.auctions,
-    [data.auctions],
-  );
   const selectedAuction = useMemo(
     () => auctions?.find(({ id }) => id === selectedAuctionId),
     [auctions, selectedAuctionId],
@@ -170,21 +155,15 @@ export default () => {
             <DrawerContentBody>
               <>
                 <AuctionToolbar />
-                <Suspense
-                  fallback={
-                    <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
-                  }
-                >
-                  <Await resolve={data.auctions}>
-                    {(auctions: Auction[]) => (
-                      <AuctionDataList
-                        auctions={auctions}
-                        selectedAuctionId={selectedAuctionId}
-                        onSelectAuction={onSelectAuction}
-                      />
-                    )}
-                  </Await>
-                </Suspense>
+                {loadingAuctions ? (
+                  <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
+                ) : (
+                  <AuctionDataList
+                    auctions={auctions ?? []}
+                    selectedAuctionId={selectedAuctionId}
+                    onSelectAuction={onSelectAuction}
+                  />
+                )}
               </>
             </DrawerContentBody>
           </DrawerContent>
