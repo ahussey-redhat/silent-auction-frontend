@@ -40,6 +40,7 @@ const authModel = model<State>('auth').define((_, { use }) => ({
     ),
     login: keycloakEffect(use, keycloak => keycloak.login()),
     logout: keycloakEffect(use, keycloak => keycloak.logout()),
+    updateToken: keycloakEffect(use, keycloak => keycloak.updateToken()),
   },
 }));
 

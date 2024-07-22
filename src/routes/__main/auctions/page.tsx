@@ -33,7 +33,7 @@ import authModel from '@/models/auth';
 
 export default () => {
   const { _ } = useLingui();
-  const [{ token }] = useModel(authModel);
+  const [{ token }, { updateToken }] = useModel(authModel);
   const location = useLocation();
   const navigate = useNavigate();
   const to = usePathWithParams(location.pathname, [
@@ -50,6 +50,7 @@ export default () => {
   const selectedAuctionId = toSearchParams.get('selectedAuctionId') ?? '';
   const [{ value: auctions, loading: loadingAuctions }, fetchAuctions] =
     useAsyncFn(async () => {
+      await updateToken();
       const response = await fetch(`${process.env.BACKEND_URL}/auctions`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -61,10 +62,7 @@ export default () => {
       }
 
       return (await response.json()) as Auction[];
-    }, [token]);
-  useEffectOnce(() => {
-    fetchAuctions();
-  });
+    }, [token, updateToken]);
   const [isDrawerExpanded, setIsDrawerExpanded] = useState(false);
   const selectedAuction = useMemo(
     () => auctions?.find(({ id }) => id.toString() === selectedAuctionId),
@@ -86,6 +84,10 @@ export default () => {
     },
     [selectedAuctionId, navigate, to, toSearchParams],
   );
+
+  useEffectOnce(() => {
+    fetchAuctions();
+  });
 
   useEffect(() => {
     if (loadingAuctions) {
