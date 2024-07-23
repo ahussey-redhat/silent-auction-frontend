@@ -111,7 +111,7 @@ spec:
               storage: 1Gi
     - name: dockerconfig-ws
       secret:
-        secretName: pull-secret
+        secretName: pull-secret-string
     - name: basic-auth
       secret:
         secretName: '{{ git_auth_secret }}'
