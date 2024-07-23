@@ -73,22 +73,22 @@ spec:
         workspaces:
           - name: output
             workspace: argocd_source
-      # - name: deploy
-      #   taskRef:
-      #     kind: Task
-      #     name: deploy
-      #   runAfter:
-      #     - build-image
-      #   params:
-      #     - name: kustomization_directory
-      #       value: 4-workloads/production
-      #     - name: image_url
-      #       value: ${params.image}
-      #     - name: image_digest
-      #       value: ${steps.build-image.results.IMAGE_DIGEST}
-      #   workspaces:
-      #     - name: argocd_source
-      #       workspace: argocd_source
+      - name: deploy
+        taskRef:
+          kind: Task
+          name: deploy
+        runAfter:
+          - build-image
+        params:
+          - name: kustomization_directory
+            value: 4-workloads/production
+          - name: image_url
+            value: ${params.image}
+          - name: image_digest
+            value: ${steps.build-image.results.IMAGE_DIGEST}
+        workspaces:
+          - name: argocd_source
+            workspace: argocd_source
   workspaces:
     - name: source
       volumeClaimTemplate:
