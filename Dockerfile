@@ -8,6 +8,8 @@ RUN dnf update -y
 
 RUN npm install -g pnpm
 
+COPY . /opt/app-root/src/
+
 RUN pnpm install && pnpm extract-messages && pnpm compile-messages
 
 RUN pnpm build
