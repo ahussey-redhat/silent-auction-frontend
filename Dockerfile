@@ -10,6 +10,8 @@ RUN npm install -g pnpm
 
 COPY . /opt/app-root/src/
 
+RUN chown -R 10001:0 /opt/app-root/src
+
 RUN git config --global --add safe.directory /opt/app-root/src
 
 RUN pnpm install && pnpm extract-messages && pnpm compile-messages
