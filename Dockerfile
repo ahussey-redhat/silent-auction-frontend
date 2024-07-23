@@ -4,7 +4,7 @@ LABEL name="ahussey/silent-auction/frontend"
 
 USER 0
 
-RUN microdnf update -y
+RUN dnf update -y
 
 RUN npm install -g pnpm
 
