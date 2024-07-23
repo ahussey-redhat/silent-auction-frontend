@@ -12,7 +12,7 @@ RUN chown -R 10001:0 /opt/app-root/src
 
 USER 10001
 
-COPY --chown:10001:0 . /opt/app-root/src/
+COPY --chown=10001:0 . /opt/app-root/src/
 
 RUN git config --global --add safe.directory /opt/app-root/src
 
