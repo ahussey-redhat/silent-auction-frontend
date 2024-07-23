@@ -17,7 +17,7 @@ spec:
     - name: revision
       value: '{{ revision }}'
     - name: image
-      value: quay.io/ahussey/silent-auction/frontend:latest
+      value: quay.io/ahussey/silent-auction/frontend
     - name: argocd-git-url
       value: git@github.com:ahussey-redhat/silent-auction-demo-infra.git
   pipelineSpec:
