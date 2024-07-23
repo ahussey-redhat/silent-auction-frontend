@@ -78,7 +78,7 @@ spec:
           kind: Task
           name: deploy
         runAfter:
-          - build-image
+          - git-clone-argocd-repo
         params:
           - name: kustomization_directory
             value: 4-workloads/production
