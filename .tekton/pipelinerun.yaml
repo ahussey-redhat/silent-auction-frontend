@@ -56,7 +56,7 @@ spec:
           - name: source
             workspace: source
           - name: dockerconfig
-            workspace: dockconfig
+            workspace: dockconfig-ws
         params:
           - name: IMAGE
             value: $(params.image)
@@ -109,9 +109,9 @@ spec:
           resources:
             requests:
               storage: 1Gi
-    - name: dockerconfig
+    - name: dockerconfig-ws
       secret:
-        secretName: quay-robot-pull-secret
+        secretName: pull-secret
     - name: basic-auth
       secret:
         secretName: '{{ git_auth_secret }}'
