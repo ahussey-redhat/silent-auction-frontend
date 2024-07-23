@@ -58,6 +58,25 @@ spec:
         params:
           - name: IMAGE
             value: $(params.image)
+          - name: BUILDER_IMAGE
+            value: >-
+              registry.redhat.io/rhel8/buildah@sha256:73d263d124f4b7ce2796c9353094e9808ff905a74cfdd2507ac9924bfe468cec
+          - name: STORAGE_DRIVER
+            value: vfs
+          - name: DOCKERFILE
+            value: ./Dockerfile
+          - name: CONTEXT
+            value: .
+          - name: TLSVERIFY
+            value: 'true'
+          - name: FORMAT
+            value: oci
+          - name: BUILD_EXTRA_ARGS
+            value: ''
+          - name: PUSH_EXTRA_ARGS
+            value: ''
+          - name: SKIP_PUSH
+            value: 'false'
       - name: git-clone-argocd-repo
         taskRef:
           kind: ClusterTask
