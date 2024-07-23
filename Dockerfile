@@ -16,4 +16,4 @@ RUN pnpm build
 
 USER 10001
 
-CMD pnpm run server
+CMD pnpm serve
