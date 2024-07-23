@@ -1,4 +1,4 @@
-FROM registry.redhat.io/rhel9/nodejs-20
+FROM registry.redhat.io/rhel9/nodejs-20:latest
 
 LABEL name="ahussey/silent-auction/frontend"
 
