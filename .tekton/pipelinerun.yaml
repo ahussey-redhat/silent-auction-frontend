@@ -46,8 +46,8 @@ spec:
             value: $(params.revision)
       - name: build-image
         taskRef:
-          name: s2i-java
-          kind: ClusterTask
+          name: custom-buildah
+          kind: Task
         runAfter:
           - fetch-repository
         workspaces:
