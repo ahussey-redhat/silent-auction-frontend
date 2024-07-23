@@ -1,5 +1,4 @@
 import { appTools, defineConfig } from '@modern-js/app-tools';
-import { ssgPlugin } from '@modern-js/plugin-ssg';
 
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig<'rspack'>({
@@ -7,7 +6,6 @@ export default defineConfig<'rspack'>({
     appTools({
       bundler: 'experimental-rspack',
     }),
-    ssgPlugin(),
   ],
   runtime: {
     router: true,
