@@ -62,7 +62,7 @@ export default () => {
         {loadingAuctions ? (
           <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
         ) : (
-          <Gallery>
+          <Gallery hasGutter>
             {auctions?.map(({ id, item_name, description, image_path }) => (
               <Card key={id} id={id.toString()} isCompact>
                 <CardHeader>
