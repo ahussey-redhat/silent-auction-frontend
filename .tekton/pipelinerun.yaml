@@ -49,17 +49,16 @@ spec:
       - name: build-image
         taskRef:
           name: buildah
-          kind: Task
         runAfter:
           - fetch-repository
         workspaces:
           - name: source
             workspace: source
+          - name: dockerconfig
+            workspace: dockerconfig-ws
         params:
           - name: IMAGE
             value: $(params.image)
-          - name: REVISION
-            value: $(params.revision)
       - name: git-clone-argocd-repo
         taskRef:
           kind: ClusterTask
@@ -107,6 +106,9 @@ spec:
           resources:
             requests:
               storage: 1Gi
+    - name: dockerconfig-ws
+      secret:
+        secretName: quay-robot-pull-secret-string
     - name: basic-auth
       secret:
         secretName: '{{ git_auth_secret }}'
