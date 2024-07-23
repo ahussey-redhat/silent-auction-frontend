@@ -7,7 +7,7 @@ metadata:
     pipelinesascode.tekton.dev/on-event: '[pull_request, push]'
     pipelinesascode.tekton.dev/on-target-branch: '[main]'
     pipelinesascode.tekton.dev/task: 'git-clone'
-    pipelinesascode.tekton.dev/task-1: '[https://github.com/ahussey-redhat/silent-auction-demo-infra/blob/main/.tekton/tasks/custom-buildah.yaml]'
+    pipelinesascode.tekton.dev/task-1: 'buildah'
     pipelinesascode.tekton.dev/task-2: '[https://github.com/ahussey-redhat/silent-auction-demo-infra/blob/main/.tekton/tasks/deploy.yaml]'
     pipelinesascode.tekton.dev/max-keep-runs: '5'
 spec:
@@ -48,15 +48,13 @@ spec:
             value: $(params.revision)
       - name: build-image
         taskRef:
-          name: custom-buildah
+          name: buildah
           kind: Task
         runAfter:
           - fetch-repository
         workspaces:
           - name: source
             workspace: source
-          - name: dockerconfig
-            workspace: dockconfig-ws
         params:
           - name: IMAGE
             value: $(params.image)
@@ -109,9 +107,6 @@ spec:
           resources:
             requests:
               storage: 1Gi
-    - name: dockerconfig-ws
-      secret:
-        secretName: pull-secret-string
     - name: basic-auth
       secret:
         secretName: '{{ git_auth_secret }}'
