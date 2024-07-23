@@ -8,11 +8,11 @@ RUN dnf update -y
 
 RUN npm install -g pnpm
 
-RUN chown -R 10001:10001 /opt/app-root/src
+RUN chown -R 10001:0 /opt/app-root/src
 
 USER 10001
 
-COPY . /opt/app-root/src/
+COPY --chown:10001:0 . /opt/app-root/src/
 
 RUN git config --global --add safe.directory /opt/app-root/src
 
