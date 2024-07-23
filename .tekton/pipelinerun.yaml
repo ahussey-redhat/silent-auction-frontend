@@ -85,7 +85,7 @@ spec:
           - name: image_url
             value: $(params.image)
           - name: image_digest
-            value: $(steps.build-image.results.IMAGE_DIGEST)
+            value: $(tasks.build-image.results.IMAGE_DIGEST)
         workspaces:
           - name: argocd_source
             workspace: argocd_source
