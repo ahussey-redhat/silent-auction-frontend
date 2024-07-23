@@ -12,7 +12,7 @@ COPY . /opt/app-root/src/
 
 RUN pnpm install && pnpm extract-messages && pnpm compile-messages
 
-RUN pnpm build
+RUN git config --global --add safe.directory /opt/app-root/src && pnpm build
 
 USER 10001
 
