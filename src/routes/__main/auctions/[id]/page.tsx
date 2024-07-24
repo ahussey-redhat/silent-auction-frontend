@@ -1,5 +1,6 @@
 import { msg, Trans } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
+import { useModel } from '@modern-js/runtime/model';
 import { useParams } from '@modern-js/runtime/router';
 import DetailsPage from '@patternfly/react-component-groups/dist/dynamic/DetailsPage';
 import {
@@ -9,43 +10,30 @@ import {
   PageSection,
   Spinner,
 } from '@patternfly/react-core';
-import { useAsyncFn, useEffectOnce } from 'react-use';
-import { useModel } from '@modern-js/runtime/model';
+import { useEffect } from 'react';
+import { useUnmount } from 'react-use';
 import { AuctionDescriptionList } from '@/components';
+import auctionModel from '@/models/auction';
 import './page.css';
-import { Auction } from '@/types';
-import authModel from '@/models/auth';
 
 export default () => {
   const { _ } = useLingui();
-  const [{ token }, { clearToken, updateToken }] = useModel(authModel);
   const { id: auctionId } = useParams();
-  const [{ value: auction }, fetchAuction] = useAsyncFn(async () => {
-    try {
-      await updateToken();
-    } catch (error) {
-      await clearToken();
-      return undefined;
+  const [
+    {
+      auction: { value: auction },
+    },
+    { getAuction, clearAuction },
+  ] = useModel(auctionModel);
+
+  useEffect(() => {
+    if (auctionId) {
+      getAuction(auctionId);
     }
+  }, [auctionId]);
 
-    const response = await fetch(
-      `${process.env.BACKEND_URL}/auctions/${auctionId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    );
-
-    if (process.env.NODE_ENV !== 'development' && response.status !== 200) {
-      throw response;
-    }
-
-    return (await response.json()) as Auction;
-  }, [auctionId, token]);
-
-  useEffectOnce(() => {
-    fetchAuction();
+  useUnmount(() => {
+    clearAuction();
   });
 
   function active(auctionStart: string, auctionEnd: string): boolean {

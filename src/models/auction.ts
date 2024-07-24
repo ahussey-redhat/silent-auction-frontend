@@ -1,4 +1,4 @@
-import { handleEffect, model } from '@modern-js/runtime/model';
+import { handleEffect, model, useModel } from '@modern-js/runtime/model';
 import authModel from './auth';
 import { Auction } from '@/types';
 
@@ -10,7 +10,44 @@ type EffectState<T> = {
 
 type State = {
   auctions: EffectState<Auction[]>;
+  auction: EffectState<Auction | null>;
 };
+
+const handleAuctionEffect = (ns: string) =>
+  handleEffect({
+    ns,
+    result: 'value',
+    pending: 'loading',
+    combineMode: 'replace',
+  });
+
+const fetchAuctions =
+  <T>(use: typeof useModel, stub: T) =>
+  async (id?: string): Promise<T> => {
+    const [authState, authActions] = use(authModel);
+
+    try {
+      await authActions.updateToken();
+    } catch (error) {
+      await authActions.clearToken();
+      return stub;
+    }
+
+    const response = await fetch(
+      `${process.env.BACKEND_URL}/auctions${id ? `/${id}` : ''}`,
+      {
+        headers: {
+          Authorization: `Bearer ${authState.token}`,
+        },
+      },
+    );
+
+    if (process.env.NODE_ENV !== 'development' && response.status !== 200) {
+      throw response;
+    }
+
+    return await response.json();
+  };
 
 const auctionModel = model<State>('auction').define((_, { use }) => ({
   state: {
@@ -19,37 +56,28 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
       loading: false,
       error: null,
     },
+    auction: {
+      value: null,
+      loading: false,
+      error: null,
+    },
   },
   actions: {
-    getAuctions: handleEffect({
-      ns: 'auctions',
-      result: 'value',
-      pending: 'loading',
-      combineMode: 'replace',
-    }),
+    getAuctions: handleAuctionEffect('auctions'),
+    getAuction: handleAuctionEffect('auction'),
   },
   effects: {
-    getAuctions: async () => {
-      const [authState, authActions] = use(authModel);
+    getAuctions: fetchAuctions<Auction[]>(use, []),
+    getAuction: async (id: string) =>
+      fetchAuctions<Auction | null>(use, null)(id),
+    clearAuction: () => {
+      const [, actions] = use(auctionModel);
 
-      try {
-        await authActions.updateToken();
-      } catch (error) {
-        await authActions.clearToken();
-        return [];
-      }
-
-      const response = await fetch(`${process.env.BACKEND_URL}/auctions`, {
-        headers: {
-          Authorization: `Bearer ${authState.token}`,
-        },
+      actions.setAuction({
+        value: null,
+        loading: false,
+        error: null,
       });
-
-      if (process.env.NODE_ENV !== 'development' && response.status !== 200) {
-        throw response;
-      }
-
-      return await response.json();
     },
   },
 }));
