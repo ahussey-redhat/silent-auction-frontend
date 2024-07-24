@@ -28,7 +28,7 @@ commands:
       workingDir: '${PROJECTS_ROOT}/silent-auction-demo-frontend'
     id: 1-install
   - exec:
-      commandLine: pnpm dev
+      commandLine: export MODERN_ENV=devspaces && pnpm dev
       component: nodejs
       group:
         kind: run
