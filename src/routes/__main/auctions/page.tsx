@@ -15,11 +15,13 @@ import {
 import { useEffectOnce } from 'react-use';
 import { useModel } from '@modern-js/runtime/model';
 import './page.css';
-import { LocaleLink, PageTitle } from '@/components';
+import { useNavigate } from '@modern-js/runtime/router';
+import { PageTitle } from '@/components';
 import auctionModel from '@/models/auction';
 
 export default () => {
   const { _ } = useLingui();
+  const navigate = useNavigate();
   const [
     {
       auctions: { value: auctions, loading },
@@ -47,15 +49,18 @@ export default () => {
         ) : (
           <Gallery hasGutter>
             {auctions?.map(({ id, item_name, description, image_path }) => (
-              <Card key={id} id={id.toString()} isCompact>
-                <CardHeader>
+              <Card key={id} id={`auction-card-${id}`} isCompact isClickable>
+                <CardHeader
+                  selectableActions={{
+                    onClickAction: () => navigate(`/auctions/${id}`),
+                    selectableActionId: id.toString(),
+                    selectableActionAriaLabelledby: `auction-card-${id}`,
+                    name: item_name,
+                  }}
+                >
                   <img src={image_path} />
                 </CardHeader>
-                <CardTitle>
-                  <LocaleLink prefetch="intent" to={`/auctions/${id}`}>
-                    {item_name}
-                  </LocaleLink>
-                </CardTitle>
+                <CardTitle>{item_name}</CardTitle>
                 <CardBody>{description}</CardBody>
               </Card>
             ))}
