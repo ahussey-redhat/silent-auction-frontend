@@ -59,9 +59,9 @@ export default () => {
           }}
           actionButtons={[
             {
-              children: <Trans>Primary action</Trans>,
+              children: <Trans>Place a bid</Trans>,
               onClick: () => console.log('Primary action clicked'),
-              tooltip: <Trans>Click me!</Trans>,
+              tooltip: <Trans>Place a bid</Trans>,
             },
           ]}
           actionMenu={{
