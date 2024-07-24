@@ -30,14 +30,6 @@ export default ({ auction }: AuctionDescriptionListProps) => {
     <DescriptionList isHorizontal>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Name</Trans>
-        </DescriptionListTerm>
-        <DescriptionListDescription>
-          {auction?.item_name}
-        </DescriptionListDescription>
-      </DescriptionListGroup>
-      <DescriptionListGroup>
-        <DescriptionListTerm>
           <Trans>Description</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
