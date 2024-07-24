@@ -7,6 +7,8 @@ import {
   CardTitle,
   EmptyState,
   Gallery,
+  Grid,
+  GridItem,
   PageSection,
   Spinner,
   Text,
@@ -14,10 +16,10 @@ import {
 } from '@patternfly/react-core';
 import { useEffectOnce } from 'react-use';
 import { useModel } from '@modern-js/runtime/model';
-import './page.css';
 import { useNavigate } from '@modern-js/runtime/router';
 import { PageTitle } from '@/components';
 import auctionModel from '@/models/auction';
+import './page.css';
 
 export default () => {
   const { _ } = useLingui();
@@ -47,21 +49,34 @@ export default () => {
         {loading ? (
           <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
         ) : (
-          <Gallery hasGutter>
+          <Gallery
+            hasGutter
+            minWidths={{
+              default: '100%',
+              xl: '600px',
+            }}
+          >
             {auctions?.map(({ id, item_name, description, image_path }) => (
-              <Card key={id} id={`auction-card-${id}`} isCompact isClickable>
-                <CardHeader
-                  selectableActions={{
-                    onClickAction: () => navigate(`/auctions/${id}`),
-                    selectableActionId: id.toString(),
-                    selectableActionAriaLabelledby: `auction-card-${id}`,
-                    name: item_name,
-                  }}
-                >
-                  <img src={image_path} />
-                </CardHeader>
-                <CardTitle>{item_name}</CardTitle>
-                <CardBody>{description}</CardBody>
+              <Card key={id} id={`auction-card-${id}`} isClickable>
+                <Grid md={6}>
+                  <GridItem>
+                    <CardHeader
+                      className="auction-header"
+                      selectableActions={{
+                        onClickAction: () => navigate(`/auctions/${id}`),
+                        selectableActionId: id.toString(),
+                        selectableActionAriaLabelledby: `auction-card-${id}`,
+                        name: item_name,
+                      }}
+                    >
+                      <img src={image_path} />
+                    </CardHeader>
+                  </GridItem>
+                  <GridItem>
+                    <CardTitle>{item_name}</CardTitle>
+                    <CardBody>{description}</CardBody>
+                  </GridItem>
+                </Grid>
               </Card>
             ))}
           </Gallery>
