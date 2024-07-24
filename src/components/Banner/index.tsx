@@ -4,12 +4,12 @@ import bannerImgSrc, {
   ReactComponent as BannerImage,
 } from './static/banner.svg';
 
-const StyledLogo = styled(BannerImage)`
+const StyledBanner = styled(BannerImage)`
   flex: none;
 `;
 
-export type LogoProps = ComponentProps<typeof StyledLogo>;
+export type BannerProps = ComponentProps<typeof StyledBanner>;
 
 export { bannerImgSrc };
 
-export default (props: LogoProps) => <StyledLogo {...props} />;
+export default (props: BannerProps) => <StyledBanner {...props} />;

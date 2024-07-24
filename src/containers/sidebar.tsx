@@ -5,10 +5,11 @@ import {
   Nav,
   NavItem,
   NavList,
+  Brand,
   PageSidebar,
   PageSidebarBody,
 } from '@patternfly/react-core';
-import { LocaleLink, useAuth } from '@/components';
+import { LocaleLink, useAuth, bannerImgSrc } from '@/components';
 import sidebarModel from '@/models/sidebar';
 
 export default () => {
@@ -44,6 +45,12 @@ export default () => {
             ) : null}
           </NavList>
         </Nav>
+        <Brand
+          src={bannerImgSrc}
+          alt="lifeline and red hat"
+          widths={{ default: '600px' }}
+          heights={{ default: '200px' }}
+        />
       </PageSidebarBody>
     </PageSidebar>
   );

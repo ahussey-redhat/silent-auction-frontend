@@ -120,7 +120,8 @@ export default () => {
           <Brand
             src={logoImgSrc}
             alt={_(msg`SILENT AUCTION`)}
-            widths={{ default: '170px' }}
+            widths={{ default: '200px' }}
+            heights={{ default: '50px' }}
           />
         </MastheadBrand>
       </MastheadMain>
