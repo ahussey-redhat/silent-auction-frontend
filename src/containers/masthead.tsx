@@ -1,13 +1,11 @@
 import { msg, Trans } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useModel } from '@modern-js/runtime/model';
-import { Link } from '@modern-js/runtime/router';
 import {
   Avatar,
   Brand,
   Dropdown,
   DropdownItem,
-  DropdownItemProps,
   DropdownList,
   Masthead,
   MastheadBrand,
@@ -27,26 +25,11 @@ import { EllipsisVIcon } from '@patternfly/react-icons/dist/esm/icons/ellipsis-v
 import { MouseEvent as ReactMouseEvent, useCallback, useState } from 'react';
 import { useAsync, useEffectOnce } from 'react-use';
 import { LocaleLink, logoImgSrc, useAuth } from '@/components';
-import { useLocationWithParams } from '@/hooks';
-import i18nModel, { locales } from '@/models/i18n';
 import sidebarModel from '@/models/sidebar';
-
-const LocaleDropdownItem = ({ value, ...props }: DropdownItemProps) => {
-  const to = useLocationWithParams([['locale', value]]);
-
-  return (
-    <DropdownItem
-      {...props}
-      component={props => <Link {...props} to={to} />}
-      value={value}
-    />
-  );
-};
 
 export default () => {
   const { _ } = useLingui();
   const { profile, logout } = useAuth();
-  const [{ locale }] = useModel(i18nModel);
   const [
     { isSidebarOpen },
     {
@@ -75,16 +58,6 @@ export default () => {
     setIsFullKebabDropdownOpen(false);
   }, [setIsFullKebabDropdownOpen]);
 
-  const [isLocaleDropdownOpen, setIsLocaleDropdownOpen] = useState(false);
-
-  const onLocaleDropdownToggle = useCallback(() => {
-    setIsLocaleDropdownOpen(!isLocaleDropdownOpen);
-  }, [isLocaleDropdownOpen, setIsLocaleDropdownOpen]);
-
-  const onLocaleDropdownSelect = useCallback(() => {
-    setIsLocaleDropdownOpen(false);
-  }, [setIsLocaleDropdownOpen]);
-
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
 
   const onUserDropdownToggle = useCallback(() => {
@@ -94,12 +67,6 @@ export default () => {
   const onUserDropdownSelect = useCallback(() => {
     setIsUserDropdownOpen(false);
   }, [setIsUserDropdownOpen]);
-
-  const localeDropdownItems = Object.entries(locales).map(([key, value]) => (
-    <LocaleDropdownItem key={key} value={key}>
-      {value}
-    </LocaleDropdownItem>
-  ));
 
   const onClickLogout = useCallback(
     (event: ReactMouseEvent<Element, MouseEvent>) => {
@@ -164,26 +131,6 @@ export default () => {
               align={{ default: 'alignEnd' }}
               gap={{ default: 'gapNone', md: 'gapMd' }}
             >
-              <ToolbarItem alignSelf="center">
-                <Dropdown
-                  isOpen={isLocaleDropdownOpen}
-                  onSelect={onLocaleDropdownSelect}
-                  onOpenChange={setIsLocaleDropdownOpen}
-                  popperProps={{ position: 'right' }}
-                  toggle={(toggleRef: React.RefObject<any>) => (
-                    <MenuToggle
-                      ref={toggleRef}
-                      isExpanded={isLocaleDropdownOpen}
-                      onClick={onLocaleDropdownToggle}
-                      isFullHeight
-                    >
-                      {_(locales[locale]!)}
-                    </MenuToggle>
-                  )}
-                >
-                  <DropdownList>{localeDropdownItems}</DropdownList>
-                </Dropdown>
-              </ToolbarItem>
               <ToolbarItem visibility={{ md: 'hidden' }}>
                 <Dropdown
                   isOpen={isFullKebabDropdownOpen}
