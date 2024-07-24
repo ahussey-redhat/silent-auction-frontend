@@ -38,7 +38,7 @@ export default ({ auction }: AuctionDescriptionListProps) => {
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Active</Trans>
+          <Trans>Open for bids</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
           <Label color="blue" icon={<InfoCircleIcon />}>
