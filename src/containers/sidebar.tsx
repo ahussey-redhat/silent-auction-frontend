@@ -23,15 +23,6 @@ export default () => {
         <Nav>
           <NavList>
             <NavItem
-              id="nav-sidebar-link-dashboard"
-              itemID="0"
-              isActive={locationPathname === '/'}
-            >
-              <LocaleLink prefetch="intent" to="/">
-                <Trans>Dashboard</Trans>
-              </LocaleLink>
-            </NavItem>
-            <NavItem
               id="nav-sidebar-link-auctions"
               itemID="1"
               isActive={locationPathname.startsWith('/auctions')}
