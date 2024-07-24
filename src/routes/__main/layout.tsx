@@ -35,7 +35,9 @@ export default () => {
   return (
     <RequireAuth>
       <Page
-        breadcrumb={<Breadcrumb>{breadcrumbs}</Breadcrumb>}
+        breadcrumb={
+          breadcrumbs.length > 1 ? <Breadcrumb>{breadcrumbs}</Breadcrumb> : null
+        }
         masthead={<Masthead />}
         sidebar={<Sidebar />}
       >
