@@ -4,7 +4,10 @@ import {
   DescriptionListDescription,
   DescriptionListGroup,
   DescriptionListTerm,
+  Label,
 } from '@patternfly/react-core';
+// eslint-disable-next-line import/no-named-as-default
+import InfoCircleIcon from '@patternfly/react-icons/dist/esm/icons/info-circle-icon';
 import { Auction } from '@/types';
 
 export type AuctionDescriptionListProps = {
@@ -46,13 +49,14 @@ export default ({ auction }: AuctionDescriptionListProps) => {
           <Trans>Active</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {active(auction?.auction_start, auction?.auction_end)}
+          <Label color="blue" icon={<InfoCircleIcon />}>
+            {active(auction?.auction_start, auction?.auction_end)
+              ? 'true'
+              : 'false'}
+          </Label>
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
-        <DescriptionListTerm>
-          <Trans>Image</Trans>
-        </DescriptionListTerm>
         <img src={auction?.image_path} />
       </DescriptionListGroup>
     </DescriptionList>
