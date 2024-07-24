@@ -48,6 +48,17 @@ export default () => {
     fetchAuction();
   });
 
+  function active(auctionStart: string, auctionEnd: string): boolean {
+    const currentDate: Date = new Date();
+    const auctionStartDate: Date = new Date(auctionStart);
+    const auctionEndDate: Date = new Date(auctionEnd);
+
+    if (auctionStartDate >= currentDate && currentDate <= auctionEndDate) {
+      return true;
+    }
+    return false;
+  }
+
   return (
     <PageSection>
       {!auction ? (
@@ -62,6 +73,7 @@ export default () => {
               children: <Trans>Place a bid</Trans>,
               onClick: () => console.log('Primary action clicked'),
               tooltip: <Trans>Place a bid</Trans>,
+              isDisabled: active(auction.auction_start, auction.auction_end),
             },
           ]}
           actionMenu={{
