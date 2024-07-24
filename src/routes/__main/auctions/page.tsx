@@ -12,40 +12,23 @@ import {
   Text,
   TextContent,
 } from '@patternfly/react-core';
-import { useAsyncFn, useEffectOnce } from 'react-use';
+import { useEffectOnce } from 'react-use';
 import { useModel } from '@modern-js/runtime/model';
 import './page.css';
 import { LocaleLink, PageTitle } from '@/components';
-import { Auction } from '@/types';
-import authModel from '@/models/auth';
+import auctionModel from '@/models/auction';
 
 export default () => {
   const { _ } = useLingui();
-  const [{ token }, { clearToken, updateToken }] = useModel(authModel);
-  const [{ value: auctions, loading: loadingAuctions }, fetchAuctions] =
-    useAsyncFn(async () => {
-      try {
-        await updateToken();
-      } catch (error) {
-        await clearToken();
-        return [];
-      }
-
-      const response = await fetch(`${process.env.BACKEND_URL}/auctions`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (process.env.NODE_ENV !== 'development' && response.status !== 200) {
-        throw response;
-      }
-
-      return (await response.json()) as Auction[];
-    }, [token, updateToken]);
+  const [
+    {
+      auctions: { value: auctions, loading },
+    },
+    { getAuctions },
+  ] = useModel(auctionModel);
 
   useEffectOnce(() => {
-    fetchAuctions();
+    getAuctions();
   });
 
   return (
@@ -59,7 +42,7 @@ export default () => {
         </TextContent>
       </PageSection>
       <PageSection className="auctions-page" isFilled>
-        {loadingAuctions ? (
+        {loading ? (
           <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
         ) : (
           <Gallery hasGutter>
