@@ -1,9 +1,12 @@
 import { msg, Trans } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useModel } from '@modern-js/runtime/model';
-import { useParams } from '@modern-js/runtime/router';
+import { useNavigate, useParams } from '@modern-js/runtime/router';
 import DetailsPage from '@patternfly/react-component-groups/dist/dynamic/DetailsPage';
+import ErrorState from '@patternfly/react-component-groups/dist/dynamic/ErrorState';
+import NotAuthorized from '@patternfly/react-component-groups/dist/dynamic/NotAuthorized';
 import {
+  Button,
   EmptyState,
   Flex,
   FlexItem,
@@ -18,10 +21,11 @@ import './page.css';
 
 export default () => {
   const { _ } = useLingui();
+  const navigate = useNavigate();
   const { id: auctionId } = useParams();
   const [
     {
-      auction: { value: auction },
+      auction: { value: auction, error, loading },
     },
     { getAuction, clearAuction },
   ] = useModel(auctionModel);
@@ -49,9 +53,35 @@ export default () => {
 
   return (
     <PageSection>
-      {!auction ? (
+      {loading ? (
         <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
-      ) : (
+      ) : null}
+      {error?.status === 401 ? (
+        <NotAuthorized
+          bodyText={_(msg`Unauthorized`)}
+          serviceName={_(msg`Auction`)}
+        />
+      ) : null}
+      {error?.status === 403 ? (
+        <NotAuthorized
+          bodyText={_(msg`Forbidden`)}
+          serviceName={_(msg`Auction`)}
+        />
+      ) : null}
+      {error && error.status !== 401 && error.status !== 403 ? (
+        <ErrorState
+          titleText={_(msg`This page is temporarily unavailable`)}
+          bodyText={_(
+            msg`Try refreshing the page. If the problem persists, please ask for help.`,
+          )}
+          customFooter={
+            <Button onClick={() => navigate('/')}>
+              <Trans>Go to home page</Trans>
+            </Button>
+          }
+        />
+      ) : null}
+      {auction ? (
         <DetailsPage
           pageHeading={{
             title: auction.item_name,
@@ -99,7 +129,7 @@ export default () => {
             },
           ]}
         />
-      )}
+      ) : null}
     </PageSection>
   );
 };

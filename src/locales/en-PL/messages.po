@@ -17,12 +17,11 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-#: src/routes/__main/auctions/[id]/page.tsx:81
+#: src/routes/__main/auctions/[id]/page.tsx:99
 #: src/routes/__main/plans/data-list.tsx:73
 msgid "Actions"
 msgstr ""
 
-#: src/components/Auction/DescriptionList.tsx:41
 #: src/routes/__main/auctions/[id]/auction-plans-data-list.tsx:61
 msgid "Active"
 msgstr ""
@@ -31,9 +30,10 @@ msgstr ""
 #~ msgid "Anonymous"
 #~ msgstr ""
 
-#: src/components/Auction/DescriptionList.tsx:22
-#~ msgid "Auction"
-#~ msgstr ""
+#: src/routes/__main/auctions/[id]/page.tsx:62
+#: src/routes/__main/auctions/[id]/page.tsx:68
+msgid "Auction"
+msgstr ""
 
 #: src/routes/__main/auctions/[id]/layout.config.ts:4
 msgid "Auction Details"
@@ -46,8 +46,8 @@ msgstr ""
 
 #: src/containers/sidebar.tsx:32
 #: src/routes/__main/auctions/layout.config.ts:4
-#: src/routes/__main/auctions/page.tsx:40
 #: src/routes/__main/auctions/page.tsx:44
+#: src/routes/__main/auctions/page.tsx:48
 #: src/routes/__main/plans/[id]/page.tsx:74
 msgid "Auctions"
 msgstr ""
@@ -77,7 +77,7 @@ msgstr ""
 #~ msgid "Date of Birth"
 #~ msgstr ""
 
-#: src/routes/__main/auctions/[id]/page.tsx:89
+#: src/routes/__main/auctions/[id]/page.tsx:107
 msgid "Delete auction"
 msgstr ""
 
@@ -89,7 +89,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: src/routes/__main/auctions/[id]/page.tsx:99
+#: src/routes/__main/auctions/[id]/page.tsx:117
 #: src/routes/__main/plans/[id]/page.tsx:59
 msgid "Details"
 msgstr ""
@@ -98,7 +98,7 @@ msgstr ""
 #~ msgid "Doctor"
 #~ msgstr ""
 
-#: src/routes/__main/auctions/[id]/page.tsx:84
+#: src/routes/__main/auctions/[id]/page.tsx:102
 msgid "Edit auction"
 msgstr ""
 
@@ -114,6 +114,10 @@ msgstr ""
 #~ msgid "Female"
 #~ msgstr ""
 
+#: src/routes/__main/auctions/[id]/page.tsx:67
+msgid "Forbidden"
+msgstr ""
+
 #: src/components/Auction/DescriptionList.tsx:69
 #~ msgid "Gender"
 #~ msgstr ""
@@ -124,6 +128,10 @@ msgstr ""
 
 #: src/containers/masthead.tsx:111
 msgid "Global navigation"
+msgstr ""
+
+#: src/routes/__main/auctions/[id]/page.tsx:79
+msgid "Go to home page"
 msgstr ""
 
 #: src/containers/masthead.tsx:175
@@ -157,8 +165,8 @@ msgstr ""
 msgid "Join Date: {joinDate}"
 msgstr ""
 
-#: src/routes/__main/auctions/[id]/page.tsx:65
-#: src/routes/__main/auctions/page.tsx:50
+#: src/routes/__main/auctions/[id]/page.tsx:57
+#: src/routes/__main/auctions/page.tsx:54
 #: src/routes/__main/plans/[id]/page.tsx:25
 #: src/routes/__main/plans/[id]/page.tsx:85
 #: src/routes/__main/plans/page.tsx:167
@@ -207,8 +215,12 @@ msgstr ""
 #~ msgid "No"
 #~ msgstr ""
 
-#: src/routes/__main/auctions/[id]/page.tsx:73
-#: src/routes/__main/auctions/[id]/page.tsx:75
+#: src/components/Auction/DescriptionList.tsx:41
+msgid "Open for bids"
+msgstr ""
+
+#: src/routes/__main/auctions/[id]/page.tsx:91
+#: src/routes/__main/auctions/[id]/page.tsx:93
 msgid "Place a bid"
 msgstr ""
 
@@ -281,12 +293,20 @@ msgstr ""
 #~ msgid "Surname"
 #~ msgstr ""
 
+#: src/routes/__main/auctions/[id]/page.tsx:73
+msgid "This page is temporarily unavailable"
+msgstr ""
+
 #: src/components/Auction/DescriptionList.tsx:54
 #~ msgid "Title"
 #~ msgstr ""
 
 #: src/containers/masthead.tsx:147
 msgid "Toolbar menu"
+msgstr ""
+
+#: src/routes/__main/auctions/[id]/page.tsx:75
+msgid "Try refreshing the page. If the problem persists, please ask for help."
 msgstr ""
 
 #: src/components/Plan/DescriptionList.tsx:22
@@ -296,6 +316,10 @@ msgstr ""
 
 #: src/routes/__main/plans/toolbar.tsx:135
 msgid "Type select"
+msgstr ""
+
+#: src/routes/__main/auctions/[id]/page.tsx:61
+msgid "Unauthorized"
 msgstr ""
 
 #: src/components/Auction/DescriptionList.tsx:101

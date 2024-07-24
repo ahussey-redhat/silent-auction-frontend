@@ -17,12 +17,11 @@ msgstr ""
 msgid "Action"
 msgstr "Action"
 
-#: src/routes/__main/auctions/[id]/page.tsx:81
+#: src/routes/__main/auctions/[id]/page.tsx:99
 #: src/routes/__main/plans/data-list.tsx:73
 msgid "Actions"
 msgstr "Actions"
 
-#: src/components/Auction/DescriptionList.tsx:41
 #: src/routes/__main/auctions/[id]/auction-plans-data-list.tsx:61
 msgid "Active"
 msgstr "Active"
@@ -31,9 +30,10 @@ msgstr "Active"
 #~ msgid "Anonymous"
 #~ msgstr "Anonymous"
 
-#: src/components/Auction/DescriptionList.tsx:22
-#~ msgid "Auction"
-#~ msgstr "Auction"
+#: src/routes/__main/auctions/[id]/page.tsx:62
+#: src/routes/__main/auctions/[id]/page.tsx:68
+msgid "Auction"
+msgstr "Auction"
 
 #: src/routes/__main/auctions/[id]/layout.config.ts:4
 msgid "Auction Details"
@@ -46,8 +46,8 @@ msgstr "Auction plans list"
 
 #: src/containers/sidebar.tsx:32
 #: src/routes/__main/auctions/layout.config.ts:4
-#: src/routes/__main/auctions/page.tsx:40
 #: src/routes/__main/auctions/page.tsx:44
+#: src/routes/__main/auctions/page.tsx:48
 #: src/routes/__main/plans/[id]/page.tsx:74
 msgid "Auctions"
 msgstr "Auctions"
@@ -77,7 +77,7 @@ msgstr "Click me!"
 #~ msgid "Date of Birth"
 #~ msgstr "Date of Birth"
 
-#: src/routes/__main/auctions/[id]/page.tsx:89
+#: src/routes/__main/auctions/[id]/page.tsx:107
 msgid "Delete auction"
 msgstr "Delete auction"
 
@@ -89,7 +89,7 @@ msgstr "Delete plan"
 msgid "Description"
 msgstr "Description"
 
-#: src/routes/__main/auctions/[id]/page.tsx:99
+#: src/routes/__main/auctions/[id]/page.tsx:117
 #: src/routes/__main/plans/[id]/page.tsx:59
 msgid "Details"
 msgstr "Details"
@@ -98,7 +98,7 @@ msgstr "Details"
 #~ msgid "Doctor"
 #~ msgstr "Doctor"
 
-#: src/routes/__main/auctions/[id]/page.tsx:84
+#: src/routes/__main/auctions/[id]/page.tsx:102
 msgid "Edit auction"
 msgstr "Edit auction"
 
@@ -114,6 +114,10 @@ msgstr "Edit plan"
 #~ msgid "Female"
 #~ msgstr "Female"
 
+#: src/routes/__main/auctions/[id]/page.tsx:67
+msgid "Forbidden"
+msgstr "Forbidden"
+
 #: src/components/Auction/DescriptionList.tsx:69
 #~ msgid "Gender"
 #~ msgstr "Gender"
@@ -125,6 +129,10 @@ msgstr "Edit plan"
 #: src/containers/masthead.tsx:111
 msgid "Global navigation"
 msgstr "Global navigation"
+
+#: src/routes/__main/auctions/[id]/page.tsx:79
+msgid "Go to home page"
+msgstr "Go to home page"
 
 #: src/containers/masthead.tsx:175
 msgid "Guest"
@@ -157,8 +165,8 @@ msgstr "Industry"
 msgid "Join Date: {joinDate}"
 msgstr "Join Date: {joinDate}"
 
-#: src/routes/__main/auctions/[id]/page.tsx:65
-#: src/routes/__main/auctions/page.tsx:50
+#: src/routes/__main/auctions/[id]/page.tsx:57
+#: src/routes/__main/auctions/page.tsx:54
 #: src/routes/__main/plans/[id]/page.tsx:25
 #: src/routes/__main/plans/[id]/page.tsx:85
 #: src/routes/__main/plans/page.tsx:167
@@ -207,8 +215,12 @@ msgstr "Logout"
 #~ msgid "No"
 #~ msgstr "No"
 
-#: src/routes/__main/auctions/[id]/page.tsx:73
-#: src/routes/__main/auctions/[id]/page.tsx:75
+#: src/components/Auction/DescriptionList.tsx:41
+msgid "Open for bids"
+msgstr "Open for bids"
+
+#: src/routes/__main/auctions/[id]/page.tsx:91
+#: src/routes/__main/auctions/[id]/page.tsx:93
 msgid "Place a bid"
 msgstr "Place a bid"
 
@@ -281,6 +293,10 @@ msgstr "SILENT AUCTION"
 #~ msgid "Surname"
 #~ msgstr "Surname"
 
+#: src/routes/__main/auctions/[id]/page.tsx:73
+msgid "This page is temporarily unavailable"
+msgstr "This page is temporarily unavailable"
+
 #: src/components/Auction/DescriptionList.tsx:54
 #~ msgid "Title"
 #~ msgstr "Title"
@@ -288,6 +304,10 @@ msgstr "SILENT AUCTION"
 #: src/containers/masthead.tsx:147
 msgid "Toolbar menu"
 msgstr "Toolbar menu"
+
+#: src/routes/__main/auctions/[id]/page.tsx:75
+msgid "Try refreshing the page. If the problem persists, please ask for help."
+msgstr "Try refreshing the page. If the problem persists, please ask for help."
 
 #: src/components/Plan/DescriptionList.tsx:22
 #: src/routes/__main/plans/toolbar.tsx:33
@@ -297,6 +317,10 @@ msgstr "Type"
 #: src/routes/__main/plans/toolbar.tsx:135
 msgid "Type select"
 msgstr "Type select"
+
+#: src/routes/__main/auctions/[id]/page.tsx:61
+msgid "Unauthorized"
+msgstr "Unauthorized"
 
 #: src/components/Auction/DescriptionList.tsx:101
 #~ msgid "Yes"

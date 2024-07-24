@@ -5,7 +5,7 @@ import { Auction } from '@/types';
 type EffectState<T> = {
   value: T;
   loading: boolean;
-  error: string | null;
+  error: Response | null;
 };
 
 type State = {
@@ -42,7 +42,7 @@ const fetchAuctions =
       },
     );
 
-    if (process.env.NODE_ENV !== 'development' && response.status !== 200) {
+    if (response.status !== 200) {
       throw response;
     }
 
