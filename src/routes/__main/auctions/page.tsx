@@ -14,6 +14,10 @@ import {
   Text,
   TextContent,
 } from '@patternfly/react-core';
+import { css } from '@patternfly/react-styles';
+import displayStyles from '@patternfly/react-styles/css/utilities/Display/display';
+import flexStyles from '@patternfly/react-styles/css/utilities/Flex/flex';
+import sizingStyles from '@patternfly/react-styles/css/utilities/Sizing/sizing';
 import { useEffectOnce } from 'react-use';
 import { useModel } from '@modern-js/runtime/model';
 import { useNavigate } from '@modern-js/runtime/router';
@@ -58,10 +62,16 @@ export default () => {
           >
             {auctions?.map(({ id, item_name, description, image_path }) => (
               <Card key={id} id={`auction-card-${id}`} isClickable>
-                <Grid md={6}>
+                <Grid className={sizingStyles.h_100} md={6}>
                   <GridItem>
                     <CardHeader
-                      className="auction-header"
+                      className={css(
+                        'auction-header',
+                        displayStyles.displayGrid,
+                        flexStyles.alignContentCenter,
+                        flexStyles.justifyContentCenter,
+                        sizingStyles.h_100,
+                      )}
                       selectableActions={{
                         onClickAction: () => navigate(`/auctions/${id}`),
                         selectableActionId: id.toString(),
