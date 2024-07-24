@@ -43,8 +43,8 @@ export default ({ auction }: AuctionDescriptionListProps) => {
         <DescriptionListDescription>
           <Label color="blue" icon={<InfoCircleIcon />}>
             {active(auction?.auction_start, auction?.auction_end)
-              ? 'true'
-              : 'false'}
+              ? 'yes'
+              : 'no'}
           </Label>
         </DescriptionListDescription>
       </DescriptionListGroup>
