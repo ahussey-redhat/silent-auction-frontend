@@ -13,78 +13,71 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/routes/__main/auctions/data-list.tsx:115
 #: src/routes/__main/plans/data-list.tsx:78
 msgid "Action"
 msgstr "Action"
 
-#: src/routes/__main/auctions/[id]/page.tsx:59
-#: src/routes/__main/auctions/data-list.tsx:110
+#: src/routes/__main/auctions/[id]/page.tsx:81
 #: src/routes/__main/plans/data-list.tsx:73
 msgid "Actions"
 msgstr "Actions"
 
-#: src/components/Auction/DescriptionList.tsx:93
+#: src/components/Auction/DescriptionList.tsx:41
 #: src/routes/__main/auctions/[id]/auction-plans-data-list.tsx:61
-#: src/routes/__main/auctions/[id]/page.tsx:36
-#: src/routes/__main/auctions/data-list.tsx:78
-#: src/routes/__main/auctions/toolbar.tsx:34
-#: src/routes/__main/plans/[id]/plan-auctions-data-list.tsx:70
 msgid "Active"
 msgstr "Active"
 
 #: src/containers/masthead.tsx:224
-msgid "Anonymous"
-msgstr "Anonymous"
+#~ msgid "Anonymous"
+#~ msgstr "Anonymous"
 
 #: src/components/Auction/DescriptionList.tsx:22
-msgid "Auction"
-msgstr "Auction"
+#~ msgid "Auction"
+#~ msgstr "Auction"
 
 #: src/routes/__main/auctions/[id]/layout.config.ts:4
 msgid "Auction Details"
 msgstr "Auction Details"
 
 #: src/routes/__main/auctions/[id]/auction-plans-data-list.tsx:26
-#: src/routes/__main/plans/[id]/plan-auctions-data-list.tsx:27
+#: src/routes/__main/plans/[id]/plan-auctions-data-list.tsx:23
 msgid "Auction plans list"
 msgstr "Auction plans list"
 
-#: src/containers/sidebar.tsx:40
+#: src/containers/sidebar.tsx:32
 #: src/routes/__main/auctions/layout.config.ts:4
-#: src/routes/__main/auctions/page.tsx:149
-#: src/routes/__main/auctions/page.tsx:153
+#: src/routes/__main/auctions/page.tsx:40
+#: src/routes/__main/auctions/page.tsx:44
 #: src/routes/__main/plans/[id]/page.tsx:74
 msgid "Auctions"
 msgstr "Auctions"
 
 #: src/routes/__main/auctions/data-list.tsx:43
-msgid "Auctions list"
-msgstr "Auctions list"
+#~ msgid "Auctions list"
+#~ msgstr "Auctions list"
 
-#: src/containers/masthead.tsx:220
+#: src/containers/masthead.tsx:168
 msgid "Avatar image"
 msgstr "Avatar image"
 
-#: src/routes/__main/auctions/[id]/page.tsx:54
 #: src/routes/__main/plans/[id]/page.tsx:37
 msgid "Click me!"
 msgstr "Click me!"
 
 #: src/components/Auction/DescriptionList.tsx:30
-msgid "Customer Reference"
-msgstr "Customer Reference"
+#~ msgid "Customer Reference"
+#~ msgstr "Customer Reference"
 
 #: src/containers/sidebar.tsx:31
 #: src/routes/__main/layout.config.ts:4
-msgid "Dashboard"
-msgstr "Dashboard"
+#~ msgid "Dashboard"
+#~ msgstr "Dashboard"
 
 #: src/components/Auction/DescriptionList.tsx:82
-msgid "Date of Birth"
-msgstr "Date of Birth"
+#~ msgid "Date of Birth"
+#~ msgstr "Date of Birth"
 
-#: src/routes/__main/auctions/[id]/page.tsx:67
+#: src/routes/__main/auctions/[id]/page.tsx:89
 msgid "Delete auction"
 msgstr "Delete auction"
 
@@ -92,16 +85,20 @@ msgstr "Delete auction"
 msgid "Delete plan"
 msgstr "Delete plan"
 
-#: src/routes/__main/auctions/[id]/page.tsx:77
+#: src/components/Auction/DescriptionList.tsx:33
+msgid "Description"
+msgstr "Description"
+
+#: src/routes/__main/auctions/[id]/page.tsx:99
 #: src/routes/__main/plans/[id]/page.tsx:59
 msgid "Details"
 msgstr "Details"
 
 #: src/components/Auction/DescriptionList.tsx:59
-msgid "Doctor"
-msgstr "Doctor"
+#~ msgid "Doctor"
+#~ msgstr "Doctor"
 
-#: src/routes/__main/auctions/[id]/page.tsx:62
+#: src/routes/__main/auctions/[id]/page.tsx:84
 msgid "Edit auction"
 msgstr "Edit auction"
 
@@ -114,40 +111,39 @@ msgstr "Edit plan"
 #~ msgstr "English"
 
 #: src/components/Auction/DescriptionList.tsx:75
-msgid "Female"
-msgstr "Female"
+#~ msgid "Female"
+#~ msgstr "Female"
 
 #: src/components/Auction/DescriptionList.tsx:69
-msgid "Gender"
-msgstr "Gender"
+#~ msgid "Gender"
+#~ msgstr "Gender"
 
 #: src/components/Auction/DescriptionList.tsx:46
-msgid "Given Names"
-msgstr "Given Names"
+#~ msgid "Given Names"
+#~ msgstr "Given Names"
 
-#: src/containers/masthead.tsx:144
+#: src/containers/masthead.tsx:111
 msgid "Global navigation"
 msgstr "Global navigation"
 
+#: src/containers/masthead.tsx:175
+msgid "Guest"
+msgstr "Guest"
+
 #: src/routes/__main/auctions/toolbar.tsx:42
-msgid "High"
-msgstr "High"
+#~ msgid "High"
+#~ msgstr "High"
 
 #: src/routes/__main/auctions/data-list.tsx:101
 #: src/routes/__main/plans/[id]/plan-auctions-data-list.tsx:93
-msgid "High Risk"
-msgstr "High Risk"
+#~ msgid "High Risk"
+#~ msgstr "High Risk"
 
 #: src/components/Auction/DescriptionList.tsx:98
-msgid "High Risk Auction"
-msgstr "High Risk Auction"
+#~ msgid "High Risk Auction"
+#~ msgstr "High Risk Auction"
 
-#: src/components/Auction/DescriptionList.tsx:93
 #: src/routes/__main/auctions/[id]/auction-plans-data-list.tsx:61
-#: src/routes/__main/auctions/[id]/page.tsx:43
-#: src/routes/__main/auctions/data-list.tsx:78
-#: src/routes/__main/auctions/toolbar.tsx:35
-#: src/routes/__main/plans/[id]/plan-auctions-data-list.tsx:70
 msgid "Inactive"
 msgstr "Inactive"
 
@@ -161,63 +157,66 @@ msgstr "Industry"
 msgid "Join Date: {joinDate}"
 msgstr "Join Date: {joinDate}"
 
-#: src/routes/__main/auctions/[id]/page.tsx:27
-#: src/routes/__main/auctions/[id]/page.tsx:103
-#: src/routes/__main/auctions/page.tsx:175
+#: src/routes/__main/auctions/[id]/page.tsx:65
+#: src/routes/__main/auctions/page.tsx:50
 #: src/routes/__main/plans/[id]/page.tsx:25
 #: src/routes/__main/plans/[id]/page.tsx:85
 #: src/routes/__main/plans/page.tsx:167
 msgid "Loading"
 msgstr "Loading"
 
-#: src/containers/masthead.tsx:134
+#: src/containers/masthead.tsx:101
 msgid "Logout"
 msgstr "Logout"
 
 #: src/routes/__main/auctions/toolbar.tsx:40
-msgid "Low"
-msgstr "Low"
+#~ msgid "Low"
+#~ msgstr "Low"
 
 #: src/routes/__main/auctions/data-list.tsx:99
 #: src/routes/__main/plans/[id]/plan-auctions-data-list.tsx:91
-msgid "Low Risk"
-msgstr "Low Risk"
+#~ msgid "Low Risk"
+#~ msgstr "Low Risk"
 
 #: src/components/Auction/DescriptionList.tsx:74
-msgid "Male"
-msgstr "Male"
+#~ msgid "Male"
+#~ msgstr "Male"
 
 #: src/routes/__main/auctions/toolbar.tsx:41
-msgid "Medium"
-msgstr "Medium"
+#~ msgid "Medium"
+#~ msgstr "Medium"
 
 #: src/routes/__main/auctions/data-list.tsx:100
 #: src/routes/__main/plans/[id]/plan-auctions-data-list.tsx:92
-msgid "Medium Risk"
-msgstr "Medium Risk"
+#~ msgid "Medium Risk"
+#~ msgstr "Medium Risk"
 
 #: src/components/Auction/DescriptionList.tsx:61
-msgid "Miss"
-msgstr "Miss"
+#~ msgid "Miss"
+#~ msgstr "Miss"
 
 #: src/components/Auction/DescriptionList.tsx:62
-msgid "Misses"
-msgstr "Misses"
+#~ msgid "Misses"
+#~ msgstr "Misses"
 
 #: src/components/Auction/DescriptionList.tsx:60
-msgid "Mister"
-msgstr "Mister"
+#~ msgid "Mister"
+#~ msgstr "Mister"
 
 #: src/components/Auction/DescriptionList.tsx:101
-msgid "No"
-msgstr "No"
+#~ msgid "No"
+#~ msgstr "No"
+
+#: src/routes/__main/auctions/[id]/page.tsx:73
+#: src/routes/__main/auctions/[id]/page.tsx:75
+msgid "Place a bid"
+msgstr "Place a bid"
 
 #: src/routes/__main/plans/[id]/layout.config.ts:4
 msgid "Plan Details"
 msgstr "Plan Details"
 
-#: src/containers/sidebar.tsx:50
-#: src/routes/__main/auctions/[id]/page.tsx:92
+#: src/containers/sidebar.tsx:42
 #: src/routes/__main/plans/layout.config.ts:4
 #: src/routes/__main/plans/page.tsx:141
 #: src/routes/__main/plans/page.tsx:145
@@ -228,7 +227,6 @@ msgstr "Plans"
 msgid "Plans list"
 msgstr "Plans list"
 
-#: src/routes/__main/auctions/[id]/page.tsx:52
 #: src/routes/__main/plans/[id]/page.tsx:35
 msgid "Primary action"
 msgstr "Primary action"
@@ -251,45 +249,43 @@ msgid "Retail"
 msgstr "Retail"
 
 #: src/routes/__main/auctions/toolbar.tsx:39
-msgid "Risk"
-msgstr "Risk"
+#~ msgid "Risk"
+#~ msgstr "Risk"
 
 #: src/routes/__main/auctions/toolbar.tsx:191
-msgid "Risk select"
-msgstr "Risk select"
+#~ msgid "Risk select"
+#~ msgstr "Risk select"
 
-#: src/routes/__main/auctions/toolbar.tsx:154
 #: src/routes/__main/plans/toolbar.tsx:124
 msgid "Search button for search input"
 msgstr "Search button for search input"
 
-#: src/routes/__main/auctions/toolbar.tsx:145
 #: src/routes/__main/plans/toolbar.tsx:115
 msgid "Search input"
 msgstr "Search input"
 
-#: src/containers/masthead.tsx:155
+#: src/containers/masthead.tsx:122
 msgid "SILENT AUCTION"
 msgstr "SILENT AUCTION"
 
 #: src/components/Auction/DescriptionList.tsx:90
 #: src/routes/__main/auctions/toolbar.tsx:33
-msgid "Status"
-msgstr "Status"
+#~ msgid "Status"
+#~ msgstr "Status"
 
 #: src/routes/__main/auctions/toolbar.tsx:165
-msgid "Status select"
-msgstr "Status select"
+#~ msgid "Status select"
+#~ msgstr "Status select"
 
 #: src/components/Auction/DescriptionList.tsx:38
-msgid "Surname"
-msgstr "Surname"
+#~ msgid "Surname"
+#~ msgstr "Surname"
 
 #: src/components/Auction/DescriptionList.tsx:54
-msgid "Title"
-msgstr "Title"
+#~ msgid "Title"
+#~ msgstr "Title"
 
-#: src/containers/masthead.tsx:199
+#: src/containers/masthead.tsx:147
 msgid "Toolbar menu"
 msgstr "Toolbar menu"
 
@@ -303,5 +299,5 @@ msgid "Type select"
 msgstr "Type select"
 
 #: src/components/Auction/DescriptionList.tsx:101
-msgid "Yes"
-msgstr "Yes"
+#~ msgid "Yes"
+#~ msgstr "Yes"
