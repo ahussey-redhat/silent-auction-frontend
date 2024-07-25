@@ -60,7 +60,7 @@ export default () => {
               xl: '600px',
             }}
           >
-            {auctions?.map(({ id, item_name, description, image_path }) => (
+            {auctions?.map(({ id, name, description, imageUrl }) => (
               <Card key={id} id={`auction-card-${id}`} isClickable>
                 <Grid className={sizingStyles.h_100} md={6}>
                   <GridItem>
@@ -74,16 +74,16 @@ export default () => {
                       )}
                       selectableActions={{
                         onClickAction: () => navigate(`/auctions/${id}`),
-                        selectableActionId: id.toString(),
+                        selectableActionId: id,
                         selectableActionAriaLabelledby: `auction-card-${id}`,
-                        name: item_name,
+                        name,
                       }}
                     >
-                      <img src={image_path} />
+                      <img src={imageUrl.toString()} />
                     </CardHeader>
                   </GridItem>
                   <GridItem>
-                    <CardTitle>{item_name}</CardTitle>
+                    <CardTitle>{name}</CardTitle>
                     <CardBody>{description}</CardBody>
                   </GridItem>
                 </Grid>

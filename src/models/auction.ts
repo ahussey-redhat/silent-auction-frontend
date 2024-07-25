@@ -1,6 +1,6 @@
 import { handleEffect, model, useModel } from '@modern-js/runtime/model';
 import authModel from './auth';
-import { Auction } from '@/types';
+import { Auction, AuctionDTO } from '@/types';
 
 type EffectState<T> = {
   value: T;
@@ -20,6 +20,31 @@ const handleAuctionEffect = (ns: string) =>
     pending: 'loading',
     combineMode: 'replace',
   });
+
+const mapAuction = ({
+  id,
+  item_name,
+  description,
+  auction_start,
+  auction_end,
+  image_path,
+}: AuctionDTO): Auction => {
+  const current = new Date();
+  const start = new Date(auction_start);
+  const end = new Date(auction_end);
+
+  return {
+    id: id.toString(),
+    name: item_name,
+    description,
+    imageUrl: URL.canParse(image_path)
+      ? new URL(image_path)
+      : new URL(image_path, window.location.origin),
+    start,
+    end,
+    isActive: current >= start && current < end,
+  };
+};
 
 const fetchAuctions =
   <T>(use: typeof useModel, stub: T) =>
@@ -46,7 +71,9 @@ const fetchAuctions =
       throw response;
     }
 
-    return await response.json();
+    const result = await response.json();
+
+    return id ? mapAuction(result) : result.map(mapAuction);
   };
 
 const auctionModel = model<State>('auction').define((_, { use }) => ({

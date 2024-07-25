@@ -13,6 +13,8 @@ import {
   PageSection,
   Spinner,
 } from '@patternfly/react-core';
+import { CheckCircleIcon } from '@patternfly/react-icons/dist/esm/icons/check-circle-icon';
+import { TimesCircleIcon } from '@patternfly/react-icons/dist/esm/icons/times-circle-icon';
 import { useEffect } from 'react';
 import { useUnmount } from 'react-use';
 import { AuctionDescriptionList } from '@/components';
@@ -39,18 +41,6 @@ export default () => {
   useUnmount(() => {
     clearAuction();
   });
-
-  function active(auctionStart: string, auctionEnd: string): boolean {
-    const currentDate: Date = new Date();
-    const auctionStartDate: Date = new Date(auctionStart);
-    const auctionEndDate: Date = new Date(auctionEnd);
-
-    if (currentDate >= auctionStartDate && currentDate <= auctionEndDate) {
-      return false;
-    } else {
-      return true;
-    }
-  }
 
   return (
     <PageSection>
@@ -85,14 +75,29 @@ export default () => {
       {auction ? (
         <DetailsPage
           pageHeading={{
-            title: auction.item_name,
+            title: auction.name,
+            label: auction.isActive
+              ? {
+                  variant: 'outline',
+                  color: 'green',
+                  children: <Trans>Active</Trans>,
+                  icon: (
+                    <CheckCircleIcon color="var(--pf-t--color--green--60)" />
+                  ),
+                }
+              : {
+                  variant: 'outline',
+                  color: 'red',
+                  children: <Trans>Inactive</Trans>,
+                  icon: <TimesCircleIcon color="var(--pf-t--color--red--60)" />,
+                },
           }}
           actionButtons={[
             {
               children: <Trans>Place a bid</Trans>,
               onClick: () => console.log('Primary action clicked'),
               tooltip: <Trans>Place a bid</Trans>,
-              isDisabled: active(auction.auction_start, auction.auction_end),
+              isDisabled: !auction.isActive,
             },
           ]}
           tabs={[
