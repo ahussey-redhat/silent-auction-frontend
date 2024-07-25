@@ -12,19 +12,26 @@ import {
   NumberInput,
   ValidatedOptions,
 } from '@patternfly/react-core';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
+import { Bid } from '@/types';
 
 type NumberInputValue = number | '';
 
 export type PlaceBidModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  currentHighestBid: number;
+  currentHighestBid: Bid | null;
 };
 
 export default ({ isOpen, onClose, currentHighestBid }: PlaceBidModalProps) => {
   const { _ } = useLingui();
-  const [bidAmount, setBidAmount] = useState<NumberInputValue>(0);
+  const minimumBidAmount = useMemo(
+    () => currentHighestBid?.amount ?? 0,
+    [currentHighestBid],
+  );
+  const [bidAmount, setBidAmount] = useState<NumberInputValue>(
+    minimumBidAmount + 1,
+  );
   const [validated, setValidated] = useState<ValidatedOptions>(
     ValidatedOptions.default,
   );
@@ -32,7 +39,7 @@ export default ({ isOpen, onClose, currentHighestBid }: PlaceBidModalProps) => {
   const validate = (value: NumberInputValue) => {
     if (value === '') {
       setValidated(ValidatedOptions.error);
-    } else if (value > currentHighestBid) {
+    } else if (value > minimumBidAmount) {
       setValidated(ValidatedOptions.success);
     } else {
       setValidated(ValidatedOptions.error);
@@ -113,7 +120,7 @@ export default ({ isOpen, onClose, currentHighestBid }: PlaceBidModalProps) => {
             <Button
               type="submit"
               variant="primary"
-              isDisabled={bidAmount === '' || bidAmount <= currentHighestBid}
+              isDisabled={bidAmount === '' || bidAmount <= minimumBidAmount}
             >
               <Trans>Submit</Trans>
             </Button>

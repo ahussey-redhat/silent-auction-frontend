@@ -131,7 +131,7 @@ export default () => {
           <PlaceBidModal
             isOpen={placeBidModalIsOpen}
             onClose={togglePlaceBidModalIsOpen}
-            currentHighestBid={100}
+            currentHighestBid={auction.highestBid}
           />
         </>
       ) : null}

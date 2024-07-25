@@ -1,6 +1,6 @@
 import { handleEffect, model, useModel } from '@modern-js/runtime/model';
 import authModel from './auth';
-import { Auction, AuctionDTO } from '@/types';
+import { Auction, AuctionDTO, Bid, BidDTO } from '@/types';
 
 type EffectState<T> = {
   value: T;
@@ -43,12 +43,32 @@ const mapAuction = ({
     start,
     end,
     isActive: current >= start && current < end,
+    highestBid: null,
   };
 };
 
-const fetchAuctions =
-  <T>(use: typeof useModel, stub: T) =>
-  async (id?: string): Promise<T> => {
+const mapBid = ({
+  id,
+  auction_id,
+  user_id,
+  bid_time,
+  bid_amount,
+}: BidDTO): Bid => ({
+  id,
+  auctionId: auction_id,
+  userId: user_id,
+  time: new Date(bid_time),
+  amount: bid_amount,
+});
+
+const handleFetch =
+  <DTO, T>(
+    use: typeof useModel,
+    path: string,
+    stub: T,
+    callback: (result: DTO) => T,
+  ) =>
+  async (): Promise<T> => {
     const [authState, authActions] = use(authModel);
 
     try {
@@ -58,22 +78,17 @@ const fetchAuctions =
       return stub;
     }
 
-    const response = await fetch(
-      `${process.env.BACKEND_URL}/auctions${id ? `/${id}` : ''}`,
-      {
-        headers: {
-          Authorization: `Bearer ${authState.token}`,
-        },
+    const response = await fetch(`${process.env.BACKEND_URL}/${path}`, {
+      headers: {
+        Authorization: `Bearer ${authState.token}`,
       },
-    );
+    });
 
     if (response.status !== 200) {
       throw response;
     }
 
-    const result = await response.json();
-
-    return id ? mapAuction(result) : result.map(mapAuction);
+    return callback(await response.json());
   };
 
 const auctionModel = model<State>('auction').define((_, { use }) => ({
@@ -94,9 +109,29 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
     getAuction: handleAuctionEffect('auction'),
   },
   effects: {
-    getAuctions: fetchAuctions<Auction[]>(use, []),
-    getAuction: async (id: string) =>
-      fetchAuctions<Auction | null>(use, null)(id),
+    getAuctions: handleFetch(use, 'auctions', [], (auctions: AuctionDTO[]) =>
+      auctions.map(mapAuction),
+    ),
+    getAuction: async (id: string): Promise<Auction | null> => {
+      const auction = await handleFetch(
+        use,
+        `auctions/${id}`,
+        null,
+        mapAuction,
+      )();
+
+      return auction
+        ? {
+            ...auction,
+            highestBid: await handleFetch(
+              use,
+              `auctions/${id}/bids/highest`,
+              null,
+              mapBid,
+            )(),
+          }
+        : null;
+    },
     clearAuction: () => {
       const [, actions] = use(auctionModel);
 

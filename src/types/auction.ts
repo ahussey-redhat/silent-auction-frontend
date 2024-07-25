@@ -1,3 +1,5 @@
+import { Bid } from './bid';
+
 export type AuctionDTO = {
   id: number;
   item_name: string;
@@ -15,4 +17,5 @@ export type Auction = {
   start: Date;
   end: Date;
   isActive: boolean;
+  highestBid: Bid | null;
 };

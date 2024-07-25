@@ -23,6 +23,14 @@ export default ({ auction }: AuctionDescriptionListProps) => {
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
+        <DescriptionListTerm>
+          <Trans>Highest bid amount</Trans>
+        </DescriptionListTerm>
+        <DescriptionListDescription>
+          ${auction?.highestBid?.amount ?? 0}
+        </DescriptionListDescription>
+      </DescriptionListGroup>
+      <DescriptionListGroup>
         <img src={auction?.imageUrl.toString()} />
       </DescriptionListGroup>
     </DescriptionList>
