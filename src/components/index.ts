@@ -11,4 +11,3 @@ export * from './Logo';
 export * from './Banner';
 export { PageTitle };
 export * from './PageTitle';
-export * from './Plan';
