@@ -15,8 +15,9 @@ import {
 } from '@patternfly/react-core';
 import { CheckCircleIcon } from '@patternfly/react-icons/dist/esm/icons/check-circle-icon';
 import { TimesCircleIcon } from '@patternfly/react-icons/dist/esm/icons/times-circle-icon';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useUnmount } from 'react-use';
+import PlaceBidModal from './place-bid-modal';
 import { AuctionDescriptionList } from '@/components';
 import auctionModel from '@/models/auction';
 import './page.css';
@@ -31,6 +32,12 @@ export default () => {
     },
     { getAuction, clearAuction },
   ] = useModel(auctionModel);
+  const [placeBidModalIsOpen, setPlaceBidModalIsOpen] = useState(false);
+
+  const togglePlaceBidModalIsOpen = useCallback(
+    () => setPlaceBidModalIsOpen(!placeBidModalIsOpen),
+    [placeBidModalIsOpen, setPlaceBidModalIsOpen],
+  );
 
   useEffect(() => {
     if (auctionId) {
@@ -73,51 +80,60 @@ export default () => {
         />
       ) : null}
       {auction ? (
-        <DetailsPage
-          pageHeading={{
-            title: auction.name,
-            label: auction.isActive
-              ? {
-                  variant: 'outline',
-                  color: 'green',
-                  children: <Trans>Open</Trans>,
-                  icon: (
-                    <CheckCircleIcon color="var(--pf-t--color--green--60)" />
-                  ),
-                }
-              : {
-                  variant: 'outline',
-                  color: 'red',
-                  children: <Trans>Closed</Trans>,
-                  icon: <TimesCircleIcon color="var(--pf-t--color--red--60)" />,
-                },
-          }}
-          actionButtons={[
-            {
-              children: <Trans>Place a bid</Trans>,
-              onClick: () => console.log('Primary action clicked'),
-              tooltip: <Trans>Place a bid</Trans>,
-              isDisabled: !auction.isActive,
-            },
-          ]}
-          tabs={[
-            {
-              eventKey: 'details',
-              title: <Trans>Details</Trans>,
-              children: (
-                <Flex
-                  className="details-tab"
-                  spaceItems={{ default: 'spaceItemsLg' }}
-                  direction={{ default: 'column' }}
-                >
-                  <FlexItem>
-                    <AuctionDescriptionList auction={auction} />
-                  </FlexItem>
-                </Flex>
-              ),
-            },
-          ]}
-        />
+        <>
+          <DetailsPage
+            pageHeading={{
+              title: auction.name,
+              label: auction.isActive
+                ? {
+                    variant: 'outline',
+                    color: 'green',
+                    children: <Trans>Open</Trans>,
+                    icon: (
+                      <CheckCircleIcon color="var(--pf-t--color--green--60)" />
+                    ),
+                  }
+                : {
+                    variant: 'outline',
+                    color: 'red',
+                    children: <Trans>Closed</Trans>,
+                    icon: (
+                      <TimesCircleIcon color="var(--pf-t--color--red--60)" />
+                    ),
+                  },
+            }}
+            actionButtons={[
+              {
+                children: <Trans>Place a bid</Trans>,
+                onClick: togglePlaceBidModalIsOpen,
+                tooltip: <Trans>Place a bid</Trans>,
+                isDisabled: !auction.isActive,
+              },
+            ]}
+            tabs={[
+              {
+                eventKey: 'details',
+                title: <Trans>Details</Trans>,
+                children: (
+                  <Flex
+                    className="details-tab"
+                    spaceItems={{ default: 'spaceItemsLg' }}
+                    direction={{ default: 'column' }}
+                  >
+                    <FlexItem>
+                      <AuctionDescriptionList auction={auction} />
+                    </FlexItem>
+                  </Flex>
+                ),
+              },
+            ]}
+          />
+          <PlaceBidModal
+            isOpen={placeBidModalIsOpen}
+            onClose={togglePlaceBidModalIsOpen}
+            currentHighestBid={100}
+          />
+        </>
       ) : null}
     </PageSection>
   );

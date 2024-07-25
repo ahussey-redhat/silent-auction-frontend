@@ -14,24 +14,24 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/routes/__main/plans/data-list.tsx:78
-msgid "Action"
-msgstr "Action"
+#~ msgid "Action"
+#~ msgstr "Action"
 
 #: src/routes/__main/auctions/[id]/page.tsx:99
 #: src/routes/__main/plans/data-list.tsx:73
-msgid "Actions"
-msgstr "Actions"
+#~ msgid "Actions"
+#~ msgstr "Actions"
 
 #: src/routes/__main/auctions/[id]/auction-plans-data-list.tsx:61
-msgid "Active"
-msgstr "Active"
+#~ msgid "Active"
+#~ msgstr "Active"
 
 #: src/containers/masthead.tsx:224
 #~ msgid "Anonymous"
 #~ msgstr "Anonymous"
 
-#: src/routes/__main/auctions/[id]/page.tsx:62
-#: src/routes/__main/auctions/[id]/page.tsx:68
+#: src/routes/__main/auctions/[id]/page.tsx:60
+#: src/routes/__main/auctions/[id]/page.tsx:66
 msgid "Auction"
 msgstr "Auction"
 
@@ -41,14 +41,13 @@ msgstr "Auction Details"
 
 #: src/routes/__main/auctions/[id]/auction-plans-data-list.tsx:26
 #: src/routes/__main/plans/[id]/plan-auctions-data-list.tsx:23
-msgid "Auction plans list"
-msgstr "Auction plans list"
+#~ msgid "Auction plans list"
+#~ msgstr "Auction plans list"
 
-#: src/containers/sidebar.tsx:32
+#: src/containers/sidebar.tsx:31
 #: src/routes/__main/auctions/layout.config.ts:4
 #: src/routes/__main/auctions/page.tsx:44
 #: src/routes/__main/auctions/page.tsx:48
-#: src/routes/__main/plans/[id]/page.tsx:74
 msgid "Auctions"
 msgstr "Auctions"
 
@@ -60,9 +59,22 @@ msgstr "Auctions"
 msgid "Avatar image"
 msgstr "Avatar image"
 
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:92
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:104
+msgid "Bid Amount"
+msgstr "Bid Amount"
+
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:121
+msgid "Cancel"
+msgstr "Cancel"
+
 #: src/routes/__main/plans/[id]/page.tsx:37
-msgid "Click me!"
-msgstr "Click me!"
+#~ msgid "Click me!"
+#~ msgstr "Click me!"
+
+#: src/routes/__main/auctions/[id]/page.tsx:99
+msgid "Closed"
+msgstr "Closed"
 
 #: src/components/Auction/DescriptionList.tsx:30
 #~ msgid "Customer Reference"
@@ -78,19 +90,18 @@ msgstr "Click me!"
 #~ msgstr "Date of Birth"
 
 #: src/routes/__main/auctions/[id]/page.tsx:107
-msgid "Delete auction"
-msgstr "Delete auction"
+#~ msgid "Delete auction"
+#~ msgstr "Delete auction"
 
 #: src/routes/__main/plans/[id]/page.tsx:49
-msgid "Delete plan"
-msgstr "Delete plan"
+#~ msgid "Delete plan"
+#~ msgstr "Delete plan"
 
-#: src/components/Auction/DescriptionList.tsx:33
+#: src/components/Auction/DescriptionList.tsx:19
 msgid "Description"
 msgstr "Description"
 
-#: src/routes/__main/auctions/[id]/page.tsx:117
-#: src/routes/__main/plans/[id]/page.tsx:59
+#: src/routes/__main/auctions/[id]/page.tsx:116
 msgid "Details"
 msgstr "Details"
 
@@ -99,22 +110,26 @@ msgstr "Details"
 #~ msgstr "Doctor"
 
 #: src/routes/__main/auctions/[id]/page.tsx:102
-msgid "Edit auction"
-msgstr "Edit auction"
+#~ msgid "Edit auction"
+#~ msgstr "Edit auction"
 
 #: src/routes/__main/plans/[id]/page.tsx:44
-msgid "Edit plan"
-msgstr "Edit plan"
+#~ msgid "Edit plan"
+#~ msgstr "Edit plan"
 
 #: src/models/i18n.ts:10
 #~ msgid "English"
 #~ msgstr "English"
 
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:84
+msgid "Enter an amount you would like to bid on this auction item"
+msgstr "Enter an amount you would like to bid on this auction item"
+
 #: src/components/Auction/DescriptionList.tsx:75
 #~ msgid "Female"
 #~ msgstr "Female"
 
-#: src/routes/__main/auctions/[id]/page.tsx:67
+#: src/routes/__main/auctions/[id]/page.tsx:65
 msgid "Forbidden"
 msgstr "Forbidden"
 
@@ -130,7 +145,7 @@ msgstr "Forbidden"
 msgid "Global navigation"
 msgstr "Global navigation"
 
-#: src/routes/__main/auctions/[id]/page.tsx:79
+#: src/routes/__main/auctions/[id]/page.tsx:77
 msgid "Go to home page"
 msgstr "Go to home page"
 
@@ -152,24 +167,21 @@ msgstr "Guest"
 #~ msgstr "High Risk Auction"
 
 #: src/routes/__main/auctions/[id]/auction-plans-data-list.tsx:61
-msgid "Inactive"
-msgstr "Inactive"
+#~ msgid "Inactive"
+#~ msgstr "Inactive"
 
 #: src/components/Plan/DescriptionList.tsx:27
 #: src/routes/__main/plans/data-list.tsx:63
 #: src/routes/__main/plans/toolbar.tsx:34
-msgid "Industry"
-msgstr "Industry"
+#~ msgid "Industry"
+#~ msgstr "Industry"
 
 #: src/routes/__main/auctions/[id]/auction-plans-data-list.tsx:46
-msgid "Join Date: {joinDate}"
-msgstr "Join Date: {joinDate}"
+#~ msgid "Join Date: {joinDate}"
+#~ msgstr "Join Date: {joinDate}"
 
-#: src/routes/__main/auctions/[id]/page.tsx:57
+#: src/routes/__main/auctions/[id]/page.tsx:55
 #: src/routes/__main/auctions/page.tsx:54
-#: src/routes/__main/plans/[id]/page.tsx:25
-#: src/routes/__main/plans/[id]/page.tsx:85
-#: src/routes/__main/plans/page.tsx:167
 msgid "Loading"
 msgstr "Loading"
 
@@ -199,6 +211,10 @@ msgstr "Logout"
 #~ msgid "Medium Risk"
 #~ msgstr "Medium Risk"
 
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:105
+msgid "Minus"
+msgstr "Minus"
+
 #: src/components/Auction/DescriptionList.tsx:61
 #~ msgid "Miss"
 #~ msgstr "Miss"
@@ -215,33 +231,42 @@ msgstr "Logout"
 #~ msgid "No"
 #~ msgstr "No"
 
-#: src/components/Auction/DescriptionList.tsx:41
-msgid "Open for bids"
-msgstr "Open for bids"
-
 #: src/routes/__main/auctions/[id]/page.tsx:91
-#: src/routes/__main/auctions/[id]/page.tsx:93
+msgid "Open"
+msgstr "Open"
+
+#: src/components/Auction/DescriptionList.tsx:41
+#~ msgid "Open for bids"
+#~ msgstr "Open for bids"
+
+#: src/routes/__main/auctions/[id]/page.tsx:107
+#: src/routes/__main/auctions/[id]/page.tsx:109
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:82
 msgid "Place a bid"
 msgstr "Place a bid"
 
 #: src/routes/__main/plans/[id]/layout.config.ts:4
-msgid "Plan Details"
-msgstr "Plan Details"
+#~ msgid "Plan Details"
+#~ msgstr "Plan Details"
 
 #: src/containers/sidebar.tsx:42
 #: src/routes/__main/plans/layout.config.ts:4
 #: src/routes/__main/plans/page.tsx:141
 #: src/routes/__main/plans/page.tsx:145
-msgid "Plans"
-msgstr "Plans"
+#~ msgid "Plans"
+#~ msgstr "Plans"
 
 #: src/routes/__main/plans/data-list.tsx:36
-msgid "Plans list"
-msgstr "Plans list"
+#~ msgid "Plans list"
+#~ msgstr "Plans list"
+
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:106
+msgid "Plus"
+msgstr "Plus"
 
 #: src/routes/__main/plans/[id]/page.tsx:35
-msgid "Primary action"
-msgstr "Primary action"
+#~ msgid "Primary action"
+#~ msgstr "Primary action"
 
 #: src/models/i18n.ts:6
 #~ msgid "Pseudo English"
@@ -249,16 +274,14 @@ msgstr "Primary action"
 
 #: src/routes/__main/auctions/[id]/error.tsx:22
 #: src/routes/__main/auctions/error.tsx:22
-#: src/routes/__main/plans/[id]/error.tsx:22
-#: src/routes/__main/plans/error.tsx:22
 msgid "Refresh"
 msgstr "Refresh"
 
 #: src/components/Plan/DescriptionList.tsx:28
 #: src/routes/__main/plans/data-list.tsx:64
 #: src/routes/__main/plans/toolbar.tsx:35
-msgid "Retail"
-msgstr "Retail"
+#~ msgid "Retail"
+#~ msgstr "Retail"
 
 #: src/routes/__main/auctions/toolbar.tsx:39
 #~ msgid "Risk"
@@ -269,12 +292,12 @@ msgstr "Retail"
 #~ msgstr "Risk select"
 
 #: src/routes/__main/plans/toolbar.tsx:124
-msgid "Search button for search input"
-msgstr "Search button for search input"
+#~ msgid "Search button for search input"
+#~ msgstr "Search button for search input"
 
 #: src/routes/__main/plans/toolbar.tsx:115
-msgid "Search input"
-msgstr "Search input"
+#~ msgid "Search input"
+#~ msgstr "Search input"
 
 #: src/containers/masthead.tsx:122
 msgid "SILENT AUCTION"
@@ -289,11 +312,15 @@ msgstr "SILENT AUCTION"
 #~ msgid "Status select"
 #~ msgstr "Status select"
 
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:118
+msgid "Submit"
+msgstr "Submit"
+
 #: src/components/Auction/DescriptionList.tsx:38
 #~ msgid "Surname"
 #~ msgstr "Surname"
 
-#: src/routes/__main/auctions/[id]/page.tsx:73
+#: src/routes/__main/auctions/[id]/page.tsx:71
 msgid "This page is temporarily unavailable"
 msgstr "This page is temporarily unavailable"
 
@@ -305,20 +332,20 @@ msgstr "This page is temporarily unavailable"
 msgid "Toolbar menu"
 msgstr "Toolbar menu"
 
-#: src/routes/__main/auctions/[id]/page.tsx:75
+#: src/routes/__main/auctions/[id]/page.tsx:73
 msgid "Try refreshing the page. If the problem persists, please ask for help."
 msgstr "Try refreshing the page. If the problem persists, please ask for help."
 
 #: src/components/Plan/DescriptionList.tsx:22
 #: src/routes/__main/plans/toolbar.tsx:33
-msgid "Type"
-msgstr "Type"
+#~ msgid "Type"
+#~ msgstr "Type"
 
 #: src/routes/__main/plans/toolbar.tsx:135
-msgid "Type select"
-msgstr "Type select"
+#~ msgid "Type select"
+#~ msgstr "Type select"
 
-#: src/routes/__main/auctions/[id]/page.tsx:61
+#: src/routes/__main/auctions/[id]/page.tsx:59
 msgid "Unauthorized"
 msgstr "Unauthorized"
 
