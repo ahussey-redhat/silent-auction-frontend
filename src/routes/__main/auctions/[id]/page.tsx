@@ -80,7 +80,7 @@ export default () => {
               ? {
                   variant: 'outline',
                   color: 'green',
-                  children: <Trans>Active</Trans>,
+                  children: <Trans>Open</Trans>,
                   icon: (
                     <CheckCircleIcon color="var(--pf-t--color--green--60)" />
                   ),
@@ -88,7 +88,7 @@ export default () => {
               : {
                   variant: 'outline',
                   color: 'red',
-                  children: <Trans>Inactive</Trans>,
+                  children: <Trans>Closed</Trans>,
                   icon: <TimesCircleIcon color="var(--pf-t--color--red--60)" />,
                 },
           }}
