@@ -95,23 +95,6 @@ export default () => {
               isDisabled: active(auction.auction_start, auction.auction_end),
             },
           ]}
-          actionMenu={{
-            id: 'auction-details-page-action-menu',
-            label: _(msg`Actions`),
-            actions: [
-              {
-                children: <Trans>Edit auction</Trans>,
-                itemId: 'auction-details-page-action-menu-example-1',
-                onClick: () => console.log('Edit auction clicked'),
-              },
-              {
-                children: <Trans>Delete auction</Trans>,
-                itemId: 'auction-details-page-action-menu-example-2',
-                onClick: () => console.log('Delete auction clicked'),
-                isDisabled: true,
-              },
-            ],
-          }}
           tabs={[
             {
               eventKey: 'details',
