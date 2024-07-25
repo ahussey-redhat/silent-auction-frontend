@@ -45,10 +45,11 @@ export default () => {
     const auctionStartDate: Date = new Date(auctionStart);
     const auctionEndDate: Date = new Date(auctionEnd);
 
-    if (auctionStartDate >= currentDate && currentDate <= auctionEndDate) {
+    if (currentDate >= auctionStartDate && currentDate <= auctionEndDate) {
+      return false;
+    } else {
       return true;
     }
-    return false;
   }
 
   return (

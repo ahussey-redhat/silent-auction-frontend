@@ -19,7 +19,7 @@ function active(auctionStart: string, auctionEnd: string): boolean {
   const auctionStartDate: Date = new Date(auctionStart);
   const auctionEndDate: Date = new Date(auctionEnd);
 
-  if (auctionStartDate <= currentDate && currentDate >= auctionEndDate) {
+  if (currentDate >= auctionStartDate && currentDate <= auctionEndDate) {
     return true;
   }
   return false;
@@ -41,7 +41,14 @@ export default ({ auction }: AuctionDescriptionListProps) => {
           <Trans>Open for bids</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          <Label color="blue" icon={<InfoCircleIcon />}>
+          <Label
+            color={
+              active(auction?.auction_start, auction?.auction_end)
+                ? 'green'
+                : 'blue'
+            }
+            icon={<InfoCircleIcon />}
+          >
             {active(auction?.auction_start, auction?.auction_end)
               ? 'yes'
               : 'no'}
