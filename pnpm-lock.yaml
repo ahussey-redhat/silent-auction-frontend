@@ -24,14 +24,14 @@ importers:
         specifier: 6.0.0-alpha.3
         version: 6.0.0-alpha.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-core':
-        specifier: 6.0.0-alpha.72
-        version: 6.0.0-alpha.72(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 6.0.0-alpha.87
+        version: 6.0.0-alpha.87(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-icons':
-        specifier: 6.0.0-alpha.26
-        version: 6.0.0-alpha.26(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 6.0.0-alpha.31
+        version: 6.0.0-alpha.31(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-styles':
-        specifier: 6.0.0-alpha.25
-        version: 6.0.0-alpha.25
+        specifier: 6.0.0-alpha.30
+        version: 6.0.0-alpha.30
       keycloak-js:
         specifier: ^25.0.1
         version: 25.0.1
@@ -59,7 +59,7 @@ importers:
         version: 2.54.3(@swc/helpers@0.5.3)(typescript@5.5.4)
       '@modern-js/app-tools':
         specifier: 2.54.5
-        version: 2.54.5(@rspack/core@0.7.5(@swc/helpers@0.5.3))(eslint@8.57.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@4.23.0)(typescript@5.5.4)
+        version: 2.54.5(@rspack/core@0.7.5(@swc/helpers@0.5.3))(eslint@8.57.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)
       '@modern-js/eslint-config':
         specifier: 2.54.5
         version: 2.54.5(@swc/helpers@0.5.3)(typescript@5.5.4)
@@ -1380,35 +1380,20 @@ packages:
       react: ^17 || ^18
       react-dom: ^17 || ^18
 
-  '@patternfly/react-core@6.0.0-alpha.72':
-    resolution: {integrity: sha512-Wjg/tP+w4Rl32v0F194j1LyDgfrQmIeY7pS9feGUuKcxbCVw1Cmqr9vDTVQ/9ZqQgK7cwgU4leUT6WdqWwGpFg==}
+  '@patternfly/react-core@6.0.0-alpha.87':
+    resolution: {integrity: sha512-xyhmqZv5SRU0nHVDhHSLcve+qOulHBqZVUv6TADIpx38oP/Mcj38bsQ67TWjXWZr/dOueRHeJwrW7qPRrI+51A==}
     peerDependencies:
       react: ^17 || ^18
       react-dom: ^17 || ^18
 
-  '@patternfly/react-core@6.0.0-alpha.73':
-    resolution: {integrity: sha512-YX5qDO+xv63KvIqBsP0K1cvJPVeDWw5R2Ks+ew1Ni//cyZu72QkiXzsV3fqfgDiZBnwNRCYdrAStlBsKgOcfjA==}
+  '@patternfly/react-icons@6.0.0-alpha.31':
+    resolution: {integrity: sha512-NRHMVMEeM2CGuJCPogth5lMBBwNWZ0SNGgPzTXT06FqeG4LyuNnJfdjuc4C5gvA4rHesNBbQROJB9Top12y+hA==}
     peerDependencies:
       react: ^17 || ^18
       react-dom: ^17 || ^18
 
-  '@patternfly/react-icons@6.0.0-alpha.26':
-    resolution: {integrity: sha512-9uGof7B99vdmQGJSinAMjQnxYDVBOL76GR4v98dIGw17y0SRA0+4quE0ycJprsQx/QlqLOG2k38bLTjwpHKovQ==}
-    peerDependencies:
-      react: ^17 || ^18
-      react-dom: ^17 || ^18
-
-  '@patternfly/react-icons@6.0.0-alpha.27':
-    resolution: {integrity: sha512-NmWxFF5IxB2NG7dZ+8BlmlEVst6BkV/CQlgBkeby9qTCPjwbIpiB5bIfBp7eeC8Ixe439bLj5yjz3uEGxs5LnA==}
-    peerDependencies:
-      react: ^17 || ^18
-      react-dom: ^17 || ^18
-
-  '@patternfly/react-styles@6.0.0-alpha.25':
-    resolution: {integrity: sha512-f+OO4WTPsXcCoNM3RG5xYKu7aEUma6RD7GmcicRQ5NPdHGB6Umo5C12xvr8aknyu+e4LEZZ+YXTHCBk0ozSVYw==}
-
-  '@patternfly/react-styles@6.0.0-alpha.26':
-    resolution: {integrity: sha512-FaMkpjcJLctwyioumK8X9JIflfMiWhk7NnbJn4Czbi9YRHPY+xVLap+9UZkRZXCPyN1vlituTE/kC4FUFNB00g==}
+  '@patternfly/react-styles@6.0.0-alpha.30':
+    resolution: {integrity: sha512-rFN+EXNk5KiGYuAT0SCs6hiXcqo55q7qIHOGkcnIoGA5/VtixnLIBXkGUlXPafFS58GLSaET+d055oeP8pQbZw==}
 
   '@patternfly/react-table@6.0.0-alpha.74':
     resolution: {integrity: sha512-775K4sDseTTocRfg1wQWuaxJKAoat30Y/OcIOX+m9U6wx/INVKj0AeBPLH1XD0VEx58P8jcMof3+exH3v3Go+A==}
@@ -1416,11 +1401,11 @@ packages:
       react: ^17 || ^18
       react-dom: ^17 || ^18
 
-  '@patternfly/react-tokens@6.0.0-alpha.25':
-    resolution: {integrity: sha512-KVR3HY6OatDiDn9pTDwgiufN1pMLiw7jpFkW4pfz0BsEy8j8HlpMHAiNew/gSBf7grnBbXB1v26J27c+SDR/DQ==}
-
   '@patternfly/react-tokens@6.0.0-alpha.26':
     resolution: {integrity: sha512-GNTGyZg5FzjW/4G+idqKG5FOwJylngm0NASZG5F0deWGMNwQJ4A/5AIUsTZdYmE2rHmFeNP3kWxKW+wYkLE6og==}
+
+  '@patternfly/react-tokens@6.0.0-alpha.30':
+    resolution: {integrity: sha512-gv4zYFKnoy/ovSIxfavxs2nDphbmAoMGDwSL4i73X8QVap/3VHWzwdmVD15VAEHE+omJm+qvbVqdCa7tr6SJmQ==}
 
   '@pmmmwh/react-refresh-webpack-plugin@0.5.10':
     resolution: {integrity: sha512-j0Ya0hCFZPd4x40qLzbhGsh9TMtdb+CJQiso+WxLOPNasohq9cc5SNUcwsZaRH6++Xh91Xkm/xHCkuIiIu0LUA==}
@@ -5437,10 +5422,6 @@ packages:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
     engines: {node: '>=10'}
 
-  type-fest@4.23.0:
-    resolution: {integrity: sha512-ZiBujro2ohr5+Z/hZWHESLz3g08BBdrdLMieYFULJO+tWc437sn8kQsWLJoZErY8alNhxre9K4p3GURAG11n+w==}
-    engines: {node: '>=16'}
-
   type-is@1.6.18:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
     engines: {node: '>= 0.6'}
@@ -7033,7 +7014,7 @@ snapshots:
       '@swc/helpers': 0.5.1
       redux: 4.2.1
 
-  '@modern-js/app-tools@2.54.5(@rspack/core@0.7.5(@swc/helpers@0.5.3))(eslint@8.57.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@4.23.0)(typescript@5.5.4)':
+  '@modern-js/app-tools@2.54.5(@rspack/core@0.7.5(@swc/helpers@0.5.3))(eslint@8.57.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)':
     dependencies:
       '@babel/parser': 7.24.7
       '@babel/traverse': 7.24.7
@@ -7050,7 +7031,7 @@ snapshots:
       '@modern-js/server-core': 2.54.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@modern-js/server-utils': 2.54.5(@babel/traverse@7.24.7)(@rsbuild/core@0.7.10)
       '@modern-js/types': 2.54.5
-      '@modern-js/uni-builder': 2.54.5(@babel/traverse@7.24.7)(@rspack/core@0.7.5(@swc/helpers@0.5.3))(esbuild@0.17.19)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@4.23.0)(typescript@5.5.4)
+      '@modern-js/uni-builder': 2.54.5(@babel/traverse@7.24.7)(@rspack/core@0.7.5(@swc/helpers@0.5.3))(esbuild@0.17.19)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)
       '@modern-js/utils': 2.54.5
       '@rsbuild/core': 0.7.10
       '@rsbuild/plugin-node-polyfill': 0.7.10(@rsbuild/core@0.7.10)
@@ -7362,7 +7343,7 @@ snapshots:
 
   '@modern-js/types@2.54.5': {}
 
-  '@modern-js/uni-builder@2.54.5(@babel/traverse@7.24.7)(@rspack/core@0.7.5(@swc/helpers@0.5.3))(esbuild@0.17.19)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@4.23.0)(typescript@5.5.4)':
+  '@modern-js/uni-builder@2.54.5(@babel/traverse@7.24.7)(@rspack/core@0.7.5(@swc/helpers@0.5.3))(esbuild@0.17.19)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)':
     dependencies:
       '@babel/core': 7.24.7
       '@babel/preset-react': 7.24.7(@babel/core@7.24.7)
@@ -7370,7 +7351,7 @@ snapshots:
       '@modern-js/prod-server': 2.54.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@modern-js/server': 2.54.5(@babel/traverse@7.24.7)(@rsbuild/core@0.7.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tsconfig-paths@4.2.0)
       '@modern-js/utils': 2.54.5
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.14.2)(type-fest@4.23.0)(webpack@5.92.1(esbuild@0.17.19))
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.14.2)(type-fest@0.21.3)(webpack@5.92.1(esbuild@0.17.19))
       '@rsbuild/babel-preset': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.3)
       '@rsbuild/core': 0.7.10
       '@rsbuild/plugin-assets-retry': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.3)
@@ -7485,66 +7466,48 @@ snapshots:
 
   '@patternfly/react-component-groups@6.0.0-alpha.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@patternfly/react-core': 6.0.0-alpha.72(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@patternfly/react-icons': 6.0.0-alpha.26(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@patternfly/react-core': 6.0.0-alpha.87(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@patternfly/react-icons': 6.0.0-alpha.31(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-table': 6.0.0-alpha.74(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       clsx: 2.1.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-jss: 10.10.0(react@18.2.0)
 
-  '@patternfly/react-core@6.0.0-alpha.72(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@patternfly/react-core@6.0.0-alpha.87(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@patternfly/react-icons': 6.0.0-alpha.26(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@patternfly/react-styles': 6.0.0-alpha.26
-      '@patternfly/react-tokens': 6.0.0-alpha.25
+      '@patternfly/react-icons': 6.0.0-alpha.31(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@patternfly/react-styles': 6.0.0-alpha.30
+      '@patternfly/react-tokens': 6.0.0-alpha.30
       focus-trap: 7.5.4
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-dropzone: 14.2.3(react@18.2.0)
       tslib: 2.6.3
 
-  '@patternfly/react-core@6.0.0-alpha.73(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@patternfly/react-icons': 6.0.0-alpha.27(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@patternfly/react-styles': 6.0.0-alpha.26
-      '@patternfly/react-tokens': 6.0.0-alpha.26
-      focus-trap: 7.5.4
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-dropzone: 14.2.3(react@18.2.0)
-      tslib: 2.6.3
-
-  '@patternfly/react-icons@6.0.0-alpha.26(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@patternfly/react-icons@6.0.0-alpha.31(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@patternfly/react-icons@6.0.0-alpha.27(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-
-  '@patternfly/react-styles@6.0.0-alpha.25': {}
-
-  '@patternfly/react-styles@6.0.0-alpha.26': {}
+  '@patternfly/react-styles@6.0.0-alpha.30': {}
 
   '@patternfly/react-table@6.0.0-alpha.74(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@patternfly/react-core': 6.0.0-alpha.73(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@patternfly/react-icons': 6.0.0-alpha.27(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@patternfly/react-styles': 6.0.0-alpha.26
+      '@patternfly/react-core': 6.0.0-alpha.87(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@patternfly/react-icons': 6.0.0-alpha.31(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@patternfly/react-styles': 6.0.0-alpha.30
       '@patternfly/react-tokens': 6.0.0-alpha.26
       lodash: 4.17.21
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       tslib: 2.6.3
 
-  '@patternfly/react-tokens@6.0.0-alpha.25': {}
-
   '@patternfly/react-tokens@6.0.0-alpha.26': {}
 
-  '@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.14.2)(type-fest@4.23.0)(webpack@5.92.1(esbuild@0.17.19))':
+  '@patternfly/react-tokens@6.0.0-alpha.30': {}
+
+  '@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.14.2)(type-fest@0.21.3)(webpack@5.92.1(esbuild@0.17.19))':
     dependencies:
       ansi-html-community: 0.0.8
       common-path-prefix: 3.0.0
@@ -7558,7 +7521,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.92.1(esbuild@0.17.19)
     optionalDependencies:
-      type-fest: 4.23.0
+      type-fest: 0.21.3
 
   '@redux-devtools/extension@3.3.0(redux@4.2.1)':
     dependencies:
@@ -12202,9 +12165,6 @@ snapshots:
   type-fest@0.20.2: {}
 
   type-fest@0.21.3: {}
-
-  type-fest@4.23.0:
-    optional: true
 
   type-is@1.6.18:
     dependencies:
