@@ -1,25 +1,11 @@
-import { handleEffect, model, useModel } from '@modern-js/runtime/model';
-import authModel from './auth';
+import { model } from '@modern-js/runtime/model';
+import { EffectState, handleEffect, handleFetch } from './utils';
 import { Auction, AuctionDTO, Bid, BidDTO } from '@/types';
-
-type EffectState<T> = {
-  value: T;
-  loading: boolean;
-  error: Response | null;
-};
 
 type State = {
   auctions: EffectState<Auction[]>;
   auction: EffectState<Auction | null>;
 };
-
-const handleAuctionEffect = (ns: string) =>
-  handleEffect({
-    ns,
-    result: 'value',
-    pending: 'loading',
-    combineMode: 'replace',
-  });
 
 const mapAuction = ({
   id,
@@ -61,36 +47,6 @@ const mapBid = ({
   amount: bid_amount,
 });
 
-const handleFetch =
-  <DTO, T>(
-    use: typeof useModel,
-    path: string,
-    stub: T,
-    callback: (result: DTO) => T,
-  ) =>
-  async (): Promise<T> => {
-    const [authState, authActions] = use(authModel);
-
-    try {
-      await authActions.updateToken();
-    } catch (error) {
-      await authActions.clearToken();
-      return stub;
-    }
-
-    const response = await fetch(`${process.env.BACKEND_URL}/${path}`, {
-      headers: {
-        Authorization: `Bearer ${authState.token}`,
-      },
-    });
-
-    if (response.status !== 200) {
-      throw response;
-    }
-
-    return callback(await response.json());
-  };
-
 const auctionModel = model<State>('auction').define((_, { use }) => ({
   state: {
     auctions: {
@@ -105,8 +61,8 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
     },
   },
   actions: {
-    getAuctions: handleAuctionEffect('auctions'),
-    getAuction: handleAuctionEffect('auction'),
+    getAuctions: handleEffect('auctions'),
+    getAuction: handleEffect('auction'),
   },
   effects: {
     getAuctions: handleFetch(use, 'auctions', [], (auctions: AuctionDTO[]) =>
