@@ -15,6 +15,9 @@ export default ({ auction }: AuctionDescriptionListProps) => {
   return (
     <DescriptionList isHorizontal>
       <DescriptionListGroup>
+        <img src={auction?.imageUrl.toString()} />
+      </DescriptionListGroup>
+      <DescriptionListGroup>
         <DescriptionListTerm>
           <Trans>Description</Trans>
         </DescriptionListTerm>
@@ -29,9 +32,6 @@ export default ({ auction }: AuctionDescriptionListProps) => {
         <DescriptionListDescription>
           ${auction?.highestBid?.amount ?? 0}
         </DescriptionListDescription>
-      </DescriptionListGroup>
-      <DescriptionListGroup>
-        <img src={auction?.imageUrl.toString()} />
       </DescriptionListGroup>
     </DescriptionList>
   );
