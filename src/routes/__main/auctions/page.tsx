@@ -50,7 +50,7 @@ export default () => {
         </TextContent>
       </PageSection>
       <PageSection className="auctions-page" isFilled>
-        {loading ? (
+        {auctions.length === 0 && loading ? (
           <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
         ) : (
           <Gallery
