@@ -46,23 +46,6 @@ export default () => {
           <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
         ) : (
           <DataList aria-label={_(msg`User list`)}>
-            <DataListItem>
-              <DataListItemRow>
-                <DataListItemCells
-                  dataListCells={[
-                    <DataListCell key="name">
-                      <strong>Name</strong>
-                    </DataListCell>,
-                    <DataListCell key="username">
-                      <strong>Username</strong>
-                    </DataListCell>,
-                    <DataListCell key="table-number">
-                      <strong>Table Number</strong>
-                    </DataListCell>,
-                  ]}
-                />
-              </DataListItemRow>
-            </DataListItem>
             {users?.map(
               ({ id, username, firstName, lastName, tableNumber }) => (
                 <DataListItem key={id} id={id}>
@@ -71,14 +54,18 @@ export default () => {
                       dataListCells={[
                         <DataListCell key="name">
                           <p>
-                            {firstName} {lastName}
+                            <strong>Name</strong>: {firstName} {lastName}
                           </p>
                         </DataListCell>,
                         <DataListCell key="username">
-                          <p>{username}</p>
+                          <p>
+                            <strong>Username</strong>: {username}
+                          </p>
                         </DataListCell>,
                         <DataListCell key="table-number">
-                          <p>{tableNumber}</p>
+                          <p>
+                            <strong>Table Number</strong>: {tableNumber}
+                          </p>
                         </DataListCell>,
                       ]}
                     />
