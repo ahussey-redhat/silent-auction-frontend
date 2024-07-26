@@ -18,12 +18,21 @@ export const handleEffect = (ns?: string) =>
     combineMode: 'replace',
   });
 
+export type RetryOptions = {
+  maxRetries: number;
+  statusCodes: number[];
+};
+
 export const handleFetch =
   <DTO, T>(
     use: typeof useModel,
     path: string,
     stub: T,
     callback: (result: DTO) => T,
+    retryOptions: RetryOptions = {
+      maxRetries: 10,
+      statusCodes: [401, 403],
+    },
   ) =>
   async (): Promise<T> => {
     const [authState, authActions] = use(authModel);
@@ -40,6 +49,16 @@ export const handleFetch =
         Authorization: `Bearer ${authState.token}`,
       },
     });
+
+    if (
+      retryOptions.statusCodes.includes(response.status) &&
+      retryOptions.maxRetries > 0
+    ) {
+      return await handleFetch(use, path, stub, callback, {
+        ...retryOptions,
+        maxRetries: retryOptions.maxRetries - 1,
+      })();
+    }
 
     if (response.status === 404) {
       return stub;
