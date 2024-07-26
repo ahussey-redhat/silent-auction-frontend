@@ -5,11 +5,10 @@ import {
   Nav,
   NavItem,
   NavList,
-  Brand,
   PageSidebar,
   PageSidebarBody,
 } from '@patternfly/react-core';
-import { LocaleLink, bannerImgSrc } from '@/components';
+import { LocaleLink } from '@/components';
 import sidebarModel from '@/models/sidebar';
 
 export default () => {
@@ -23,6 +22,15 @@ export default () => {
         <Nav>
           <NavList>
             <NavItem
+              id="nav-sidebar-link-home"
+              itemID="1"
+              isActive={locationPathname === '/'}
+            >
+              <LocaleLink prefetch="intent" to="/">
+                <Trans>Home</Trans>
+              </LocaleLink>
+            </NavItem>
+            <NavItem
               id="nav-sidebar-link-auctions"
               itemID="1"
               isActive={locationPathname.startsWith('/auctions')}
@@ -33,12 +41,6 @@ export default () => {
             </NavItem>
           </NavList>
         </Nav>
-        <Brand
-          src={bannerImgSrc}
-          alt="lifeline and red hat"
-          widths={{ default: '600px' }}
-          heights={{ default: '200px' }}
-        />
       </PageSidebarBody>
     </PageSidebar>
   );
