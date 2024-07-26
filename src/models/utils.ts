@@ -41,6 +41,10 @@ export const handleFetch =
       },
     });
 
+    if (response.status === 404) {
+      return stub;
+    }
+
     if (response.status !== 200) {
       throw response;
     }
