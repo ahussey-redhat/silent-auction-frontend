@@ -69,16 +69,17 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
   actions: {
     getAuctions: handleEffect('auctions'),
     getAuction: handleEffect('auction'),
+    updateHighestBid: handleEffect('auction'),
     placeBid: handleEffect('bid'),
   },
   effects: {
     getAuctions: handleFetch(use, 'auctions', [], (auctions: AuctionDTO[]) =>
       auctions.map(mapAuction),
     ),
-    getAuction: async (id: string): Promise<Auction | null> => {
+    getAuction: async (auctionId: string): Promise<Auction | null> => {
       const auction = await handleFetch(
         use,
-        `auctions/${id}`,
+        `auctions/${auctionId}`,
         null,
         mapAuction,
       )();
@@ -88,10 +89,30 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
             ...auction,
             highestBid: await handleFetch(
               use,
-              `auctions/${id}/bids/highest`,
+              `auctions/${auctionId}/bids/highest`,
               null,
               mapBid,
             )(),
+          }
+        : null;
+    },
+    updateHighestBid: async (auctionId: string): Promise<Auction | null> => {
+      const highestBid = await handleFetch(
+        use,
+        `auctions/${auctionId}/bids/highest`,
+        null,
+        mapBid,
+      )();
+      const [
+        {
+          auction: { value: auction },
+        },
+      ] = use(auctionModel);
+
+      return auction
+        ? {
+            ...auction,
+            highestBid,
           }
         : null;
     },

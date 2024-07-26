@@ -12,6 +12,7 @@ import {
   FlexItem,
   PageSection,
   Spinner,
+  useInterval,
 } from '@patternfly/react-core';
 import { CheckCircleIcon } from '@patternfly/react-icons/dist/esm/icons/check-circle-icon';
 import { TimesCircleIcon } from '@patternfly/react-icons/dist/esm/icons/times-circle-icon';
@@ -31,7 +32,7 @@ export default () => {
       auction: { value: auction, error, loading },
       bid: { loading: placingBid },
     },
-    { getAuction, clearAuction, placeBid },
+    { getAuction, clearAuction, placeBid, updateHighestBid },
   ] = useModel(auctionModel);
   const [placeBidModalIsOpen, setPlaceBidModalIsOpen] = useState(false);
 
@@ -45,6 +46,12 @@ export default () => {
       getAuction(auctionId);
     }
   }, [auctionId]);
+
+  useInterval(() => {
+    if (auctionId) {
+      updateHighestBid(auctionId);
+    }
+  }, 10000);
 
   useUnmount(() => {
     clearAuction();
