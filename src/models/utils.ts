@@ -71,7 +71,6 @@ export const handleFetch =
       return callback(await response.json());
     }
 
-    console.log('hello');
     throw response;
   };
 
