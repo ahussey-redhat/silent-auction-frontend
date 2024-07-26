@@ -19,18 +19,20 @@ export default ({ auction }: AuctionDescriptionListProps) => {
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Description</Trans>
+          <Trans>
+            <strong>Current highest bid</strong>
+          </Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {auction?.description}
+          <strong>${auction?.highestBid?.amount ?? 0}</strong>
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Highest bid amount</Trans>
+          <Trans>Description</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          ${auction?.highestBid?.amount ?? 0}
+          {auction?.description}
         </DescriptionListDescription>
       </DescriptionListGroup>
     </DescriptionList>
