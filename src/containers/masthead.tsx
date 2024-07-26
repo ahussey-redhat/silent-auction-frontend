@@ -97,6 +97,17 @@ export default () => {
     }, [profile?.email]);
 
   const userDropdownItems = [
+    <DropdownItem key="account">
+      <Trans>
+        <a
+          href="https://sso.bastion.blueguardian.co/realms/silent-auction-demo/account/#/personal-info"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Account
+        </a>
+      </Trans>
+    </DropdownItem>,
     <DropdownItem key="logout" onClick={onClickLogout}>
       <Trans>Logout</Trans>
     </DropdownItem>,
