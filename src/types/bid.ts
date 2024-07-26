@@ -8,8 +8,8 @@ export type BidDTO = {
 
 export type Bid = {
   id: string;
-  auctionId: number;
-  userId: number;
+  auctionId: string;
+  userId: string;
   time: Date;
   amount: number;
 };

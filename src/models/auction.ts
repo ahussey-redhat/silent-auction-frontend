@@ -5,6 +5,7 @@ import { Auction, AuctionDTO, Bid, BidDTO, PlaceBidRequest } from '@/types';
 type State = {
   auctions: EffectState<Auction[]>;
   auction: EffectState<Auction | null>;
+  bids: EffectState<Bid[]>;
   bid: EffectState<Bid | null>;
 };
 
@@ -42,8 +43,8 @@ const mapBid = ({
   bid_amount,
 }: BidDTO): Bid => ({
   id,
-  auctionId: auction_id,
-  userId: user_id,
+  auctionId: auction_id.toString(),
+  userId: user_id.toString(),
   time: new Date(bid_time),
   amount: bid_amount,
 });
@@ -60,6 +61,11 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
       loading: false,
       error: null,
     },
+    bids: {
+      value: [],
+      loading: false,
+      error: null,
+    },
     bid: {
       value: null,
       loading: false,
@@ -69,6 +75,7 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
   actions: {
     getAuctions: handleEffect('auctions'),
     getAuction: handleEffect('auction'),
+    getBids: handleEffect('bids'),
     updateHighestBid: handleEffect('auction'),
     placeBid: handleEffect('bid'),
   },
@@ -96,6 +103,10 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
           }
         : null;
     },
+    getBids: (auctionId: string) =>
+      handleFetch(use, `auctions/${auctionId}/bids`, [], (bids: BidDTO[]) =>
+        bids.map(mapBid),
+      ),
     updateHighestBid: async (auctionId: string): Promise<Auction | null> => {
       const highestBid = await handleFetch(
         use,
@@ -121,6 +132,12 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
 
       actions.setAuction({
         value: null,
+        loading: false,
+        error: null,
+      });
+
+      actions.setBids({
+        value: [],
         loading: false,
         error: null,
       });

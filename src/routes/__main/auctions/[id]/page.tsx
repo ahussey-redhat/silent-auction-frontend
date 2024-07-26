@@ -18,13 +18,15 @@ import { CheckCircleIcon } from '@patternfly/react-icons/dist/esm/icons/check-ci
 import { TimesCircleIcon } from '@patternfly/react-icons/dist/esm/icons/times-circle-icon';
 import { useCallback, useEffect, useState } from 'react';
 import { useUnmount } from 'react-use';
+import BidsDataList from './bids-data-list';
 import PlaceBidModal from './place-bid-modal';
-import { AuctionDescriptionList } from '@/components';
+import { AuctionDescriptionList, useAuth } from '@/components';
 import auctionModel from '@/models/auction';
 import './page.css';
 
 export default () => {
   const { _ } = useLingui();
+  const { hasRole } = useAuth();
   const navigate = useNavigate();
   const { id: auctionId } = useParams();
   const [
@@ -48,8 +50,8 @@ export default () => {
   }, [auctionId]);
 
   useInterval(() => {
-    if (auctionId) {
-      updateHighestBid(auctionId);
+    if (auction?.id) {
+      updateHighestBid(auction?.id);
     }
   }, 10000);
 
@@ -134,6 +136,25 @@ export default () => {
                   </Flex>
                 ),
               },
+              ...[
+                hasRole('admin')
+                  ? {
+                      eventKey: 'bids',
+                      title: <Trans>Bids</Trans>,
+                      children: (
+                        <Flex
+                          className="details-tab"
+                          spaceItems={{ default: 'spaceItemsLg' }}
+                          direction={{ default: 'column' }}
+                        >
+                          <FlexItem>
+                            <BidsDataList />
+                          </FlexItem>
+                        </Flex>
+                      ),
+                    }
+                  : null,
+              ].filter(tab => tab !== null),
             ]}
           />
           <PlaceBidModal
