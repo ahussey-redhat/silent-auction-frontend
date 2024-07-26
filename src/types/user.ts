@@ -9,3 +9,7 @@ export type User = {
   username: string;
   tableNumber: string;
 };
+
+export type CreateMeRequest = {
+  table_number: number;
+};

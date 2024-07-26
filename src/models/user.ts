@@ -1,6 +1,6 @@
 import { model } from '@modern-js/runtime/model';
 import { EffectState, handleEffect, handleFetch } from './utils';
-import { User, UserDTO } from '@/types';
+import { CreateMeRequest, User, UserDTO } from '@/types';
 
 type State = {
   me: EffectState<User | null>;
@@ -21,9 +21,18 @@ const userModel = model<State>('user').define((_, { use }) => ({
     },
   },
   actions: {
+    createMe: handleEffect('me'),
     getMe: handleEffect('me'),
   },
   effects: {
+    createMe: async (createMeRequest: CreateMeRequest) =>
+      await handleFetch(use, 'me', null, mapUser, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(createMeRequest),
+      })(),
     getMe: handleFetch(use, 'me', null, mapUser),
   },
 }));

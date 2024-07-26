@@ -29,6 +29,7 @@ export const handleFetch =
     path: string,
     stub: T,
     callback: (result: DTO) => T,
+    init: RequestInit = {},
     retryOptions: RetryOptions = {
       maxRetries: 10,
       statusCodes: [401, 403],
@@ -45,7 +46,9 @@ export const handleFetch =
     }
 
     const response = await fetch(`${process.env.BACKEND_URL}/${path}`, {
+      ...init,
       headers: {
+        ...init.headers,
         Authorization: `Bearer ${authState.token}`,
       },
     });
@@ -54,7 +57,7 @@ export const handleFetch =
       retryOptions.statusCodes.includes(response.status) &&
       retryOptions.maxRetries > 0
     ) {
-      return await handleFetch(use, path, stub, callback, {
+      return await handleFetch(use, path, stub, callback, init, {
         ...retryOptions,
         maxRetries: retryOptions.maxRetries - 1,
       })();
@@ -64,9 +67,9 @@ export const handleFetch =
       return stub;
     }
 
-    if (response.status !== 200) {
-      throw response;
+    if (response.status >= 200 && response.status < 300) {
+      return callback(await response.json());
     }
 
-    return callback(await response.json());
+    throw response;
   };

@@ -17,6 +17,8 @@ export default defineConfig<'rspack'>({
       'process.env.KEYCLOAK_REALM': process.env.KEYCLOAK_REALM,
       'process.env.KEYCLOAK_URL': process.env.KEYCLOAK_URL,
       'process.env.BACKEND_URL': process.env.BACKEND_URL,
+      'process.env.MIN_TABLE_NUMBER': process.env.MIN_TABLE_NUMBER,
+      'process.env.MAX_TABLE_NUMBER': process.env.MAX_TABLE_NUMBER,
     },
   },
   tools: {
