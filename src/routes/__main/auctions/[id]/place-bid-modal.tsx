@@ -12,7 +12,8 @@ import {
   NumberInput,
   ValidatedOptions,
 } from '@patternfly/react-core';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { usePrevious } from 'react-use';
 import { Bid } from '@/types';
 
 type NumberInputValue = number | '';
@@ -21,20 +22,42 @@ export type PlaceBidModalProps = {
   isOpen: boolean;
   onClose: () => void;
   currentHighestBid: Bid | null;
+  onPlaceBid: (bidAmount: number) => void;
+  placingBid: boolean;
 };
 
-export default ({ isOpen, onClose, currentHighestBid }: PlaceBidModalProps) => {
+export default ({
+  isOpen,
+  onClose,
+  currentHighestBid,
+  onPlaceBid,
+  placingBid,
+}: PlaceBidModalProps) => {
   const { _ } = useLingui();
   const minimumBidAmount = useMemo(
     () => currentHighestBid?.amount ?? 0,
     [currentHighestBid],
   );
+  const previousMinimumBidAmount = usePrevious(minimumBidAmount);
   const [bidAmount, setBidAmount] = useState<NumberInputValue>(
     minimumBidAmount + 1,
   );
   const [validated, setValidated] = useState<ValidatedOptions>(
-    ValidatedOptions.default,
+    ValidatedOptions.success,
   );
+  const previousPlacingBid = usePrevious(placingBid);
+
+  useEffect(() => {
+    if (minimumBidAmount !== previousMinimumBidAmount && !isOpen) {
+      setBidAmount(minimumBidAmount + 1);
+    }
+  }, [minimumBidAmount, previousMinimumBidAmount, setBidAmount, isOpen]);
+
+  useEffect(() => {
+    if (previousPlacingBid && !placingBid) {
+      onClose();
+    }
+  }, [placingBid, previousPlacingBid, onClose]);
 
   const validate = (value: NumberInputValue) => {
     if (value === '') {
@@ -71,10 +94,12 @@ export default ({ isOpen, onClose, currentHighestBid }: PlaceBidModalProps) => {
   const onSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      console.log('Placing bid', bidAmount);
-      onClose();
+
+      if (bidAmount !== '' && validated === ValidatedOptions.success) {
+        onPlaceBid(bidAmount);
+      }
     },
-    [bidAmount, onClose],
+    [bidAmount, onPlaceBid, validated],
   );
 
   return (
@@ -120,7 +145,9 @@ export default ({ isOpen, onClose, currentHighestBid }: PlaceBidModalProps) => {
             <Button
               type="submit"
               variant="primary"
-              isDisabled={bidAmount === '' || bidAmount <= minimumBidAmount}
+              isDisabled={
+                bidAmount === '' || bidAmount <= minimumBidAmount || placingBid
+              }
             >
               <Trans>Submit</Trans>
             </Button>

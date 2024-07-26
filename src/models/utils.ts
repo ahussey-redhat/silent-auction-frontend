@@ -71,5 +71,34 @@ export const handleFetch =
       return callback(await response.json());
     }
 
+    console.log('hello');
     throw response;
   };
+
+export const handlePost = <DTO, T, Body extends object>(
+  use: typeof useModel,
+  path: string,
+  stub: T,
+  callback: (result: DTO) => T,
+  body: Body,
+  init: RequestInit = {},
+  retryOptions: RetryOptions = {
+    maxRetries: 10,
+    statusCodes: [401, 403],
+  },
+) =>
+  handleFetch<DTO, T>(
+    use,
+    path,
+    stub,
+    callback,
+    {
+      ...init,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+    retryOptions,
+  );

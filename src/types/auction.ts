@@ -19,3 +19,7 @@ export type Auction = {
   isActive: boolean;
   highestBid: Bid | null;
 };
+
+export type PlaceBidRequest = {
+  bid_amount: number;
+};

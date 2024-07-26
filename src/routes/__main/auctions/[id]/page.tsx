@@ -29,8 +29,9 @@ export default () => {
   const [
     {
       auction: { value: auction, error, loading },
+      bid: { loading: placingBid },
     },
-    { getAuction, clearAuction },
+    { getAuction, clearAuction, placeBid },
   ] = useModel(auctionModel);
   const [placeBidModalIsOpen, setPlaceBidModalIsOpen] = useState(false);
 
@@ -51,7 +52,7 @@ export default () => {
 
   return (
     <PageSection>
-      {loading ? (
+      {!auction && loading ? (
         <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
       ) : null}
       {error?.status === 401 ? (
@@ -132,6 +133,12 @@ export default () => {
             isOpen={placeBidModalIsOpen}
             onClose={togglePlaceBidModalIsOpen}
             currentHighestBid={auction.highestBid}
+            onPlaceBid={bidAmount =>
+              placeBid(auction.id, { bid_amount: bidAmount }).then(() =>
+                getAuction(auction.id),
+              )
+            }
+            placingBid={placingBid}
           />
         </>
       ) : null}

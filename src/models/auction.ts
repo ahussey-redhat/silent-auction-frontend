@@ -1,10 +1,11 @@
 import { model } from '@modern-js/runtime/model';
-import { EffectState, handleEffect, handleFetch } from './utils';
-import { Auction, AuctionDTO, Bid, BidDTO } from '@/types';
+import { EffectState, handleEffect, handleFetch, handlePost } from './utils';
+import { Auction, AuctionDTO, Bid, BidDTO, PlaceBidRequest } from '@/types';
 
 type State = {
   auctions: EffectState<Auction[]>;
   auction: EffectState<Auction | null>;
+  bid: EffectState<Bid | null>;
 };
 
 const mapAuction = ({
@@ -59,10 +60,16 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
       loading: false,
       error: null,
     },
+    bid: {
+      value: null,
+      loading: false,
+      error: null,
+    },
   },
   actions: {
     getAuctions: handleEffect('auctions'),
     getAuction: handleEffect('auction'),
+    placeBid: handleEffect('bid'),
   },
   effects: {
     getAuctions: handleFetch(use, 'auctions', [], (auctions: AuctionDTO[]) =>
@@ -97,6 +104,14 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
         error: null,
       });
     },
+    placeBid: (auctionId: string, placeBidRequest: PlaceBidRequest) =>
+      handlePost(
+        use,
+        `auctions/${auctionId}/bids`,
+        null,
+        mapBid,
+        placeBidRequest,
+      )(),
   },
 }));
 

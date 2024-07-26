@@ -66,11 +66,9 @@ export default ({ isOpen, onClose, onCreateUser }: CreateUserModalProps) => {
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
-      if (validated === ValidatedOptions.success) {
-        onCreateUser(tableNumber as number);
+      if (tableNumber !== '' && validated === ValidatedOptions.success) {
+        onCreateUser(tableNumber);
         onClose();
-      } else {
-        console.log(validated);
       }
     },
     [onCreateUser, onClose, tableNumber, validated],
