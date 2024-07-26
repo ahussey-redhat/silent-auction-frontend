@@ -6,7 +6,7 @@ type State = {
 
 const sidebarModel = model<State>('sidebar').define((_, { use }) => ({
   state: {
-    isSidebarOpen: true,
+    isSidebarOpen: false,
   },
   effects: {
     loadIsSidebarOpenFromLocalStorage() {
