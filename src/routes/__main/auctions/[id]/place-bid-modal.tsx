@@ -124,7 +124,7 @@ export default ({ isOpen, onClose, currentHighestBid }: PlaceBidModalProps) => {
             >
               <Trans>Submit</Trans>
             </Button>
-            <Button variant="link">
+            <Button variant="link" onClick={onClose}>
               <Trans>Cancel</Trans>
             </Button>
           </ActionGroup>
