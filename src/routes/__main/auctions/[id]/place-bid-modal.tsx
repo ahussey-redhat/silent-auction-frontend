@@ -70,7 +70,7 @@ export default ({
   };
 
   const onMinusBidAmount = useCallback(() => {
-    const newBidAmount = (bidAmount || 0) - 1;
+    const newBidAmount = (bidAmount || 0) - 10;
     setBidAmount(newBidAmount);
     validate(newBidAmount);
   }, [bidAmount, setBidAmount]);
@@ -86,7 +86,7 @@ export default ({
   );
 
   const onPlusBidAmount = useCallback(() => {
-    const newBidAmount = (bidAmount || 0) + 1;
+    const newBidAmount = (bidAmount || 0) + 10;
     setBidAmount(newBidAmount);
     validate(newBidAmount);
   }, [bidAmount, setBidAmount]);
