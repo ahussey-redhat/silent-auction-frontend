@@ -1,6 +1,6 @@
 import { model } from '@modern-js/runtime/model';
 import { EffectState, handleEffect, handleFetch, handlePost } from './utils';
-import { CreateMeRequest, User, UserDTO } from '@/types';
+import { User, UserDTO } from '@/types';
 
 type State = {
   me: EffectState<User | null>;
@@ -42,8 +42,7 @@ const userModel = model<State>('user').define((_, { use }) => ({
     getUsers: handleEffect('users'),
   },
   effects: {
-    createMe: (createMeRequest: CreateMeRequest) =>
-      handlePost(use, 'me', null, mapUser, createMeRequest)(),
+    createMe: handlePost(use, 'me', null, mapUser, {}),
     getMe: handleFetch(use, 'me', null, mapUser),
     getUsers: handleFetch(use, 'users', [], (users: UserDTO[]) =>
       users.map(mapUser),

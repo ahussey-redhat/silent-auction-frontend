@@ -3,9 +3,8 @@ import { useLingui } from '@lingui/react';
 import { Outlet, UIMatch, useMatches } from '@modern-js/runtime/router';
 import { Breadcrumb, BreadcrumbItem, Page } from '@patternfly/react-core';
 import { useModel } from '@modern-js/runtime/model';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useEffectOnce } from 'react-use';
-import CreateUserModal from './create-user-modal';
 import { LocaleLink, RequireAuth } from '@/components';
 import Masthead from '@/containers/masthead';
 import Sidebar from '@/containers/sidebar';
@@ -20,11 +19,7 @@ export default () => {
     },
     { createMe, getMe },
   ] = useModel(userModel);
-  const [createUserModalIsOpen, setCreateUserModalIsOpen] = useState(false);
-  const toggleCreateUserModalIsOpen = useCallback(
-    () => setCreateUserModalIsOpen(!createUserModalIsOpen),
-    [createUserModalIsOpen, setCreateUserModalIsOpen],
-  );
+
   const matches = useMatches();
   const breadcrumbRoutes = matches.filter(
     (route): route is UIMatch<unknown, { breadcrumbName: MessageDescriptor }> =>
@@ -53,12 +48,10 @@ export default () => {
   });
 
   useEffect(() => {
-    if (!me && !createUserModalIsOpen) {
-      setCreateUserModalIsOpen(true);
-    } else if (me && createUserModalIsOpen) {
-      setCreateUserModalIsOpen(false);
+    if (me === null) {
+      createMe();
     }
-  }, [me, createUserModalIsOpen, toggleCreateUserModalIsOpen]);
+  }, [me]);
 
   return (
     <RequireAuth>
@@ -70,11 +63,6 @@ export default () => {
         sidebar={<Sidebar />}
       >
         <Outlet />
-        <CreateUserModal
-          isOpen={createUserModalIsOpen}
-          onClose={toggleCreateUserModalIsOpen}
-          onCreateUser={tableNumber => createMe({ table_number: tableNumber })}
-        />
       </Page>
     </RequireAuth>
   );
