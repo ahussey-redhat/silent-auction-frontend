@@ -100,7 +100,7 @@ export default () => {
     <DropdownItem key="account">
       <Trans>
         <a
-          href="https://sso.bastion.blueguardian.co/realms/silent-auction-demo/account/#/personal-info"
+          href={`${process.env.KEYCLOAK_URL}/realms/${process.env.KEYCLOAK_REALM}/account/#/`}
           target="_blank"
           rel="noreferrer"
         >
