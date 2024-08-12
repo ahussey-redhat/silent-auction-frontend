@@ -1,5 +1,5 @@
 {
-  "name": "silent-auction-demo",
+  "name": "silent-auction",
   "version": "0.1.0",
   "scripts": {
     "reset": "npx rimraf ./**/node_modules",

@@ -1,7 +1,7 @@
 ---
 schemaVersion: 2.2.0
 metadata:
-  name: silent-auction-demo-frontend
+  name: silent-auction-frontend
 components:
   - name: nodejs
     container:
@@ -25,7 +25,7 @@ commands:
       commandLine: pnpm install && pnpm extract-messages && pnpm compile-messages
       component: nodejs
       label: Install
-      workingDir: '${PROJECTS_ROOT}/silent-auction-demo-frontend'
+      workingDir: '${PROJECTS_ROOT}/silent-auction-frontend'
     id: 1-install
   - exec:
       commandLine: export MODERN_ENV=devspaces && pnpm dev
