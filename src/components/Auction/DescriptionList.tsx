@@ -41,6 +41,22 @@ export default ({ auction }: AuctionDescriptionListProps) => {
           {auction?.description}
         </DescriptionListDescription>
       </DescriptionListGroup>
+      <DescriptionListGroup>
+        <DescriptionListTerm>
+          <Trans>Auction Start</Trans>
+        </DescriptionListTerm>
+        <DescriptionListDescription>
+          {auction?.start.toString()}
+        </DescriptionListDescription>
+      </DescriptionListGroup>
+      <DescriptionListGroup>
+        <DescriptionListTerm>
+          <Trans>Auction End</Trans>
+        </DescriptionListTerm>
+        <DescriptionListDescription>
+          {auction?.end.toString()}
+        </DescriptionListDescription>
+      </DescriptionListGroup>
     </DescriptionList>
   );
 };

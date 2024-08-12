@@ -19,8 +19,8 @@ const mapAuction = ({
   image_path,
 }: AuctionDTO): Auction => {
   const current = new Date();
-  const start = new Date(auction_start);
-  const end = new Date(auction_end);
+  const start = new Date(`${auction_start}Z`);
+  const end = new Date(`${auction_end}Z`);
 
   return {
     id: id.toString(),
