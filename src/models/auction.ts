@@ -15,6 +15,7 @@ const mapAuction = ({
   description,
   auction_start,
   auction_end,
+  starting_bid,
   image_path,
 }: AuctionDTO): Auction => {
   const current = new Date();
@@ -31,6 +32,7 @@ const mapAuction = ({
     start,
     end,
     isActive: current >= start && current < end,
+    startingBid: starting_bid,
     highestBid: null,
   };
 };

@@ -22,6 +22,7 @@ export type PlaceBidModalProps = {
   isOpen: boolean;
   onClose: () => void;
   currentHighestBid: Bid | null;
+  startingBid: number;
   onPlaceBid: (bidAmount: number) => void;
   placingBid: boolean;
 };
@@ -30,12 +31,13 @@ export default ({
   isOpen,
   onClose,
   currentHighestBid,
+  startingBid,
   onPlaceBid,
   placingBid,
 }: PlaceBidModalProps) => {
   const { _ } = useLingui();
   const minimumBidAmount = useMemo(
-    () => currentHighestBid?.amount ?? 0,
+    () => currentHighestBid?.amount || startingBid || 0,
     [currentHighestBid],
   );
   const previousMinimumBidAmount = usePrevious(minimumBidAmount);

@@ -7,11 +7,10 @@ import ErrorState from '@patternfly/react-component-groups/dist/dynamic/ErrorSta
 import NotAuthorized from '@patternfly/react-component-groups/dist/dynamic/NotAuthorized';
 import {
   Button,
-  EmptyState,
   Flex,
   FlexItem,
   PageSection,
-  Spinner,
+  Skeleton,
   useInterval,
 } from '@patternfly/react-core';
 import { CheckCircleIcon } from '@patternfly/react-icons/dist/esm/icons/check-circle-icon';
@@ -20,7 +19,11 @@ import { useCallback, useEffect, useState } from 'react';
 import { useUnmount } from 'react-use';
 import BidsDataList from './bids-data-list';
 import PlaceBidModal from './place-bid-modal';
-import { AuctionDescriptionList, useAuth } from '@/components';
+import {
+  AuctionDescriptionList,
+  SkeletonDescriptionList,
+  useAuth,
+} from '@/components';
 import auctionModel from '@/models/auction';
 import './page.css';
 
@@ -62,7 +65,42 @@ export default () => {
   return (
     <PageSection>
       {!auction && loading ? (
-        <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
+        <DetailsPage
+          pageHeading={{
+            title: 'loading',
+            label: {
+              variant: 'outline',
+              color: 'grey',
+              children: <Skeleton screenreaderText="Loading auction status" />,
+              icon: <CheckCircleIcon color="var(--pf-t--color--grey--60)" />,
+            },
+          }}
+          actionButtons={[
+            {
+              children: <Trans>Place a bid</Trans>,
+              onClick: togglePlaceBidModalIsOpen,
+              tooltip: <Trans>Place a bid</Trans>,
+              isDisabled: true,
+            },
+          ]}
+          tabs={[
+            {
+              eventKey: 'details',
+              title: <Trans>Details</Trans>,
+              children: (
+                <Flex
+                  className="details-tab"
+                  spaceItems={{ default: 'spaceItemsLg' }}
+                  direction={{ default: 'column' }}
+                >
+                  <FlexItem>
+                    <SkeletonDescriptionList />
+                  </FlexItem>
+                </Flex>
+              ),
+            },
+          ]}
+        />
       ) : null}
       {error?.status === 401 ? (
         <NotAuthorized
@@ -161,6 +199,7 @@ export default () => {
             isOpen={placeBidModalIsOpen}
             onClose={togglePlaceBidModalIsOpen}
             currentHighestBid={auction.highestBid}
+            startingBid={auction.startingBid}
             onPlaceBid={bidAmount =>
               placeBid(auction.id, { bid_amount: bidAmount }).then(() =>
                 getAuction(auction.id),

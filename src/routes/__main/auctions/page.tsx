@@ -60,35 +60,41 @@ export default () => {
               xl: '600px',
             }}
           >
-            {auctions?.map(({ id, name, description, imageUrl }) => (
-              <Card key={id} id={`auction-card-${id}`} isClickable>
-                <Grid className={sizingStyles.h_100} md={6}>
-                  <GridItem>
-                    <CardHeader
-                      className={css(
-                        'auction-header',
-                        displayStyles.displayGrid,
-                        flexStyles.alignContentCenter,
-                        flexStyles.justifyContentCenter,
-                        sizingStyles.h_100,
-                      )}
-                      selectableActions={{
-                        onClickAction: () => navigate(`/auctions/${id}`),
-                        selectableActionId: id,
-                        selectableActionAriaLabelledby: `auction-card-${id}`,
-                        name,
-                      }}
-                    >
-                      <img src={imageUrl.toString()} />
-                    </CardHeader>
-                  </GridItem>
-                  <GridItem>
-                    <CardTitle>{name}</CardTitle>
-                    <CardBody>{description}</CardBody>
-                  </GridItem>
-                </Grid>
-              </Card>
-            ))}
+            {auctions?.map(
+              ({ id, name, description, startingBid, imageUrl }) => (
+                <Card key={id} id={`auction-card-${id}`} isClickable>
+                  <Grid className={sizingStyles.h_100} md={6}>
+                    <GridItem>
+                      <CardHeader
+                        className={css(
+                          'auction-header',
+                          displayStyles.displayGrid,
+                          flexStyles.alignContentCenter,
+                          flexStyles.justifyContentCenter,
+                          sizingStyles.h_100,
+                        )}
+                        selectableActions={{
+                          onClickAction: () => navigate(`/auctions/${id}`),
+                          selectableActionId: id,
+                          selectableActionAriaLabelledby: `auction-card-${id}`,
+                          name,
+                        }}
+                      >
+                        <img src={imageUrl.toString()} alt={description} />
+                      </CardHeader>
+                    </GridItem>
+                    <GridItem>
+                      <CardTitle>{name}</CardTitle>
+                      <CardBody>
+                        {description}
+                        <br />
+                        <strong>Starting Bid:</strong> ${startingBid}
+                      </CardBody>
+                    </GridItem>
+                  </Grid>
+                </Card>
+              ),
+            )}
           </Gallery>
         )}
       </PageSection>

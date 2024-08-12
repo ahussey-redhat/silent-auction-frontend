@@ -6,6 +6,7 @@ export type AuctionDTO = {
   description: string;
   auction_start: string;
   auction_end: string;
+  starting_bid: number;
   image_path: string;
 };
 
@@ -18,6 +19,7 @@ export type Auction = {
   end: Date;
   isActive: boolean;
   highestBid: Bid | null;
+  startingBid: number;
 };
 
 export type PlaceBidRequest = {

@@ -4,24 +4,18 @@ import {
   DescriptionListDescription,
   DescriptionListGroup,
   DescriptionListTerm,
+  Skeleton,
 } from '@patternfly/react-core';
-import { Auction } from '@/types';
 
-export type AuctionDescriptionListProps = {
-  auction: Auction;
-};
-function getBidAmount(auction: Auction): number {
-  if (auction?.highestBid?.amount) {
-    return auction?.highestBid?.amount;
-  } else {
-    return auction.startingBid;
-  }
-}
-export default ({ auction }: AuctionDescriptionListProps) => {
+export default () => {
   return (
     <DescriptionList isHorizontal>
       <DescriptionListGroup>
-        <img src={auction?.imageUrl.toString()} />
+        <Skeleton
+          shape="square"
+          width="30%"
+          screenreaderText="Loading auction image"
+        />
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
@@ -30,7 +24,9 @@ export default ({ auction }: AuctionDescriptionListProps) => {
           </Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          <strong>${getBidAmount(auction) ?? 0}</strong>
+          <strong>
+            $<Skeleton screenreaderText="Loading auction bid amount" />
+          </strong>
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
@@ -38,7 +34,7 @@ export default ({ auction }: AuctionDescriptionListProps) => {
           <Trans>Description</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {auction?.description}
+          <Skeleton screenreaderText="Loading auction description" />
         </DescriptionListDescription>
       </DescriptionListGroup>
     </DescriptionList>
