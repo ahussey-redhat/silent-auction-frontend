@@ -25,7 +25,11 @@ export default () => {
         </DescriptionListTerm>
         <DescriptionListDescription>
           <strong>
-            $<Skeleton screenreaderText="Loading auction bid amount" />
+            $
+            <Skeleton
+              screenreaderText="Loading auction bid amount"
+              width="10%"
+            />
           </strong>
         </DescriptionListDescription>
       </DescriptionListGroup>
@@ -34,7 +38,26 @@ export default () => {
           <Trans>Description</Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          <Skeleton screenreaderText="Loading auction description" />
+          <Skeleton
+            screenreaderText="Loading auction description"
+            width="30%"
+          />
+        </DescriptionListDescription>
+      </DescriptionListGroup>
+      <DescriptionListGroup>
+        <DescriptionListTerm>
+          <Trans>Auction Start</Trans>
+        </DescriptionListTerm>
+        <DescriptionListDescription>
+          <Skeleton screenreaderText="Loading auction start" width="30%" />
+        </DescriptionListDescription>
+      </DescriptionListGroup>
+      <DescriptionListGroup>
+        <DescriptionListTerm>
+          <Trans>Auction End</Trans>
+        </DescriptionListTerm>
+        <DescriptionListDescription>
+          <Skeleton screenreaderText="Loading auction end" width="30%" />
         </DescriptionListDescription>
       </DescriptionListGroup>
     </DescriptionList>
