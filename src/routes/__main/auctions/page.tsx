@@ -61,7 +61,15 @@ export default () => {
             }}
           >
             {auctions?.map(
-              ({ id, name, description, startingBid, imageUrl }) => (
+              ({
+                id,
+                name,
+                description,
+                startingBid,
+                start,
+                end,
+                imageUrl,
+              }) => (
                 <Card key={id} id={`auction-card-${id}`} isClickable>
                   <Grid className={sizingStyles.h_100} md={6}>
                     <GridItem>
@@ -88,7 +96,13 @@ export default () => {
                       <CardBody>
                         {description}
                         <br />
+                        <br />
                         <strong>Starting Bid:</strong> ${startingBid}
+                        <br />
+                        <br />
+                        <strong>Auction Opens:</strong> {String(start)}
+                        <br />
+                        <strong>Auction Closes:</strong> {String(end)}
                       </CardBody>
                     </GridItem>
                   </Grid>
