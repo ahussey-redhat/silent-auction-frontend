@@ -14,6 +14,8 @@ USER 10001
 
 COPY --chown=10001:0 . /opt/app-root/src/
 
+RUN rm -f /opt/app-root/src/.env*
+
 RUN git config --global --add safe.directory /opt/app-root/src
 
 RUN pnpm install && pnpm extract-messages && pnpm compile-messages

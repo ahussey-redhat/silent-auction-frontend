@@ -59,6 +59,8 @@ spec:
         params:
           - name: IMAGE
             value: $(params.image)
+          - name: BUILD_EXTRA_ARGS
+            value: "--storage-driver=overlay"
       - name: git-clone-argocd-repo
         taskRef:
           kind: ClusterTask
