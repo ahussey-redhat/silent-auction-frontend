@@ -4,8 +4,6 @@ import { useModel } from '@modern-js/runtime/model';
 import {
   Avatar,
   Brand,
-  Dropdown,
-  DropdownItem,
   DropdownList,
   Masthead,
   MastheadBrand,
@@ -19,6 +17,7 @@ import {
   ToolbarGroup,
   ToolbarItem,
 } from '@patternfly/react-core';
+import { Dropdown, DropdownItem } from '@patternfly/react-core/deprecated';
 import avatarImgSrc from '@patternfly/react-core/src/components/assets/avatarImg.svg';
 import { BarsIcon } from '@patternfly/react-icons/dist/esm/icons/bars-icon';
 import { EllipsisVIcon } from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
