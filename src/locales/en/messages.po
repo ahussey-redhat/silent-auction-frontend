@@ -13,6 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/containers/masthead.tsx:101
+msgid "<0>Account</0>"
+msgstr "<0>Account</0>"
+
+#: src/components/Auction/DescriptionList.tsx:28
+#: src/components/Auction/SkeletonDescriptionList.tsx:22
+msgid "<0>Current highest bid</0>"
+msgstr "<0>Current highest bid</0>"
+
 #: src/routes/__main/plans/data-list.tsx:78
 #~ msgid "Action"
 #~ msgstr "Action"
@@ -30,8 +39,8 @@ msgstr ""
 #~ msgid "Anonymous"
 #~ msgstr "Anonymous"
 
-#: src/routes/__main/auctions/[id]/page.tsx:60
-#: src/routes/__main/auctions/[id]/page.tsx:66
+#: src/routes/__main/auctions/[id]/page.tsx:108
+#: src/routes/__main/auctions/[id]/page.tsx:114
 msgid "Auction"
 msgstr "Auction"
 
@@ -39,13 +48,24 @@ msgstr "Auction"
 msgid "Auction Details"
 msgstr "Auction Details"
 
+#: src/components/Auction/DescriptionList.tsx:54
+#: src/components/Auction/SkeletonDescriptionList.tsx:57
+msgid "Auction End"
+msgstr "Auction End"
+
 #: src/routes/__main/auctions/[id]/auction-plans-data-list.tsx:26
 #: src/routes/__main/plans/[id]/plan-auctions-data-list.tsx:23
 #~ msgid "Auction plans list"
 #~ msgstr "Auction plans list"
 
-#: src/containers/sidebar.tsx:31
+#: src/components/Auction/DescriptionList.tsx:46
+#: src/components/Auction/SkeletonDescriptionList.tsx:49
+msgid "Auction Start"
+msgstr "Auction Start"
+
+#: src/containers/sidebar.tsx:40
 #: src/routes/__main/auctions/layout.config.ts:4
+#: src/routes/__main/auctions/loading.tsx:27
 #: src/routes/__main/auctions/page.tsx:44
 #: src/routes/__main/auctions/page.tsx:48
 msgid "Auctions"
@@ -55,16 +75,24 @@ msgstr "Auctions"
 #~ msgid "Auctions list"
 #~ msgstr "Auctions list"
 
-#: src/containers/masthead.tsx:168
+#: src/containers/masthead.tsx:179
 msgid "Avatar image"
 msgstr "Avatar image"
 
-#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:92
-#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:104
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:126
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:138
 msgid "Bid Amount"
 msgstr "Bid Amount"
 
-#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:121
+#: src/routes/__main/auctions/[id]/page.tsx:181
+msgid "Bids"
+msgstr "Bids"
+
+#: src/routes/__main/auctions/[id]/bids-data-list.tsx:50
+msgid "Bids list"
+msgstr "Bids list"
+
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:157
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -72,7 +100,7 @@ msgstr "Cancel"
 #~ msgid "Click me!"
 #~ msgstr "Click me!"
 
-#: src/routes/__main/auctions/[id]/page.tsx:99
+#: src/routes/__main/auctions/[id]/page.tsx:147
 msgid "Closed"
 msgstr "Closed"
 
@@ -97,11 +125,13 @@ msgstr "Closed"
 #~ msgid "Delete plan"
 #~ msgstr "Delete plan"
 
-#: src/components/Auction/DescriptionList.tsx:19
+#: src/components/Auction/DescriptionList.tsx:38
+#: src/components/Auction/SkeletonDescriptionList.tsx:38
 msgid "Description"
 msgstr "Description"
 
-#: src/routes/__main/auctions/[id]/page.tsx:116
+#: src/routes/__main/auctions/[id]/page.tsx:89
+#: src/routes/__main/auctions/[id]/page.tsx:164
 msgid "Details"
 msgstr "Details"
 
@@ -121,7 +151,7 @@ msgstr "Details"
 #~ msgid "English"
 #~ msgstr "English"
 
-#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:84
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:118
 msgid "Enter an amount you would like to bid on this auction item"
 msgstr "Enter an amount you would like to bid on this auction item"
 
@@ -129,7 +159,7 @@ msgstr "Enter an amount you would like to bid on this auction item"
 #~ msgid "Female"
 #~ msgstr "Female"
 
-#: src/routes/__main/auctions/[id]/page.tsx:65
+#: src/routes/__main/auctions/[id]/page.tsx:113
 msgid "Forbidden"
 msgstr "Forbidden"
 
@@ -141,15 +171,19 @@ msgstr "Forbidden"
 #~ msgid "Given Names"
 #~ msgstr "Given Names"
 
-#: src/containers/masthead.tsx:111
+#: src/containers/masthead.tsx:122
 msgid "Global navigation"
 msgstr "Global navigation"
 
-#: src/routes/__main/auctions/[id]/page.tsx:77
+#: src/routes/__main/page.tsx:22
+msgid "Go to Auctions"
+msgstr "Go to Auctions"
+
+#: src/routes/__main/auctions/[id]/page.tsx:125
 msgid "Go to home page"
 msgstr "Go to home page"
 
-#: src/containers/masthead.tsx:175
+#: src/containers/masthead.tsx:186
 msgid "Guest"
 msgstr "Guest"
 
@@ -166,6 +200,10 @@ msgstr "Guest"
 #~ msgid "High Risk Auction"
 #~ msgstr "High Risk Auction"
 
+#: src/containers/sidebar.tsx:31
+msgid "Home"
+msgstr "Home"
+
 #: src/routes/__main/auctions/[id]/auction-plans-data-list.tsx:61
 #~ msgid "Inactive"
 #~ msgstr "Inactive"
@@ -180,12 +218,12 @@ msgstr "Guest"
 #~ msgid "Join Date: {joinDate}"
 #~ msgstr "Join Date: {joinDate}"
 
-#: src/routes/__main/auctions/[id]/page.tsx:55
 #: src/routes/__main/auctions/page.tsx:54
+#: src/routes/__main/users/page.tsx:46
 msgid "Loading"
 msgstr "Loading"
 
-#: src/containers/masthead.tsx:101
+#: src/containers/masthead.tsx:112
 msgid "Logout"
 msgstr "Logout"
 
@@ -211,7 +249,7 @@ msgstr "Logout"
 #~ msgid "Medium Risk"
 #~ msgstr "Medium Risk"
 
-#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:105
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:139
 msgid "Minus"
 msgstr "Minus"
 
@@ -231,7 +269,7 @@ msgstr "Minus"
 #~ msgid "No"
 #~ msgstr "No"
 
-#: src/routes/__main/auctions/[id]/page.tsx:91
+#: src/routes/__main/auctions/[id]/page.tsx:139
 msgid "Open"
 msgstr "Open"
 
@@ -239,9 +277,11 @@ msgstr "Open"
 #~ msgid "Open for bids"
 #~ msgstr "Open for bids"
 
-#: src/routes/__main/auctions/[id]/page.tsx:107
-#: src/routes/__main/auctions/[id]/page.tsx:109
-#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:82
+#: src/routes/__main/auctions/[id]/page.tsx:80
+#: src/routes/__main/auctions/[id]/page.tsx:82
+#: src/routes/__main/auctions/[id]/page.tsx:155
+#: src/routes/__main/auctions/[id]/page.tsx:157
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:116
 msgid "Place a bid"
 msgstr "Place a bid"
 
@@ -260,7 +300,7 @@ msgstr "Place a bid"
 #~ msgid "Plans list"
 #~ msgstr "Plans list"
 
-#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:106
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:140
 msgid "Plus"
 msgstr "Plus"
 
@@ -274,6 +314,7 @@ msgstr "Plus"
 
 #: src/routes/__main/auctions/[id]/error.tsx:22
 #: src/routes/__main/auctions/error.tsx:22
+#: src/routes/__main/users/error.tsx:22
 msgid "Refresh"
 msgstr "Refresh"
 
@@ -299,7 +340,7 @@ msgstr "Refresh"
 #~ msgid "Search input"
 #~ msgstr "Search input"
 
-#: src/containers/masthead.tsx:122
+#: src/containers/masthead.tsx:133
 msgid "SILENT AUCTION"
 msgstr "SILENT AUCTION"
 
@@ -312,7 +353,7 @@ msgstr "SILENT AUCTION"
 #~ msgid "Status select"
 #~ msgstr "Status select"
 
-#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:118
+#: src/routes/__main/auctions/[id]/place-bid-modal.tsx:154
 msgid "Submit"
 msgstr "Submit"
 
@@ -320,7 +361,7 @@ msgstr "Submit"
 #~ msgid "Surname"
 #~ msgstr "Surname"
 
-#: src/routes/__main/auctions/[id]/page.tsx:71
+#: src/routes/__main/auctions/[id]/page.tsx:119
 msgid "This page is temporarily unavailable"
 msgstr "This page is temporarily unavailable"
 
@@ -328,11 +369,11 @@ msgstr "This page is temporarily unavailable"
 #~ msgid "Title"
 #~ msgstr "Title"
 
-#: src/containers/masthead.tsx:147
+#: src/containers/masthead.tsx:158
 msgid "Toolbar menu"
 msgstr "Toolbar menu"
 
-#: src/routes/__main/auctions/[id]/page.tsx:73
+#: src/routes/__main/auctions/[id]/page.tsx:121
 msgid "Try refreshing the page. If the problem persists, please ask for help."
 msgstr "Try refreshing the page. If the problem persists, please ask for help."
 
@@ -345,9 +386,20 @@ msgstr "Try refreshing the page. If the problem persists, please ask for help."
 #~ msgid "Type select"
 #~ msgstr "Type select"
 
-#: src/routes/__main/auctions/[id]/page.tsx:59
+#: src/routes/__main/auctions/[id]/page.tsx:107
 msgid "Unauthorized"
 msgstr "Unauthorized"
+
+#: src/routes/__main/users/page.tsx:48
+msgid "User list"
+msgstr "User list"
+
+#: src/containers/sidebar.tsx:50
+#: src/routes/__main/users/layout.config.ts:4
+#: src/routes/__main/users/page.tsx:36
+#: src/routes/__main/users/page.tsx:40
+msgid "Users"
+msgstr "Users"
 
 #: src/components/Auction/DescriptionList.tsx:101
 #~ msgid "Yes"
