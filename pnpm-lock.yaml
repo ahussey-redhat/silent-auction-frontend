@@ -30,8 +30,8 @@ importers:
         specifier: 6.0.0-alpha.35
         version: 6.0.0-alpha.35(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-styles':
-        specifier: 6.0.0-alpha.30
-        version: 6.0.0-alpha.30
+        specifier: 6.0.0-alpha.34
+        version: 6.0.0-alpha.34
       keycloak-js:
         specifier: ^25.0.2
         version: 25.0.2
