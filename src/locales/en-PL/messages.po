@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/containers/masthead.tsx:101
+#: src/containers/masthead.tsx:100
 msgid "<0>Account</0>"
 msgstr ""
 
@@ -75,7 +75,7 @@ msgstr ""
 #~ msgid "Auctions list"
 #~ msgstr ""
 
-#: src/containers/masthead.tsx:179
+#: src/containers/masthead.tsx:178
 msgid "Avatar image"
 msgstr ""
 
@@ -171,7 +171,7 @@ msgstr ""
 #~ msgid "Given Names"
 #~ msgstr ""
 
-#: src/containers/masthead.tsx:122
+#: src/containers/masthead.tsx:121
 msgid "Global navigation"
 msgstr ""
 
@@ -183,7 +183,7 @@ msgstr ""
 msgid "Go to home page"
 msgstr ""
 
-#: src/containers/masthead.tsx:186
+#: src/containers/masthead.tsx:185
 msgid "Guest"
 msgstr ""
 
@@ -223,7 +223,7 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
-#: src/containers/masthead.tsx:112
+#: src/containers/masthead.tsx:111
 msgid "Logout"
 msgstr ""
 
@@ -340,7 +340,7 @@ msgstr ""
 #~ msgid "Search input"
 #~ msgstr ""
 
-#: src/containers/masthead.tsx:133
+#: src/containers/masthead.tsx:132
 msgid "SILENT AUCTION"
 msgstr ""
 
@@ -369,7 +369,7 @@ msgstr ""
 #~ msgid "Title"
 #~ msgstr ""
 
-#: src/containers/masthead.tsx:158
+#: src/containers/masthead.tsx:157
 msgid "Toolbar menu"
 msgstr ""
 

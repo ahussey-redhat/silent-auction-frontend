@@ -9,8 +9,8 @@ import {
   EmptyState,
   PageSection,
   Spinner,
-  Text,
-  TextContent,
+  Content,
+  ContentVariants,
 } from '@patternfly/react-core';
 import { useEffectOnce } from 'react-use';
 import { useModel } from '@modern-js/runtime/model';
@@ -35,11 +35,9 @@ export default () => {
     <>
       <PageTitle title={_(msg`Users`)} />
       <PageSection>
-        <TextContent>
-          <Text component="h1">
-            <Trans>Users</Trans>
-          </Text>
-        </TextContent>
+        <Content component={ContentVariants.h1}>
+          <Trans>Users</Trans>
+        </Content>
       </PageSection>
       <PageSection className="users-page" isFilled>
         {users.length === 0 && loading ? (

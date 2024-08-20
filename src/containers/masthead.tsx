@@ -4,7 +4,9 @@ import { useModel } from '@modern-js/runtime/model';
 import {
   Avatar,
   Brand,
+  Dropdown,
   DropdownList,
+  DropdownItem,
   Masthead,
   MastheadBrand,
   MastheadContent,
@@ -17,7 +19,6 @@ import {
   ToolbarGroup,
   ToolbarItem,
 } from '@patternfly/react-core';
-import { Dropdown, DropdownItem } from '@patternfly/react-core/deprecated';
 import avatarImgSrc from '@patternfly/react-core/src/components/assets/avatarImg.svg';
 import { BarsIcon } from '@patternfly/react-icons/dist/esm/icons/bars-icon';
 import { EllipsisVIcon } from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
@@ -126,7 +127,8 @@ export default () => {
         </PageToggleButton>
       </MastheadToggle>
       <MastheadMain>
-        <MastheadBrand component={props => <LocaleLink {...props} to="/" />}>
+        <MastheadBrand>
+          <LocaleLink to="/" />
           <Brand
             src={logoImgSrc}
             alt={_(msg`SILENT AUCTION`)}

@@ -11,8 +11,8 @@ import {
   GridItem,
   PageSection,
   Spinner,
-  Text,
-  TextContent,
+  Content,
+  ContentVariants,
 } from '@patternfly/react-core';
 import { css } from '@patternfly/react-styles';
 import displayStyles from '@patternfly/react-styles/css/utilities/Display/display';
@@ -43,11 +43,9 @@ export default () => {
     <>
       <PageTitle title={_(msg`Auctions`)} />
       <PageSection>
-        <TextContent>
-          <Text component="h1">
-            <Trans>Auctions</Trans>
-          </Text>
-        </TextContent>
+        <Content component={ContentVariants.h1}>
+          <Trans>Auctions</Trans>
+        </Content>
       </PageSection>
       <PageSection className="auctions-page" isFilled>
         {auctions.length === 0 && loading ? (

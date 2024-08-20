@@ -8,8 +8,8 @@ import {
   GridItem,
   PageSection,
   Skeleton,
-  Text,
-  TextContent,
+  Content,
+  ContentVariants,
 } from '@patternfly/react-core';
 import { Trans } from '@lingui/macro';
 import sizingStyles from '@patternfly/react-styles/css/utilities/Sizing/sizing';
@@ -22,11 +22,9 @@ export default () => (
   <>
     <PageTitle title="auctions" />
     <PageSection>
-      <TextContent>
-        <Text component="h1">
-          <Trans>Auctions</Trans>
-        </Text>
-      </TextContent>
+      <Content component={ContentVariants.h1}>
+        <Trans>Auctions</Trans>
+      </Content>
     </PageSection>
     <PageSection className="auctions-page" isFilled>
       <Gallery
