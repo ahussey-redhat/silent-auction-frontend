@@ -59,7 +59,7 @@
     "chance": "^1.1.12",
     "husky": "~8.0.3",
     "lint-staged": "~13.1.4",
-    "prettier": "~2.8.8",
+    "prettier": "~3.3.3",
     "rimraf": "~3.0.2",
     "typescript": "~5.5.4"
   }
