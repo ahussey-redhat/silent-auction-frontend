@@ -8,10 +8,10 @@ import {
   DropdownList,
   DropdownItem,
   Masthead,
-  MastheadBrand,
+  MastheadLogo,
   MastheadContent,
   MastheadMain,
-  MastheadToggle,
+  MastheadToggle, MastheadBrand,
   MenuToggle,
   PageToggleButton,
   Toolbar,
@@ -115,7 +115,8 @@ export default () => {
 
   return (
     <Masthead>
-      <MastheadToggle>
+      
+      <MastheadMain><MastheadToggle>
         <PageToggleButton
           id="nav-sidebar-toggle"
           variant="plain"
@@ -126,8 +127,7 @@ export default () => {
           <BarsIcon />
         </PageToggleButton>
       </MastheadToggle>
-      <MastheadMain>
-        <MastheadBrand>
+        <MastheadBrand data-codemods><MastheadLogo data-codemods>
           <LocaleLink to="/" />
           <Brand
             src={logoImgSrc}
@@ -135,7 +135,7 @@ export default () => {
             widths={{ default: '200px' }}
             heights={{ default: '50px' }}
           />
-        </MastheadBrand>
+        </MastheadLogo></MastheadBrand>
       </MastheadMain>
       <MastheadContent>
         <Toolbar>

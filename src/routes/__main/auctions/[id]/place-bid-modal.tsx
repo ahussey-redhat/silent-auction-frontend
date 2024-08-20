@@ -1,17 +1,19 @@
 import { msg, Trans } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import {
-  ActionGroup,
-  Button,
-  Form,
-  FormGroup,
-  Modal,
-  ModalBody,
-  ModalHeader,
-  ModalVariant,
-  NumberInput,
-  ValidatedOptions,
+	ActionGroup,
+	Button,
+	Form,
+	FormGroup,
+	ModalBody,
+	ModalHeader,
+	NumberInput,
+	ValidatedOptions
 } from '@patternfly/react-core';
+import {
+	Modal,
+	ModalVariant
+} from '@patternfly/react-core/deprecated';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { usePrevious } from 'react-use';
 import { Bid } from '@/types';

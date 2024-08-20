@@ -63,7 +63,7 @@ export default () => {
   });
 
   return (
-    <PageSection>
+    <PageSection hasBodyWrapper={false}>
       {!auction && loading ? (
         <DetailsPage
           pageHeading={{

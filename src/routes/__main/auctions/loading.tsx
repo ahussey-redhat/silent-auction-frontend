@@ -21,12 +21,12 @@ import { PageTitle } from '@/components';
 export default () => (
   <>
     <PageTitle title="auctions" />
-    <PageSection>
+    <PageSection hasBodyWrapper={false}>
       <Content component={ContentVariants.h1}>
         <Trans>Auctions</Trans>
       </Content>
     </PageSection>
-    <PageSection className="auctions-page" isFilled>
+    <PageSection hasBodyWrapper={false} className="auctions-page" isFilled>
       <Gallery
         hasGutter
         minWidths={{

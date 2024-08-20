@@ -34,12 +34,12 @@ export default () => {
   return (
     <>
       <PageTitle title={_(msg`Users`)} />
-      <PageSection>
+      <PageSection hasBodyWrapper={false}>
         <Content component={ContentVariants.h1}>
           <Trans>Users</Trans>
         </Content>
       </PageSection>
-      <PageSection className="users-page" isFilled>
+      <PageSection hasBodyWrapper={false} className="users-page" isFilled>
         {users.length === 0 && loading ? (
           <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
         ) : (
