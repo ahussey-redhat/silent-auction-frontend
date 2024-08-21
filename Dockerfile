@@ -6,6 +6,8 @@ USER 0
 
 RUN microdnf update -y
 
+RUN microdnf install -y git
+
 RUN npm install -g pnpm
 
 RUN chown -R 10001:0 /opt/app-root/src
