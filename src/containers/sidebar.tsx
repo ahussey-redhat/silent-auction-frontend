@@ -10,12 +10,25 @@ import {
 } from '@patternfly/react-core';
 import { LocaleLink, useAuth } from '@/components';
 import sidebarModel from '@/models/sidebar';
+import { useCallback } from 'react';
 
 export default () => {
   const { hasRole } = useAuth();
-  const [{ isSidebarOpen }] = useModel(sidebarModel);
   const location = useLocation();
   const locationPathname = location.pathname.toLowerCase();
+
+  const [
+    { isSidebarOpen },
+    {
+      saveIsSidebarOpenToLocalStorage,
+      setIsSidebarOpen,
+    },
+  ] = useModel(sidebarModel);
+
+  const onSidebarToggle = useCallback(() => {
+    setIsSidebarOpen(!isSidebarOpen);
+    saveIsSidebarOpenToLocalStorage();
+  }, [isSidebarOpen, setIsSidebarOpen, saveIsSidebarOpenToLocalStorage]);
 
   return (
     <PageSidebar id="nav-sidebar" isSidebarOpen={isSidebarOpen}>
@@ -26,6 +39,7 @@ export default () => {
               id="nav-sidebar-link-home"
               itemID="1"
               isActive={locationPathname === '/'}
+              onClick={onSidebarToggle}
             >
               <LocaleLink prefetch="intent" to="/">
                 <Trans>Home</Trans>
@@ -35,6 +49,7 @@ export default () => {
               id="nav-sidebar-link-auctions"
               itemID="1"
               isActive={locationPathname.startsWith('/auctions')}
+              onClick={onSidebarToggle}
             >
               <LocaleLink prefetch="intent" to="/auctions">
                 <Trans>Auctions</Trans>
@@ -45,6 +60,7 @@ export default () => {
                 id="nav-sidebar-link-users"
                 itemID="1"
                 isActive={locationPathname.startsWith('/users')}
+                onClick={onSidebarToggle}
               >
                 <LocaleLink prefetch="intent" to="/users">
                   <Trans>Users</Trans>
