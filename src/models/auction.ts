@@ -109,6 +109,10 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
       handleFetch(use, `auctions/${auctionId}/bids`, [], (bids: BidDTO[]) =>
         bids.map(mapBid),
       ),
+    getHighestBids: () =>
+      handleFetch(use, `auctions/bids/highest`, [], (bids: BidDTO[]) =>
+        bids.map(mapBid),
+      ),
     updateHighestBid: async (auctionId: string): Promise<Auction | null> => {
       const highestBid = await handleFetch(
         use,

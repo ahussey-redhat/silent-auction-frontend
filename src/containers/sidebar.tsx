@@ -56,16 +56,27 @@ export default () => {
               </LocaleLink>
             </NavItem>
             {hasRole('admin') ? (
-              <NavItem
-                id="nav-sidebar-link-users"
-                itemID="1"
-                isActive={locationPathname.startsWith('/users')}
-                onClick={onSidebarToggle}
-              >
-                <LocaleLink prefetch="intent" to="/users">
-                  <Trans>Users</Trans>
-                </LocaleLink>
-              </NavItem>
+              <>
+                <NavItem
+                  id="nav-sidebar-link-highest-bids"
+                  itemID="1"
+                  isActive={locationPathname.startsWith('/highest-bids')}
+                  onClick={onSidebarToggle}
+                >
+                  <LocaleLink prefetch="intent" to="/highest-bids">
+                    <Trans>Highest Bids</Trans>
+                  </LocaleLink>
+                </NavItem><NavItem
+                  id="nav-sidebar-link-users"
+                  itemID="1"
+                  isActive={locationPathname.startsWith('/users')}
+                  onClick={onSidebarToggle}
+                >
+                  <LocaleLink prefetch="intent" to="/users">
+                    <Trans>Users</Trans>
+                  </LocaleLink>
+                </NavItem>
+              </>
             ) : null}
           </NavList>
         </Nav>
