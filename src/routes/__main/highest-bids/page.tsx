@@ -86,9 +86,18 @@ export default () => {
                       )}
                     </p>
                   </DataListCell>,
+                  <DataListCell key="table">
+                    <p>
+                      <strong>Table Number</strong>:{' '}
+                      {(user =>
+                        user ? `${user?.tableNumber}` : '')(
+                        users.find(({ id }) => id === userId),
+                      )}
+                    </p>
+                  </DataListCell>,
                   <DataListCell key="amount">
                     <p>
-                      <strong>Amount</strong>: {amount}
+                      <strong>Amount</strong>: ${amount}
                     </p>
                   </DataListCell>,
                   <DataListCell key="time">
