@@ -53,7 +53,7 @@ export default ({
 
   useEffect(() => {
     if (minimumBidAmount !== previousMinimumBidAmount && !isOpen) {
-      setBidAmount(minimumBidAmount + 1);
+      setBidAmount(minimumBidAmount + 10);
     }
   }, [minimumBidAmount, previousMinimumBidAmount, setBidAmount, isOpen]);
 
