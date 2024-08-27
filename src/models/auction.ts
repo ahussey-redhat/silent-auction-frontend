@@ -78,6 +78,7 @@ const auctionModel = model<State>('auction').define((_, { use }) => ({
     getAuctions: handleEffect('auctions'),
     getAuction: handleEffect('auction'),
     getBids: handleEffect('bids'),
+    getHighestBids: handleEffect('bids'),
     updateHighestBid: handleEffect('auction'),
     placeBid: handleEffect('bid'),
   },
