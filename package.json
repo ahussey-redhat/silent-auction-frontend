@@ -51,7 +51,7 @@
     "@modern-js/app-tools": "2.54.5",
     "@modern-js/eslint-config": "2.54.5",
     "@modern-js/plugin-ssg": "2.54.5",
-    "@modern-js/plugin-swc": "2.54.5",
+    "@modern-js/plugin-swc": "2.58.3",
     "@modern-js/tsconfig": "2.54.5",
     "@types/chance": "^1.1.6",
     "@types/jest": "~29.5.12",
