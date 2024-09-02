@@ -5,7 +5,7 @@ metadata:
 components:
   - name: nodejs
     container:
-      image: 'quay.io/ahussey/udi-pnpm:latest'
+      image: registry.redhat.io/devspaces/udi-rhel8:latest
       mountSources: true
       sourceMapping: /projects
       memoryLimit: 8G
