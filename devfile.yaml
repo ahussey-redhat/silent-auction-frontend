@@ -5,7 +5,7 @@ metadata:
 components:
   - name: nodejs
     container:
-      image: 'quay.io/tstasse/silent-auction-demo-frontend:latest'
+      image: 'quay.io/ahussey/udi-pnpm:latest'
       mountSources: true
       sourceMapping: /projects
       memoryLimit: 8G
