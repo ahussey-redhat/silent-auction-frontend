@@ -27,8 +27,8 @@ importers:
         specifier: 6.0.0-alpha.14
         version: 6.0.0-alpha.14(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-core':
-        specifier: 6.0.0-alpha.100
-        version: 6.0.0-alpha.100(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 6.0.0-prerelease.1
+        version: 6.0.0-prerelease.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-icons':
         specifier: 6.0.0-alpha.35
         version: 6.0.0-alpha.35(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -65,10 +65,10 @@ importers:
         version: 2.58.2(typescript@5.5.4)
       '@modern-js/app-tools':
         specifier: 2.54.5
-        version: 2.54.5(@rspack/core@0.7.5(@swc/helpers@0.5.3))(eslint@9.9.1(jiti@1.21.6))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)
+        version: 2.54.5(@rspack/core@0.7.5(@swc/helpers@0.5.11))(eslint@9.9.1(jiti@1.21.6))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)
       '@modern-js/eslint-config':
         specifier: 2.54.5
-        version: 2.54.5(@swc/helpers@0.5.3)(typescript@5.5.4)
+        version: 2.54.5(@swc/helpers@0.5.11)(typescript@5.5.4)
       '@modern-js/plugin-ssg':
         specifier: 2.54.5
         version: 2.54.5(react-dom@18.2.0(react@18.2.0))(react-router-dom@6.25.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
@@ -1423,14 +1423,8 @@ packages:
       react: ^17 || ^18
       react-dom: ^17 || ^18
 
-  '@patternfly/react-core@6.0.0-alpha.100':
-    resolution: {integrity: sha512-8FudnggWpdAmKgENtC4eMuVAfS2X9mce7tR7pVce0emsBONUm9u/FYvcr5913mf5SDCO8PDq7Tk6nhlska6Rqg==}
-    peerDependencies:
-      react: ^17 || ^18
-      react-dom: ^17 || ^18
-
-  '@patternfly/react-core@6.0.0-alpha.101':
-    resolution: {integrity: sha512-kHN25sFJ5BAWXcXs2MDJ39MhylJzJXmxkJC9vGUzdu1LbIkH1EWY3S8YFJKP5sQV12ZHZomBEoCKuR6PYg/RaQ==}
+  '@patternfly/react-core@6.0.0-prerelease.1':
+    resolution: {integrity: sha512-QEjBhXPRqlbD/OUyC+srJsot1K6+KEIOXDZDCWSmzENVDrZ07VlWCKrNncDTjXjB71fpNFds3+FnD88bciHsCg==}
     peerDependencies:
       react: ^17 || ^18
       react-dom: ^17 || ^18
@@ -1447,11 +1441,17 @@ packages:
       react: ^17 || ^18
       react-dom: ^17 || ^18
 
-  '@patternfly/react-styles@6.0.0-alpha.34':
-    resolution: {integrity: sha512-mJSpYrgI/Sgu+gwSv5h8ZP+prvzNUbfEkWP+LV6hZuw70N0UnarJacTsMD0zouCWUwIVt1NOJfawLOVmzAsxbA==}
+  '@patternfly/react-icons@6.0.0-prerelease.1':
+    resolution: {integrity: sha512-vdhDNcT9iIgBgHsp/Zg1RQtig6A5SrIIQnrWAEEsMD/u9fDGXfoui29gWGIyJsmwVW0t/T8HYLIpXYsT0KzvvA==}
+    peerDependencies:
+      react: ^17 || ^18
+      react-dom: ^17 || ^18
 
   '@patternfly/react-styles@6.0.0-alpha.35':
     resolution: {integrity: sha512-9ddQpDJ1CXDbsuV5lYmynw8hqGncKXxnhNwvUKc+s/i50pNBAMmNO9CP5dkKhnZPcjHQj0A35aleQ7xdRgNWQw==}
+
+  '@patternfly/react-styles@6.0.0-prerelease.1':
+    resolution: {integrity: sha512-YaKA55c/0/iwFTyOzotDXF7rsS97+17OBAPTdJEbrgK8/8QKB5oUSgt2O7QrzrZBzPSe0HkyOhNWrx/IDMCwjw==}
 
   '@patternfly/react-table@6.0.0-alpha.102':
     resolution: {integrity: sha512-iTwaRy6W0eWS6zePNLGe8FgrK5i2fOFsXf80mHvS2E85x1xSRtD3EEpyx/uf9dyaP1rVVSBTiM2bZZiBo3Jz2w==}
@@ -1461,6 +1461,9 @@ packages:
 
   '@patternfly/react-tokens@6.0.0-alpha.35':
     resolution: {integrity: sha512-TYLYxyx7tDVRYeso+72eGZbM/O3G90brLzHQai2JtKI66XE3T2R89N0VxPT65gbc1cnqNkiTtUKkpUUHmOK9qg==}
+
+  '@patternfly/react-tokens@6.0.0-prerelease.1':
+    resolution: {integrity: sha512-drKu/J78V0De+SOhFmLKwMxKzfCj0rvC3SR8+8MoqNPSmXxholN3s4+TA4aEx1CNvuIZj0IMTFOeakS1RMdeDA==}
 
   '@pmmmwh/react-refresh-webpack-plugin@0.5.10':
     resolution: {integrity: sha512-j0Ya0hCFZPd4x40qLzbhGsh9TMtdb+CJQiso+WxLOPNasohq9cc5SNUcwsZaRH6++Xh91Xkm/xHCkuIiIu0LUA==}
@@ -7048,12 +7051,12 @@ snapshots:
     dependencies:
       moo: 0.5.2
 
-  '@modern-js-app/eslint-config@2.54.5(@swc/helpers@0.5.3)(typescript@5.5.4)':
+  '@modern-js-app/eslint-config@2.54.5(@swc/helpers@0.5.11)(typescript@5.5.4)':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/eslint-parser': 7.25.1(@babel/core@7.25.2)(eslint@9.9.1(jiti@1.21.6))
       '@babel/eslint-plugin': 7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.25.2)(eslint@8.57.0))(eslint@8.57.0)
-      '@rsbuild/babel-preset': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.3)
+      '@rsbuild/babel-preset': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.11)
       '@rsbuild/core': 0.7.10
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
       '@typescript-eslint/parser': 5.62.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
@@ -7147,7 +7150,7 @@ snapshots:
       '@swc/helpers': 0.5.1
       redux: 4.2.1
 
-  '@modern-js/app-tools@2.54.5(@rspack/core@0.7.5(@swc/helpers@0.5.3))(eslint@9.9.1(jiti@1.21.6))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)':
+  '@modern-js/app-tools@2.54.5(@rspack/core@0.7.5(@swc/helpers@0.5.11))(eslint@9.9.1(jiti@1.21.6))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)':
     dependencies:
       '@babel/parser': 7.25.3
       '@babel/traverse': 7.25.3
@@ -7164,7 +7167,7 @@ snapshots:
       '@modern-js/server-core': 2.54.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@modern-js/server-utils': 2.54.5(@babel/traverse@7.25.3)(@rsbuild/core@0.7.10)
       '@modern-js/types': 2.54.5
-      '@modern-js/uni-builder': 2.54.5(@babel/traverse@7.25.3)(@rspack/core@0.7.5(@swc/helpers@0.5.3))(esbuild@0.17.19)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)
+      '@modern-js/uni-builder': 2.54.5(@babel/traverse@7.25.3)(@rspack/core@0.7.5(@swc/helpers@0.5.11))(esbuild@0.17.19)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)
       '@modern-js/utils': 2.54.5
       '@rsbuild/core': 0.7.10
       '@rsbuild/plugin-node-polyfill': 0.7.10(@rsbuild/core@0.7.10)
@@ -7251,9 +7254,9 @@ snapshots:
       '@modern-js/utils': 2.54.5
       '@swc/helpers': 0.5.3
 
-  '@modern-js/eslint-config@2.54.5(@swc/helpers@0.5.3)(typescript@5.5.4)':
+  '@modern-js/eslint-config@2.54.5(@swc/helpers@0.5.11)(typescript@5.5.4)':
     dependencies:
-      '@modern-js-app/eslint-config': 2.54.5(@swc/helpers@0.5.3)(typescript@5.5.4)
+      '@modern-js-app/eslint-config': 2.54.5(@swc/helpers@0.5.11)(typescript@5.5.4)
     transitivePeerDependencies:
       - '@swc/helpers'
       - eslint-import-resolver-typescript
@@ -7496,7 +7499,7 @@ snapshots:
 
   '@modern-js/types@2.54.5': {}
 
-  '@modern-js/uni-builder@2.54.5(@babel/traverse@7.25.3)(@rspack/core@0.7.5(@swc/helpers@0.5.3))(esbuild@0.17.19)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)':
+  '@modern-js/uni-builder@2.54.5(@babel/traverse@7.25.3)(@rspack/core@0.7.5(@swc/helpers@0.5.11))(esbuild@0.17.19)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.5.4)':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/preset-react': 7.24.7(@babel/core@7.25.2)
@@ -7543,7 +7546,7 @@ snapshots:
       postcss-nesting: 12.0.1(postcss@8.4.41)
       postcss-page-break: 3.0.4(postcss@8.4.41)
       react-refresh: 0.14.2
-      rspack-manifest-plugin: 5.0.0(@rspack/core@0.7.5(@swc/helpers@0.5.3))
+      rspack-manifest-plugin: 5.0.0(@rspack/core@0.7.5(@swc/helpers@0.5.11))
       terser-webpack-plugin: 5.3.10(esbuild@0.17.19)(webpack@5.93.0(esbuild@0.17.19))
       ts-loader: 9.4.4(typescript@5.5.4)(webpack@5.93.0(esbuild@0.17.19))
       webpack: 5.93.0(esbuild@0.17.19)
@@ -7642,7 +7645,7 @@ snapshots:
 
   '@patternfly/react-component-groups@6.0.0-alpha.14(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@patternfly/react-core': 6.0.0-alpha.101(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@patternfly/react-core': 6.0.0-prerelease.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-icons': 6.0.0-alpha.36(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-table': 6.0.0-alpha.102(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       clsx: 2.1.1
@@ -7650,22 +7653,11 @@ snapshots:
       react-dom: 18.2.0(react@18.2.0)
       react-jss: 10.10.0(react@18.2.0)
 
-  '@patternfly/react-core@6.0.0-alpha.100(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@patternfly/react-core@6.0.0-prerelease.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@patternfly/react-icons': 6.0.0-alpha.35(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@patternfly/react-styles': 6.0.0-alpha.34
-      '@patternfly/react-tokens': 6.0.0-alpha.35
-      focus-trap: 7.5.4
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-dropzone: 14.2.3(react@18.2.0)
-      tslib: 2.6.3
-
-  '@patternfly/react-core@6.0.0-alpha.101(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@patternfly/react-icons': 6.0.0-alpha.36(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@patternfly/react-styles': 6.0.0-alpha.35
-      '@patternfly/react-tokens': 6.0.0-alpha.35
+      '@patternfly/react-icons': 6.0.0-prerelease.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@patternfly/react-styles': 6.0.0-prerelease.1
+      '@patternfly/react-tokens': 6.0.0-prerelease.1
       focus-trap: 7.5.4
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -7682,13 +7674,18 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@patternfly/react-styles@6.0.0-alpha.34': {}
+  '@patternfly/react-icons@6.0.0-prerelease.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
 
   '@patternfly/react-styles@6.0.0-alpha.35': {}
 
+  '@patternfly/react-styles@6.0.0-prerelease.1': {}
+
   '@patternfly/react-table@6.0.0-alpha.102(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@patternfly/react-core': 6.0.0-alpha.101(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@patternfly/react-core': 6.0.0-prerelease.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-icons': 6.0.0-alpha.36(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-styles': 6.0.0-alpha.35
       '@patternfly/react-tokens': 6.0.0-alpha.35
@@ -7698,6 +7695,8 @@ snapshots:
       tslib: 2.6.3
 
   '@patternfly/react-tokens@6.0.0-alpha.35': {}
+
+  '@patternfly/react-tokens@6.0.0-prerelease.1': {}
 
   '@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.14.2)(type-fest@0.21.3)(webpack@5.93.0(esbuild@0.17.19))':
     dependencies:
@@ -7730,6 +7729,27 @@ snapshots:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.1
+
+  '@rsbuild/babel-preset@0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.11)':
+    dependencies:
+      '@babel/core': 7.25.2
+      '@babel/plugin-proposal-decorators': 7.24.7(@babel/core@7.25.2)
+      '@babel/plugin-proposal-export-default-from': 7.24.7(@babel/core@7.25.2)
+      '@babel/plugin-proposal-partial-application': 7.24.7(@babel/core@7.25.2)
+      '@babel/plugin-proposal-pipeline-operator': 7.24.7(@babel/core@7.25.2)
+      '@babel/plugin-transform-runtime': 7.24.7(@babel/core@7.25.2)
+      '@babel/preset-env': 7.25.3(@babel/core@7.25.2)
+      '@babel/preset-typescript': 7.24.7(@babel/core@7.25.2)
+      '@babel/runtime': 7.25.0
+      '@babel/types': 7.25.2
+      '@rsbuild/plugin-babel': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.11)
+      '@types/babel__core': 7.20.5
+      babel-plugin-dynamic-import-node: 2.3.3
+      core-js: 3.36.1
+    transitivePeerDependencies:
+      - '@rsbuild/core'
+      - '@swc/helpers'
+      - supports-color
 
   '@rsbuild/babel-preset@0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.3)':
     dependencies:
@@ -7778,6 +7798,20 @@ snapshots:
       serialize-javascript: 6.0.2
     transitivePeerDependencies:
       - '@swc/helpers'
+
+  '@rsbuild/plugin-babel@0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.11)':
+    dependencies:
+      '@babel/core': 7.25.2
+      '@babel/plugin-proposal-decorators': 7.24.7(@babel/core@7.25.2)
+      '@babel/plugin-transform-class-properties': 7.24.7(@babel/core@7.25.2)
+      '@babel/preset-typescript': 7.24.7(@babel/core@7.25.2)
+      '@rsbuild/core': 0.7.10
+      '@rsbuild/shared': 0.7.10(@swc/helpers@0.5.11)
+      '@types/babel__core': 7.20.5
+      upath: 2.0.1
+    transitivePeerDependencies:
+      - '@swc/helpers'
+      - supports-color
 
   '@rsbuild/plugin-babel@0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.3)':
     dependencies:
@@ -7974,6 +8008,17 @@ snapshots:
     dependencies:
       '@rsbuild/core': 0.7.10
 
+  '@rsbuild/shared@0.7.10(@swc/helpers@0.5.11)':
+    dependencies:
+      '@rspack/core': 0.7.5(@swc/helpers@0.5.11)
+      caniuse-lite: 1.0.30001651
+      html-webpack-plugin: html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.11))
+      postcss: 8.4.41
+    optionalDependencies:
+      fsevents: 2.3.3
+    transitivePeerDependencies:
+      - '@swc/helpers'
+
   '@rsbuild/shared@0.7.10(@swc/helpers@0.5.3)':
     dependencies:
       '@rspack/core': 0.7.5(@swc/helpers@0.5.3)
@@ -8077,6 +8122,16 @@ snapshots:
       '@rspack/binding-win32-arm64-msvc': 1.0.0-beta.5
       '@rspack/binding-win32-ia32-msvc': 1.0.0-beta.5
       '@rspack/binding-win32-x64-msvc': 1.0.0-beta.5
+
+  '@rspack/core@0.7.5(@swc/helpers@0.5.11)':
+    dependencies:
+      '@module-federation/runtime-tools': 0.1.6
+      '@rspack/binding': 0.7.5
+      caniuse-lite: 1.0.30001651
+      tapable: 2.2.1
+      webpack-sources: 3.2.3
+    optionalDependencies:
+      '@swc/helpers': 0.5.11
 
   '@rspack/core@0.7.5(@swc/helpers@0.5.3)':
     dependencies:
@@ -10291,6 +10346,10 @@ snapshots:
       relateurl: 0.2.7
       terser: 5.31.6
 
+  html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.11)):
+    optionalDependencies:
+      '@rspack/core': 0.7.5(@swc/helpers@0.5.11)
+
   html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.3)):
     optionalDependencies:
       '@rspack/core': 0.7.5(@swc/helpers@0.5.3)
@@ -11871,12 +11930,12 @@ snapshots:
 
   rslog@1.2.2: {}
 
-  rspack-manifest-plugin@5.0.0(@rspack/core@0.7.5(@swc/helpers@0.5.3)):
+  rspack-manifest-plugin@5.0.0(@rspack/core@0.7.5(@swc/helpers@0.5.11)):
     dependencies:
       tapable: 2.2.1
       webpack-sources: 2.3.1
     optionalDependencies:
-      '@rspack/core': 0.7.5(@swc/helpers@0.5.3)
+      '@rspack/core': 0.7.5(@swc/helpers@0.5.11)
 
   rtl-css-js@1.16.1:
     dependencies:
