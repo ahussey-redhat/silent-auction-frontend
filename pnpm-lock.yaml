@@ -21,8 +21,8 @@ importers:
         specifier: ^4.11.3
         version: 4.11.3(react@18.2.0)
       '@modern-js/runtime':
-        specifier: 2.54.5
-        version: 2.54.5(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.93.0(esbuild@0.17.19))
+        specifier: 2.60.1
+        version: 2.60.1(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@patternfly/react-component-groups':
         specifier: 6.0.0-alpha.14
         version: 6.0.0-alpha.14(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1155,12 +1155,6 @@ packages:
       '@loadable/component': ^5.0.1
       react: ^16.3.0 || ^17.0.0 || ^18.0.0
 
-  '@loadable/webpack-plugin@5.15.2':
-    resolution: {integrity: sha512-+o87jPHn3E8sqW0aBA+qwKuG8JyIfMGdz3zECv0t/JF0KHhxXtzIlTiqzlIYc5ZpFs/vKSQfjzGIR5tPJjoXDw==}
-    engines: {node: '>=8'}
-    peerDependencies:
-      webpack: '>=4.6.0'
-
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
@@ -1243,6 +1237,12 @@ packages:
     peerDependencies:
       react: '>=17.0.0'
 
+  '@modern-js/plugin-data-loader@2.60.1':
+    resolution: {integrity: sha512-6Nb68BsR5Wd/MguJqVjNdV5oZ7sf/IPBEHORuKRB/cHfH7+Ynhamh9H+ZMaFtq7916lRbPP1iTVuCC1zBSi7SQ==}
+    engines: {node: '>=16.2.0'}
+    peerDependencies:
+      react: '>=17.0.0'
+
   '@modern-js/plugin-i18n@2.54.5':
     resolution: {integrity: sha512-NNt5ai6f+l/3VmNP5tD+Kk64n16qb/Mv7BAKA5cuavXBXYciDewBibNQVX0BxS8wi4Fytpfe9uWuOIBp2PvHsw==}
 
@@ -1270,6 +1270,9 @@ packages:
 
   '@modern-js/plugin@2.60.0':
     resolution: {integrity: sha512-fqHPJl3twwmqmnO4o7JTuZmzUM6v1z8MDAN33N1qJ7oNZlKMWpZKGk9Aqu+ecEe0x+rM7Vr/Spn4O+bvjdDSdw==}
+
+  '@modern-js/plugin@2.60.1':
+    resolution: {integrity: sha512-nz8MDkIsW6Y9ztRVw1QnHHPLze8EDpSyHFo9R/0IjMBT6B1lFn1UNKsf/ZzyNri60Y47MGyiFEodILbvwijutA==}
 
   '@modern-js/prod-server@2.54.5':
     resolution: {integrity: sha512-aQ5fCkVdXibu4jd5MTTwYItssCGTBEtzbGnnZsc4r7k7ipE3qeTAtd/SXYrefujPqClCU/Qlm57cXmwoQzOJIA==}
@@ -1304,8 +1307,19 @@ packages:
       react-dom:
         optional: true
 
-  '@modern-js/runtime@2.54.5':
-    resolution: {integrity: sha512-xzJK3QY4gd14qSQX+S1bdhR1LgnQuA5JC5X/aRWkMTSoohHemRR0PoHK7MBOsegpS7c/GUExyzhuMOYVScV+qw==}
+  '@modern-js/runtime-utils@2.60.1':
+    resolution: {integrity: sha512-V9GSti6nLyxA2A3mGpZfAPYePYwAkkozEisvhsaSXo4yyZm5vVWZv/JGLUD8lUfCW/Mm/hX3aA70utsOPPwz2A==}
+    peerDependencies:
+      react: '>=17.0.0'
+      react-dom: '>=17.0.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
+  '@modern-js/runtime@2.60.1':
+    resolution: {integrity: sha512-b8anmP0487BuL09n5EvxNDExl7mnhchM4Qn/a0K0eQsL0+Nl+msV0Wh1OqnCPqEucrP1RQe5BsyAJdbe6VbERg==}
     engines: {node: '>=14.17.6'}
     peerDependencies:
       react: '>=17'
@@ -1399,6 +1413,9 @@ packages:
   '@modern-js/types@2.54.5':
     resolution: {integrity: sha512-C4MMD3wh1rTbAUQkrRCQkPnbAZL97bFICHq7QTQYWADmkZw6oIPDmZ3ThZHpstabxoe5KiAOhknR1+2vm3Pgyg==}
 
+  '@modern-js/types@2.60.1':
+    resolution: {integrity: sha512-ut06+ZdSwBce+v7fc14vroe/DyIWH92pl81tjKRfhlS5U2P62iKqGRT76C6KiP5r0GVjhDznw/E2ygcKi4RS4g==}
+
   '@modern-js/uni-builder@2.54.5':
     resolution: {integrity: sha512-6+nzod2Bz1yvB+vjbOh2EyS9rHMO1mii0cY1PntbrBeYPKp/0dP/yRuaiyOrRLdVjR58BcYsmQXAKawZ/y9KPw==}
 
@@ -1407,6 +1424,9 @@ packages:
 
   '@modern-js/utils@2.60.0':
     resolution: {integrity: sha512-5B8ol7ljxgXcE7j1ZYhOmMzONivSBxwWA2/9HXOtl5cqda16O2yUYMwjZK4HbW12BuSc8+W4AT6D6qUyeKxVhA==}
+
+  '@modern-js/utils@2.60.1':
+    resolution: {integrity: sha512-Xu/xumI2xnkB6BXqHfqD5cDrMhxAW1/QsrHXWHcvEW1hSbtviw77PUwXs90NgPKGtV5wwdA319kUPxswe4TCUA==}
 
   '@module-federation/runtime-tools@0.1.6':
     resolution: {integrity: sha512-7ILVnzMIa0Dlc0Blck5tVZG1tnk1MmLnuZpLOMpbdW+zl+N6wdMjjHMjEZFCUAJh2E5XJ3BREwfX8Ets0nIkLg==}
@@ -3859,6 +3879,10 @@ packages:
   isarray@2.0.5:
     resolution: {integrity: sha512-xHjhDr3cNBK0BzdUJSPXZntQUx/mwMS5Rw4A7lPJ90XGAO6ISP/ePDNuo0vhqOZU+UD5JoodwCAAoZQd3FeAKw==}
 
+  isbot@3.7.1:
+    resolution: {integrity: sha512-JfqOaY3O1lcWt2nc+D6Mq231CNpwZrBboLa59Go0J8hjGH+gY/Sy0CA/YLUSIScINmAVwTdJZIsOTk4PfBtRuw==}
+    engines: {node: '>=12'}
+
   isbot@3.8.0:
     resolution: {integrity: sha512-vne1mzQUTR+qsMLeCBL9+/tgnDXRyc2pygLGl/WsgA+EZKIiB5Ehu0CiVTHIIk30zhJ24uGz4M5Ppse37aR0Hg==}
     engines: {node: '>=12'}
@@ -5932,7 +5956,7 @@ snapshots:
   '@babel/code-frame@7.24.7':
     dependencies:
       '@babel/highlight': 7.24.7
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   '@babel/compat-data@7.25.2': {}
 
@@ -6128,7 +6152,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.7
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   '@babel/parser@7.25.3':
     dependencies:
@@ -7197,11 +7221,6 @@ snapshots:
       lodash: 4.17.21
       react: 18.2.0
 
-  '@loadable/webpack-plugin@5.15.2(webpack@5.93.0(esbuild@0.17.19))':
-    dependencies:
-      make-dir: 3.1.0
-      webpack: 5.93.0(esbuild@0.17.19)
-
   '@mapbox/node-pre-gyp@1.0.11':
     dependencies:
       detect-libc: 2.0.3
@@ -7224,12 +7243,12 @@ snapshots:
   '@modern-js-app/eslint-config@2.54.5(@swc/helpers@0.5.13)(typescript@5.6.2)':
     dependencies:
       '@babel/core': 7.25.2
-      '@babel/eslint-parser': 7.25.1(@babel/core@7.25.2)(eslint@8.57.0)
+      '@babel/eslint-parser': 7.25.1(@babel/core@7.25.2)(eslint@9.9.1(jiti@1.21.6))
       '@babel/eslint-plugin': 7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.25.2)(eslint@8.57.0))(eslint@8.57.0)
       '@rsbuild/babel-preset': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.13)
       '@rsbuild/core': 0.7.10
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0)(typescript@5.6.2)
-      '@typescript-eslint/parser': 5.62.0(eslint@8.57.0)(typescript@5.6.2)
+      '@typescript-eslint/parser': 5.62.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.6.2)
       eslint: 8.57.0
       eslint-config-prettier: 8.10.0(eslint@8.57.0)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.0)
@@ -7251,12 +7270,12 @@ snapshots:
   '@modern-js-app/eslint-config@2.58.2(typescript@5.6.2)':
     dependencies:
       '@babel/core': 7.25.2
-      '@babel/eslint-parser': 7.25.1(@babel/core@7.25.2)(eslint@9.9.1(jiti@1.21.6))
+      '@babel/eslint-parser': 7.25.1(@babel/core@7.25.2)(eslint@8.57.0)
       '@babel/eslint-plugin': 7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.25.2)(eslint@8.57.0))(eslint@8.57.0)
       '@modern-js/babel-preset': 2.58.2(@rsbuild/core@1.0.1-beta.14)
       '@rsbuild/core': 1.0.1-beta.14
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0)(typescript@5.6.2)
-      '@typescript-eslint/parser': 5.62.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.6.2)
+      '@typescript-eslint/parser': 5.62.0(eslint@8.57.0)(typescript@5.6.2)
       eslint: 8.57.0
       eslint-config-prettier: 8.10.0(eslint@8.57.0)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.0)
@@ -7452,6 +7471,18 @@ snapshots:
       - react-dom
       - supports-color
 
+  '@modern-js/plugin-data-loader@2.60.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@babel/core': 7.25.2
+      '@modern-js/runtime-utils': 2.60.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@modern-js/utils': 2.60.1
+      '@swc/helpers': 0.5.13
+      path-to-regexp: 6.2.2
+      react: 18.2.0
+    transitivePeerDependencies:
+      - react-dom
+      - supports-color
+
   '@modern-js/plugin-i18n@2.54.5':
     dependencies:
       '@modern-js/utils': 2.54.5
@@ -7497,6 +7528,11 @@ snapshots:
   '@modern-js/plugin@2.60.0':
     dependencies:
       '@modern-js/utils': 2.60.0
+      '@swc/helpers': 0.5.13
+
+  '@modern-js/plugin@2.60.1':
+    dependencies:
+      '@modern-js/utils': 2.60.1
       '@swc/helpers': 0.5.13
 
   '@modern-js/prod-server@2.54.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
@@ -7555,34 +7591,45 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@modern-js/runtime@2.54.5(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.93.0(esbuild@0.17.19))':
+  '@modern-js/runtime-utils@2.60.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@modern-js/utils': 2.60.1
+      '@remix-run/router': 1.15.0
+      '@swc/helpers': 0.5.13
+      lru-cache: 6.0.0
+      react-router-dom: 6.22.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      serialize-javascript: 6.0.2
+    optionalDependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
+  '@modern-js/runtime@2.60.1(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/types': 7.25.2
       '@loadable/babel-plugin': 5.15.3(@babel/core@7.25.2)
       '@loadable/component': 5.15.3(react@18.2.0)
       '@loadable/server': 5.15.3(@loadable/component@5.15.3(react@18.2.0))(react@18.2.0)
-      '@loadable/webpack-plugin': 5.15.2(webpack@5.93.0(esbuild@0.17.19))
       '@modern-js-reduck/plugin-auto-actions': 1.1.11(@modern-js-reduck/store@1.1.11)
       '@modern-js-reduck/plugin-devtools': 1.1.11(@modern-js-reduck/store@1.1.11)
       '@modern-js-reduck/plugin-effects': 1.1.11(@modern-js-reduck/store@1.1.11)
       '@modern-js-reduck/plugin-immutable': 1.1.11(@modern-js-reduck/store@1.1.11)
       '@modern-js-reduck/react': 1.1.11(@types/react-dom@18.0.11)(@types/react@18.0.38)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@modern-js-reduck/store': 1.1.11
-      '@modern-js/plugin': 2.54.5
-      '@modern-js/plugin-data-loader': 2.54.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@modern-js/runtime-utils': 2.54.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@modern-js/types': 2.54.5
-      '@modern-js/utils': 2.54.5
-      '@swc/helpers': 0.5.3
+      '@modern-js/plugin': 2.60.1
+      '@modern-js/plugin-data-loader': 2.60.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@modern-js/runtime-utils': 2.60.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@modern-js/types': 2.60.1
+      '@modern-js/utils': 2.60.1
+      '@swc/helpers': 0.5.13
       '@types/loadable__component': 5.13.9
       '@types/react-helmet': 6.1.11
       '@types/styled-components': 5.1.34
       cookie: 0.5.0
       es-module-lexer: 1.5.4
       esbuild: 0.17.19
-      hoist-non-react-statics: 3.3.2
       invariant: 2.2.4
+      isbot: 3.7.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-helmet: 6.1.0(react@18.2.0)
@@ -7593,7 +7640,6 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
       - supports-color
-      - webpack
 
   '@modern-js/server-core@2.54.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
@@ -7713,6 +7759,8 @@ snapshots:
 
   '@modern-js/types@2.54.5': {}
 
+  '@modern-js/types@2.60.1': {}
+
   '@modern-js/uni-builder@2.54.5(@babel/traverse@7.25.3)(@rspack/core@0.7.5(@swc/helpers@0.5.13))(esbuild@0.17.19)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@5.3.11(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.6.2)':
     dependencies:
       '@babel/core': 7.25.2
@@ -7806,6 +7854,13 @@ snapshots:
     dependencies:
       '@swc/helpers': 0.5.13
       caniuse-lite: 1.0.30001651
+      lodash: 4.17.21
+      rslog: 1.2.2
+
+  '@modern-js/utils@2.60.1':
+    dependencies:
+      '@swc/helpers': 0.5.13
+      caniuse-lite: 1.0.30001660
       lodash: 4.17.21
       rslog: 1.2.2
 
@@ -8409,7 +8464,7 @@ snapshots:
     dependencies:
       '@module-federation/runtime-tools': 0.1.6
       '@rspack/binding': 0.7.5
-      caniuse-lite: 1.0.30001651
+      caniuse-lite: 1.0.30001660
       tapable: 2.2.1
       webpack-sources: 3.2.3
     optionalDependencies:
@@ -8419,7 +8474,7 @@ snapshots:
     dependencies:
       '@module-federation/runtime-tools': 0.1.6
       '@rspack/binding': 0.7.5
-      caniuse-lite: 1.0.30001651
+      caniuse-lite: 1.0.30001660
       tapable: 2.2.1
       webpack-sources: 3.2.3
     optionalDependencies:
@@ -8430,7 +8485,7 @@ snapshots:
       '@module-federation/runtime-tools': 0.2.3
       '@rspack/binding': 1.0.0-beta.5
       '@rspack/lite-tapable': 1.0.0
-      caniuse-lite: 1.0.30001651
+      caniuse-lite: 1.0.30001660
     optionalDependencies:
       '@swc/helpers': 0.5.11
 
@@ -9309,7 +9364,7 @@ snapshots:
 
   browserslist@4.23.3:
     dependencies:
-      caniuse-lite: 1.0.30001651
+      caniuse-lite: 1.0.30001660
       electron-to-chromium: 1.5.11
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
@@ -9354,7 +9409,7 @@ snapshots:
   caniuse-api@3.0.0:
     dependencies:
       browserslist: 4.23.3
-      caniuse-lite: 1.0.30001651
+      caniuse-lite: 1.0.30001660
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
@@ -10897,6 +10952,8 @@ snapshots:
   isarray@1.0.0: {}
 
   isarray@2.0.5: {}
+
+  isbot@3.7.1: {}
 
   isbot@3.8.0: {}
 
@@ -12675,7 +12732,7 @@ snapshots:
       css-tree: 2.3.1
       css-what: 6.1.0
       csso: 5.0.5
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   symbol-observable@1.2.0: {}
 
@@ -12883,7 +12940,7 @@ snapshots:
     dependencies:
       browserslist: 4.23.3
       escalade: 3.1.2
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   uri-js@4.4.1:
     dependencies:
