@@ -58,8 +58,8 @@ importers:
         specifier: ^4.11.3
         version: 4.11.3(typescript@5.6.2)
       '@lingui/swc-plugin':
-        specifier: ^4.0.8
-        version: 4.0.8(@lingui/macro@4.11.3(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2))
+        specifier: ^4.0.10
+        version: 4.0.10(@lingui/macro@4.11.3(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2))
       '@modern-js-app/eslint-config':
         specifier: 2.58.2
         version: 2.58.2(typescript@5.6.2)
@@ -1124,8 +1124,8 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
-  '@lingui/swc-plugin@4.0.8':
-    resolution: {integrity: sha512-zWvfFAvo2NOV+yFAjTbuEE0x53XEJlBS3EQ1R4xswjWSgpXWbLg45Rg37Ai2Ud0qeQkQLZnL93yt7dOwstX5eQ==}
+  '@lingui/swc-plugin@4.0.10':
+    resolution: {integrity: sha512-CPZkywUdG8HsEIxsRAAvx30KZmfxzh126yCvHq0suyvZZRLOVoNdlrUw1N9MfsB7YJsPLgD+XLGjRkeyo7ZduQ==}
     peerDependencies:
       '@lingui/macro': '4'
       '@swc/core': '*'
@@ -7175,7 +7175,7 @@ snapshots:
       '@lingui/core': 4.11.3
       react: 18.2.0
 
-  '@lingui/swc-plugin@4.0.8(@lingui/macro@4.11.3(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2))':
+  '@lingui/swc-plugin@4.0.10(@lingui/macro@4.11.3(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2))':
     dependencies:
       '@lingui/macro': 4.11.3(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2)
 

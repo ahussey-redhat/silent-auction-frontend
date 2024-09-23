@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@lingui/cli": "^4.11.3",
-    "@lingui/swc-plugin": "^4.0.8",
+    "@lingui/swc-plugin": "^4.0.10",
     "@modern-js-app/eslint-config": "2.58.2",
     "@modern-js/app-tools": "2.54.5",
     "@modern-js/eslint-config": "2.54.5",
