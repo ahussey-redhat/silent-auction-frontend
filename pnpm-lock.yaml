@@ -15,8 +15,8 @@ importers:
         specifier: ^4.11.3
         version: 4.11.3
       '@lingui/macro':
-        specifier: ^4.11.3
-        version: 4.11.3(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2)
+        specifier: ^4.11.4
+        version: 4.11.4(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2)
       '@lingui/react':
         specifier: ^4.11.3
         version: 4.11.3(react@18.2.0)
@@ -59,7 +59,7 @@ importers:
         version: 4.11.4(typescript@5.6.2)
       '@lingui/swc-plugin':
         specifier: ^4.0.10
-        version: 4.0.10(@lingui/macro@4.11.3(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2))
+        version: 4.0.10(@lingui/macro@4.11.4(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2))
       '@modern-js-app/eslint-config':
         specifier: 2.58.2
         version: 2.58.2(typescript@5.6.2)
@@ -1095,10 +1095,6 @@ packages:
     engines: {node: '>=16.0.0'}
     hasBin: true
 
-  '@lingui/conf@4.11.3':
-    resolution: {integrity: sha512-KwUJDrbzlZEXmlmqttpB/Sd9hiIo0sqccsZaYTHzW/uULZT9T11aw/f6RcPLCVJeSKazg/7dJhR1cKlxKzvjKA==}
-    engines: {node: '>=16.0.0'}
-
   '@lingui/conf@4.11.4':
     resolution: {integrity: sha512-FC12yP0MHzu2QN5/4JkFHdz25l4Yu2ucjj3K12Y8tW/75oPh+n8k2u1+3/M68zWoqf5yyFvU4m2A+gxEmeR0iw==}
     engines: {node: '>=16.0.0'}
@@ -1115,8 +1111,8 @@ packages:
     resolution: {integrity: sha512-PiWbTiiNgYZTFVuBHYirtAG98cDxrT0IwmSvETQk4YbaqCdn28/J7fRFZScsKqe8LmpnxX4EXZLs/R0MP2jLHA==}
     engines: {node: '>=16.0.0'}
 
-  '@lingui/macro@4.11.3':
-    resolution: {integrity: sha512-D0me8ZRtH0ylSavhKZu0FYf5mJ1y6kDMMPjYVDyiT5ooOI/5jjv9LIAqrdYGCBygnwsxOG1dzDw6+3s5GTs+Bg==}
+  '@lingui/macro@4.11.4':
+    resolution: {integrity: sha512-mgfyBpp/UCiaJxr+DTBtaCUKnq2fV9JrmUmBumC9PaFDCXYfjB0A2gaq2XEgn9PmUKuzC7PGs1sPJ3TBJ8uGTw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@lingui/react': ^4.0.0
@@ -7138,17 +7134,6 @@ snapshots:
       - supports-color
       - typescript
 
-  '@lingui/conf@4.11.3(typescript@5.6.2)':
-    dependencies:
-      '@babel/runtime': 7.25.0
-      chalk: 4.1.2
-      cosmiconfig: 8.3.6(typescript@5.6.2)
-      jest-validate: 29.7.0
-      jiti: 1.21.6
-      lodash.get: 4.4.2
-    transitivePeerDependencies:
-      - typescript
-
   '@lingui/conf@4.11.4(typescript@5.6.2)':
     dependencies:
       '@babel/runtime': 7.25.0
@@ -7181,13 +7166,13 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@lingui/macro@4.11.3(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2)':
+  '@lingui/macro@4.11.4(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2)':
     dependencies:
       '@babel/runtime': 7.25.0
       '@babel/types': 7.25.2
-      '@lingui/conf': 4.11.3(typescript@5.6.2)
-      '@lingui/core': 4.11.3
-      '@lingui/message-utils': 4.11.3
+      '@lingui/conf': 4.11.4(typescript@5.6.2)
+      '@lingui/core': 4.11.4
+      '@lingui/message-utils': 4.11.4
       '@lingui/react': 4.11.3(react@18.2.0)
       babel-plugin-macros: 3.1.0
     transitivePeerDependencies:
@@ -7209,9 +7194,9 @@ snapshots:
       '@lingui/core': 4.11.3
       react: 18.2.0
 
-  '@lingui/swc-plugin@4.0.10(@lingui/macro@4.11.3(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2))':
+  '@lingui/swc-plugin@4.0.10(@lingui/macro@4.11.4(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2))':
     dependencies:
-      '@lingui/macro': 4.11.3(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2)
+      '@lingui/macro': 4.11.4(@lingui/react@4.11.3(react@18.2.0))(babel-plugin-macros@3.1.0)(typescript@5.6.2)
 
   '@loadable/babel-plugin@5.15.3(@babel/core@7.25.2)':
     dependencies:
