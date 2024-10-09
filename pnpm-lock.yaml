@@ -97,8 +97,8 @@ importers:
         specifier: ^1.1.12
         version: 1.1.12
       husky:
-        specifier: ~8.0.3
-        version: 8.0.3
+        specifier: ~9.1.6
+        version: 9.1.6
       lint-staged:
         specifier: ~13.1.4
         version: 13.1.4
@@ -3663,6 +3663,11 @@ packages:
   husky@8.0.3:
     resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
     engines: {node: '>=14'}
+    hasBin: true
+
+  husky@9.1.6:
+    resolution: {integrity: sha512-sqbjZKK7kf44hfdE94EoX8MZNk0n7HeW37O4YrVGCF4wzgQjp+akPAkfUK5LZ6KuR/6sqeAVuXHji+RzQgOn5A==}
+    engines: {node: '>=18'}
     hasBin: true
 
   hyphenate-style-name@1.1.0:
@@ -10746,6 +10751,8 @@ snapshots:
   human-signals@4.3.1: {}
 
   husky@8.0.3: {}
+
+  husky@9.1.6: {}
 
   hyphenate-style-name@1.1.0: {}
 
