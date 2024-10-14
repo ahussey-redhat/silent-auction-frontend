@@ -39,7 +39,7 @@
     "@patternfly/react-styles": "6.0.0-prerelease.6",
     "eslint": "^9.9.1",
     "keycloak-js": "^25.0.6",
-    "react": "~18.2.0",
+    "react": "~18.3.1",
     "react-dom": "~18.2.0",
     "react-use": "^17.5.1",
     "use-debounce": "^10.0.3"
@@ -56,7 +56,7 @@
     "@types/chance": "^1.1.6",
     "@types/jest": "~29.5.12",
     "@types/node": "~22.3.0",
-    "@types/react": "~18.0.38",
+    "@types/react": "~18.3.11",
     "@types/react-dom": "~18.0.11",
     "chance": "^1.1.12",
     "husky": "~9.1.6",
