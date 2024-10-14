@@ -12,8 +12,8 @@ importers:
         specifier: ^9.10.0
         version: 9.10.0
       '@lingui/core':
-        specifier: ^4.11.3
-        version: 4.11.3
+        specifier: ^4.12.0
+        version: 4.12.0
       '@lingui/macro':
         specifier: ^4.11.4
         version: 4.11.4(@lingui/react@4.11.3(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2)
@@ -1107,6 +1107,10 @@ packages:
     resolution: {integrity: sha512-W0bBIFe44s//Qs+RQ+NMfzK5vAm9oEKyDddlN94Db6rzeUT/IJo7N+T75A6Bya8v/BrtF2G/W4b77eS3sd0utw==}
     engines: {node: '>=16.0.0'}
 
+  '@lingui/core@4.12.0':
+    resolution: {integrity: sha512-mzu55Ka7fTr+gTdv2AoJl1kP2X6FLuolVtkY2eWiJ7SvyOv294kw30VCHrrSUctzYuOsktUE59RA6mlng70P1g==}
+    engines: {node: '>=16.0.0'}
+
   '@lingui/format-po@4.11.4':
     resolution: {integrity: sha512-PiWbTiiNgYZTFVuBHYirtAG98cDxrT0IwmSvETQk4YbaqCdn28/J7fRFZScsKqe8LmpnxX4EXZLs/R0MP2jLHA==}
     engines: {node: '>=16.0.0'}
@@ -1124,6 +1128,10 @@ packages:
 
   '@lingui/message-utils@4.11.4':
     resolution: {integrity: sha512-ZTCDhGbj5EN+P9Ajcj0Gq9uDP3HZTRW6/kT09WkiFgL4NayYLksPvgBk29sIglsS6M+Y6Iw2BrUK403SZjZKgw==}
+    engines: {node: '>=16.0.0'}
+
+  '@lingui/message-utils@4.12.0':
+    resolution: {integrity: sha512-K1ROdcjJXCPBed6NhI6RvOWwRZW+rnYQCnWL7pJS+R9h+Lkc51hyTEfXb4nWdfZzu6l0BAGasq0S5ZnfCjbjXw==}
     engines: {node: '>=16.0.0'}
 
   '@lingui/react@4.11.3':
@@ -7174,6 +7182,12 @@ snapshots:
       '@lingui/message-utils': 4.11.4
       unraw: 3.0.0
 
+  '@lingui/core@4.12.0':
+    dependencies:
+      '@babel/runtime': 7.25.0
+      '@lingui/message-utils': 4.12.0
+      unraw: 3.0.0
+
   '@lingui/format-po@4.11.4(typescript@5.6.2)':
     dependencies:
       '@lingui/conf': 4.11.4(typescript@5.6.2)
@@ -7201,6 +7215,11 @@ snapshots:
       js-sha256: 0.10.1
 
   '@lingui/message-utils@4.11.4':
+    dependencies:
+      '@messageformat/parser': 5.1.0
+      js-sha256: 0.10.1
+
+  '@lingui/message-utils@4.12.0':
     dependencies:
       '@messageformat/parser': 5.1.0
       js-sha256: 0.10.1
