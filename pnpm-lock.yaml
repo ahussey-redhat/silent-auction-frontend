@@ -16,10 +16,10 @@ importers:
         version: 4.12.0
       '@lingui/macro':
         specifier: ^4.11.4
-        version: 4.11.4(@lingui/react@4.11.3(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2)
+        version: 4.11.4(@lingui/react@4.14.1(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2)
       '@lingui/react':
-        specifier: ^4.11.3
-        version: 4.11.3(react@18.3.1)
+        specifier: ^4.14.1
+        version: 4.14.1(react@18.3.1)
       '@modern-js/runtime':
         specifier: 2.61.0
         version: 2.61.0(@types/react-dom@18.0.11)(@types/react@18.3.12)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
@@ -59,7 +59,7 @@ importers:
         version: 4.14.0(typescript@5.6.2)
       '@lingui/swc-plugin':
         specifier: ^4.0.10
-        version: 4.0.10(@lingui/macro@4.11.4(@lingui/react@4.11.3(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2))
+        version: 4.0.10(@lingui/macro@4.11.4(@lingui/react@4.14.1(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2))
       '@modern-js-app/eslint-config':
         specifier: 2.59.0
         version: 2.59.0(typescript@5.6.2)
@@ -1295,10 +1295,6 @@ packages:
     resolution: {integrity: sha512-wHZ4s79wqPnROa3xEoUTNep7sjqwbDHCMLBhsHbcvk/3ACDKgm0TMvDnIRjMRwrPRsK98yxSmWaE+NKhT0Ggyw==}
     engines: {node: '>=16.0.0'}
 
-  '@lingui/core@4.11.3':
-    resolution: {integrity: sha512-IjJxn0Kvzv+ICnGlMqn8wRIQLikCJVrolb1oyi6GqtbiuPiwKYeU0D6Hbe146lMaTN8juc3tOCBS+Fr02XqFIQ==}
-    engines: {node: '>=16.0.0'}
-
   '@lingui/core@4.11.4':
     resolution: {integrity: sha512-W0bBIFe44s//Qs+RQ+NMfzK5vAm9oEKyDddlN94Db6rzeUT/IJo7N+T75A6Bya8v/BrtF2G/W4b77eS3sd0utw==}
     engines: {node: '>=16.0.0'}
@@ -1309,6 +1305,10 @@ packages:
 
   '@lingui/core@4.14.0':
     resolution: {integrity: sha512-rsuBKG3mupWpfP5RYacufu0ToavrqgFPnEI/zOcuvMNL24IlZ38O2/P3POZCEA8XCyhON70FICy8xs3ZvQ+uWg==}
+    engines: {node: '>=16.0.0'}
+
+  '@lingui/core@4.14.1':
+    resolution: {integrity: sha512-3O6bnNzApWjb+jIdXa7G2VbrP6jZ5nfCeYSVloEYg6YFIfsQ3GunccK6I2nL80mWgr2qGP4VilGD+ODCeXHITA==}
     engines: {node: '>=16.0.0'}
 
   '@lingui/format-po@4.14.0':
@@ -1322,10 +1322,6 @@ packages:
       '@lingui/react': ^4.0.0
       babel-plugin-macros: 2 || 3
 
-  '@lingui/message-utils@4.11.3':
-    resolution: {integrity: sha512-ZSw3OoKbknOw3nSrqt194g2F8r0guKow9csb46zlL7zX/yOWCaj767wvSvMoglZtVvurfQs4NPv2cohYlWORNw==}
-    engines: {node: '>=16.0.0'}
-
   '@lingui/message-utils@4.11.4':
     resolution: {integrity: sha512-ZTCDhGbj5EN+P9Ajcj0Gq9uDP3HZTRW6/kT09WkiFgL4NayYLksPvgBk29sIglsS6M+Y6Iw2BrUK403SZjZKgw==}
     engines: {node: '>=16.0.0'}
@@ -1338,8 +1334,12 @@ packages:
     resolution: {integrity: sha512-izZod/6P2cXtqZt06r+VcbG3oCskPY8A1dVA8hyx0UZBCaufrZk6NgzCMYTMRXyOuXt6MafQyUfBJSrE4n3FIw==}
     engines: {node: '>=16.0.0'}
 
-  '@lingui/react@4.11.3':
-    resolution: {integrity: sha512-FuorwDsz5zDpUNpyj7J8ZKqJrrVxOz1EtQ3aJGJsmnTtVO01N3nR3ckMzpYvZ71XXdDEvhUC9ihmiKbFvpaZ/w==}
+  '@lingui/message-utils@4.14.1':
+    resolution: {integrity: sha512-J6MzyTLNCzEnyR1Da188G81cRcQMbk/lyYnLWMzQjIELDX8bBBwNea91Sf5Zm+BB+ADWmmGTdUqRPAjDqT9Y5w==}
+    engines: {node: '>=16.0.0'}
+
+  '@lingui/react@4.14.1':
+    resolution: {integrity: sha512-oZ9Rw+vOXJuaZvI1o4ASAIbCSe7AchCxsKGc0Y3csduTEOisvhsLgh8UDA8LW1mRgVPh5yZYB+VbfDMDQSzHpg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -6319,14 +6319,6 @@ snapshots:
       eslint-visitor-keys: 2.1.0
       semver: 6.3.1
 
-  '@babel/eslint-parser@7.25.1(@babel/core@7.26.0)(eslint@9.15.0(jiti@1.21.6))':
-    dependencies:
-      '@babel/core': 7.26.0
-      '@nicolo-ribaudo/eslint-scope-5-internals': 5.1.1-v1
-      eslint: 9.15.0(jiti@1.21.6)
-      eslint-visitor-keys: 2.1.0
-      semver: 6.3.1
-
   '@babel/eslint-plugin@7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.25.8)(eslint@8.57.0))(eslint@8.57.0)':
     dependencies:
       '@babel/eslint-parser': 7.25.1(@babel/core@7.25.8)(eslint@8.57.0)
@@ -7737,12 +7729,6 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@lingui/core@4.11.3':
-    dependencies:
-      '@babel/runtime': 7.25.0
-      '@lingui/message-utils': 4.11.3
-      unraw: 3.0.0
-
   '@lingui/core@4.11.4':
     dependencies:
       '@babel/runtime': 7.25.0
@@ -7761,6 +7747,12 @@ snapshots:
       '@lingui/message-utils': 4.14.0
       unraw: 3.0.0
 
+  '@lingui/core@4.14.1':
+    dependencies:
+      '@babel/runtime': 7.25.0
+      '@lingui/message-utils': 4.14.1
+      unraw: 3.0.0
+
   '@lingui/format-po@4.14.0(typescript@5.6.2)':
     dependencies:
       '@lingui/conf': 4.14.0(typescript@5.6.2)
@@ -7770,22 +7762,17 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@lingui/macro@4.11.4(@lingui/react@4.11.3(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2)':
+  '@lingui/macro@4.11.4(@lingui/react@4.14.1(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2)':
     dependencies:
       '@babel/runtime': 7.25.0
       '@babel/types': 7.25.2
       '@lingui/conf': 4.11.4(typescript@5.6.2)
       '@lingui/core': 4.11.4
       '@lingui/message-utils': 4.11.4
-      '@lingui/react': 4.11.3(react@18.3.1)
+      '@lingui/react': 4.14.1(react@18.3.1)
       babel-plugin-macros: 3.1.0
     transitivePeerDependencies:
       - typescript
-
-  '@lingui/message-utils@4.11.3':
-    dependencies:
-      '@messageformat/parser': 5.1.0
-      js-sha256: 0.10.1
 
   '@lingui/message-utils@4.11.4':
     dependencies:
@@ -7802,15 +7789,20 @@ snapshots:
       '@messageformat/parser': 5.1.0
       js-sha256: 0.10.1
 
-  '@lingui/react@4.11.3(react@18.3.1)':
+  '@lingui/message-utils@4.14.1':
+    dependencies:
+      '@messageformat/parser': 5.1.0
+      js-sha256: 0.10.1
+
+  '@lingui/react@4.14.1(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.25.0
-      '@lingui/core': 4.11.3
+      '@lingui/core': 4.14.1
       react: 18.3.1
 
-  '@lingui/swc-plugin@4.0.10(@lingui/macro@4.11.4(@lingui/react@4.11.3(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2))':
+  '@lingui/swc-plugin@4.0.10(@lingui/macro@4.11.4(@lingui/react@4.14.1(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2))':
     dependencies:
-      '@lingui/macro': 4.11.4(@lingui/react@4.11.3(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2)
+      '@lingui/macro': 4.11.4(@lingui/react@4.14.1(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2)
 
   '@loadable/babel-plugin@5.15.3(@babel/core@7.26.0)':
     dependencies:
@@ -7852,12 +7844,12 @@ snapshots:
   '@modern-js-app/eslint-config@2.54.5(@swc/helpers@0.5.13)(typescript@5.6.2)':
     dependencies:
       '@babel/core': 7.25.8
-      '@babel/eslint-parser': 7.25.1(@babel/core@7.26.0)(eslint@9.15.0(jiti@1.21.6))
+      '@babel/eslint-parser': 7.25.1(@babel/core@7.25.8)(eslint@8.57.0)
       '@babel/eslint-plugin': 7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.25.8)(eslint@8.57.0))(eslint@8.57.0)
       '@rsbuild/babel-preset': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.13)
       '@rsbuild/core': 0.7.10
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0)(typescript@5.6.2)
-      '@typescript-eslint/parser': 5.62.0(eslint@9.15.0(jiti@1.21.6))(typescript@5.6.2)
+      '@typescript-eslint/parser': 5.62.0(eslint@8.57.0)(typescript@5.6.2)
       eslint: 8.57.0
       eslint-config-prettier: 8.10.0(eslint@8.57.0)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.0)
@@ -9334,18 +9326,6 @@ snapshots:
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.2)
       debug: 4.3.6(supports-color@9.3.1)
       eslint: 8.57.0
-    optionalDependencies:
-      typescript: 5.6.2
-    transitivePeerDependencies:
-      - supports-color
-
-  '@typescript-eslint/parser@5.62.0(eslint@9.15.0(jiti@1.21.6))(typescript@5.6.2)':
-    dependencies:
-      '@typescript-eslint/scope-manager': 5.62.0
-      '@typescript-eslint/types': 5.62.0
-      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.2)
-      debug: 4.3.6(supports-color@9.3.1)
-      eslint: 9.15.0(jiti@1.21.6)
     optionalDependencies:
       typescript: 5.6.2
     transitivePeerDependencies:
