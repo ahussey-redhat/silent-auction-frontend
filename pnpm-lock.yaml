@@ -76,8 +76,8 @@ importers:
         specifier: 2.60.0
         version: 2.60.0
       '@modern-js/tsconfig':
-        specifier: 2.60.2
-        version: 2.60.2
+        specifier: 2.63.1
+        version: 2.63.1
       '@types/chance':
         specifier: ^1.1.6
         version: 1.1.6
@@ -1626,8 +1626,8 @@ packages:
       '@swc/helpers':
         optional: true
 
-  '@modern-js/tsconfig@2.60.2':
-    resolution: {integrity: sha512-Xj/henB079vCAbkOCJzSLunDV7DGb3HdJFYXmIfL7byjuTR/4EXb2UkPl0pTaEWjgHlqWZ+hPAKa9uHpsODxPA==}
+  '@modern-js/tsconfig@2.63.1':
+    resolution: {integrity: sha512-85FWJSe4YyZC+ofr9M6OaFvR/xMzCspTnnrAGI3fXN6Of32lWXoJfNG/DUBCwnPz2GBZEZuWywpHkPv0kBYIWA==}
 
   '@modern-js/types@2.60.3':
     resolution: {integrity: sha512-v2MEvxmEa6jdXjMr3GUPVXwVlELoHaePHc9cmCCgu5Si23Vla5It4j27n72l8bBYhBuJ7zM1pqT9yrvNxIBPeQ==}
@@ -8358,7 +8358,7 @@ snapshots:
       '@modern-js/swc-plugins-win32-x64-msvc': 0.6.11
       '@swc/helpers': 0.5.13
 
-  '@modern-js/tsconfig@2.60.2': {}
+  '@modern-js/tsconfig@2.63.1': {}
 
   '@modern-js/types@2.60.3': {}
 
