@@ -55,8 +55,8 @@ importers:
         version: 10.0.4(react@18.3.1)
     devDependencies:
       '@lingui/cli':
-        specifier: ^5.1.0
-        version: 5.1.0(typescript@5.6.2)
+        specifier: ^5.1.1
+        version: 5.1.1(typescript@5.6.2)
       '@lingui/swc-plugin':
         specifier: ^4.0.10
         version: 4.0.10(@lingui/macro@4.11.4(@lingui/react@4.14.1(react@18.3.1))(babel-plugin-macros@3.1.0)(typescript@5.6.2))
@@ -1387,12 +1387,12 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@lingui/babel-plugin-extract-messages@5.1.0':
-    resolution: {integrity: sha512-GlfZJcodEeGB5DbDj7YZx1Iyym0lcJiwrkM4BwdSmJpoZRF+dbiVmRk/dRg5Zw90ug6K1OOyMDbxlrZPnMh98w==}
+  '@lingui/babel-plugin-extract-messages@5.1.1':
+    resolution: {integrity: sha512-2jAmEbyPLeZFLMcuIT/4pXum19e9/skQQcAx6hRtkjoUf8CqsZY8JSOcijZ6EEDgaNZQSepoaOWAvQNLB6vD0A==}
     engines: {node: '>=20.0.0'}
 
-  '@lingui/babel-plugin-lingui-macro@5.1.0':
-    resolution: {integrity: sha512-fRkzY6XAL5c7rr1mI3VHzgNzrmRXEjSKG0VZKYt3MsMrbipzzjGYe/1ubNjxeYJqWUIaK4p7qD+bru8N6Ppo6A==}
+  '@lingui/babel-plugin-lingui-macro@5.1.1':
+    resolution: {integrity: sha512-mW7FiE9PlKiFFXrA8+u0mN+ExXDjTqHX0nQTmbhNd6afNUgtCHv8Krokk9Hheogc4TdFprR/ADlp7v2kUOKgKw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       babel-plugin-macros: 2 || 3
@@ -1400,8 +1400,8 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  '@lingui/cli@5.1.0':
-    resolution: {integrity: sha512-RJiV67QSIHalWEXmnU6j4FwDWIF8tEx0Edq6DE8SvR+aAoSZBjXEBvNfFJcaimWeyUyv+fXUy6rG4rzSC87iFQ==}
+  '@lingui/cli@5.1.1':
+    resolution: {integrity: sha512-n+dC9XJ0Be6NEL6Wp69jFmuBNyYeAsISdtUZqgZZHjYxG3yhjcO7NTuittw9JxOlV4MXIadoGiTgY7j01Kg12g==}
     engines: {node: '>=20.0.0'}
     hasBin: true
 
@@ -1409,8 +1409,8 @@ packages:
     resolution: {integrity: sha512-FC12yP0MHzu2QN5/4JkFHdz25l4Yu2ucjj3K12Y8tW/75oPh+n8k2u1+3/M68zWoqf5yyFvU4m2A+gxEmeR0iw==}
     engines: {node: '>=16.0.0'}
 
-  '@lingui/conf@5.1.0':
-    resolution: {integrity: sha512-EDILmdZpZ2vXiEEd1eU6aHIm3SqynSzH+X3SkOlO6/j0imT5JAq5XhSLm8mddd2xlvI0CufgGKS8O4XrW3DUIw==}
+  '@lingui/conf@5.1.1':
+    resolution: {integrity: sha512-TC1fz5K+8bZ2u88kbloHUHpyHVDdAr0vf8ADcfJxJE/mIfymaYtyH7YVUP7+J1vcVlI/xNt7Rubg0f4Vp+GxnQ==}
     engines: {node: '>=20.0.0'}
 
   '@lingui/core@4.11.4':
@@ -1425,11 +1425,11 @@ packages:
     resolution: {integrity: sha512-3O6bnNzApWjb+jIdXa7G2VbrP6jZ5nfCeYSVloEYg6YFIfsQ3GunccK6I2nL80mWgr2qGP4VilGD+ODCeXHITA==}
     engines: {node: '>=16.0.0'}
 
-  '@lingui/core@5.1.0':
-    resolution: {integrity: sha512-mjkKvcUMbzmkbyR/JnW4FM56oAnLvVNup1zvKoBQ/kPt+w1rIRCpE0Sr67RY19tlqlAO8ZR2C+IBrUjegSNmSw==}
+  '@lingui/core@5.1.1':
+    resolution: {integrity: sha512-gyjT2CPE3Yb8pqRI+aJd4koMejeXgSq23tPM/i+EWPF42p1zqc6aqFL2KBFEJKkoKZhDljOLrjQFHAeeC/Bmqw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
-      '@lingui/babel-plugin-lingui-macro': 5.0.0
+      '@lingui/babel-plugin-lingui-macro': 5.1.0
       babel-plugin-macros: 2 || 3
     peerDependenciesMeta:
       '@lingui/babel-plugin-lingui-macro':
@@ -1437,8 +1437,8 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  '@lingui/format-po@5.1.0':
-    resolution: {integrity: sha512-f7ksAiFi6X/0TuYNsUbFKvabx9GiBGpHJ/Xy3z611OClBBZkrsljFynPtlE5xBk0gc3sY/4t9zd5IuTZPV6xvw==}
+  '@lingui/format-po@5.1.1':
+    resolution: {integrity: sha512-KgNXP2pG19xrgyRstafHa21M/Yek2FB2ytrm42HYQuHJnYJAmwZ5HdP1gTmm2Z3icZatpY95O8SgYWTIXByEtg==}
     engines: {node: '>=20.0.0'}
 
   '@lingui/macro@4.11.4':
@@ -1460,8 +1460,8 @@ packages:
     resolution: {integrity: sha512-J6MzyTLNCzEnyR1Da188G81cRcQMbk/lyYnLWMzQjIELDX8bBBwNea91Sf5Zm+BB+ADWmmGTdUqRPAjDqT9Y5w==}
     engines: {node: '>=16.0.0'}
 
-  '@lingui/message-utils@5.1.0':
-    resolution: {integrity: sha512-MKfq4a2QuPK5SfIjo6UI0Hc0r+jaaNu0UxZm23L+3jE8pmnSC+Dr5kIp2MGXmr8ywoGezgYP25sU/nwNE8rmkg==}
+  '@lingui/message-utils@5.1.1':
+    resolution: {integrity: sha512-v4PA3eI4LHNyHklqgX6vdZLHYhJcBrgJNmATfBrf3Rm+5Xdg2SKjrXKRm28Q+diNo+ao6IPwlxq32FZUS7h4kA==}
     engines: {node: '>=20.0.0'}
 
   '@lingui/react@4.14.1':
@@ -6446,11 +6446,11 @@ snapshots:
       eslint-visitor-keys: 2.1.0
       semver: 6.3.1
 
-  '@babel/eslint-parser@7.25.1(@babel/core@7.26.0)(eslint@9.16.0(jiti@1.21.6))':
+  '@babel/eslint-parser@7.25.1(@babel/core@7.26.0)(eslint@8.57.0)':
     dependencies:
       '@babel/core': 7.26.0
       '@nicolo-ribaudo/eslint-scope-5-internals': 5.1.1-v1
-      eslint: 9.16.0(jiti@1.21.6)
+      eslint: 8.57.0
       eslint-visitor-keys: 2.1.0
       semver: 6.3.1
 
@@ -6462,7 +6462,7 @@ snapshots:
 
   '@babel/eslint-plugin@7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.26.0)(eslint@8.57.0))(eslint@8.57.0)':
     dependencies:
-      '@babel/eslint-parser': 7.25.1(@babel/core@7.26.0)(eslint@9.16.0(jiti@1.21.6))
+      '@babel/eslint-parser': 7.25.1(@babel/core@7.26.0)(eslint@8.57.0)
       eslint: 8.57.0
       eslint-rule-composer: 0.3.0
 
@@ -7840,35 +7840,35 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@lingui/babel-plugin-extract-messages@5.1.0': {}
+  '@lingui/babel-plugin-extract-messages@5.1.1': {}
 
-  '@lingui/babel-plugin-lingui-macro@5.1.0(babel-plugin-macros@3.1.0)(typescript@5.6.2)':
+  '@lingui/babel-plugin-lingui-macro@5.1.1(babel-plugin-macros@3.1.0)(typescript@5.6.2)':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/runtime': 7.25.0
       '@babel/types': 7.26.0
-      '@lingui/conf': 5.1.0(typescript@5.6.2)
-      '@lingui/core': 5.1.0(@lingui/babel-plugin-lingui-macro@5.1.0(babel-plugin-macros@3.1.0)(typescript@5.6.2))(babel-plugin-macros@3.1.0)
-      '@lingui/message-utils': 5.1.0
+      '@lingui/conf': 5.1.1(typescript@5.6.2)
+      '@lingui/core': 5.1.1(@lingui/babel-plugin-lingui-macro@5.1.1(babel-plugin-macros@3.1.0)(typescript@5.6.2))(babel-plugin-macros@3.1.0)
+      '@lingui/message-utils': 5.1.1
     optionalDependencies:
       babel-plugin-macros: 3.1.0
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  '@lingui/cli@5.1.0(typescript@5.6.2)':
+  '@lingui/cli@5.1.1(typescript@5.6.2)':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/generator': 7.26.2
       '@babel/parser': 7.26.2
       '@babel/runtime': 7.25.0
       '@babel/types': 7.26.0
-      '@lingui/babel-plugin-extract-messages': 5.1.0
-      '@lingui/babel-plugin-lingui-macro': 5.1.0(babel-plugin-macros@3.1.0)(typescript@5.6.2)
-      '@lingui/conf': 5.1.0(typescript@5.6.2)
-      '@lingui/core': 5.1.0(@lingui/babel-plugin-lingui-macro@5.1.0(babel-plugin-macros@3.1.0)(typescript@5.6.2))(babel-plugin-macros@3.1.0)
-      '@lingui/format-po': 5.1.0(typescript@5.6.2)
-      '@lingui/message-utils': 5.1.0
+      '@lingui/babel-plugin-extract-messages': 5.1.1
+      '@lingui/babel-plugin-lingui-macro': 5.1.1(babel-plugin-macros@3.1.0)(typescript@5.6.2)
+      '@lingui/conf': 5.1.1(typescript@5.6.2)
+      '@lingui/core': 5.1.1(@lingui/babel-plugin-lingui-macro@5.1.1(babel-plugin-macros@3.1.0)(typescript@5.6.2))(babel-plugin-macros@3.1.0)
+      '@lingui/format-po': 5.1.1(typescript@5.6.2)
+      '@lingui/message-utils': 5.1.1
       babel-plugin-macros: 3.1.0
       chalk: 4.1.2
       chokidar: 3.5.1
@@ -7903,7 +7903,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@lingui/conf@5.1.0(typescript@5.6.2)':
+  '@lingui/conf@5.1.1(typescript@5.6.2)':
     dependencies:
       '@babel/runtime': 7.25.0
       chalk: 4.1.2
@@ -7932,19 +7932,19 @@ snapshots:
       '@lingui/message-utils': 4.14.1
       unraw: 3.0.0
 
-  '@lingui/core@5.1.0(@lingui/babel-plugin-lingui-macro@5.1.0(babel-plugin-macros@3.1.0)(typescript@5.6.2))(babel-plugin-macros@3.1.0)':
+  '@lingui/core@5.1.1(@lingui/babel-plugin-lingui-macro@5.1.1(babel-plugin-macros@3.1.0)(typescript@5.6.2))(babel-plugin-macros@3.1.0)':
     dependencies:
       '@babel/runtime': 7.25.0
-      '@lingui/message-utils': 5.1.0
+      '@lingui/message-utils': 5.1.1
       unraw: 3.0.0
     optionalDependencies:
-      '@lingui/babel-plugin-lingui-macro': 5.1.0(babel-plugin-macros@3.1.0)(typescript@5.6.2)
+      '@lingui/babel-plugin-lingui-macro': 5.1.1(babel-plugin-macros@3.1.0)(typescript@5.6.2)
       babel-plugin-macros: 3.1.0
 
-  '@lingui/format-po@5.1.0(typescript@5.6.2)':
+  '@lingui/format-po@5.1.1(typescript@5.6.2)':
     dependencies:
-      '@lingui/conf': 5.1.0(typescript@5.6.2)
-      '@lingui/message-utils': 5.1.0
+      '@lingui/conf': 5.1.1(typescript@5.6.2)
+      '@lingui/message-utils': 5.1.1
       date-fns: 3.6.0
       pofile: 1.1.4
     transitivePeerDependencies:
@@ -7977,7 +7977,7 @@ snapshots:
       '@messageformat/parser': 5.1.0
       js-sha256: 0.10.1
 
-  '@lingui/message-utils@5.1.0':
+  '@lingui/message-utils@5.1.1':
     dependencies:
       '@messageformat/parser': 5.1.0
       js-sha256: 0.10.1
@@ -8032,12 +8032,12 @@ snapshots:
   '@modern-js-app/eslint-config@2.54.5(@swc/helpers@0.5.13)(typescript@5.6.2)':
     dependencies:
       '@babel/core': 7.26.0
-      '@babel/eslint-parser': 7.25.1(@babel/core@7.26.0)(eslint@9.16.0(jiti@1.21.6))
+      '@babel/eslint-parser': 7.25.1(@babel/core@7.26.0)(eslint@8.57.0)
       '@babel/eslint-plugin': 7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.26.0)(eslint@8.57.0))(eslint@8.57.0)
       '@rsbuild/babel-preset': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.13)
       '@rsbuild/core': 0.7.10
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0)(typescript@5.6.2)
-      '@typescript-eslint/parser': 5.62.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.6.2)
+      '@typescript-eslint/parser': 5.62.0(eslint@8.57.0)(typescript@5.6.2)
       eslint: 8.57.0
       eslint-config-prettier: 8.10.0(eslint@8.57.0)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.0)
@@ -9514,18 +9514,6 @@ snapshots:
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.2)
       debug: 4.3.6(supports-color@9.3.1)
       eslint: 8.57.0
-    optionalDependencies:
-      typescript: 5.6.2
-    transitivePeerDependencies:
-      - supports-color
-
-  '@typescript-eslint/parser@5.62.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.6.2)':
-    dependencies:
-      '@typescript-eslint/scope-manager': 5.62.0
-      '@typescript-eslint/types': 5.62.0
-      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.2)
-      debug: 4.3.6(supports-color@9.3.1)
-      eslint: 9.16.0(jiti@1.21.6)
     optionalDependencies:
       typescript: 5.6.2
     transitivePeerDependencies:
