@@ -65,16 +65,16 @@ importers:
         version: 2.59.0(typescript@5.6.2)
       '@modern-js/app-tools':
         specifier: 2.60.3
-        version: 2.60.3(@rspack/core@0.7.5(@swc/helpers@0.5.13))(react-dom@18.2.0(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(@babel/core@7.26.0)(react-dom@18.2.0(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.6.2)
+        version: 2.60.3(@rspack/core@0.7.5(@swc/helpers@0.5.3))(react-dom@18.2.0(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(@babel/core@7.26.0)(react-dom@18.2.0(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.6.2)
       '@modern-js/eslint-config':
         specifier: 2.54.5
-        version: 2.54.5(@swc/helpers@0.5.13)(typescript@5.6.2)
+        version: 2.54.5(@swc/helpers@0.5.3)(typescript@5.6.2)
       '@modern-js/plugin-ssg':
         specifier: 2.60.0
         version: 2.60.0(react-dom@18.2.0(react@18.3.1))(react-router-dom@6.27.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@modern-js/plugin-swc':
-        specifier: 2.60.0
-        version: 2.60.0
+        specifier: 2.63.2
+        version: 2.63.2
       '@modern-js/tsconfig':
         specifier: 2.63.1
         version: 2.63.1
@@ -1611,8 +1611,8 @@ packages:
       react-router-dom:
         optional: true
 
-  '@modern-js/plugin-swc@2.60.0':
-    resolution: {integrity: sha512-n3iAR+XwFGEL0DIjX53zcbwkE09SaW5GkKA6vD9cMW49G+muudj71X2TzjCHtWncqhw5Dtw1E/+o9aNSJPcSyQ==}
+  '@modern-js/plugin-swc@2.63.2':
+    resolution: {integrity: sha512-J8RgL4kIHWdxsiqWrQbV/d2eeQ+0URhjwlgCMHs7K9QEY0Y2ERt7xbLmIvuHPAtzAv48nmEoTd1iurGvgjPwiw==}
 
   '@modern-js/plugin@2.60.0':
     resolution: {integrity: sha512-fqHPJl3twwmqmnO4o7JTuZmzUM6v1z8MDAN33N1qJ7oNZlKMWpZKGk9Aqu+ecEe0x+rM7Vr/Spn4O+bvjdDSdw==}
@@ -1777,6 +1777,9 @@ packages:
   '@modern-js/utils@2.63.0':
     resolution: {integrity: sha512-7iMU2GvmvAROrmriBqwBd9a8bhjuayJa+CckYk5EwV9jCntIZXwdHqcjWe2qEb+CuA7XJ69wwLLgMiXt36XAQg==}
 
+  '@modern-js/utils@2.63.2':
+    resolution: {integrity: sha512-jJtAvUZo1peQ141dsZvMv6Fk3VxSL7q//vg6Pr40FMEPz7ocQ6OTEACndmidfx7yTW0EcySsc78j0qO6sFyUqA==}
+
   '@module-federation/runtime-tools@0.1.6':
     resolution: {integrity: sha512-7ILVnzMIa0Dlc0Blck5tVZG1tnk1MmLnuZpLOMpbdW+zl+N6wdMjjHMjEZFCUAJh2E5XJ3BREwfX8Ets0nIkLg==}
 
@@ -1915,8 +1918,8 @@ packages:
     engines: {node: '>=16.7.0'}
     hasBin: true
 
-  '@rsbuild/core@1.0.2':
-    resolution: {integrity: sha512-kEHmNj4QjDoqvyswEiz8gJCdc2Yo4SXlQD+TnY7ch8pTVs6kLnXRa1KclFLCdgwYnikYvvPsbBERSF8Y2I3KDg==}
+  '@rsbuild/core@1.1.9':
+    resolution: {integrity: sha512-mHZveEwlTtW9nxWa+T0xUm6ssm+HkDYZ0NENLfWMUmsL0LjMJrpQzRlbD+p5+9Uf+KXUo3Dbtv0ScA+p7cuGTg==}
     engines: {node: '>=16.7.0'}
     hasBin: true
 
@@ -2040,10 +2043,10 @@ packages:
       '@rsbuild/core':
         optional: true
 
-  '@rsbuild/plugin-webpack-swc@1.0.2':
-    resolution: {integrity: sha512-vJNzeMf77ew++bAZdjX3CUNIqqEfzTy38BzIC62Q5N7TeMlkbDc8IvvDMYpEDACWTjTgUt3x8GYjk640AqOaMQ==}
+  '@rsbuild/plugin-webpack-swc@1.0.9':
+    resolution: {integrity: sha512-VoHJN/bwqf0cM1etgo8lga99zpp7y4YzpuCpgzHKYkBptr2nHqGQL7+kcRMTPqk4bMyqy2VGU+NdcEhZpvSkPg==}
     peerDependencies:
-      '@rsbuild/core': 1.x || ^1.0.1-rc.0
+      '@rsbuild/core': 1.x
 
   '@rsbuild/plugin-yaml@1.0.2':
     resolution: {integrity: sha512-M7POrqJAYS8IoY4trdLe9DUhDC01MvA0ge4ZKHoVQzlNLWVj2QHHXdz55/bfpkNYhoNGdCntoDmE/dn1zIpcAw==}
@@ -2071,8 +2074,8 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
-  '@rspack/binding-darwin-arm64@1.0.5':
-    resolution: {integrity: sha512-pEHj4AOluOa7FaR1DMACPUUZKO3qZI4/66xaTqk0BbclvMT7eheQAWtkmjdE9WJgeZ389TrwZeaMzzPdHhK/6Q==}
+  '@rspack/binding-darwin-arm64@1.1.6':
+    resolution: {integrity: sha512-x9dxm2yyiMuL1FBwvWNNMs2/mEUJmRoSRgYb8pblR7HDaTRORrjBFCqhaYlGyAqtQaeUy7o2VAQlE0BavIiFYA==}
     cpu: [arm64]
     os: [darwin]
 
@@ -2086,8 +2089,8 @@ packages:
     cpu: [x64]
     os: [darwin]
 
-  '@rspack/binding-darwin-x64@1.0.5':
-    resolution: {integrity: sha512-xS5EDD9l3MHL54bnmxsndm61P9l3l7ZNuLSuPl2MbYJzDqPdnXhTdkIjdcDOLH2daFm8gfB634wa5knZhPGLOw==}
+  '@rspack/binding-darwin-x64@1.1.6':
+    resolution: {integrity: sha512-o0seilveftGiDjy3VPxug20HmAgYyQbNEuagR3i93/t/PT/eWXHnik+C1jjwqcivZL1Zllqvy4tbZw393aROEQ==}
     cpu: [x64]
     os: [darwin]
 
@@ -2101,8 +2104,8 @@ packages:
     cpu: [arm64]
     os: [linux]
 
-  '@rspack/binding-linux-arm64-gnu@1.0.5':
-    resolution: {integrity: sha512-svPOFlem7s6T33tX8a28uD5Ngc7bdML96ioiH7Fhi0J/at+WAthor4GeUNwkwuzBQI/Nc9XCgiYPcE0pzP7c6w==}
+  '@rspack/binding-linux-arm64-gnu@1.1.6':
+    resolution: {integrity: sha512-4atnoknJx/c3KaQElsMIxHMpPf2jcRRdWsH/SdqJIRSrkWWakMK9Yv4TFwH680I4HDTMf1XLboMVScHzW8e+Mg==}
     cpu: [arm64]
     os: [linux]
 
@@ -2116,8 +2119,8 @@ packages:
     cpu: [arm64]
     os: [linux]
 
-  '@rspack/binding-linux-arm64-musl@1.0.5':
-    resolution: {integrity: sha512-cysqogEUNc0TgzzXcK9bkv12eoCjqhLzOvGXQU1zSEU9Hov7tuzMDl3Z6R3A7NgOCmWu84/wOnTrkSOI28caew==}
+  '@rspack/binding-linux-arm64-musl@1.1.6':
+    resolution: {integrity: sha512-7QMtwUtgFpt3/Y3/X18fSyN+kk4H8ZnZ8tDzQskVWc/j2AQYShZq56XQYqrhClzwujcCVAHauIQ2eiuJ2ASGag==}
     cpu: [arm64]
     os: [linux]
 
@@ -2131,8 +2134,8 @@ packages:
     cpu: [x64]
     os: [linux]
 
-  '@rspack/binding-linux-x64-gnu@1.0.5':
-    resolution: {integrity: sha512-qIEMsWOzTKpVm0Sg553gKkua49Kd/sElLD1rZcXjjxjAsD97uq8AiNncArMfYdDKgkKbtwtW/Fb3uVuafTLnZg==}
+  '@rspack/binding-linux-x64-gnu@1.1.6':
+    resolution: {integrity: sha512-MTjDEfPn4TwHoqs5d5Fck06kmXiTHZctGIcRVfrpg0RK0r1NLEHN+oosavRZ9c9H70f34+NmcHk+/qvV4c8lWg==}
     cpu: [x64]
     os: [linux]
 
@@ -2146,8 +2149,8 @@ packages:
     cpu: [x64]
     os: [linux]
 
-  '@rspack/binding-linux-x64-musl@1.0.5':
-    resolution: {integrity: sha512-yulltMSQN3aBt3NMURYTmJcpAJBi4eEJ4i9qF0INE8f0885sJpI0j35/31POkCghG1ZOSZkYALFrheKKP9e8pg==}
+  '@rspack/binding-linux-x64-musl@1.1.6':
+    resolution: {integrity: sha512-LqDw7PTVr/4ZuGA0izgDQfamfr72USFHltR1Qhy2YVC3JmDmhG/pQi13LHcOLVaGH1xoeyCmEPNJpVizzDxSjg==}
     cpu: [x64]
     os: [linux]
 
@@ -2161,8 +2164,8 @@ packages:
     cpu: [arm64]
     os: [win32]
 
-  '@rspack/binding-win32-arm64-msvc@1.0.5':
-    resolution: {integrity: sha512-5oF/qN6TnUj28UAdaOgSIWKq7HG5QgI4p37zvQBBTXZHhrwN2kE6H+TaofWnSqWJynwmGIxJIx8bGo3lDfFbfA==}
+  '@rspack/binding-win32-arm64-msvc@1.1.6':
+    resolution: {integrity: sha512-RHApLM93YN0WdHpS35u2cm7VCqZ8Yg3CrNRL16VJtyT9e6MBqeScoe4XIgIWKPm7edFyedYAjLX0wQOApwfjkg==}
     cpu: [arm64]
     os: [win32]
 
@@ -2176,8 +2179,8 @@ packages:
     cpu: [ia32]
     os: [win32]
 
-  '@rspack/binding-win32-ia32-msvc@1.0.5':
-    resolution: {integrity: sha512-y16IPjd/z6L7+r6RXLu7J/jlZDUenSnJDqo10HnnxtLjOJ+vna+pljI8sHcwu1ao0c3J3uMvbkF34dTiev7Opg==}
+  '@rspack/binding-win32-ia32-msvc@1.1.6':
+    resolution: {integrity: sha512-Y6lx4q0eJawRfMPBo/AclTJAPTZ325DSPFBQJB3TnWh9Z2X7P7pQcYc8PHDmfDuYRIdg5WRsQRvVxihSvF7v8w==}
     cpu: [ia32]
     os: [win32]
 
@@ -2191,8 +2194,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@rspack/binding-win32-x64-msvc@1.0.5':
-    resolution: {integrity: sha512-PSBTbDSgT+ClYvyQTDtWBi/bxXW/xJmVjg9NOWe8KAEl5WNU+pToiCBLLPCGDSa+K7/zr2TDb6QakG/qYItPZw==}
+  '@rspack/binding-win32-x64-msvc@1.1.6':
+    resolution: {integrity: sha512-UuCsfhC/yNuU7xLASOxNXcmsXi2ZvBX14GkxvcdChw6q7IIGNYUKXo1zgR8C1PE/6qDSxmLxbRMS+71d0H3HQg==}
     cpu: [x64]
     os: [win32]
 
@@ -2202,8 +2205,8 @@ packages:
   '@rspack/binding@1.0.10':
     resolution: {integrity: sha512-ILWPqLl0fS3a76OwQH6SlVIJBST39sc55yp0zwt484sb77khm0JGvJRElCdPuwgaR7JRDdqK23EvW0XIQAvY7A==}
 
-  '@rspack/binding@1.0.5':
-    resolution: {integrity: sha512-SnVrzRWeKSosJ0/1e5taAeqJ1ISst6NAE1N8YK4ZdUEVWmE26tC2V/yTvZHSsqatc/0Cf+A18IZJx0q6H/DlRw==}
+  '@rspack/binding@1.1.6':
+    resolution: {integrity: sha512-vfeBEgGOYVwqj5cQjGyvdfrr/BEihAHlyIsobL98FZjTF0uig+bj2yJUH5Ib5F0BpIUKVG3Pw0IjlUBqcVpZsQ==}
 
   '@rspack/core@0.7.5':
     resolution: {integrity: sha512-zVTe4WCyc3qsLPattosiDYZFeOzaJ32/BYukPP2I1VJtCVFa+PxGVRPVZhSoN6fXw5oy48yHg9W9v1T8CaEFhw==}
@@ -2223,18 +2226,14 @@ packages:
       '@swc/helpers':
         optional: true
 
-  '@rspack/core@1.0.5':
-    resolution: {integrity: sha512-UlydS2VupZ6yBx3jCqCHpeEUQNWCrBkTQhPIezK0eCAk13i745byjqXX4tcfN6jR5Kjh/1CIb8r07k9DgGON1w==}
+  '@rspack/core@1.1.6':
+    resolution: {integrity: sha512-q0VLphOF5VW2FEG7Vbdq3Ke4I74FbELE/8xmKghSalFtULLZ44SoSz8lyotfMim9GXIRFhDokAaH8WICmPxG+g==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@swc/helpers': '>=0.5.1'
     peerDependenciesMeta:
       '@swc/helpers':
         optional: true
-
-  '@rspack/lite-tapable@1.0.0':
-    resolution: {integrity: sha512-7MZf4lburSUZoEenwazwUDKHhqyfnLCGnQ/tKcUtztfmVzfjZfRn/EaiT0AKkYGnL2U8AGsw89oUeVyvaOLVCw==}
-    engines: {node: '>=16.0.0'}
 
   '@rspack/lite-tapable@1.0.1':
     resolution: {integrity: sha512-VynGOEsVw2s8TAlLf/uESfrgfrq2+rcXB1muPJYBWbsm1Oa6r5qVQhjA5ggM6z/coYPrsVMgovl3Ff7Q7OCp1w==}
@@ -2333,6 +2332,9 @@ packages:
 
   '@swc/helpers@0.5.13':
     resolution: {integrity: sha512-UoKGxQ3r5kYI9dALKJapMmuK+1zWM/H17Z1+iwnNmzcJRnfFuevZs375TA5rW31pu4BS4NoSy1fRsexDXfWn5w==}
+
+  '@swc/helpers@0.5.15':
+    resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
 
   '@swc/helpers@0.5.3':
     resolution: {integrity: sha512-FaruWX6KdudYloq1AHD/4nU+UsMTdNE8CKyrseXWEcgjDAbvkwJg2QGPAnfIJLIWsjZOSPLOAykK6fuYp4vp4A==}
@@ -3187,6 +3189,9 @@ packages:
 
   core-js@3.38.1:
     resolution: {integrity: sha512-OP35aUorbU3Zvlx7pjsFdu1rGNnD4pgw/CWoYzRY3t2EzoVT7shKHY1dlAy3f41cGIO7ZDPQimhGFTlEYkG/Hw==}
+
+  core-js@3.39.0:
+    resolution: {integrity: sha512-raM0ew0/jJUqkJ0E6e8UDtl+y/7ktFivgWvqw8dNSQeNWoSDLvQ1H/RN3aPXB9tBd4/FhyR4RDPGhsNIMsAn7g==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -4975,6 +4980,9 @@ packages:
   picocolors@1.1.0:
     resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
 
+  picocolors@1.1.1:
+    resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
+
   picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
@@ -6411,7 +6419,7 @@ snapshots:
       '@babel/traverse': 7.25.7
       '@babel/types': 7.26.0
       convert-source-map: 2.0.0
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.1
@@ -6431,7 +6439,7 @@ snapshots:
       '@babel/traverse': 7.25.9
       '@babel/types': 7.26.0
       convert-source-map: 2.0.0
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.1
@@ -6446,11 +6454,11 @@ snapshots:
       eslint-visitor-keys: 2.1.0
       semver: 6.3.1
 
-  '@babel/eslint-parser@7.25.1(@babel/core@7.26.0)(eslint@9.16.0(jiti@1.21.6))':
+  '@babel/eslint-parser@7.25.1(@babel/core@7.26.0)(eslint@8.57.0)':
     dependencies:
       '@babel/core': 7.26.0
       '@nicolo-ribaudo/eslint-scope-5-internals': 5.1.1-v1
-      eslint: 9.16.0(jiti@1.21.6)
+      eslint: 8.57.0
       eslint-visitor-keys: 2.1.0
       semver: 6.3.1
 
@@ -6462,7 +6470,7 @@ snapshots:
 
   '@babel/eslint-plugin@7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.26.0)(eslint@8.57.0))(eslint@8.57.0)':
     dependencies:
-      '@babel/eslint-parser': 7.25.1(@babel/core@7.26.0)(eslint@9.16.0(jiti@1.21.6))
+      '@babel/eslint-parser': 7.25.1(@babel/core@7.26.0)(eslint@8.57.0)
       eslint: 8.57.0
       eslint-rule-composer: 0.3.0
 
@@ -6543,7 +6551,7 @@ snapshots:
       '@babel/core': 7.26.0
       '@babel/helper-compilation-targets': 7.25.9
       '@babel/helper-plugin-utils': 7.25.7
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       lodash.debounce: 4.0.8
       resolve: 1.22.8
     transitivePeerDependencies:
@@ -7487,7 +7495,7 @@ snapshots:
       '@babel/parser': 7.26.2
       '@babel/template': 7.25.0
       '@babel/types': 7.26.0
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -7499,7 +7507,7 @@ snapshots:
       '@babel/parser': 7.26.2
       '@babel/template': 7.25.9
       '@babel/types': 7.26.0
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -7511,7 +7519,7 @@ snapshots:
       '@babel/parser': 7.26.2
       '@babel/template': 7.25.9
       '@babel/types': 7.26.0
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -7722,7 +7730,7 @@ snapshots:
   '@eslint/config-array@0.19.0':
     dependencies:
       '@eslint/object-schema': 2.1.4
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -7732,7 +7740,7 @@ snapshots:
   '@eslint/eslintrc@2.1.4':
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       espree: 9.6.1
       globals: 13.24.0
       ignore: 5.3.2
@@ -7746,7 +7754,7 @@ snapshots:
   '@eslint/eslintrc@3.2.0':
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       espree: 10.3.0
       globals: 14.0.0
       ignore: 5.3.2
@@ -7779,7 +7787,7 @@ snapshots:
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -8029,15 +8037,15 @@ snapshots:
     dependencies:
       moo: 0.5.2
 
-  '@modern-js-app/eslint-config@2.54.5(@swc/helpers@0.5.13)(typescript@5.6.2)':
+  '@modern-js-app/eslint-config@2.54.5(@swc/helpers@0.5.3)(typescript@5.6.2)':
     dependencies:
       '@babel/core': 7.26.0
-      '@babel/eslint-parser': 7.25.1(@babel/core@7.26.0)(eslint@9.16.0(jiti@1.21.6))
+      '@babel/eslint-parser': 7.25.1(@babel/core@7.26.0)(eslint@8.57.0)
       '@babel/eslint-plugin': 7.25.1(@babel/eslint-parser@7.25.1(@babel/core@7.26.0)(eslint@8.57.0))(eslint@8.57.0)
-      '@rsbuild/babel-preset': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.13)
+      '@rsbuild/babel-preset': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.3)
       '@rsbuild/core': 0.7.10
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0)(typescript@5.6.2)
-      '@typescript-eslint/parser': 5.62.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.6.2)
+      '@typescript-eslint/parser': 5.62.0(eslint@8.57.0)(typescript@5.6.2)
       eslint: 8.57.0
       eslint-config-prettier: 8.10.0(eslint@8.57.0)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.0)
@@ -8128,7 +8136,7 @@ snapshots:
       '@swc/helpers': 0.5.1
       redux: 4.2.1
 
-  '@modern-js/app-tools@2.60.3(@rspack/core@0.7.5(@swc/helpers@0.5.13))(react-dom@18.2.0(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(@babel/core@7.26.0)(react-dom@18.2.0(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.6.2)':
+  '@modern-js/app-tools@2.60.3(@rspack/core@0.7.5(@swc/helpers@0.5.3))(react-dom@18.2.0(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(@babel/core@7.26.0)(react-dom@18.2.0(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(tsconfig-paths@4.2.0)(type-fest@0.21.3)(typescript@5.6.2)':
     dependencies:
       '@babel/parser': 7.25.3
       '@babel/traverse': 7.25.3
@@ -8144,7 +8152,7 @@ snapshots:
       '@modern-js/server-core': 2.60.3(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       '@modern-js/server-utils': 2.60.3(@babel/traverse@7.25.3)(@rsbuild/core@1.0.14)
       '@modern-js/types': 2.60.3
-      '@modern-js/uni-builder': 2.60.3(@rspack/core@0.7.5(@swc/helpers@0.5.13))(esbuild@0.17.19)(styled-components@5.3.11(@babel/core@7.26.0)(react-dom@18.2.0(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(type-fest@0.21.3)(typescript@5.6.2)
+      '@modern-js/uni-builder': 2.60.3(@rspack/core@0.7.5(@swc/helpers@0.5.3))(esbuild@0.17.19)(styled-components@5.3.11(@babel/core@7.26.0)(react-dom@18.2.0(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(type-fest@0.21.3)(typescript@5.6.2)
       '@modern-js/utils': 2.60.3
       '@rsbuild/core': 1.0.14
       '@rsbuild/plugin-node-polyfill': 1.0.4(@rsbuild/core@1.0.14)
@@ -8251,9 +8259,9 @@ snapshots:
       '@modern-js/utils': 2.60.3
       '@swc/helpers': 0.5.13
 
-  '@modern-js/eslint-config@2.54.5(@swc/helpers@0.5.13)(typescript@5.6.2)':
+  '@modern-js/eslint-config@2.54.5(@swc/helpers@0.5.3)(typescript@5.6.2)':
     dependencies:
-      '@modern-js-app/eslint-config': 2.54.5(@swc/helpers@0.5.13)(typescript@5.6.2)
+      '@modern-js-app/eslint-config': 2.54.5(@swc/helpers@0.5.3)(typescript@5.6.2)
     transitivePeerDependencies:
       - '@swc/helpers'
       - eslint-import-resolver-typescript
@@ -8311,11 +8319,11 @@ snapshots:
       - react-dom
       - supports-color
 
-  '@modern-js/plugin-swc@2.60.0':
+  '@modern-js/plugin-swc@2.63.2':
     dependencies:
-      '@modern-js/utils': 2.60.0
-      '@rsbuild/core': 1.0.2
-      '@rsbuild/plugin-webpack-swc': 1.0.2(@rsbuild/core@1.0.2)
+      '@modern-js/utils': 2.63.2
+      '@rsbuild/core': 1.1.9
+      '@rsbuild/plugin-webpack-swc': 1.0.9(@rsbuild/core@1.1.9)
       '@swc/helpers': 0.5.13
 
   '@modern-js/plugin@2.60.0':
@@ -8541,7 +8549,7 @@ snapshots:
   '@modern-js/swc-plugins-win32-x64-msvc@0.6.11':
     optional: true
 
-  '@modern-js/swc-plugins@0.6.11(@swc/helpers@0.5.13)':
+  '@modern-js/swc-plugins@0.6.11(@swc/helpers@0.5.15)':
     optionalDependencies:
       '@modern-js/swc-plugins-darwin-arm64': 0.6.11
       '@modern-js/swc-plugins-darwin-x64': 0.6.11
@@ -8551,7 +8559,7 @@ snapshots:
       '@modern-js/swc-plugins-linux-x64-musl': 0.6.11
       '@modern-js/swc-plugins-win32-arm64-msvc': 0.6.11
       '@modern-js/swc-plugins-win32-x64-msvc': 0.6.11
-      '@swc/helpers': 0.5.13
+      '@swc/helpers': 0.5.15
 
   '@modern-js/tsconfig@2.63.1': {}
 
@@ -8559,7 +8567,7 @@ snapshots:
 
   '@modern-js/types@2.63.0': {}
 
-  '@modern-js/uni-builder@2.60.3(@rspack/core@0.7.5(@swc/helpers@0.5.13))(esbuild@0.17.19)(styled-components@5.3.11(@babel/core@7.26.0)(react-dom@18.2.0(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(type-fest@0.21.3)(typescript@5.6.2)':
+  '@modern-js/uni-builder@2.60.3(@rspack/core@0.7.5(@swc/helpers@0.5.3))(esbuild@0.17.19)(styled-components@5.3.11(@babel/core@7.26.0)(react-dom@18.2.0(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(type-fest@0.21.3)(typescript@5.6.2)':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/preset-react': 7.24.7(@babel/core@7.26.0)
@@ -8607,7 +8615,7 @@ snapshots:
       postcss-nesting: 12.0.1(postcss@8.4.41)
       postcss-page-break: 3.0.4(postcss@8.4.41)
       react-refresh: 0.14.2
-      rspack-manifest-plugin: 5.0.0(@rspack/core@0.7.5(@swc/helpers@0.5.13))
+      rspack-manifest-plugin: 5.0.0(@rspack/core@0.7.5(@swc/helpers@0.5.3))
       terser-webpack-plugin: 5.3.10(esbuild@0.17.19)(webpack@5.95.0(esbuild@0.17.19))
       ts-deepmerge: 7.0.0
       ts-loader: 9.4.4(typescript@5.6.2)(webpack@5.95.0(esbuild@0.17.19))
@@ -8649,6 +8657,13 @@ snapshots:
       rslog: 1.2.2
 
   '@modern-js/utils@2.63.0':
+    dependencies:
+      '@swc/helpers': 0.5.13
+      caniuse-lite: 1.0.30001668
+      lodash: 4.17.21
+      rslog: 1.2.2
+
+  '@modern-js/utils@2.63.2':
     dependencies:
       '@swc/helpers': 0.5.13
       caniuse-lite: 1.0.30001668
@@ -8778,7 +8793,7 @@ snapshots:
       estree-walker: 2.0.2
       picomatch: 2.3.1
 
-  '@rsbuild/babel-preset@0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.13)':
+  '@rsbuild/babel-preset@0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.3)':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-proposal-decorators': 7.25.7(@babel/core@7.26.0)
@@ -8790,7 +8805,7 @@ snapshots:
       '@babel/preset-typescript': 7.25.7(@babel/core@7.26.0)
       '@babel/runtime': 7.25.0
       '@babel/types': 7.26.0
-      '@rsbuild/plugin-babel': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.13)
+      '@rsbuild/plugin-babel': 0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.3)
       '@types/babel__core': 7.20.5
       babel-plugin-dynamic-import-node: 2.3.3
       core-js: 3.36.1
@@ -8827,29 +8842,26 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  '@rsbuild/core@1.0.2':
+  '@rsbuild/core@1.1.9':
     dependencies:
-      '@rspack/core': 1.0.5(@swc/helpers@0.5.13)
-      '@rspack/lite-tapable': 1.0.0
-      '@swc/helpers': 0.5.13
-      caniuse-lite: 1.0.30001660
-      core-js: 3.38.1
-    optionalDependencies:
-      fsevents: 2.3.3
+      '@rspack/core': 1.1.6(@swc/helpers@0.5.15)
+      '@rspack/lite-tapable': 1.0.1
+      '@swc/helpers': 0.5.15
+      core-js: 3.39.0
 
   '@rsbuild/plugin-assets-retry@1.0.2(@rsbuild/core@1.0.14)':
     dependencies:
       '@rsbuild/core': 1.0.14
       serialize-javascript: 6.0.2
 
-  '@rsbuild/plugin-babel@0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.13)':
+  '@rsbuild/plugin-babel@0.7.10(@rsbuild/core@0.7.10)(@swc/helpers@0.5.3)':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-proposal-decorators': 7.25.7(@babel/core@7.26.0)
       '@babel/plugin-transform-class-properties': 7.25.7(@babel/core@7.26.0)
       '@babel/preset-typescript': 7.25.7(@babel/core@7.26.0)
       '@rsbuild/core': 0.7.10
-      '@rsbuild/shared': 0.7.10(@swc/helpers@0.5.13)
+      '@rsbuild/shared': 0.7.10(@swc/helpers@0.5.3)
       '@types/babel__core': 7.20.5
       upath: 2.0.1
     transitivePeerDependencies:
@@ -9027,31 +9039,20 @@ snapshots:
     optionalDependencies:
       '@rsbuild/core': 1.0.14
 
-  '@rsbuild/plugin-webpack-swc@1.0.2(@rsbuild/core@1.0.2)':
+  '@rsbuild/plugin-webpack-swc@1.0.9(@rsbuild/core@1.1.9)':
     dependencies:
-      '@modern-js/swc-plugins': 0.6.11(@swc/helpers@0.5.13)
-      '@rsbuild/core': 1.0.2
-      '@swc/helpers': 0.5.13
-      core-js: 3.38.1
+      '@modern-js/swc-plugins': 0.6.11(@swc/helpers@0.5.15)
+      '@rsbuild/core': 1.1.9
+      '@swc/helpers': 0.5.15
+      core-js: 3.39.0
       deepmerge: 4.3.1
       lodash: 4.17.21
-      picocolors: 1.1.0
+      picocolors: 1.1.1
       semver: 7.6.3
 
   '@rsbuild/plugin-yaml@1.0.2(@rsbuild/core@1.0.14)':
     optionalDependencies:
       '@rsbuild/core': 1.0.14
-
-  '@rsbuild/shared@0.7.10(@swc/helpers@0.5.13)':
-    dependencies:
-      '@rspack/core': 0.7.5(@swc/helpers@0.5.13)
-      caniuse-lite: 1.0.30001668
-      html-webpack-plugin: html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.3))
-      postcss: 8.4.41
-    optionalDependencies:
-      fsevents: 2.3.3
-    transitivePeerDependencies:
-      - '@swc/helpers'
 
   '@rsbuild/shared@0.7.10(@swc/helpers@0.5.3)':
     dependencies:
@@ -9085,7 +9086,7 @@ snapshots:
   '@rspack/binding-darwin-arm64@1.0.10':
     optional: true
 
-  '@rspack/binding-darwin-arm64@1.0.5':
+  '@rspack/binding-darwin-arm64@1.1.6':
     optional: true
 
   '@rspack/binding-darwin-x64@0.7.5':
@@ -9094,7 +9095,7 @@ snapshots:
   '@rspack/binding-darwin-x64@1.0.10':
     optional: true
 
-  '@rspack/binding-darwin-x64@1.0.5':
+  '@rspack/binding-darwin-x64@1.1.6':
     optional: true
 
   '@rspack/binding-linux-arm64-gnu@0.7.5':
@@ -9103,7 +9104,7 @@ snapshots:
   '@rspack/binding-linux-arm64-gnu@1.0.10':
     optional: true
 
-  '@rspack/binding-linux-arm64-gnu@1.0.5':
+  '@rspack/binding-linux-arm64-gnu@1.1.6':
     optional: true
 
   '@rspack/binding-linux-arm64-musl@0.7.5':
@@ -9112,7 +9113,7 @@ snapshots:
   '@rspack/binding-linux-arm64-musl@1.0.10':
     optional: true
 
-  '@rspack/binding-linux-arm64-musl@1.0.5':
+  '@rspack/binding-linux-arm64-musl@1.1.6':
     optional: true
 
   '@rspack/binding-linux-x64-gnu@0.7.5':
@@ -9121,7 +9122,7 @@ snapshots:
   '@rspack/binding-linux-x64-gnu@1.0.10':
     optional: true
 
-  '@rspack/binding-linux-x64-gnu@1.0.5':
+  '@rspack/binding-linux-x64-gnu@1.1.6':
     optional: true
 
   '@rspack/binding-linux-x64-musl@0.7.5':
@@ -9130,7 +9131,7 @@ snapshots:
   '@rspack/binding-linux-x64-musl@1.0.10':
     optional: true
 
-  '@rspack/binding-linux-x64-musl@1.0.5':
+  '@rspack/binding-linux-x64-musl@1.1.6':
     optional: true
 
   '@rspack/binding-win32-arm64-msvc@0.7.5':
@@ -9139,7 +9140,7 @@ snapshots:
   '@rspack/binding-win32-arm64-msvc@1.0.10':
     optional: true
 
-  '@rspack/binding-win32-arm64-msvc@1.0.5':
+  '@rspack/binding-win32-arm64-msvc@1.1.6':
     optional: true
 
   '@rspack/binding-win32-ia32-msvc@0.7.5':
@@ -9148,7 +9149,7 @@ snapshots:
   '@rspack/binding-win32-ia32-msvc@1.0.10':
     optional: true
 
-  '@rspack/binding-win32-ia32-msvc@1.0.5':
+  '@rspack/binding-win32-ia32-msvc@1.1.6':
     optional: true
 
   '@rspack/binding-win32-x64-msvc@0.7.5':
@@ -9157,7 +9158,7 @@ snapshots:
   '@rspack/binding-win32-x64-msvc@1.0.10':
     optional: true
 
-  '@rspack/binding-win32-x64-msvc@1.0.5':
+  '@rspack/binding-win32-x64-msvc@1.1.6':
     optional: true
 
   '@rspack/binding@0.7.5':
@@ -9184,27 +9185,17 @@ snapshots:
       '@rspack/binding-win32-ia32-msvc': 1.0.10
       '@rspack/binding-win32-x64-msvc': 1.0.10
 
-  '@rspack/binding@1.0.5':
+  '@rspack/binding@1.1.6':
     optionalDependencies:
-      '@rspack/binding-darwin-arm64': 1.0.5
-      '@rspack/binding-darwin-x64': 1.0.5
-      '@rspack/binding-linux-arm64-gnu': 1.0.5
-      '@rspack/binding-linux-arm64-musl': 1.0.5
-      '@rspack/binding-linux-x64-gnu': 1.0.5
-      '@rspack/binding-linux-x64-musl': 1.0.5
-      '@rspack/binding-win32-arm64-msvc': 1.0.5
-      '@rspack/binding-win32-ia32-msvc': 1.0.5
-      '@rspack/binding-win32-x64-msvc': 1.0.5
-
-  '@rspack/core@0.7.5(@swc/helpers@0.5.13)':
-    dependencies:
-      '@module-federation/runtime-tools': 0.1.6
-      '@rspack/binding': 0.7.5
-      caniuse-lite: 1.0.30001668
-      tapable: 2.2.1
-      webpack-sources: 3.2.3
-    optionalDependencies:
-      '@swc/helpers': 0.5.13
+      '@rspack/binding-darwin-arm64': 1.1.6
+      '@rspack/binding-darwin-x64': 1.1.6
+      '@rspack/binding-linux-arm64-gnu': 1.1.6
+      '@rspack/binding-linux-arm64-musl': 1.1.6
+      '@rspack/binding-linux-x64-gnu': 1.1.6
+      '@rspack/binding-linux-x64-musl': 1.1.6
+      '@rspack/binding-win32-arm64-msvc': 1.1.6
+      '@rspack/binding-win32-ia32-msvc': 1.1.6
+      '@rspack/binding-win32-x64-msvc': 1.1.6
 
   '@rspack/core@0.7.5(@swc/helpers@0.5.3)':
     dependencies:
@@ -9225,16 +9216,14 @@ snapshots:
     optionalDependencies:
       '@swc/helpers': 0.5.13
 
-  '@rspack/core@1.0.5(@swc/helpers@0.5.13)':
+  '@rspack/core@1.1.6(@swc/helpers@0.5.15)':
     dependencies:
       '@module-federation/runtime-tools': 0.5.1
-      '@rspack/binding': 1.0.5
-      '@rspack/lite-tapable': 1.0.0
+      '@rspack/binding': 1.1.6
+      '@rspack/lite-tapable': 1.0.1
       caniuse-lite: 1.0.30001668
     optionalDependencies:
-      '@swc/helpers': 0.5.13
-
-  '@rspack/lite-tapable@1.0.0': {}
+      '@swc/helpers': 0.5.15
 
   '@rspack/lite-tapable@1.0.1': {}
 
@@ -9333,6 +9322,10 @@ snapshots:
       tslib: 2.8.0
 
   '@swc/helpers@0.5.13':
+    dependencies:
+      tslib: 2.8.0
+
+  '@swc/helpers@0.5.15':
     dependencies:
       tslib: 2.8.0
 
@@ -9495,7 +9488,7 @@ snapshots:
       '@typescript-eslint/scope-manager': 5.62.0
       '@typescript-eslint/type-utils': 5.62.0(eslint@8.57.0)(typescript@5.6.2)
       '@typescript-eslint/utils': 5.62.0(eslint@8.57.0)(typescript@5.6.2)
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       eslint: 8.57.0
       graphemer: 1.4.0
       ignore: 5.3.2
@@ -9512,20 +9505,8 @@ snapshots:
       '@typescript-eslint/scope-manager': 5.62.0
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.2)
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       eslint: 8.57.0
-    optionalDependencies:
-      typescript: 5.6.2
-    transitivePeerDependencies:
-      - supports-color
-
-  '@typescript-eslint/parser@5.62.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.6.2)':
-    dependencies:
-      '@typescript-eslint/scope-manager': 5.62.0
-      '@typescript-eslint/types': 5.62.0
-      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.2)
-      debug: 4.3.6(supports-color@9.3.1)
-      eslint: 9.16.0(jiti@1.21.6)
     optionalDependencies:
       typescript: 5.6.2
     transitivePeerDependencies:
@@ -9540,7 +9521,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.2)
       '@typescript-eslint/utils': 5.62.0(eslint@8.57.0)(typescript@5.6.2)
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       eslint: 8.57.0
       tsutils: 3.21.0(typescript@5.6.2)
     optionalDependencies:
@@ -9554,7 +9535,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/visitor-keys': 5.62.0
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.6.3
@@ -9754,7 +9735,7 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -10370,6 +10351,8 @@ snapshots:
 
   core-js@3.38.1: {}
 
+  core-js@3.39.0: {}
+
   core-util-is@1.0.3: {}
 
   cosmiconfig@7.1.0:
@@ -10580,6 +10563,10 @@ snapshots:
   debug@3.2.7:
     dependencies:
       ms: 2.1.3
+
+  debug@4.3.6:
+    dependencies:
+      ms: 2.1.2
 
   debug@4.3.6(supports-color@5.5.0):
     dependencies:
@@ -10828,7 +10815,7 @@ snapshots:
 
   esbuild-register@3.6.0(esbuild@0.17.19):
     dependencies:
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       esbuild: 0.17.19
     transitivePeerDependencies:
       - supports-color
@@ -11051,7 +11038,7 @@ snapshots:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.6
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       doctrine: 3.0.0
       escape-string-regexp: 4.0.0
       eslint-scope: 7.2.2
@@ -11098,7 +11085,7 @@ snapshots:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.6
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
       escape-string-regexp: 4.0.0
       eslint-scope: 8.2.0
       eslint-visitor-keys: 4.2.0
@@ -11562,7 +11549,7 @@ snapshots:
   https-proxy-agent@5.0.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.6(supports-color@9.3.1)
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -12499,6 +12486,8 @@ snapshots:
 
   picocolors@1.1.0: {}
 
+  picocolors@1.1.1: {}
+
   picomatch@2.3.1: {}
 
   pidtree@0.6.0: {}
@@ -13126,7 +13115,7 @@ snapshots:
 
   rslog@1.2.2: {}
 
-  rspack-manifest-plugin@5.0.0(@rspack/core@0.7.5(@swc/helpers@0.5.13)):
+  rspack-manifest-plugin@5.0.0(@rspack/core@0.7.5(@swc/helpers@0.5.3)):
     dependencies:
       tapable: 2.2.1
       webpack-sources: 2.3.1
