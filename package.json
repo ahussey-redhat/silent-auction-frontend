@@ -45,7 +45,7 @@
     "use-debounce": "^10.0.4"
   },
   "devDependencies": {
-    "@lingui/cli": "^5.1.0",
+    "@lingui/cli": "^5.1.1",
     "@lingui/swc-plugin": "^4.0.10",
     "@modern-js-app/eslint-config": "2.59.0",
     "@modern-js/app-tools": "2.60.3",
