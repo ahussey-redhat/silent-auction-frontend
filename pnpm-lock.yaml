@@ -27,8 +27,8 @@ importers:
         specifier: 6.0.0
         version: 6.0.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       '@patternfly/react-core':
-        specifier: 6.0.0
-        version: 6.0.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
+        specifier: 6.1.0
+        version: 6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       '@patternfly/react-icons':
         specifier: 6.1.0
         version: 6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
@@ -1858,8 +1858,8 @@ packages:
       react: ^17 || ^18
       react-dom: ^17 || ^18
 
-  '@patternfly/react-core@6.0.0':
-    resolution: {integrity: sha512-UKFj9+YzBY+FfEDsLONgOM4N0e8SPV/27/UzNRiJ0gpgqbw2POuXwLpjGSRTTIUuCaLaGGM5PeTSj7mMB73ykw==}
+  '@patternfly/react-core@6.1.0':
+    resolution: {integrity: sha512-zj0lJPZxQanXKD8ae2kYnweT0kpp1CzpHYAkaBjTrw2k6ZMfr/UPlp0/ugCjWEokBqh79RUADLkKJJPce/yoSQ==}
     peerDependencies:
       react: ^17 || ^18
       react-dom: ^17 || ^18
@@ -1870,11 +1870,11 @@ packages:
       react: ^17 || ^18
       react-dom: ^17 || ^18
 
-  '@patternfly/react-styles@6.0.0':
-    resolution: {integrity: sha512-fJFMB89sTRGlZTzTLmpRmthgOXqcN078scHMFJ3ttfi2D2btnem5oZrxmQ/gPZkZOxR+9MqwKDB6l3F5x1SqLQ==}
-
   '@patternfly/react-styles@6.0.0-prerelease.6':
     resolution: {integrity: sha512-tI28gIJFgbgVQs7Xj705csfl6T92dr5Bh7ynR5gN4+QdTWCUWmSctp46G2ZewXdrIN+C+2zUPE86o77aFp4CWw==}
+
+  '@patternfly/react-styles@6.1.0':
+    resolution: {integrity: sha512-JQ3zIl5SFiSB0YWVYibcUwgZdsp6Wn8hkfZ7KhtCjHFccSDdJexPOXVV1O9f2h4PfxTlY3YntZ81ZsguBx/Q7A==}
 
   '@patternfly/react-table@6.0.0':
     resolution: {integrity: sha512-LvWMzjcQZHdFUpK8fjj5EAFrNxqB8/MFd7gUUZu7AgYt6rmS2im4xk6yb7h0K7cAhY085oPeRF9lkYSCgzlRDg==}
@@ -1882,8 +1882,8 @@ packages:
       react: ^17 || ^18
       react-dom: ^17 || ^18
 
-  '@patternfly/react-tokens@6.0.0':
-    resolution: {integrity: sha512-xd0ynDkiIW2rp8jz4TNvR4Dyaw9kSMkZdsuYcLlFXCVmvX//Mnl4rhBnid/2j2TaqK0NbkyTTPnPY/BU7SfLVQ==}
+  '@patternfly/react-tokens@6.1.0':
+    resolution: {integrity: sha512-t1UcHbOa4txczTR5UlnG4XcAAdnDSfSlCaOddw/HTqRF59pn2ks2JUu9sfnFRZ8SiAAxKRiYdX5bT7Mf4R24+w==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -2818,8 +2818,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  attr-accept@2.2.2:
-    resolution: {integrity: sha512-7prDjvt9HmqiZ0cl5CRjtS84sEyhsHP2coDkaZKRKVfCDo9s7iw7ChVmar78Gu9pC4SoR/28wFu/G5JJhTnqEg==}
+  attr-accept@2.2.5:
+    resolution: {integrity: sha512-0bDNnY/u6pPwHDMoF0FieU354oBi0a8rD9FcsLwzcGWbc8KS8KPIi7y+s13OlVY+gMWc/9xEMUgNE6Qm8ZllYQ==}
     engines: {node: '>=4'}
 
   autoprefixer@10.4.20:
@@ -3850,8 +3850,8 @@ packages:
     resolution: {integrity: sha512-XXTUwCvisa5oacNGRP9SfNtYBNAMi+RPwBFmblZEF7N7swHYQS6/Zfk7SRwx4D5j3CH211YNRco1DEMNVfZCnQ==}
     engines: {node: '>=16.0.0'}
 
-  file-selector@0.6.0:
-    resolution: {integrity: sha512-QlZ5yJC0VxHxQQsQhXvBaC7VRJ2uaxTf+Tfpu4Z/OcVQJVpZO+DGU0rkoVW5ce2SccxugvpBJoMvUs59iILYdw==}
+  file-selector@2.1.2:
+    resolution: {integrity: sha512-QgXo+mXTe8ljeqUFaX3QVHc5osSItJ/Km+xpocx0aSqWGMSCf6qYs/VnzZgS864Pjn5iceMRFigeAV7AfTlaig==}
     engines: {node: '>= 12'}
 
   file-uri-to-path@1.0.0:
@@ -3892,8 +3892,8 @@ packages:
   flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
 
-  focus-trap@7.6.0:
-    resolution: {integrity: sha512-1td0l3pMkWJLFipobUcGaf+5DTY4PLDDrcqoSaKP8ediO/CoWCCYk/fT/Y2A4e6TNB+Sh6clRJCjOPPnKoNHnQ==}
+  focus-trap@7.6.2:
+    resolution: {integrity: sha512-9FhUxK1hVju2+AiQIDJ5Dd//9R2n2RAfJ0qfhF4IHGHgcoEUTMpbTeG/zbEuwaiYXfuAH6XE0/aCyxDdRM+W5w==}
 
   follow-redirects@1.15.6:
     resolution: {integrity: sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==}
@@ -5451,8 +5451,8 @@ packages:
     peerDependencies:
       react: ^18.2.0
 
-  react-dropzone@14.2.3:
-    resolution: {integrity: sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug==}
+  react-dropzone@14.3.8:
+    resolution: {integrity: sha512-sBgODnq+lcA4P296DY4wacOZz3JFpD99fp+hb//iBO2HHnyeZU3FwWyXJ6salNpqQdsZrgMrotuko/BdJMV8Ug==}
     engines: {node: '>= 10.13'}
     peerDependencies:
       react: '>= 16.8 || 18.0.0'
@@ -8881,7 +8881,7 @@ snapshots:
 
   '@patternfly/react-component-groups@6.0.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@patternfly/react-core': 6.0.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
+      '@patternfly/react-core': 6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       '@patternfly/react-icons': 6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       '@patternfly/react-table': 6.0.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       clsx: 2.1.1
@@ -8889,38 +8889,38 @@ snapshots:
       react-dom: 18.2.0(react@18.3.1)
       react-jss: 10.10.0(react@18.3.1)
 
-  '@patternfly/react-core@6.0.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)':
+  '@patternfly/react-core@6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@patternfly/react-icons': 6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
-      '@patternfly/react-styles': 6.0.0
-      '@patternfly/react-tokens': 6.0.0
-      focus-trap: 7.6.0
+      '@patternfly/react-styles': 6.1.0
+      '@patternfly/react-tokens': 6.1.0
+      focus-trap: 7.6.2
       react: 18.3.1
       react-dom: 18.2.0(react@18.3.1)
-      react-dropzone: 14.2.3(react@18.3.1)
-      tslib: 2.8.0
+      react-dropzone: 14.3.8(react@18.3.1)
+      tslib: 2.8.1
 
   '@patternfly/react-icons@6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
       react-dom: 18.2.0(react@18.3.1)
 
-  '@patternfly/react-styles@6.0.0': {}
-
   '@patternfly/react-styles@6.0.0-prerelease.6': {}
+
+  '@patternfly/react-styles@6.1.0': {}
 
   '@patternfly/react-table@6.0.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@patternfly/react-core': 6.0.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
+      '@patternfly/react-core': 6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       '@patternfly/react-icons': 6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
-      '@patternfly/react-styles': 6.0.0
-      '@patternfly/react-tokens': 6.0.0
+      '@patternfly/react-styles': 6.1.0
+      '@patternfly/react-tokens': 6.1.0
       lodash: 4.17.21
       react: 18.3.1
       react-dom: 18.2.0(react@18.3.1)
-      tslib: 2.8.0
+      tslib: 2.8.1
 
-  '@patternfly/react-tokens@6.0.0': {}
+  '@patternfly/react-tokens@6.1.0': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -9501,19 +9501,19 @@ snapshots:
 
   '@swc/helpers@0.5.1':
     dependencies:
-      tslib: 2.8.0
+      tslib: 2.8.1
 
   '@swc/helpers@0.5.13':
     dependencies:
-      tslib: 2.8.0
+      tslib: 2.8.1
 
   '@swc/helpers@0.5.15':
     dependencies:
-      tslib: 2.8.0
+      tslib: 2.8.1
 
   '@swc/helpers@0.5.3':
     dependencies:
-      tslib: 2.8.0
+      tslib: 2.8.1
 
   '@swc/plugin-styled-components@2.0.11':
     dependencies:
@@ -10096,7 +10096,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  attr-accept@2.2.2: {}
+  attr-accept@2.2.5: {}
 
   autoprefixer@10.4.20(postcss@8.4.41):
     dependencies:
@@ -11413,9 +11413,9 @@ snapshots:
     dependencies:
       flat-cache: 4.0.1
 
-  file-selector@0.6.0:
+  file-selector@2.1.2:
     dependencies:
-      tslib: 2.8.0
+      tslib: 2.8.1
 
   file-uri-to-path@1.0.0: {}
 
@@ -11461,7 +11461,7 @@ snapshots:
 
   flatted@3.3.1: {}
 
-  focus-trap@7.6.0:
+  focus-trap@7.6.2:
     dependencies:
       tabbable: 6.2.0
 
@@ -13110,10 +13110,10 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
-  react-dropzone@14.2.3(react@18.3.1):
+  react-dropzone@14.3.8(react@18.3.1):
     dependencies:
-      attr-accept: 2.2.2
-      file-selector: 0.6.0
+      attr-accept: 2.2.5
+      file-selector: 2.1.2
       prop-types: 15.8.1
       react: 18.3.1
 
@@ -13378,7 +13378,7 @@ snapshots:
 
   rxjs@7.8.1:
     dependencies:
-      tslib: 2.8.0
+      tslib: 2.8.1
 
   safe-array-concat@1.1.2:
     dependencies:
