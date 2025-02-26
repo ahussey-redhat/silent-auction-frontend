@@ -4,7 +4,7 @@ import { useModel } from '@modern-js/runtime/model';
 import { useNavigate, useParams } from '@modern-js/runtime/router';
 import DetailsPage from '@patternfly/react-component-groups/dist/dynamic/DetailsPage';
 import ErrorState from '@patternfly/react-component-groups/dist/dynamic/ErrorState';
-import NotAuthorized from '@patternfly/react-component-groups/dist/dynamic/NotAuthorized';
+import UnauthorizedAccess from '@patternfly/react-component-groups/dist/dynamic/UnauthorizedAccess';
 import {
   Button,
   Flex,
@@ -103,13 +103,13 @@ export default () => {
         />
       ) : null}
       {error?.status === 401 ? (
-        <NotAuthorized
+        <UnauthorizedAccess
           bodyText={_(msg`Unauthorized`)}
           serviceName={_(msg`Auction`)}
         />
       ) : null}
       {error?.status === 403 ? (
-        <NotAuthorized
+        <UnauthorizedAccess
           bodyText={_(msg`Forbidden`)}
           serviceName={_(msg`Auction`)}
         />

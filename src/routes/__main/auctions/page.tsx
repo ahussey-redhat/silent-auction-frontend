@@ -90,6 +90,7 @@ export default () => {
                       </CardHeader>
                     </GridItem>
                     <GridItem>
+                      {/* TODO refactor to use ServiceCard component */}
                       <CardTitle>{name}</CardTitle>
                       <CardBody>
                         {description}
