@@ -63,7 +63,6 @@ spec:
             value: "--storage-driver=overlay"
       - name: git-clone-argocd-repo
         taskRef:
-          kind: ClusterTask
           name: git-clone
         params:
           - name: url
@@ -77,7 +76,6 @@ spec:
             workspace: argocd_source
       - name: deploy
         taskRef:
-          kind: Task
           name: deploy
         runAfter:
           - git-clone-argocd-repo
