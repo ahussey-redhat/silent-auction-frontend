@@ -33,7 +33,7 @@
     "@lingui/macro": "^4.11.4",
     "@lingui/react": "^4.14.1",
     "@modern-js/runtime": "2.63.0",
-    "@patternfly/react-component-groups": "6.0.0",
+    "@patternfly/react-component-groups": "6.1.0",
     "@patternfly/react-core": "6.1.0",
     "@patternfly/react-icons": "6.1.0",
     "@patternfly/react-styles": "6.0.0-prerelease.6",

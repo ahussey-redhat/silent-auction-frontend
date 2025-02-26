@@ -24,8 +24,8 @@ importers:
         specifier: 2.63.0
         version: 2.63.0(@types/react-dom@18.0.11)(@types/react@18.3.12)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       '@patternfly/react-component-groups':
-        specifier: 6.0.0
-        version: 6.0.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
+        specifier: 6.1.0
+        version: 6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       '@patternfly/react-core':
         specifier: 6.1.0
         version: 6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
@@ -1852,8 +1852,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@patternfly/react-component-groups@6.0.0':
-    resolution: {integrity: sha512-q4dQj4b/Yf8fW3ZXWZhXrX8xE73JpRAFF5wydDx6OZe3oZXucUgldghupavbyhY/oYM2V89/P67w24poH6iOqA==}
+  '@patternfly/react-component-groups@6.1.0':
+    resolution: {integrity: sha512-8RkQv9wQk+D+nUMFtl4uk0ddMvxZ/+jFwnnXe2fw/BulouDVbpKRI24C1S8i1OQHr3++CbocBmmWRV0iw9Kvlw==}
     peerDependencies:
       react: ^17 || ^18
       react-dom: ^17 || ^18
@@ -8879,7 +8879,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@patternfly/react-component-groups@6.0.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)':
+  '@patternfly/react-component-groups@6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@patternfly/react-core': 6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       '@patternfly/react-icons': 6.1.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
@@ -8981,7 +8981,7 @@ snapshots:
       '@rspack/core': 0.7.5(@swc/helpers@0.5.3)
       '@swc/helpers': 0.5.3
       core-js: 3.36.1
-      html-webpack-plugin: html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.3))
+      html-webpack-plugin: html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.15))
       postcss: 8.4.41
 
   '@rsbuild/core@1.0.1-rc.4':
@@ -9219,7 +9219,7 @@ snapshots:
     dependencies:
       '@rspack/core': 0.7.5(@swc/helpers@0.5.15)
       caniuse-lite: 1.0.30001668
-      html-webpack-plugin: html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.3))
+      html-webpack-plugin: html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.15))
       postcss: 8.4.41
     optionalDependencies:
       fsevents: 2.3.3
@@ -9230,7 +9230,7 @@ snapshots:
     dependencies:
       '@rspack/core': 0.7.5(@swc/helpers@0.5.3)
       caniuse-lite: 1.0.30001668
-      html-webpack-plugin: html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.3))
+      html-webpack-plugin: html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.15))
       postcss: 8.4.41
     optionalDependencies:
       fsevents: 2.3.3
@@ -11727,7 +11727,7 @@ snapshots:
       relateurl: 0.2.7
       terser: 5.31.6
 
-  html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.3)):
+  html-rspack-plugin@5.7.2(@rspack/core@0.7.5(@swc/helpers@0.5.15)):
     optionalDependencies:
       '@rspack/core': 0.7.5(@swc/helpers@0.5.3)
 
