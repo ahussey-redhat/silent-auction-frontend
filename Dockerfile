@@ -4,8 +4,6 @@ LABEL name="ahussey/silent-auction/frontend"
 
 USER 0
 
-RUN microdnf update -y
-
 RUN microdnf install -y git
 
 RUN npm install -g pnpm
@@ -16,7 +14,7 @@ USER 10001
 
 COPY --chown=10001:0 . /opt/app-root/src/
 
-RUN rm -f /opt/app-root/src/.env.*
+RUN rm -f /opt/app-root/src/.env.* && rm -rf /opt/app-root/src/node_modules && rm -rf /opt/app-root/src/dist
 
 RUN git config --global --add safe.directory /opt/app-root/src
 
