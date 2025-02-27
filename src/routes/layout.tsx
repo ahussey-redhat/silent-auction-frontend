@@ -33,6 +33,7 @@ export default () => {
   }, [localeParam]);
 
   return (
+    // @ts-ignore
     <I18nProvider i18n={i18n}>
       <AuthProvider>
         <Favicon />

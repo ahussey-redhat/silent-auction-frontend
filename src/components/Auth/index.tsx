@@ -1,5 +1,6 @@
 import { GetModelActions, useModel } from '@modern-js/runtime/model';
 import { Navigate, useLocation } from '@modern-js/runtime/router';
+// @ts-ignore
 import Keycloak, { KeycloakProfile } from 'keycloak-js';
 import {
   createContext,

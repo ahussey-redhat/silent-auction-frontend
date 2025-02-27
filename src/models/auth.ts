@@ -1,4 +1,5 @@
 import { model, useModel } from '@modern-js/runtime/model';
+// @ts-ignore
 import Keycloak from 'keycloak-js';
 
 type State = {
