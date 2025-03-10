@@ -50,7 +50,7 @@
     "@modern-js-app/eslint-config": "2.59.0",
     "@modern-js/app-tools": "2.60.3",
     "@modern-js/eslint-config": "2.54.5",
-    "@modern-js/plugin-ssg": "2.60.0",
+    "@modern-js/plugin-ssg": "2.65.3",
     "@modern-js/plugin-swc": "2.63.2",
     "@modern-js/tsconfig": "2.63.1",
     "@types/chance": "^1.1.6",
