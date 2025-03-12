@@ -12,7 +12,7 @@ RUN chown -R 10001:0 /opt/app-root/src
 
 USER 10001
 
-COPY --chown=10001:0 . /opt/app-root/src/
+COPY --chown=10001:0 --chmod 774 . /opt/app-root/src/
 
 RUN rm -f /opt/app-root/src/.env.* && rm -rf /opt/app-root/src/node_modules && rm -rf /opt/app-root/src/dist
 
