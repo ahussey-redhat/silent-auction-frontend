@@ -1,5 +1,5 @@
-import { Trans, msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+'use client'
+
 import {
   DataList,
   DataListCell,
@@ -11,14 +11,11 @@ import {
   ContentVariants, useInterval, Timestamp,
 } from '@patternfly/react-core';
 import { useEffectOnce } from 'react-use';
-import { useModel } from '@modern-js/runtime/model';
-import { PageTitle } from '@/components';
-import userModel from '@/models/user';
+import userModel from '@app/models/user';
 import './page.css';
-import auctionModel from '@/models/auction';
+import auctionModel from '@app/providers/auction';
 
 export default function HighestBids() {
-  const { _ } = useLingui();
 
   const [
     {
@@ -55,14 +52,13 @@ export default function HighestBids() {
 
   return (
     <>
-      <PageTitle title={_(msg`Highest Bids Per Auction`)} />
       <PageSection hasBodyWrapper={false}>
         <Content component={ContentVariants.h1}>
-          <Trans>Highest Bids Per Auction</Trans>
+          Highest Bids Per Auction
         </Content>
       </PageSection>
       <PageSection hasBodyWrapper={false} className="highest-bids-page" isFilled>
-        <DataList aria-label={_(msg`Bids list`)}>
+        <DataList aria-label={`Bids list`}>
         {bids?.map(({ id, auctionId, userId, amount, time }) => (
           <DataListItem key={id} id={id}>
             <DataListItemRow>
