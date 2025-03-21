@@ -1,33 +1,28 @@
-import { Trans, msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+'use client'
+
 import {
   Card,
   CardBody,
   CardHeader,
   CardTitle,
+  Content,
+  ContentVariants,
   EmptyState,
   Gallery,
   Grid,
   GridItem,
   PageSection,
   Spinner,
-  Content,
-  ContentVariants,
 } from '@patternfly/react-core';
 import { css } from '@patternfly/react-styles';
 import displayStyles from '@patternfly/react-styles/css/utilities/Display/display';
 import flexStyles from '@patternfly/react-styles/css/utilities/Flex/flex';
 import sizingStyles from '@patternfly/react-styles/css/utilities/Sizing/sizing';
 import { useEffectOnce } from 'react-use';
-import { useModel } from '@modern-js/runtime/model';
-import { useNavigate } from '@modern-js/runtime/router';
-import { PageTitle } from '@/components';
-import auctionModel from '@/models/auction';
+import auctionModel from '@app/models/auction';
 import './page.css';
 
-export default () => {
-  const { _ } = useLingui();
-  const navigate = useNavigate();
+export default function Auctions() {
   const [
     {
       auctions: { value: auctions, loading },
@@ -41,15 +36,12 @@ export default () => {
 
   return (
     <>
-      <PageTitle title={_(msg`Auctions`)} />
       <PageSection hasBodyWrapper={false}>
-        <Content component={ContentVariants.h1}>
-          <Trans>Auctions</Trans>
-        </Content>
+          <Content component={ContentVariants.h1}>Auctions</Content>
       </PageSection>
       <PageSection hasBodyWrapper={false} className="auctions-page" isFilled>
         {auctions.length === 0 && loading ? (
-          <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
+          <EmptyState titleText={`Loading`} icon={Spinner} />
         ) : (
           <Gallery
             hasGutter

@@ -3,27 +3,24 @@ import {
   CardBody,
   CardHeader,
   CardTitle,
+  Content,
+  ContentVariants,
   Gallery,
   Grid,
   GridItem,
   PageSection,
   Skeleton,
-  Content,
-  ContentVariants,
 } from '@patternfly/react-core';
-import { Trans } from '@lingui/macro';
 import sizingStyles from '@patternfly/react-styles/css/utilities/Sizing/sizing';
 import { css } from '@patternfly/react-styles';
 import displayStyles from '@patternfly/react-styles/css/utilities/Display/display';
 import flexStyles from '@patternfly/react-styles/css/utilities/Flex/flex';
-import { PageTitle } from '@/components';
 
 export default () => (
   <>
-    <PageTitle title="auctions" />
     <PageSection hasBodyWrapper={false}>
       <Content component={ContentVariants.h1}>
-        <Trans>Auctions</Trans>
+        <Content component={ContentVariants.h1}>Auctions</Content>
       </Content>
     </PageSection>
     <PageSection hasBodyWrapper={false} className="auctions-page" isFilled>

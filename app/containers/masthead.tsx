@@ -128,7 +128,6 @@ export default () => {
         </PageToggleButton>
       </MastheadToggle>
         <MastheadBrand data-codemods><MastheadLogo data-codemods>
-          <LocaleLink to="/" />
           <Brand
             src={logoImgSrc}
             alt={_(msg`SILENT AUCTION`)}
