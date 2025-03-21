@@ -1,58 +1,34 @@
 {
   "name": "silent-auction",
   "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "reset": "npx rimraf ./**/node_modules",
-    "dev": "modern dev",
-    "build": "modern build",
-    "start": "modern start",
-    "serve": "modern serve",
-    "new": "modern new",
-    "lint": "modern lint",
-    "prepare": "husky install",
-    "upgrade": "modern upgrade",
-    "extract-messages": "lingui extract",
-    "compile-messages": "lingui compile --typescript"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "engines": {
-    "node": ">=16.18.1"
-  },
-  "packageManager": "pnpm@9.4.0+sha256.b6fd0bfda555e7e584ad7e56b30c68b01d5a04f9ee93989f4b93ca8473c49c74",
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,mjs,cjs}": [
-      "node --max_old_space_size=8192 ./node_modules/eslint/bin/eslint.js --fix --color --cache --quiet"
-    ]
-  },
-  "eslintIgnore": [
-    "node_modules/",
-    "dist/"
-  ],
   "dependencies": {
     "@eslint/js": "^9.17.0",
-    "@lingui/core": "^4.12.0",
-    "@lingui/macro": "^4.11.4",
-    "@lingui/react": "^4.14.1",
-    "@modern-js/runtime": "2.63.0",
+    "@keycloak/keycloak-admin-client": "^26.1.4",
+    "@lingui/core": "^5.2.0",
+    "@lingui/macro": "^5.2.0",
+    "@lingui/react": "^5.2.0",
     "@patternfly/react-component-groups": "6.0.0-alpha.16",
     "@patternfly/react-core": "6.1.0",
     "@patternfly/react-icons": "6.1.0",
     "@patternfly/react-styles": "6.0.0-prerelease.6",
+    "axios": "^1.8.4",
     "eslint": "^9.16.0",
+    "jwt-decode": "^4.0.0",
     "keycloak-js": "^26.2.0",
+    "next": "^15.2.3",
     "react": "~18.3.1",
     "react-dom": "~18.2.0",
     "react-use": "^17.6.0",
     "use-debounce": "^10.0.4"
   },
   "devDependencies": {
-    "@lingui/cli": "^5.2.0",
-    "@lingui/swc-plugin": "^5.0.0",
-    "@modern-js-app/eslint-config": "2.59.0",
-    "@modern-js/app-tools": "2.60.3",
-    "@modern-js/eslint-config": "2.54.5",
-    "@modern-js/plugin-ssg": "2.60.0",
-    "@modern-js/plugin-swc": "2.63.2",
-    "@modern-js/tsconfig": "2.63.1",
     "@types/chance": "^1.1.6",
     "@types/jest": "~29.5.14",
     "@types/node": "~22.10.1",

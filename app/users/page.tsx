@@ -18,7 +18,7 @@ import { PageTitle } from '@/components';
 import userModel from '@/models/user';
 import './page.css';
 
-export default () => {
+export default function Users(){
   const { _ } = useLingui();
   const [
     {

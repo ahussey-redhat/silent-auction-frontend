@@ -1,9 +1,10 @@
-import { msg, Trans } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
-import { useModel } from '@modern-js/runtime/model';
+'use client'
+
 import {
   Avatar,
   Brand,
+  Content,
+  ContentVariants,
   Dropdown,
   DropdownList,
   DropdownItem,
@@ -11,9 +12,12 @@ import {
   MastheadLogo,
   MastheadContent,
   MastheadMain,
-  MastheadToggle, MastheadBrand,
+  MastheadToggle,
+  MastheadBrand,
   MenuToggle,
   PageToggleButton,
+  ToggleGroup,
+  ToggleGroupItem,
   Toolbar,
   ToolbarContent,
   ToolbarGroup,
@@ -22,31 +26,34 @@ import {
 import avatarImgSrc from '@patternfly/react-core/src/components/assets/avatarImg.svg';
 import { BarsIcon } from '@patternfly/react-icons/dist/esm/icons/bars-icon';
 import { EllipsisVIcon } from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
-import { MouseEvent as ReactMouseEvent, useCallback, useState } from 'react';
-import { useAsync, useEffectOnce } from 'react-use';
-import { LocaleLink, logoImgSrc, useAuth } from '@/components';
-import sidebarModel from '@/models/sidebar';
+import React, { MouseEvent as ReactMouseEvent, useCallback, useState } from 'react';
+import { useAsync } from 'react-use';
+import { useAuth } from '@app/providers/Auth';
 
-export default () => {
-  const { _ } = useLingui();
-  const { profile, logout } = useAuth();
-  const [
-    { isSidebarOpen },
-    {
-      loadIsSidebarOpenFromLocalStorage,
-      saveIsSidebarOpenToLocalStorage,
-      setIsSidebarOpen,
-    },
-  ] = useModel(sidebarModel);
+import MoonIcon from '@patternfly/react-icons/dist/esm/icons/moon-icon';
+import SunIcon from '@patternfly/react-icons/dist/esm/icons/sun-icon';
+import Link from 'next/link';
 
-  useEffectOnce(() => {
-    loadIsSidebarOpenFromLocalStorage();
-  });
+export default function AppMasthead(
+  {
+    isDarkThemeEnabled,
+    setDarkThemeEnabled,
+    isSidebarOpen,
+    setSidebarOpen,
+    // isNotificationDrawerOpen,
+    // onCloseNotificationDrawer,
+  }
+) {
+
+  const { user, isAuthenticated, logout } = useAuth();
+
+  const onDarkThemeToggleClick = () => {
+    setDarkThemeEnabled(!isDarkThemeEnabled);
+  }
 
   const onSidebarToggle = useCallback(() => {
-    setIsSidebarOpen(!isSidebarOpen);
-    saveIsSidebarOpenToLocalStorage();
-  }, [isSidebarOpen, setIsSidebarOpen, saveIsSidebarOpenToLocalStorage]);
+    setSidebarOpen(!isSidebarOpen);
+  }, [isSidebarOpen, setSidebarOpen]);
 
   const [isFullKebabDropdownOpen, setIsFullKebabDropdownOpen] = useState(false);
 
@@ -78,7 +85,7 @@ export default () => {
 
   const { value: avatarUrl = avatarImgSrc as string } =
     useAsync(async (): Promise<string | undefined> => {
-      if (!profile?.email) {
+      if (!user?.email) {
         return undefined;
       }
 
@@ -86,7 +93,7 @@ export default () => {
         new Uint8Array(
           await crypto.subtle.digest(
             'SHA-256',
-            new TextEncoder().encode(profile.email),
+            new TextEncoder().encode(user.email),
           ),
         ),
       )
@@ -94,22 +101,29 @@ export default () => {
         .join('');
 
       return `https://gravatar.com/avatar/${hash}?s=32&d=identicon`;
-    }, [profile?.email]);
+    }, [user?.email]);
 
   const userDropdownItems = [
-    <DropdownItem key="account">
-      <Trans>
-        <a
-          href={`${process.env.KEYCLOAK_URL}/realms/${process.env.KEYCLOAK_REALM}/account/#/`}
+    <DropdownItem
+      key="account"
+      // Ensure Patternfly styling is inherited
+      component={(props) =>
+        <Content
+          {...props}
+          component={ContentVariants.a}
+          href={`${process.env.NEXT_PUBLIC_KEYCLOAK_URL}/realms/${process.env.NEXT_PUBLIC_KEYCLOAK_REALM}/account/#/`}
           target="_blank"
-          rel="noreferrer"
+          noreferrer="true"
+          noopen="true"
+          alt={"Access and manage your account. This is an external link."}
         >
           Account
-        </a>
-      </Trans>
+        </Content>
+      }
+    >
     </DropdownItem>,
     <DropdownItem key="logout" onClick={onClickLogout}>
-      <Trans>Logout</Trans>
+      <Content component={ContentVariants.p}>Logout</Content>
     </DropdownItem>,
   ];
 
@@ -120,7 +134,7 @@ export default () => {
         <PageToggleButton
           id="nav-sidebar-toggle"
           variant="plain"
-          aria-label={_(msg`Global navigation`)}
+          aria-label={'Global navigation'}
           isSidebarOpen={isSidebarOpen}
           onSidebarToggle={onSidebarToggle}
         >
@@ -129,8 +143,8 @@ export default () => {
       </MastheadToggle>
         <MastheadBrand data-codemods><MastheadLogo data-codemods>
           <Brand
-            src={logoImgSrc}
-            alt={_(msg`SILENT AUCTION`)}
+            src={'/logo.svg'}
+            alt={'SILENT AUCTION'}
             widths={{ default: '200px' }}
             heights={{ default: '50px' }}
           />
@@ -143,6 +157,24 @@ export default () => {
               align={{ default: 'alignEnd' }}
               gap={{ default: 'gapNone', md: 'gapMd' }}
             >
+              <ToolbarItem>
+                <ToggleGroup aria-label="Dark theme toggle">
+                  <ToggleGroupItem
+                    icon={<SunIcon style={!isDarkThemeEnabled ? {filter: "invert(1)"} : {filter: "invert(0)"}} />}
+                    aria-label={"Light Theme"}
+                    buttonId={"toggle-group-light-theme"}
+                    isSelected={!isDarkThemeEnabled}
+                    onClick={onDarkThemeToggleClick}
+                  />
+                  <ToggleGroupItem
+                    icon={<MoonIcon style={isDarkThemeEnabled ? {filter: "invert(1)"} : {filter: "invert(0)"}} />}
+                    aria-label={"Dark Theme"}
+                    buttonId={"toggle-group-dark-theme"}
+                    isSelected={isDarkThemeEnabled}
+                    onClick={onDarkThemeToggleClick}
+                  />
+                </ToggleGroup>
+              </ToolbarItem>
               <ToolbarItem visibility={{ md: 'hidden' }}>
                 <Dropdown
                   isOpen={isFullKebabDropdownOpen}
@@ -155,7 +187,7 @@ export default () => {
                       isExpanded={isFullKebabDropdownOpen}
                       onClick={onFullKebabToggle}
                       variant="plain"
-                      aria-label={_(msg`Toolbar menu`)}
+                      aria-label={'Toolbar menu'}
                     >
                       <EllipsisVIcon aria-hidden="true" />
                     </MenuToggle>
@@ -176,14 +208,20 @@ export default () => {
                       isExpanded={isUserDropdownOpen}
                       onClick={onUserDropdownToggle}
                       icon={
-                        <Avatar src={avatarUrl} alt={_(msg`Avatar image`)} />
+                        <Avatar
+                          src={avatarUrl}
+                          alt={`${user?.email}'s avatar image`}
+                          className={"pf-v6-c-avatar pf-m-sm"}
+                          style={{verticalAlign: "bottom"}}
+                          isBordered
+                        />
                       }
                       isFullHeight
                     >
-                      {profile ? (
-                        `${profile?.firstName} ${profile?.lastName}`
+                      {user ? (
+                        `${user?.given_name} ${user?.family_name}`
                       ) : (
-                        <Trans>Guest</Trans>
+                        <Content component={ContentVariants.p}>Guest</Content>
                       )}
                     </MenuToggle>
                   )}

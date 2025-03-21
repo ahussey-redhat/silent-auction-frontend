@@ -61,36 +61,36 @@ spec:
             value: $(params.image)
           - name: BUILD_EXTRA_ARGS
             value: "--storage-driver=overlay"
-      - name: git-clone-argocd-repo
-        taskRef:
-          name: git-clone
-        params:
-          - name: url
-            value: '$(params.argocd-git-url)'
-          - name: revision
-            value: 'main'
-        runAfter:
-          - build-image
-        workspaces:
-          - name: output
-            workspace: argocd_source
-      - name: deploy
-        taskRef:
-          name: deploy
-        runAfter:
-          - git-clone-argocd-repo
-        params:
-          - name: kustomization_directory
-            value: 4-workloads/production
-          - name: image_url
-            value: $(params.image)
-          - name: image_digest
-            value: $(tasks.build-image.results.IMAGE_DIGEST)
-          - name: repo_url
-            value: $(params.repo_url)
-        workspaces:
-          - name: argocd_source
-            workspace: argocd_source
+#      - name: git-clone-argocd-repo
+#        taskRef:
+#          name: git-clone
+#        params:
+#          - name: url
+#            value: '$(params.argocd-git-url)'
+#          - name: revision
+#            value: 'main'
+#        runAfter:
+#          - build-image
+#        workspaces:
+#          - name: output
+#            workspace: argocd_source
+#      - name: deploy
+#        taskRef:
+#          name: deploy
+#        runAfter:
+#          - git-clone-argocd-repo
+#        params:
+#          - name: kustomization_directory
+#            value: 4-workloads/production
+#          - name: image_url
+#            value: $(params.image)
+#          - name: image_digest
+#            value: $(tasks.build-image.results.IMAGE_DIGEST)
+#          - name: repo_url
+#            value: $(params.repo_url)
+#        workspaces:
+#          - name: argocd_source
+#            workspace: argocd_source
   workspaces:
     - name: source
       volumeClaimTemplate:

@@ -17,7 +17,7 @@ import userModel from '@/models/user';
 import './page.css';
 import auctionModel from '@/models/auction';
 
-export default () => {
+export default function HighestBids() {
   const { _ } = useLingui();
 
   const [

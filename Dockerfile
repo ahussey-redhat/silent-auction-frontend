@@ -1,25 +1,39 @@
-FROM registry.access.redhat.com/ubi9/nodejs-20-minimal:latest
+# Stage 1: Build Stage
+FROM registry.redhat.io/rhel9/nodejs-22-minimal:latest AS builder
 
 LABEL name="ahussey/silent-auction/frontend"
 
 USER 0
 
-RUN microdnf install -y git
+WORKDIR /opt/app-root/src
 
-RUN npm install -g pnpm
+COPY --chown=1001:0 --chmod=777 package.json package-lock.json ./
 
-RUN chown -R 10001:0 /opt/app-root/src
+# We have to use --force, as Patternfly doesn't support react 19 yet.
+RUN npm install --frozen-lockfile --force
 
-USER 10001
+COPY --chown=1001:0 . .
 
-COPY --chown=10001:0 --chmod=774 . /opt/app-root/src/
+RUN npm run build
 
-RUN rm -f /opt/app-root/src/.env.* && rm -rf /opt/app-root/src/node_modules && rm -rf /opt/app-root/src/dist
+RUN npm prune --omit=dev --force
 
-RUN git config --global --add safe.directory /opt/app-root/src
+# Stage 2: Production Stage
+FROM registry.redhat.io/rhel9/nodejs-22-minimal:latest AS runner
 
-RUN pnpm install && pnpm extract-messages && pnpm compile-messages
+USER 1001
 
-RUN pnpm build
+WORKDIR /opt/app-root/src
 
-CMD pnpm serve
+COPY --chmod=664 --from=builder /opt/app-root/src/next.config.ts ./
+COPY --chmod=664 --from=builder /opt/app-root/src/package.json /opt/app-root/src/package-lock.json ./
+COPY --chmod=664 --from=builder /opt/app-root/src/public ./public
+COPY --chmod=664 --from=builder /opt/app-root/src/.next ./.next
+COPY --chmod=664 --from=builder /opt/app-root/src/node_modules ./node_modules
+
+ENV NODE_ENV=production
+ENV PORT=3000
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
