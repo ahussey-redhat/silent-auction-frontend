@@ -11,9 +11,6 @@
   "dependencies": {
     "@eslint/js": "^9.17.0",
     "@keycloak/keycloak-admin-client": "^26.1.4",
-    "@lingui/core": "^5.2.0",
-    "@lingui/macro": "^5.2.0",
-    "@lingui/react": "^5.2.0",
     "@patternfly/react-component-groups": "6.0.0-alpha.16",
     "@patternfly/react-core": "6.1.0",
     "@patternfly/react-icons": "6.1.0",
@@ -35,7 +32,6 @@
     "@types/react": "~18.3.12",
     "@types/react-dom": "~18.0.11",
     "chance": "^1.1.12",
-    "husky": "~9.1.6",
     "lint-staged": "~13.1.4",
     "prettier": "~3.3.3",
     "rimraf": "~6.0.1",

@@ -2,7 +2,6 @@
 
 .pnp
 .pnp.js
-.env.*.local
 .history
 *.log*
 
@@ -26,7 +25,5 @@ log/
 .idea/
 
 **/*/typings/auto-generated
-
-modern.config.local.*
 
 src/locales/*/messages.ts
