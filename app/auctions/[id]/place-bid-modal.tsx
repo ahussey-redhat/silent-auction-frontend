@@ -1,5 +1,3 @@
-import { msg, Trans } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 import {
 	ActionGroup,
 	Button,
@@ -16,7 +14,7 @@ import {
 } from '@patternfly/react-core/deprecated';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { usePrevious } from 'react-use';
-import { Bid } from '@/types';
+import { Bid } from '@app/types';
 
 type NumberInputValue = number | '';
 
@@ -37,7 +35,6 @@ export default ({
   onPlaceBid,
   placingBid,
 }: PlaceBidModalProps) => {
-  const { _ } = useLingui();
   const minimumBidAmount = useMemo(
     () => currentHighestBid?.amount || startingBid || 0,
     [currentHighestBid],
@@ -115,17 +112,15 @@ export default ({
       aria-describedby="place-bid-modal-description"
     >
       <ModalHeader
-        title={_(msg`Place a bid`)}
-        description={_(
-          msg`Enter an amount you would like to bid on this auction item`,
-        )}
+        title={`Place a bid`}
+        description={`Enter an amount you would like to bid on this auction item`}
         labelId="place-bid-modal-title"
         descriptorId="place-bid-modal-description"
       />
       <ModalBody>
         <Form id="place-bid-form" onSubmit={onSubmit}>
           <FormGroup
-            label={<Trans>Bid Amount</Trans>}
+            label={'Bid Amount'}
             isRequired
             fieldId="bid-amount"
           >
@@ -137,9 +132,9 @@ export default ({
               onChange={onChangeBidAmount}
               onPlus={onPlusBidAmount}
               inputName="bid-amount"
-              inputAriaLabel={_(msg`Bid Amount`)}
-              minusBtnAriaLabel={_(msg`Minus`)}
-              plusBtnAriaLabel={_(msg`Plus`)}
+              inputAriaLabel={`Bid Amount`}
+              minusBtnAriaLabel={`Minus`}
+              plusBtnAriaLabel={`Plus`}
               unitPosition="before"
               unit="$"
               min={0}
@@ -153,10 +148,10 @@ export default ({
                 bidAmount === '' || bidAmount <= minimumBidAmount || placingBid
               }
             >
-              <Trans>Submit</Trans>
+              Submit
             </Button>
             <Button variant="link" onClick={onClose}>
-              <Trans>Cancel</Trans>
+              Cancel
             </Button>
           </ActionGroup>
         </Form>

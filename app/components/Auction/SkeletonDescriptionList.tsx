@@ -1,4 +1,3 @@
-import { Trans } from '@lingui/macro';
 import {
   DescriptionList,
   DescriptionListDescription,
@@ -19,9 +18,7 @@ export default () => {
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>
             <strong>Current highest bid</strong>
-          </Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
           <strong>
@@ -35,7 +32,7 @@ export default () => {
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Description</Trans>
+          Description
         </DescriptionListTerm>
         <DescriptionListDescription>
           <Skeleton
@@ -46,7 +43,7 @@ export default () => {
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Auction Start</Trans>
+          Auction Start
         </DescriptionListTerm>
         <DescriptionListDescription>
           <Skeleton screenreaderText="Loading auction start" width="30%" />
@@ -54,7 +51,7 @@ export default () => {
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Auction End</Trans>
+          Auction End
         </DescriptionListTerm>
         <DescriptionListDescription>
           <Skeleton screenreaderText="Loading auction end" width="30%" />

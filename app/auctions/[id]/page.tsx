@@ -1,3 +1,4 @@
+'use client'
 import DetailsPage from '@patternfly/react-component-groups/dist/dynamic/DetailsPage';
 import {
   Flex,
@@ -13,7 +14,7 @@ import PlaceBidModal from './place-bid-modal';
 import { AuctionDescriptionList, SkeletonDescriptionList } from '@app/components/Auction';
 import { useAuth } from '@app/providers/Auth';
 import { useAuctions } from '@app/providers/Auctions';
-import './page.css';
+// import './page.css';
 
 export default async function AuctionDetailsPage ({
   params,
@@ -22,10 +23,13 @@ export default async function AuctionDetailsPage ({
 }){
   const { auctionId } = await params;
 
+  console.log(auctionId);
+
   const { user } = useAuth();
-  const { getAuctionDetails, placeBid, bids } = useAuctions();
+  const { getAuctionDetails, placeBid } = useAuctions();
 
   const auction = getAuctionDetails(auctionId);
+  console.log(auction);
 
   const [placeBidModalIsOpen, setPlaceBidModalIsOpen] = useState(false);
 
@@ -133,7 +137,7 @@ export default async function AuctionDetailsPage ({
                           direction={{ default: 'column' }}
                         >
                           <FlexItem>
-                            <BidsDataList />
+                            <BidsDataList auctionId={auctionId}/>
                           </FlexItem>
                         </Flex>
                       ),

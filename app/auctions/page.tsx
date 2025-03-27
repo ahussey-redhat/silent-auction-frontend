@@ -1,7 +1,7 @@
 'use client'
 
 import { useAuctions } from '@app/providers/Auctions';
-import './page.css';
+// import './page.css';
 
 import {
   Card,
@@ -54,7 +54,7 @@ export default function Auctions() {
                       <GridItem>
                         <CardHeader
                           selectableActions={{
-                            onClickAction: () => redirect(`/api/v1/auctions/${id}`),
+                            onClickAction: () => redirect(`/auctions/${id}`),
                             selectableActionId: id,
                             selectableActionAriaLabelledby: `auction-card-${id}`,
                             name,

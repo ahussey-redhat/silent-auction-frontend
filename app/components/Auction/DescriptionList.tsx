@@ -1,11 +1,10 @@
-import { Trans } from '@lingui/macro';
 import {
   DescriptionList,
   DescriptionListDescription,
   DescriptionListGroup,
   DescriptionListTerm,
 } from '@patternfly/react-core';
-import { Auction } from '@/types';
+import { Auction } from '@app/types';
 
 export type AuctionDescriptionListProps = {
   auction: Auction;
@@ -25,9 +24,7 @@ export default ({ auction }: AuctionDescriptionListProps) => {
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>
             <strong>Current highest bid</strong>
-          </Trans>
         </DescriptionListTerm>
         <DescriptionListDescription>
           <strong>${getBidAmount(auction) ?? 0}</strong>
@@ -35,7 +32,7 @@ export default ({ auction }: AuctionDescriptionListProps) => {
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Description</Trans>
+          Description
         </DescriptionListTerm>
         <DescriptionListDescription>
           {auction?.description}
@@ -43,7 +40,7 @@ export default ({ auction }: AuctionDescriptionListProps) => {
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Auction Start</Trans>
+          Auction Start
         </DescriptionListTerm>
         <DescriptionListDescription>
           {auction?.start.toString()}
@@ -51,7 +48,7 @@ export default ({ auction }: AuctionDescriptionListProps) => {
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-          <Trans>Auction End</Trans>
+          Auction End
         </DescriptionListTerm>
         <DescriptionListDescription>
           {auction?.end.toString()}

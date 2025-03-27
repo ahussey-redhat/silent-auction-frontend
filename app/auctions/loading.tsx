@@ -13,10 +13,7 @@ import {
   PageSection,
   Skeleton,
 } from '@patternfly/react-core';
-import sizingStyles from '@patternfly/react-styles/css/utilities/Sizing/sizing';
 import { css } from '@patternfly/react-styles';
-import displayStyles from '@patternfly/react-styles/css/utilities/Display/display';
-import flexStyles from '@patternfly/react-styles/css/utilities/Flex/flex';
 
 export default () => (
   <>
@@ -34,15 +31,11 @@ export default () => (
         }}
       >
         <Card key="loading" id="auction-card-loading" isClickable={false}>
-          <Grid className={sizingStyles.h_100} md={6}>
+          <Grid>
             <GridItem>
               <CardHeader
                 className={css(
-                  'auction-header',
-                  displayStyles.displayGrid,
-                  flexStyles.alignContentCenter,
-                  flexStyles.justifyContentCenter,
-                  sizingStyles.h_100,
+                  'auction-header'
                 )}
               >
                 <Skeleton

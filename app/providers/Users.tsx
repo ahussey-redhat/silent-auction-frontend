@@ -3,72 +3,50 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import ApiClient, { configureHeaders } from '@app/components/ApiClient';
 import { useAuth } from '@app/providers/Auth';
-import { Auction, AuctionDTO, Bid, BidDTO, PlaceBidRequest } from '@app/types';
-
-type AuctionBids = {
-  auction: string;
-  bids: Bid[];
-};
+import { User, UserDTO } from '@app/types';
 
 // Define the context type
-interface AuctionsContextType {
-  auctions: Auction[];
-  auctionBids: AuctionBids[];
-  getAuctionDetails: (auctionId: string) => Auction;
-  placeBid: (auctionId: string, bid: PlaceBidRequest) => Promise<any>;
+interface UsersContextType {
+  users: User[];
+  getUserDetails: (userId: string) => Promise<any>;
   loading: boolean;
   error: Error | null;
 }
 
 // Create the context with a default value
-const AuctionsContext = createContext<AuctionsContextType | undefined>(undefined);
+const UsersContext = createContext<UsersContextType | undefined>(undefined);
 
 // Custom hook to use the auctions context
-export function useAuctions() {
-  const context = useContext(AuctionsContext);
+export function useUsers() {
+  const context = useContext(UsersContext);
   if (context === undefined) {
-    throw new Error('useAuctions must be used within an AuctionsProvider');
+    throw new Error('useUsers must be used within an UsersProvider');
   }
   return context;
 }
 
-interface AuctionsProviderProps {
+interface UsersProviderProps {
   children: ReactNode;
 }
 
-export function AuctionsProvider({ children }: AuctionsProviderProps) {
-  const [auctions, setAuctions] = useState<Auction[]>([]);
-  const [auctionBids, setBids] = useState<AuctionBids[]>([]);
+export function AuctionsProvider({ children }: UsersProviderProps) {
+  const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
   const { token } = useAuth();
 
-  const mapAuction = ({
+  const mapUser = ({
                         id,
-                        item_name,
-                        description,
-                        auction_start,
-                        auction_end,
-                        starting_bid,
-                        image_path,
-                      }: AuctionDTO): Auction => {
-    const current = new Date();
-    const start = new Date(`${auction_start}Z`);
-    const end = new Date(`${auction_end}Z`);
-
+                        first_name,
+                        last_name,
+                        table_number,
+                      }: UserDTO): { id: string; firstName: string; lastName: string; tableNumber: number } => {
     return {
       id: id.toString(),
-      name: item_name,
-      description,
-      imageUrl: URL.canParse(image_path)
-        ? new URL(image_path)
-        : new URL(image_path, window.location.origin),
-      start,
-      end,
-      isActive: current >= start && current < end,
-      startingBid: starting_bid,
-      highestBid: null,
+      firstName: first_name,
+      lastName: last_name,
+      tableNumber: table_number,
     };
   };
 
@@ -91,8 +69,7 @@ export function AuctionsProvider({ children }: AuctionsProviderProps) {
       if (!token) throw new Error('Authentication required');
       configureHeaders(token);
       const response = await ApiClient.get(`/api/v1/auctions/${auctionId}`);
-      console.log(response);
-      return mapAuction(response.data);
+      return response;
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch auction details'));
       throw err;
@@ -203,7 +180,7 @@ export function AuctionsProvider({ children }: AuctionsProviderProps) {
 
   const value = {
     auctions,
-    auctionBids,
+    bids,
     getAuctionDetails,
     placeBid,
     loading,

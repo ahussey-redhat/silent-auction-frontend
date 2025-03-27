@@ -1,6 +1,3 @@
-import { msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
-import { useModel } from '@modern-js/runtime/model';
 import {
   DataList,
   DataListCell,
@@ -8,47 +5,17 @@ import {
   DataListItemCells,
   DataListItemRow,
   Timestamp,
-  useInterval,
 } from '@patternfly/react-core';
-import { useEffectOnce } from 'react-use';
-import auctionModel from '@/models/auction';
-import userModel from '@/models/user';
+import { useAuctions } from '@app/providers/Auctions';
+import { useUsers } from '@app/providers/Users'
 
-export default () => {
-  const { _ } = useLingui();
-  const [
-    {
-      auction: { value: auction },
-      bids: { value: bids },
-    },
-    { getBids },
-  ] = useModel(auctionModel);
-  const [
-    {
-      users: { value: users },
-    },
-    { getUsers },
-  ] = useModel(userModel);
-
-  useEffectOnce(() => {
-    if (auction?.id) {
-      getBids(auction?.id);
-    }
-
-    getUsers();
-  });
-
-  useInterval(() => {
-    if (auction?.id) {
-      getBids(auction?.id);
-    }
-
-    getUsers();
-  }, 10000);
+export default function BidsDataList({ auctionId }: { auctionId: string }) {
+  const { auctionBids } = useAuctions();
+  const { users } = useUsers();
 
   return (
-    <DataList aria-label={_(msg`Bids list`)}>
-      {bids.toReversed().map(({ id, userId, amount, time }) => (
+    <DataList aria-label={`Bids list`}>
+      {auctionBids.find(auctionBid => auctionBid.auction === auctionId)?.bids.toReversed().map(({ id, userId, amount, time }) => (
         <DataListItem key={id} id={id}>
           <DataListItemRow>
             <DataListItemCells
