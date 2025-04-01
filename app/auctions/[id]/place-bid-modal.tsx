@@ -34,13 +34,15 @@ export default function PlaceBidModal ({
   onPlaceBid,
   placingBid,
 }: PlaceBidModalProps) {
+  const bid_increment: number = parseInt(process.env.NEXT_PUBLIC_BID_INCREMENT || '10');
+
   const minimumBidAmount = useMemo(
     () => currentHighestBid || startingBid || 0,
     [currentHighestBid],
   );
   const previousMinimumBidAmount = usePrevious(minimumBidAmount);
   const [bidAmount, setBidAmount] = useState<NumberInputValue>(
-    minimumBidAmount + 10,
+    minimumBidAmount + bid_increment,
   );
   const [validated, setValidated] = useState<ValidatedOptions>(
     ValidatedOptions.success,
@@ -49,7 +51,7 @@ export default function PlaceBidModal ({
 
   useEffect(() => {
     if (minimumBidAmount !== previousMinimumBidAmount && !isOpen) {
-      setBidAmount(minimumBidAmount + 10);
+      setBidAmount(minimumBidAmount + bid_increment);
     }
   }, [minimumBidAmount, previousMinimumBidAmount, setBidAmount, isOpen]);
 
@@ -70,7 +72,7 @@ export default function PlaceBidModal ({
   };
 
   const onMinusBidAmount = useCallback(() => {
-    const newBidAmount = (bidAmount || 0) - 10;
+    const newBidAmount = (bidAmount || 0) - bid_increment;
     setBidAmount(newBidAmount);
     validate(newBidAmount);
   }, [bidAmount, setBidAmount]);
@@ -86,7 +88,7 @@ export default function PlaceBidModal ({
   );
 
   const onPlusBidAmount = useCallback(() => {
-    const newBidAmount = (bidAmount || 0) + 10;
+    const newBidAmount = (bidAmount || 0) + bid_increment;
     setBidAmount(newBidAmount);
     validate(newBidAmount);
   }, [bidAmount, setBidAmount]);
