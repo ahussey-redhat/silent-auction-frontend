@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react';
 import ApiClient, { configureHeaders } from '@app/components/ApiClient';
 import { useAuth } from '@app/providers/Auth';
 import { Auction, AuctionDTO, Bid, BidDTO, PlaceBidRequest } from '@app/types';
@@ -10,20 +10,20 @@ type AuctionBids = {
   bids: Bid[];
 };
 
-// Define the context type
 interface AuctionsContextType {
   auctions: Auction[];
   auctionBids: AuctionBids[];
-  getAuctionDetails: (auctionId: string) => Auction;
+  getAuctionDetails: (auctionId: string) => Promise<Auction>;
+  getHighestBidForAuction: (auctionId: string) => Bid | null;
+  getBidsForAuction: (auctionId: string) => Bid[];
+  fetchBidsForAuction: (auctionId: string) => Promise<void>;
   placeBid: (auctionId: string, bid: PlaceBidRequest) => Promise<any>;
   loading: boolean;
   error: Error | null;
 }
 
-// Create the context with a default value
 const AuctionsContext = createContext<AuctionsContextType | undefined>(undefined);
 
-// Custom hook to use the auctions context
 export function useAuctions() {
   const context = useContext(AuctionsContext);
   if (context === undefined) {
@@ -32,27 +32,15 @@ export function useAuctions() {
   return context;
 }
 
-interface AuctionsProviderProps {
-  children: ReactNode;
-}
-
-export function AuctionsProvider({ children }: AuctionsProviderProps) {
+export default function AuctionsProvider({ children }: { children: ReactNode }) {
   const [auctions, setAuctions] = useState<Auction[]>([]);
-  const [auctionBids, setBids] = useState<AuctionBids[]>([]);
+  const [auctionBids, setAuctionBids] = useState<AuctionBids[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
   const { token } = useAuth();
 
-  const mapAuction = ({
-                        id,
-                        item_name,
-                        description,
-                        auction_start,
-                        auction_end,
-                        starting_bid,
-                        image_path,
-                      }: AuctionDTO): Auction => {
+  const mapAuction = ({ id, item_name, description, auction_start, auction_end, starting_bid, image_path }: AuctionDTO): Auction => {
     const current = new Date();
     const start = new Date(`${auction_start}Z`);
     const end = new Date(`${auction_end}Z`);
@@ -72,13 +60,7 @@ export function AuctionsProvider({ children }: AuctionsProviderProps) {
     };
   };
 
-  const mapBid = ({
-                    id,
-                    auction_id,
-                    user_id,
-                    bid_time,
-                    bid_amount,
-                  }: BidDTO): Bid => ({
+  const mapBid = ({ id, auction_id, user_id, bid_time, bid_amount }: BidDTO): Bid => ({
     id,
     auctionId: auction_id.toString(),
     userId: user_id.toString(),
@@ -86,24 +68,85 @@ export function AuctionsProvider({ children }: AuctionsProviderProps) {
     amount: bid_amount,
   });
 
-  async function getAuctionDetails(auctionId: string) {
+  // Get all bids for a specific auction (from state)
+  const getBidsForAuction = useCallback((auctionId: string): Bid[] => {
+    const bidCollection = auctionBids.find(col => col.auction === auctionId);
+    return bidCollection?.bids || [];
+  }, [auctionBids]);
+
+  // Get highest bid for a specific auction (from state)
+  const getHighestBidForAuction = useCallback((auctionId: string): Bid | null => {
+    const bids = getBidsForAuction(auctionId);
+    if (bids.length === 0) return null;
+
+    return bids.reduce((highest, current) =>
+        current.amount > highest.amount ? current : highest,
+      bids[0]
+    );
+  }, [getBidsForAuction]);
+
+  // Fetch bids for a specific auction from the API
+  const fetchBidsForAuction = useCallback(async (auctionId: string): Promise<void> => {
+    if (!token) throw new Error('Authentication required');
+
     try {
-      if (!token) throw new Error('Authentication required');
+      setLoading(true);
+      configureHeaders(token);
+
+      const response = await ApiClient.get(`/api/v1/auctions/${auctionId}/bids`);
+      const bidData = response.data.map(mapBid);
+
+      setAuctionBids(prevBids => {
+        // Find if we already have bids for this auction
+        const existingIndex = prevBids.findIndex(item => item.auction === auctionId);
+
+        if (existingIndex >= 0) {
+          // Update existing bids for this auction
+          const newBids = [...prevBids];
+          newBids[existingIndex] = { auction: auctionId, bids: bidData };
+          return newBids;
+        } else {
+          // Add new bids for this auction
+          return [...prevBids, { auction: auctionId, bids: bidData }];
+        }
+      });
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error('Failed to fetch bids'));
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  }, [token]);
+
+  async function getAuctionDetails(auctionId: string): Promise<Auction> {
+    if (!token) throw new Error('Authentication required');
+
+    try {
       configureHeaders(token);
       const response = await ApiClient.get(`/api/v1/auctions/${auctionId}`);
-      console.log(response);
-      return mapAuction(response.data);
+      const auctionData = response.data;
+      const mappedAuction = mapAuction(auctionData);
+
+      // Optionally fetch bids for this auction if needed
+      await fetchBidsForAuction(auctionId);
+
+      return mappedAuction;
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch auction details'));
       throw err;
     }
   }
 
-  function placeBid(auctionId: string, bid: PlaceBidRequest) {
+  async function placeBid(auctionId: string, bid: PlaceBidRequest): Promise<any> {
+    if (!token) throw new Error('Authentication required');
+
     try {
-      if (!token) throw new Error('Authentication required');
       configureHeaders(token);
-      const response = ApiClient.post(`/api/v1/auctions/${auctionId}/bids`, bid);
+      const response = await ApiClient.post(`/api/v1/auctions/${auctionId}/bids`, bid);
+
+      // After placing a bid, refresh the bids for this auction
+      await fetchBidsForAuction(auctionId);
+
       return response;
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to place bid'));
@@ -111,18 +154,22 @@ export function AuctionsProvider({ children }: AuctionsProviderProps) {
     }
   }
 
-  // Fetch all auctions
+  // Fetch all auctions on initial load
   useEffect(() => {
     let mounted = true;
-    const getAuctions = async () => {
+
+    const fetchAllAuctions = async () => {
       if (!token || !mounted) return;
+
       setLoading(true);
       try {
         configureHeaders(token);
         const response = await ApiClient.get('/api/v1/auctions');
+        const auctionData = response.data.map(mapAuction);
+
         if (mounted) {
-          const mappedAuctions = response.data.map(mapAuction);
-          setAuctions(mappedAuctions);
+          setAuctions(auctionData);
+          console.debug("Auction Data: " + auctionData.toString());
         }
       } catch (err) {
         if (mounted) {
@@ -135,76 +182,20 @@ export function AuctionsProvider({ children }: AuctionsProviderProps) {
       }
     };
 
-    getAuctions();
+    fetchAllAuctions();
 
     return () => {
       mounted = false;
     };
   }, [token]);
 
-  // Get bids for each auction
-  useEffect(() => {
-    let mounted = true;
-
-    const fetchBids = async () => {
-      if (!token || !auctions.length || !mounted) return;
-
-      setLoading(true);
-      try {
-        configureHeaders(token);
-
-        // Process auctions in parallel
-        const bidPromises = auctions.map(async (auction) => {
-          const response = await ApiClient.get(`/api/v1/auctions/${auction.id}/bids`);
-          return {
-            auction: auction.id,
-            bids: response.data.map(mapBid)
-          };
-        });
-
-        const allBids = await Promise.all(bidPromises);
-
-        if (mounted) {
-          setBids(allBids);
-
-          // Update auctions with highest bids
-          const auctionsWithHighestBids = auctions.map(auction => {
-            const auctionBids = allBids.find(b => b.auction === auction.id)?.bids || [];
-            const highestBid = auctionBids.length > 0
-              ? auctionBids.reduce((prev, current) =>
-                (prev.amount > current.amount) ? prev : current, auctionBids[0])
-              : null;
-
-            return {
-              ...auction,
-              highestBid
-            };
-          });
-
-          setAuctions(auctionsWithHighestBids);
-        }
-      } catch (err) {
-        if (mounted) {
-          setError(err instanceof Error ? err : new Error('Failed to fetch bids'));
-        }
-      } finally {
-        if (mounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchBids();
-
-    return () => {
-      mounted = false;
-    };
-  }, [auctions, token]);
-
   const value = {
     auctions,
     auctionBids,
     getAuctionDetails,
+    getHighestBidForAuction,
+    getBidsForAuction,
+    fetchBidsForAuction,
     placeBid,
     loading,
     error
@@ -216,5 +207,3 @@ export function AuctionsProvider({ children }: AuctionsProviderProps) {
     </AuctionsContext.Provider>
   );
 }
-
-export default AuctionsProvider;

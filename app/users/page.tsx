@@ -1,5 +1,4 @@
-import { Trans, msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+'use client'
 import {
   DataList,
   DataListCell,
@@ -12,38 +11,23 @@ import {
   Content,
   ContentVariants,
 } from '@patternfly/react-core';
-import { useEffectOnce } from 'react-use';
-import { useModel } from '@modern-js/runtime/model';
-import { PageTitle } from '@/components';
-import userModel from '@/models/user';
 import './page.css';
+import { useUsers } from '@app/providers/Users';
 
 export default function Users(){
-  const { _ } = useLingui();
-  const [
-    {
-      users: { value: users, loading },
-    },
-    { getUsers },
-  ] = useModel(userModel);
-
-  useEffectOnce(() => {
-    getUsers();
-  });
-
+  const { users, loading } = useUsers();
   return (
     <>
-      <PageTitle title={_(msg`Users`)} />
       <PageSection hasBodyWrapper={false}>
         <Content component={ContentVariants.h1}>
-          <Trans>Users</Trans>
+          Users
         </Content>
       </PageSection>
       <PageSection hasBodyWrapper={false} className="users-page" isFilled>
         {users.length === 0 && loading ? (
-          <EmptyState titleText={_(msg`Loading`)} icon={Spinner} />
+          <EmptyState titleText={`Loading`} icon={Spinner} />
         ) : (
-          <DataList aria-label={_(msg`User list`)}>
+          <DataList aria-label={`User list`}>
             {users?.map(
               ({ id, username, firstName, lastName, tableNumber }) => (
                 <DataListItem key={id} id={id}>

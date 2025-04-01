@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import ApiClient, { configureHeaders } from '@app/components/ApiClient';
 import { useAuth } from '@app/providers/Auth';
-import { User, UserDTO } from '@app/types';
+import { User, UserDTO, Bid, BidDTO } from '@app/types';
 
 // Define the context type
 interface UsersContextType {
@@ -29,7 +29,7 @@ interface UsersProviderProps {
   children: ReactNode;
 }
 
-export function AuctionsProvider({ children }: UsersProviderProps) {
+export function UsersProvider({ children }: UsersProviderProps) {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -38,12 +38,14 @@ export function AuctionsProvider({ children }: UsersProviderProps) {
 
   const mapUser = ({
                         id,
+                        username,
                         first_name,
                         last_name,
                         table_number,
-                      }: UserDTO): { id: string; firstName: string; lastName: string; tableNumber: number } => {
+                      }: UserDTO): { id: string; username: string, firstName: string; lastName: string; tableNumber: number } => {
     return {
       id: id.toString(),
+      username: username,
       firstName: first_name,
       lastName: last_name,
       tableNumber: table_number,
@@ -64,46 +66,34 @@ export function AuctionsProvider({ children }: UsersProviderProps) {
     amount: bid_amount,
   });
 
-  async function getAuctionDetails(auctionId: string) {
+  async function getUserDetails(userId: string) {
     try {
       if (!token) throw new Error('Authentication required');
       configureHeaders(token);
-      const response = await ApiClient.get(`/api/v1/auctions/${auctionId}`);
+      const response = await ApiClient.get(`/api/v1/users/${userId}`);
       return response;
     } catch (err) {
-      setError(err instanceof Error ? err : new Error('Failed to fetch auction details'));
+      setError(err instanceof Error ? err : new Error('Failed to fetch user details'));
       throw err;
     }
   }
 
-  function placeBid(auctionId: string, bid: PlaceBidRequest) {
-    try {
-      if (!token) throw new Error('Authentication required');
-      configureHeaders(token);
-      const response = ApiClient.post(`/api/v1/auctions/${auctionId}/bids`, bid);
-      return response;
-    } catch (err) {
-      setError(err instanceof Error ? err : new Error('Failed to place bid'));
-      throw err;
-    }
-  }
-
-  // Fetch all auctions
+  // Fetch all users
   useEffect(() => {
     let mounted = true;
-    const getAuctions = async () => {
+    const getUsers = async () => {
       if (!token || !mounted) return;
       setLoading(true);
       try {
         configureHeaders(token);
-        const response = await ApiClient.get('/api/v1/auctions');
+        const response = await ApiClient.get('/api/v1/users');
         if (mounted) {
-          const mappedAuctions = response.data.map(mapAuction);
-          setAuctions(mappedAuctions);
+          const mappedUsers = response.data.map(mapUser);
+          setUsers(mappedUsers);
         }
       } catch (err) {
         if (mounted) {
-          setError(err instanceof Error ? err : new Error('Failed to fetch auctions'));
+          setError(err instanceof Error ? err : new Error('Failed to fetch users'));
         }
       } finally {
         if (mounted) {
@@ -112,86 +102,26 @@ export function AuctionsProvider({ children }: UsersProviderProps) {
       }
     };
 
-    getAuctions();
+    getUsers();
 
     return () => {
       mounted = false;
     };
   }, [token]);
 
-  // Get bids for each auction
-  useEffect(() => {
-    let mounted = true;
 
-    const fetchBids = async () => {
-      if (!token || !auctions.length || !mounted) return;
-
-      setLoading(true);
-      try {
-        configureHeaders(token);
-
-        // Process auctions in parallel
-        const bidPromises = auctions.map(async (auction) => {
-          const response = await ApiClient.get(`/api/v1/auctions/${auction.id}/bids`);
-          return {
-            auction: auction.id,
-            bids: response.data.map(mapBid)
-          };
-        });
-
-        const allBids = await Promise.all(bidPromises);
-
-        if (mounted) {
-          setBids(allBids);
-
-          // Update auctions with highest bids
-          const auctionsWithHighestBids = auctions.map(auction => {
-            const auctionBids = allBids.find(b => b.auction === auction.id)?.bids || [];
-            const highestBid = auctionBids.length > 0
-              ? auctionBids.reduce((prev, current) =>
-                (prev.amount > current.amount) ? prev : current, auctionBids[0])
-              : null;
-
-            return {
-              ...auction,
-              highestBid
-            };
-          });
-
-          setAuctions(auctionsWithHighestBids);
-        }
-      } catch (err) {
-        if (mounted) {
-          setError(err instanceof Error ? err : new Error('Failed to fetch bids'));
-        }
-      } finally {
-        if (mounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchBids();
-
-    return () => {
-      mounted = false;
-    };
-  }, [auctions, token]);
 
   const value = {
-    auctions,
-    bids,
-    getAuctionDetails,
-    placeBid,
+    users,
     loading,
     error
   };
 
   return (
-    <AuctionsContext.Provider value={value}>
+    <UsersContext.Provider value={value}>
       {children}
-    </AuctionsContext.Provider>
+    </UsersContext.Provider>
   );
 }
 
-export default AuctionsProvider;
+export default UsersProvider;

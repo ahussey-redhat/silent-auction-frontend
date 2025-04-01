@@ -14,34 +14,33 @@ import {
 } from '@patternfly/react-core/deprecated';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { usePrevious } from 'react-use';
-import { Bid } from '@app/types';
 
 type NumberInputValue = number | '';
 
 export type PlaceBidModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  currentHighestBid: Bid | null;
+  currentHighestBid: number | undefined;
   startingBid: number;
   onPlaceBid: (bidAmount: number) => void;
   placingBid: boolean;
 };
 
-export default ({
+export default function PlaceBidModal ({
   isOpen,
   onClose,
   currentHighestBid,
   startingBid,
   onPlaceBid,
   placingBid,
-}: PlaceBidModalProps) => {
+}: PlaceBidModalProps) {
   const minimumBidAmount = useMemo(
-    () => currentHighestBid?.amount || startingBid || 0,
+    () => currentHighestBid || startingBid || 0,
     [currentHighestBid],
   );
   const previousMinimumBidAmount = usePrevious(minimumBidAmount);
   const [bidAmount, setBidAmount] = useState<NumberInputValue>(
-    minimumBidAmount + 1,
+    minimumBidAmount + 10,
   );
   const [validated, setValidated] = useState<ValidatedOptions>(
     ValidatedOptions.success,

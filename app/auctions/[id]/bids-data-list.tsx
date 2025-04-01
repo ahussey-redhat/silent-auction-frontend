@@ -15,7 +15,7 @@ export default function BidsDataList({ auctionId }: { auctionId: string }) {
 
   return (
     <DataList aria-label={`Bids list`}>
-      {auctionBids.find(auctionBid => auctionBid.auction === auctionId)?.bids.toReversed().map(({ id, userId, amount, time }) => (
+      {auctionBids ? auctionBids.find(auctionBid => auctionBid.auction === auctionId)?.bids.toReversed().map(({ id, userId, amount, time }) => (
         <DataListItem key={id} id={id}>
           <DataListItemRow>
             <DataListItemCells
@@ -31,7 +31,7 @@ export default function BidsDataList({ auctionId }: { auctionId: string }) {
                 </DataListCell>,
                 <DataListCell key="amount">
                   <p>
-                    <strong>Amount</strong>: {amount}
+                    <strong>Amount</strong>: ${amount}
                   </p>
                 </DataListCell>,
                 <DataListCell key="time">
@@ -43,7 +43,7 @@ export default function BidsDataList({ auctionId }: { auctionId: string }) {
             />
           </DataListItemRow>
         </DataListItem>
-      ))}
+      )): "No bids available"}
     </DataList>
   );
 };

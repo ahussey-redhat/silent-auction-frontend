@@ -19,7 +19,7 @@ export default () => (
   <>
     <PageSection hasBodyWrapper={false}>
       <Content component={ContentVariants.h1}>
-        <Content component={ContentVariants.h1}>Auctions</Content>
+        Auctions
       </Content>
     </PageSection>
     <PageSection hasBodyWrapper={false} className="auctions-page" isFilled>

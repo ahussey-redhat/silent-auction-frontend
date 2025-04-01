@@ -1,41 +1,81 @@
 import {
+  Content,
+  ContentVariants,
   DescriptionList,
   DescriptionListDescription,
   DescriptionListGroup,
   DescriptionListTerm,
 } from '@patternfly/react-core';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Auction } from '@app/types';
+import { useAuth } from '@app/providers/Auth';
+import { useAuctions } from '@app/providers/Auctions';
 
 export type AuctionDescriptionListProps = {
   auction: Auction;
 };
-function getBidAmount(auction: Auction): number {
-  if (auction?.highestBid?.amount) {
-    return auction?.highestBid?.amount;
-  } else {
-    return auction.startingBid;
-  }
-}
+
 export default ({ auction }: AuctionDescriptionListProps) => {
+  const { isAuthenticated } = useAuth();
+  const { getHighestBidForAuction } = useAuctions();
+
+  const [auctionData, setAuctionData] = useState<Auction | null>(null);
+  const [bidAmount, setBidAmount] = useState<number>(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Don't run the effect if user is not authenticated
+    if (!isAuthenticated) return;
+
+    const fetchAuctionData = async () => {
+      try {
+        setLoading(true);
+        // Handle both Promise and Axios response cases
+        if (auction instanceof Promise) {
+          const resolvedAuction = await auction;
+          // Check if this is an Axios response with data property
+          setAuctionData(resolvedAuction.data || resolvedAuction);
+        } else {
+          // Handle case where auction is already the data object
+          setAuctionData(auction);
+        }
+
+        const highestBid = getHighestBidForAuction(String(auction.id));
+        const newBidAmount = highestBid?.amount || auction.startingBid;
+        setBidAmount(newBidAmount);
+      } catch (error) {
+        console.error("Error resolving auction data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAuctionData();
+  }, [auction, isAuthenticated, getHighestBidForAuction]);
+
+  if (!isAuthenticated || auctionData == null) return null;
+
   return (
     <DescriptionList isHorizontal>
       <DescriptionListGroup>
-        <img src={auction?.imageUrl.toString()} />
+        <Image alt={`${auctionData.name}'s image`} src={auctionData.imageUrl.toString()} width={100} height={100} />
       </DescriptionListGroup>
       <DescriptionListGroup>
         <DescriptionListTerm>
-            <strong>Current highest bid</strong>
+          <strong>Current highest bid</strong>
         </DescriptionListTerm>
         <DescriptionListDescription>
-          <strong>${getBidAmount(auction) ?? 0}</strong>
+          <strong>${bidAmount ?? 0}</strong>
         </DescriptionListDescription>
       </DescriptionListGroup>
+      {/* Rest of your component remains the same */}
       <DescriptionListGroup>
         <DescriptionListTerm>
           Description
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {auction?.description}
+          <Content component={ContentVariants.p}>{auctionData.description}</Content>
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
@@ -43,7 +83,7 @@ export default ({ auction }: AuctionDescriptionListProps) => {
           Auction Start
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {auction?.start.toString()}
+          {auctionData.start.toString()}
         </DescriptionListDescription>
       </DescriptionListGroup>
       <DescriptionListGroup>
@@ -51,7 +91,7 @@ export default ({ auction }: AuctionDescriptionListProps) => {
           Auction End
         </DescriptionListTerm>
         <DescriptionListDescription>
-          {auction?.end.toString()}
+          {auctionData.end.toString()}
         </DescriptionListDescription>
       </DescriptionListGroup>
     </DescriptionList>

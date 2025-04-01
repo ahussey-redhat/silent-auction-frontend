@@ -3,8 +3,9 @@
 import "./globals.css";
 import React, { useState, useEffect } from 'react';
 
-import AuthProvider from './providers/Auth';
+import AuthProvider from '@app/providers/Auth';
 import AuctionProvider from '@app/providers/Auctions';
+import UsersProvider from '@app/providers/Users';
 import AppMasthead from './containers/masthead';
 import AppSidebar from './containers/sidebar';
 // import AppNotificationDrawer from './containers/notificationdrawer';
@@ -61,36 +62,38 @@ export default function RootLayout({ children }: { children: React.ReactNode }){
       <html lang="en" className={"pf-v6-theme-dark"}>
         <body>
           <AuthProvider>
-            <AuctionProvider>
-              <Page
-                masthead={
-                  <AppMasthead
-                    isDarkThemeEnabled={isDarkThemeEnabled}
-                    setDarkThemeEnabled={setDarkThemeEnabled}
-                    isSidebarOpen={isSidebarOpen}
-                    setSidebarOpen={setSidebarOpen}
-                    // isNotificationDrawerOpen={isNotificationDrawerOpen}
-                    // onCloseNotificationDrawer={onCloseNotificationDrawer}
-                  />
-                }
-                sidebar={
-                  <AppSidebar
-                    isSidebarOpen={isSidebarOpen}
-                    setSidebarOpen={setSidebarOpen}
-                  />
-                }
-                // notificationDrawer={
-                //   isNotificationDrawerOpen && (
-                //     <AppNotificationDrawer
-                //       onCloseNotificationDrawer={onCloseNotificationDrawer}
-                //       isNotificationDrawerOpen={isNotificationDrawerOpen}
-                //     />)
-                // }
-                // isNotificationDrawerExpanded={isNotificationDrawerOpen}
-              >
-                {children}
-              </Page>
-            </AuctionProvider>
+            <UsersProvider>
+              <AuctionProvider>
+                <Page
+                  masthead={
+                    <AppMasthead
+                      isDarkThemeEnabled={isDarkThemeEnabled}
+                      setDarkThemeEnabled={setDarkThemeEnabled}
+                      isSidebarOpen={isSidebarOpen}
+                      setSidebarOpen={setSidebarOpen}
+                      // isNotificationDrawerOpen={isNotificationDrawerOpen}
+                      // onCloseNotificationDrawer={onCloseNotificationDrawer}
+                    />
+                  }
+                  sidebar={
+                    <AppSidebar
+                      isSidebarOpen={isSidebarOpen}
+                      setSidebarOpen={setSidebarOpen}
+                    />
+                  }
+                  // notificationDrawer={
+                  //   isNotificationDrawerOpen && (
+                  //     <AppNotificationDrawer
+                  //       onCloseNotificationDrawer={onCloseNotificationDrawer}
+                  //       isNotificationDrawerOpen={isNotificationDrawerOpen}
+                  //     />)
+                  // }
+                  // isNotificationDrawerExpanded={isNotificationDrawerOpen}
+                >
+                  {children}
+                </Page>
+              </AuctionProvider>
+            </UsersProvider>
           </AuthProvider>
         </body>
       </html>
@@ -98,36 +101,38 @@ export default function RootLayout({ children }: { children: React.ReactNode }){
       <html lang="en">
         <body>
           <AuthProvider>
-            <AuctionProvider>
-              <Page
-                masthead={
-                  <AppMasthead
-                    isDarkThemeEnabled={isDarkThemeEnabled}
-                    setDarkThemeEnabled={setDarkThemeEnabled}
-                    isSidebarOpen={isSidebarOpen}
-                    setSidebarOpen={setSidebarOpen}
-                    // isNotificationDrawerOpen={isNotificationDrawerOpen}
-                    // onCloseNotificationDrawer={onCloseNotificationDrawer}
-                  />
-                }
-                sidebar={
-                  <AppSidebar
-                    isSidebarOpen={isSidebarOpen}
-                    setSidebarOpen={setSidebarOpen}
-                  />
-                }
-                // notificationDrawer={
-                //   isNotificationDrawerOpen && (
-                //     <AppNotificationDrawer
-                //       onCloseNotificationDrawer={onCloseNotificationDrawer}
-                //       isNotificationDrawerOpen={isNotificationDrawerOpen}
-                //     />)
-                // }
-                // isNotificationDrawerExpanded={isNotificationDrawerOpen}
-              >
-                {children}
-              </Page>
-            </AuctionProvider>
+            <UsersProvider>
+              <AuctionProvider>
+                <Page
+                  masthead={
+                    <AppMasthead
+                      isDarkThemeEnabled={isDarkThemeEnabled}
+                      setDarkThemeEnabled={setDarkThemeEnabled}
+                      isSidebarOpen={isSidebarOpen}
+                      setSidebarOpen={setSidebarOpen}
+                      // isNotificationDrawerOpen={isNotificationDrawerOpen}
+                      // onCloseNotificationDrawer={onCloseNotificationDrawer}
+                    />
+                  }
+                  sidebar={
+                    <AppSidebar
+                      isSidebarOpen={isSidebarOpen}
+                      setSidebarOpen={setSidebarOpen}
+                    />
+                  }
+                  // notificationDrawer={
+                  //   isNotificationDrawerOpen && (
+                  //     <AppNotificationDrawer
+                  //       onCloseNotificationDrawer={onCloseNotificationDrawer}
+                  //       isNotificationDrawerOpen={isNotificationDrawerOpen}
+                  //     />)
+                  // }
+                  // isNotificationDrawerExpanded={isNotificationDrawerOpen}
+                >
+                  {children}
+                </Page>
+              </AuctionProvider>
+            </UsersProvider>
           </AuthProvider>
         </body>
       </html>
