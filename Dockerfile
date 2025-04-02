@@ -25,7 +25,7 @@ USER 1001
 
 WORKDIR /opt/app-root/src
 
-COPY --chmod=664 --from=builder /opt/app-root/src/next.config.ts ./
+COPY --chmod=664 --from=builder /opt/app-root/src/next.config.js ./
 COPY --chmod=664 --from=builder /opt/app-root/src/package.json /opt/app-root/src/package-lock.json ./
 COPY --chmod=664 --from=builder /opt/app-root/src/public ./public
 COPY --chmod=664 --from=builder /opt/app-root/src/.next ./.next
