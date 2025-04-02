@@ -242,6 +242,7 @@ export default function AuctionDetailsPage() {
             placeBid(auction.id, { bid_amount: bidAmount });
             togglePlaceBidModalIsOpen();
           }}
+          placingBid={placingBid}
         />
       )}
     </PageSection>
