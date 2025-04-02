@@ -34,6 +34,13 @@ import MoonIcon from '@patternfly/react-icons/dist/esm/icons/moon-icon';
 import SunIcon from '@patternfly/react-icons/dist/esm/icons/sun-icon';
 import Link from 'next/link';
 
+type AppMastheadProps = {
+  isDarkThemeEnabled: boolean;
+  setDarkThemeEnabled: React.Dispatch<React.SetStateAction<boolean>>;
+  isSidebarOpen: boolean;
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 export default function AppMasthead(
   {
     isDarkThemeEnabled,
@@ -42,7 +49,7 @@ export default function AppMasthead(
     setSidebarOpen,
     // isNotificationDrawerOpen,
     // onCloseNotificationDrawer,
-  }
+  }: AppMastheadProps,
 ) {
 
   const { user, isAuthenticated, logout } = useAuth();

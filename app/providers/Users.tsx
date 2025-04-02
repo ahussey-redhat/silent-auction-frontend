@@ -5,7 +5,7 @@ import ApiClient, { configureHeaders } from '@app/components/ApiClient';
 import { useAuth } from '@app/providers/Auth';
 import { User, UserDTO, Bid, BidDTO } from '@app/types';
 
-// Define the context type
+
 interface UsersContextType {
   users: User[];
   getUserDetails: (userId: string) => Promise<any>;
@@ -113,6 +113,7 @@ export function UsersProvider({ children }: UsersProviderProps) {
 
   const value = {
     users,
+    getUserDetails,
     loading,
     error
   };
