@@ -32,8 +32,9 @@ COPY --chmod=664 --from=builder /opt/app-root/src/.next ./.next
 COPY --chmod=664 --from=builder /opt/app-root/src/node_modules ./node_modules
 
 ENV NODE_ENV=production
+ENV HOSTNAME="0.0.0.0"
 ENV PORT=3000
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
