@@ -60,7 +60,7 @@ spec:
           - name: IMAGE
             value: $(params.image)
           - name: BUILD_EXTRA_ARGS
-            value: "--storage-driver=overlay"
+            value: "--storage-driver=overlay --platform linux/amd64 --platform linux/arm64"
 #      - name: git-clone-argocd-repo
 #        taskRef:
 #          name: git-clone
