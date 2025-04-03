@@ -1,8 +1,9 @@
+.env
+
 .DS_Store
 
 .pnp
 .pnp.js
-.env.*.local
 .history
 *.log*
 
@@ -12,7 +13,7 @@ node_modules/
 *.tsbuildinfo
 .eslintcache
 .changeset/pre.json
-
+.next/
 dist/
 coverage/
 release/
@@ -26,7 +27,5 @@ log/
 .idea/
 
 **/*/typings/auto-generated
-
-modern.config.local.*
 
 src/locales/*/messages.ts
