@@ -8,9 +8,9 @@ import apiClient, { configureHeaders } from "../components/ApiClient";
 
 // -------- Keycloak Configuration -------- //
 const keycloakConfig: KeycloakConfig = {
-  url: process.env.NEXT_PUBLIC_KEYCLOAK_URL || "http://localhost:8000",
-  realm: process.env.NEXT_PUBLIC_KEYCLOAK_REALM || "silent-auction",
-  clientId: process.env.NEXT_PUBLIC_KEYCLOAK_CLIENTID || "frontend",
+  url: process.env.NEXT_PUBLIC_KEYCLOAK_URL,
+  realm: process.env.NEXT_PUBLIC_KEYCLOAK_REALM,
+  clientId: process.env.NEXT_PUBLIC_KEYCLOAK_CLIENT_ID,
 };
 
 type BackendUserProfile = {

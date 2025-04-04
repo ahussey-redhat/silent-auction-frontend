@@ -1,4 +1,4 @@
-.env
+.env.*
 
 .DS_Store
 
@@ -29,3 +29,4 @@ log/
 **/*/typings/auto-generated
 
 src/locales/*/messages.ts
+/.env
