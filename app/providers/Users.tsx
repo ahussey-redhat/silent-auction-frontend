@@ -1,10 +1,8 @@
 'use client'
-
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import ApiClient, { configureHeaders } from '@app/components/ApiClient';
+import { useApiClient,  configureHeaders } from '@app/components/ApiClient';
 import { useAuth } from '@app/providers/Auth';
 import { User, UserDTO, Bid, BidDTO } from '@app/types';
-
 
 interface UsersContextType {
   users: User[];
@@ -35,6 +33,7 @@ export function UsersProvider({ children }: UsersProviderProps) {
   const [error, setError] = useState<Error | null>(null);
 
   const { token } = useAuth();
+  const { apiClient, isConfigured } = useApiClient();
 
   const mapUser = ({
                         id,
@@ -69,8 +68,10 @@ export function UsersProvider({ children }: UsersProviderProps) {
   async function getUserDetails(userId: string) {
     try {
       if (!token) throw new Error('Authentication required');
-      configureHeaders(token);
-      const response = await ApiClient.get(`/api/v1/users/${userId}`);
+      if (!isConfigured) throw new Error('[UsersProvider] API client not configured yet');
+
+      configureHeaders(apiClient, token);
+      const response = await apiClient.get(`/api/v1/users/${userId}`);
       return response;
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch user details'));
@@ -82,11 +83,14 @@ export function UsersProvider({ children }: UsersProviderProps) {
   useEffect(() => {
     let mounted = true;
     const getUsers = async () => {
-      if (!token || !mounted) return;
+      if (!token || !mounted || !isConfigured ){
+        console.debug('[UsersProvider] API client not configured yet, skipping users fetch');
+        return;
+      }
       setLoading(true);
       try {
-        configureHeaders(token);
-        const response = await ApiClient.get('/api/v1/users');
+        configureHeaders(apiClient, token);
+        const response = await apiClient.get('/api/v1/users');
         if (mounted) {
           const mappedUsers = response.data.map(mapUser);
           setUsers(mappedUsers);
@@ -107,7 +111,7 @@ export function UsersProvider({ children }: UsersProviderProps) {
     return () => {
       mounted = false;
     };
-  }, [token]);
+  }, [token, isConfigured]);
 
 
 

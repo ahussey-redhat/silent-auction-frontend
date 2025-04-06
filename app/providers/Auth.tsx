@@ -1,26 +1,11 @@
 import React, { useEffect, useState, createContext, useContext, ReactNode } from "react";
 // @ts-expect-error Need to define Keycloak Types using the admin client
-import Keycloak, { KeycloakConfig, KeycloakInstance } from "keycloak-js";
+import Keycloak, { KeycloakConfig } from "keycloak-js";
+import { useConfig } from '@app/providers/Config';
 
 import { jwtDecode } from "jwt-decode";
 
-import apiClient, { configureHeaders } from "../components/ApiClient";
-
-// -------- Keycloak Configuration -------- //
-const keycloakConfig: KeycloakConfig = {
-  url: process.env.NEXT_PUBLIC_KEYCLOAK_URL,
-  realm: process.env.NEXT_PUBLIC_KEYCLOAK_REALM,
-  clientId: process.env.NEXT_PUBLIC_KEYCLOAK_CLIENT_ID,
-};
-
-type BackendUserProfile = {
-  keycloak_user_id: string;
-  keycloak_org_id: string;
-  created: Date;
-  table_number: number;
-}
-
-const keycloak = new Keycloak(keycloakConfig);
+import { useApiClient, configureHeaders } from "../components/ApiClient";
 
 // -------- Context Setup -------- //
 type AuthContextValue = {
@@ -28,7 +13,7 @@ type AuthContextValue = {
   token: string | null;
   user: KeycloakTokenPayload | null;
   backendUserProfile: BackendUserProfile | null;
-  keycloak: KeycloakInstance;
+  keycloak: Keycloak;
   login: () => void;
   logout: () => void;
   refreshToken: () => Promise<void>;
@@ -50,12 +35,48 @@ type KeycloakTokenPayload = {
   preferred_username?: string;
 };
 
+type BackendUserProfile = {
+  keycloak_user_id: string;
+  keycloak_org_id: string;
+  created: Date;
+  table_number: number;
+}
+
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  const config = useConfig();
+  const { apiClient, isConfigured } = useApiClient();
+  const [keycloak, setKeycloak] = useState<Keycloak | null>(null);
+  const [isConfigValid, setIsConfigValid] = useState(false);
+  const [isConfigChecked, setIsConfigChecked] = useState(false);
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [token, setToken] = useState<string | null>(null);
   const [user, setUser] = useState<KeycloakTokenPayload | null>(null);
   const [isAuthInitialized, setIsAuthInitialized] = useState(false);
   const [backendUserProfile, setBackendUserProfile] = useState<BackendUserProfile | null>(null);
+
+  useEffect(() => {
+    const valid = !!(
+      config.KEYCLOAK_URL &&
+      config.KEYCLOAK_REALM &&
+      config.KEYCLOAK_CLIENT_ID
+    );
+
+    setIsConfigValid(valid);
+    setIsConfigChecked(true);
+
+    if (valid) {
+      const keycloakConfig: KeycloakConfig = {
+        url: config.KEYCLOAK_URL,
+        realm: config.KEYCLOAK_REALM,
+        clientId: config.KEYCLOAK_CLIENT_ID,
+      };
+
+      const keycloakInstance = new Keycloak(keycloakConfig);
+      setKeycloak(keycloakInstance);
+    }
+  }, [config.KEYCLOAK_URL, config.KEYCLOAK_REALM, config.KEYCLOAK_CLIENT_ID]);
+
 
   const decodeToken = (token: string) => {
     try {
@@ -68,7 +89,9 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const fetchBackendUserProfile = async (token: string) => {
     try {
-      configureHeaders(token);
+      configureHeaders(apiClient, token);
+      if (!isConfigured) throw new Error('API client not configured yet');
+
       const response = await apiClient.get(`/api/v1/me`);
       if (response.status === 200) {
         setBackendUserProfile(response.data);
@@ -83,6 +106,11 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const initKeycloak = async () => {
     try {
+      if (!keycloak) {
+        console.error("Keycloak is not initialized");
+        return;
+      }
+
       const authenticated = await keycloak.init({
         flow: "standard",
         onLoad: "login-required",
@@ -104,25 +132,12 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  // Periodically refresh the token
-  const refreshToken = async () => {
-    try {
-      if (!keycloak.refreshToken) {
-        logout()
-      }
-      const refreshed: boolean = await keycloak.updateToken(90);
-      if (refreshed) {
-        setToken(keycloak.token);
-        decodeToken(keycloak.token);
-      }
-    } catch (error) {
-      console.error("Token refresh error:", error);
-      logout();
-    }
-  };
-
   const login = async () => {
     try {
+      if (!keycloak) {
+        console.error("Keycloak is not initialized");
+        return;
+      }
       await keycloak.login({
         prompt: "login",
       }); // Triggers the Keycloak login flow
@@ -135,6 +150,10 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = async () => {
     try {
+      if (!keycloak) {
+        console.error("Keycloak is not initialized");
+        return;
+      }
       await keycloak.logout({
         redirectUri: window.location.origin, // Redirect to home after logout
       });
@@ -152,24 +171,56 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, [user, token]);
 
 
-  // Initialize Keycloak on component mount
   useEffect(() => {
-    initKeycloak();
+    if (keycloak) {
+      initKeycloak();
+    }
+  }, [keycloak]);
 
-    // Set up periodic token refresh (every 30 seconds)
-    const refreshInterval = setInterval(() => {
-      if (keycloak.authenticated) {
-        refreshToken();
+  const refreshToken = async () => {
+    try {
+      if (!keycloak || !keycloak.refreshToken) {
+        logout();
+        return;
       }
-    }, 30000);
 
-    return () => clearInterval(refreshInterval);
-    // Requires empty dependency array, to avoid trying to init continously
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+      const refreshed: boolean = await keycloak.updateToken(90);
+      if (refreshed) {
+        setToken(keycloak.token);
+        decodeToken(keycloak.token);
+      }
+    } catch (error) {
+      console.error("Token refresh error:", error);
+      logout();
+    }
+  };
 
-  if (!isAuthInitialized) {
-    return <div>Securing application...</div>; // Show a loading state while initializing
+  useEffect(() => {
+    if (isAuthenticated && token) {
+      const interval = setInterval(() => {
+        refreshToken();
+      }, 60000);
+
+      return () => clearInterval(interval);
+    }
+  }, [isAuthenticated, token]);
+
+  if (!isConfigChecked) {
+    return <div>Checking authentication configuration...</div>;
+  }
+
+  if (!isConfigValid) {
+    return (
+      <div>
+        <h2>Authentication Configuration Error</h2>
+        <p>Missing required Keycloak configuration. Please check your environment variables:</p>
+        <ul>
+          <li>KEYCLOAK_URL: {config.KEYCLOAK_URL ? '✓' : '✗'}</li>
+          <li>KEYCLOAK_REALM: {config.KEYCLOAK_REALM ? '✓' : '✗'}</li>
+          <li>KEYCLOAK_CLIENT_ID: {config.KEYCLOAK_CLIENT_ID ? '✓' : '✗'}</li>
+        </ul>
+      </div>
+    );
   }
 
   return (
@@ -178,12 +229,12 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       token,
       user,
       backendUserProfile,
-      keycloak,
+      keycloak: keycloak as Keycloak,
       login,
       logout,
       refreshToken
     }}>
-      {children}
+      {isAuthInitialized ? children : <div>Initializing authentication...</div>}
     </AuthContext.Provider>
   );
 };

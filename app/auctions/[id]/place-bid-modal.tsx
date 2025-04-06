@@ -14,6 +14,7 @@ import {
 } from '@patternfly/react-core/deprecated';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { usePrevious } from 'react-use';
+import { useConfig } from '@app/providers/Config';
 
 type NumberInputValue = number | '';
 
@@ -34,7 +35,9 @@ export default function PlaceBidModal ({
   onPlaceBid,
   placingBid,
 }: PlaceBidModalProps) {
-  const bid_increment: number = parseInt(process.env.NEXT_PUBLIC_BID_INCREMENT || '10');
+
+  const config = useConfig();
+  const bid_increment: number = parseInt(config.BID_INCREMENT || '10');
 
   const minimumBidAmount = useMemo(
     () => currentHighestBid || startingBid || 0,

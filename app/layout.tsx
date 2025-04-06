@@ -1,13 +1,13 @@
 'use client'
-
 import "./globals.css";
 import React, { useState, useEffect } from 'react';
 
 import AuthProvider from '@app/providers/Auth';
 import AuctionProvider from '@app/providers/Auctions';
+import ConfigProvider from '@app/providers/Config';
 import UsersProvider from '@app/providers/Users';
-import AppMasthead from './containers/masthead';
-import AppSidebar from './containers/sidebar';
+import AppMasthead from '@app/containers/masthead';
+import AppSidebar from '@app/containers/sidebar';
 // import AppNotificationDrawer from './containers/notificationdrawer';
 
 import { Page } from '@patternfly/react-core';
@@ -60,46 +60,59 @@ export default function RootLayout({ children }: { children: React.ReactNode }){
   return (
     isDarkThemeEnabled ?
       <html lang="en" className={"pf-v6-theme-dark"}>
-        <body>
+      <head>
+        {process.env.NODE_ENV === 'development' && (
+          <script src="/dev-runtime-config.js" />
+        )}
+      </head>
+      <body>
+        <ConfigProvider>
           <AuthProvider>
-            <UsersProvider>
-              <AuctionProvider>
-                <Page
-                  masthead={
-                    <AppMasthead
-                      isDarkThemeEnabled={isDarkThemeEnabled}
-                      setDarkThemeEnabled={setDarkThemeEnabled}
-                      isSidebarOpen={isSidebarOpen}
-                      setSidebarOpen={setSidebarOpen}
-                      // isNotificationDrawerOpen={isNotificationDrawerOpen}
-                      // onCloseNotificationDrawer={onCloseNotificationDrawer}
-                    />
-                  }
-                  sidebar={
-                    <AppSidebar
-                      isSidebarOpen={isSidebarOpen}
-                      setSidebarOpen={setSidebarOpen}
-                    />
-                  }
-                  // notificationDrawer={
-                  //   isNotificationDrawerOpen && (
-                  //     <AppNotificationDrawer
-                  //       onCloseNotificationDrawer={onCloseNotificationDrawer}
-                  //       isNotificationDrawerOpen={isNotificationDrawerOpen}
-                  //     />)
-                  // }
-                  // isNotificationDrawerExpanded={isNotificationDrawerOpen}
-                >
-                  {children}
-                </Page>
-              </AuctionProvider>
-            </UsersProvider>
-          </AuthProvider>
+              <UsersProvider>
+                <AuctionProvider>
+                  <Page
+                    masthead={
+                      <AppMasthead
+                        isDarkThemeEnabled={isDarkThemeEnabled}
+                        setDarkThemeEnabled={setDarkThemeEnabled}
+                        isSidebarOpen={isSidebarOpen}
+                        setSidebarOpen={setSidebarOpen}
+                        // isNotificationDrawerOpen={isNotificationDrawerOpen}
+                        // onCloseNotificationDrawer={onCloseNotificationDrawer}
+                      />
+                    }
+                    sidebar={
+                      <AppSidebar
+                        isSidebarOpen={isSidebarOpen}
+                        setSidebarOpen={setSidebarOpen}
+                      />
+                    }
+                    // notificationDrawer={
+                    //   isNotificationDrawerOpen && (
+                    //     <AppNotificationDrawer
+                    //       onCloseNotificationDrawer={onCloseNotificationDrawer}
+                    //       isNotificationDrawerOpen={isNotificationDrawerOpen}
+                    //     />)
+                    // }
+                    // isNotificationDrawerExpanded={isNotificationDrawerOpen}
+                  >
+                    {children}
+                  </Page>
+                </AuctionProvider>
+              </UsersProvider>
+            </AuthProvider>
+        </ConfigProvider>
         </body>
       </html>
       :
       <html lang="en">
+      <head>
+        {process.env.NODE_ENV === 'development' && (
+          <script src="/dev-runtime-config.js" />
+        )}
+      </head>
         <body>
+        <ConfigProvider>
           <AuthProvider>
             <UsersProvider>
               <AuctionProvider>
@@ -134,6 +147,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }){
               </AuctionProvider>
             </UsersProvider>
           </AuthProvider>
+        </ConfigProvider>
         </body>
       </html>
   );

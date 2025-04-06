@@ -1,5 +1,3 @@
-.env.*
-
 .DS_Store
 
 .pnp
@@ -30,3 +28,4 @@ log/
 
 src/locales/*/messages.ts
 /.env
+.env.*

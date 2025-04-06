@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react';
-import ApiClient, { configureHeaders } from '@app/components/ApiClient';
+import { useApiClient, configureHeaders } from '@app/components/ApiClient';
 import { useAuth } from '@app/providers/Auth';
 import { Auction, AuctionDTO, Bid, BidDTO, PlaceBidRequest } from '@app/types';
 
@@ -39,6 +39,7 @@ export default function AuctionsProvider({ children }: { children: ReactNode }) 
   const [error, setError] = useState<Error | null>(null);
 
   const { token } = useAuth();
+  const { apiClient, isConfigured } = useApiClient();
 
   const mapAuction = ({ id, item_name, description, auction_start, auction_end, starting_bid, image_path }: AuctionDTO): Auction => {
     const current = new Date();
@@ -85,15 +86,16 @@ export default function AuctionsProvider({ children }: { children: ReactNode }) 
     );
   }, [getBidsForAuction]);
 
-  // Fetch bids for a specific auction from the API
+  // Fetch bids for a specific auction
   const fetchBidsForAuction = useCallback(async (auctionId: string): Promise<void> => {
     if (!token) throw new Error('Authentication required');
+    if (!isConfigured) throw new Error('API client not configured yet');
 
     try {
       setLoading(true);
-      configureHeaders(token);
+      configureHeaders(apiClient, token);
 
-      const response = await ApiClient.get(`/api/v1/auctions/${auctionId}/bids`);
+      const response = await apiClient.get(`/api/v1/auctions/${auctionId}/bids`);
       const bidData = response.data.map(mapBid);
 
       setAuctionBids(prevBids => {
@@ -112,18 +114,18 @@ export default function AuctionsProvider({ children }: { children: ReactNode }) 
       });
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch bids'));
-      throw err;
     } finally {
       setLoading(false);
     }
-  }, [token]);
+  }, [token, apiClient, isConfigured]);
 
   async function getAuctionDetails(auctionId: string): Promise<Auction> {
     if (!token) throw new Error('Authentication required');
+    if (!isConfigured) throw new Error('API client not configured yet');
 
     try {
-      configureHeaders(token);
-      const response = await ApiClient.get(`/api/v1/auctions/${auctionId}`);
+      configureHeaders(apiClient, token);
+      const response = await apiClient.get(`/api/v1/auctions/${auctionId}`);
       const auctionData = response.data;
       const mappedAuction = mapAuction(auctionData);
 
@@ -139,10 +141,11 @@ export default function AuctionsProvider({ children }: { children: ReactNode }) 
 
   async function placeBid(auctionId: string, bid: PlaceBidRequest): Promise<any> {
     if (!token) throw new Error('Authentication required');
+    if (!isConfigured) throw new Error('[AuctionsProvider] API client not configured yet');
 
     try {
-      configureHeaders(token);
-      const response = await ApiClient.post(`/api/v1/auctions/${auctionId}/bids`, bid);
+      configureHeaders(apiClient, token);
+      const response = await apiClient.post(`/api/v1/auctions/${auctionId}/bids`, bid);
 
       // After placing a bid, refresh the bids for this auction
       await fetchBidsForAuction(auctionId);
@@ -154,40 +157,33 @@ export default function AuctionsProvider({ children }: { children: ReactNode }) 
     }
   }
 
-  // Fetch all auctions on initial load
+  // Fetch all auctions
   useEffect(() => {
-    let mounted = true;
+    const fetchAuctions = async () => {
+      if (!isConfigured) {
+        console.debug('[AuctionsProvider] API client not configured yet, skipping all auctions fetch');
+        return;
+      }
 
-    const fetchAllAuctions = async () => {
-      if (!token || !mounted) return;
-
-      setLoading(true);
       try {
-        configureHeaders(token);
-        const response = await ApiClient.get('/api/v1/auctions');
-        const auctionData = response.data.map(mapAuction);
+        setLoading(true);
+        if (token) {
+          configureHeaders(apiClient, token);
+        }
 
-        if (mounted) {
-          setAuctions(auctionData);
-          console.debug("Auction Data: " + auctionData.toString());
-        }
+        const response = await apiClient.get('/api/v1/auctions');
+        const auctionsData = response.data.map(mapAuction);
+        setAuctions(auctionsData);
       } catch (err) {
-        if (mounted) {
-          setError(err instanceof Error ? err : new Error('Failed to fetch auctions'));
-        }
+        setError(err instanceof Error ? err : new Error('Failed to fetch auctions'));
       } finally {
-        if (mounted) {
-          setLoading(false);
-        }
+        setLoading(false);
       }
     };
 
-    fetchAllAuctions();
+    fetchAuctions();
+  }, [token, isConfigured]);
 
-    return () => {
-      mounted = false;
-    };
-  }, [token]);
 
   const value = {
     auctions,

@@ -118,7 +118,7 @@ export default function AppMasthead(
         <Content
           {...props}
           component={ContentVariants.a}
-          href={`${process.env.NEXT_PUBLIC_KEYCLOAK_URL}/realms/${process.env.NEXT_PUBLIC_KEYCLOAK_REALM}/account/#/`}
+          href={`${process.env.KEYCLOAK_URL}/realms/${process.env.KEYCLOAK_REALM}/account/#/`}
           target="_blank"
           noreferrer="true"
           noopen="true"
