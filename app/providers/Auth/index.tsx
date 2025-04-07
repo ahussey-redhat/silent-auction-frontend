@@ -93,13 +93,13 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       if (!isConfigured) throw new Error('API client not configured yet');
 
       const response = await apiClient.get(`/api/v1/me`);
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
         setBackendUserProfile(response.data);
       } else {
-        console.warn(response.data);
+        console.warn("Backend User Profile: " + response.data);
       }
     } catch (error) {
-      console.error("Error fetching the user profile:", error);
+      console.error("Error fetching the backend user profile:", error);
     }
   };
 

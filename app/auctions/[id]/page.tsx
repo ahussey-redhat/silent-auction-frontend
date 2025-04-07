@@ -14,9 +14,11 @@ import BidsDataList from './bids-data-list';
 import PlaceBidModal from './place-bid-modal';
 import { AuctionDescriptionList, SkeletonDescriptionList } from '@app/components/Auction';
 import { useAuctions } from '@app/providers/Auctions';
+import { useAuth } from '@app/providers/Auth';
 import { Auction} from '@app/types';
 
 export default function AuctionDetailsPage() {
+  const { user } = useAuth();
   const params = useParams();
   const auctionId = params.id as string;
 
@@ -167,6 +169,44 @@ export default function AuctionDetailsPage() {
   }
 
   // Show auction data (when it's loaded)
+  const tabs = [
+    {
+      eventKey: 'details',
+      title: 'Details',
+      children: (
+        <Flex
+          className="details-tab"
+          spaceItems={{ default: 'spaceItemsLg' }}
+          direction={{ default: 'column' }}
+        >
+          <FlexItem>
+            {auction && <AuctionDescriptionList auction={auction} />}
+          </FlexItem>
+        </Flex>
+      ),
+    }
+  ]
+
+  if (user?.groups?.includes('admin')) {
+    tabs.push(
+      {
+        eventKey: 'bids',
+        title: 'Bids',
+        children: (
+          <Flex
+            className="bids-tab"
+            spaceItems={{ default: 'spaceItemsLg' }}
+            direction={{ default: 'column' }}
+          >
+            <FlexItem>
+              {auction && <BidsDataList auctionId={auctionId} />}
+            </FlexItem>
+          </Flex>
+        )
+      }
+    )
+  }
+
   return (
     <PageSection hasBodyWrapper={false}>
       <DetailsPage
@@ -194,38 +234,7 @@ export default function AuctionDetailsPage() {
             isDisabled: !auction?.isActive,
           },
         ]}
-        tabs={[
-          {
-            eventKey: 'details',
-            title: 'Details',
-            children: (
-              <Flex
-                className="details-tab"
-                spaceItems={{ default: 'spaceItemsLg' }}
-                direction={{ default: 'column' }}
-              >
-                <FlexItem>
-                  {auction && <AuctionDescriptionList auction={auction} />}
-                </FlexItem>
-              </Flex>
-            ),
-          },
-          {
-            eventKey: 'bids',
-            title: 'Bids',
-            children: (
-              <Flex
-                className="bids-tab"
-                spaceItems={{ default: 'spaceItemsLg' }}
-                direction={{ default: 'column' }}
-              >
-                <FlexItem>
-                  {auction && <BidsDataList auctionId={auctionId} />}
-                </FlexItem>
-              </Flex>
-            ),
-          },
-        ]}
+        tabs={tabs}
       />
 
       {/* Place Bid Modal */}

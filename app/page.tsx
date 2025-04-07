@@ -9,7 +9,7 @@ export default function Home(){
     <Flex direction={{ default: 'column' }} rowGap={{ default: 'rowGapXl' }}>
       <Flex alignSelf={{ default: 'alignSelfCenter' }}>
         <FlexItem>
-          <Image className="banner" src="./banner.svg" alt="banner" width={1000} height={200} />
+          <Image className="banner" src="/banner.svg" alt="banner" width={1000} height={200} />
         </FlexItem>
       </Flex>
       <Flex alignSelf={{ default: 'alignSelfCenter' }}>
