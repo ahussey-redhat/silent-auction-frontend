@@ -2,10 +2,10 @@
 import "./globals.css";
 import React, { useState, useEffect } from 'react';
 
-import AuthProvider from '@app/providers/Auth';
-import AuctionProvider from '@app/providers/Auctions';
+import AuthProvider from '@app/providers/Auth/Auth';
+import AuctionProvider from '@app/providers/Auctions/Auctions';
 import ConfigProvider from '@app/providers/Config';
-import UsersProvider from '@app/providers/Users';
+import UsersProvider from '@app/providers/Users/Users';
 import AppMasthead from '@app/containers/masthead';
 import AppSidebar from '@app/containers/sidebar';
 // import AppNotificationDrawer from './containers/notificationdrawer';

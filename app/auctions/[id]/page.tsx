@@ -13,7 +13,7 @@ import DetailsPage from '@patternfly/react-component-groups/dist/dynamic/Details
 import BidsDataList from './bids-data-list';
 import PlaceBidModal from './place-bid-modal';
 import { AuctionDescriptionList, SkeletonDescriptionList } from '@app/components/Auction';
-import { useAuctions } from '@app/providers/Auctions';
+import { useAuctions } from '@app/providers/Auctions/Auctions';
 import { Auction} from '@app/types';
 
 export default function AuctionDetailsPage() {

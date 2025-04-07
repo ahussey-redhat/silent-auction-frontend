@@ -12,7 +12,7 @@ import {
   ContentVariants,
 } from '@patternfly/react-core';
 import './page.css';
-import { useUsers } from '@app/providers/Users';
+import { useUsers } from '@app/providers/Users/Users';
 
 export default function Users(){
   const { users, loading } = useUsers();

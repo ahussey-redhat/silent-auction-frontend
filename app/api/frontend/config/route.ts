@@ -8,8 +8,5 @@ export async function GET() {
     BACKEND_URL: process.env.BACKEND_URL || '',
     BID_INCREMENT: process.env.BID_INCREMENT || '',
   };
-
-  console.debug('Server config endpoint returning:', config);
-
   return NextResponse.json(config);
 }

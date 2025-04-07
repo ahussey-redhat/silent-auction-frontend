@@ -12,8 +12,8 @@ import {
 } from '@patternfly/react-core';
 import { useEffectOnce } from 'react-use';
 import './page.css';
-import { useAuctions } from '@app/providers/Auctions';
-import { useUsers } from '@app/providers/Users';
+import { useAuctions } from '@app/providers/Auctions/Auctions';
+import { useUsers } from '@app/providers/Users/Users';
 import { useState } from 'react';
 import { Bid } from '@app/types';
 

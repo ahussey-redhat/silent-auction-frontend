@@ -9,7 +9,7 @@ import {
   PageSidebar,
   PageSidebarBody,
 } from '@patternfly/react-core';
-import { useAuth } from '@app/providers/Auth';
+import { useAuth } from '@app/providers/Auth/Auth';
 import { useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'

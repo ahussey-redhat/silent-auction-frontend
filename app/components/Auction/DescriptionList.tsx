@@ -9,8 +9,8 @@ import {
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Auction } from '@app/types';
-import { useAuth } from '@app/providers/Auth';
-import { useAuctions } from '@app/providers/Auctions';
+import { useAuth } from '@app/providers/Auth/Auth';
+import { useAuctions } from '@app/providers/Auctions/Auctions';
 
 export type AuctionDescriptionListProps = {
   auction: Auction;

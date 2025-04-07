@@ -34,7 +34,7 @@ export default function ConfigProvider({
     // Production mode - fetch config from server API
     const fetchConfig = async () => {
       try {
-        const response = await axios.get('/api/config');
+        const response = await axios.get('/api/frontend/config');
         console.debug("Runtime config received:", response.data);
         setConfig(response.data);
       } catch (error) {
