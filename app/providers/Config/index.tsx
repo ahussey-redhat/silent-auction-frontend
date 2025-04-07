@@ -1,6 +1,6 @@
 'use client';
-import getConfig from 'next/config';
-import React, {  createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 type RuntimeConfig = {
   BACKEND_URL?: string;
@@ -18,36 +18,40 @@ export default function ConfigProvider({
   children: React.ReactNode
 }) {
   const [config, setConfig] = useState<RuntimeConfig>({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Try to get config from Next.js runtime config
-    const nextConfig = getConfig();
-    const publicRuntimeConfig = nextConfig?.publicRuntimeConfig;
-
-    // Check if we're in development and have dev config
     const devConfig = (window as Window & { __NEXT_RUNTIME_CONFIG?: RuntimeConfig }).__NEXT_RUNTIME_CONFIG;
 
-    // Determine which config to use
-    let finalConfig: RuntimeConfig;
-
-    if (publicRuntimeConfig && Object.keys(publicRuntimeConfig).length > 0) {
-      // Production mode - use publicRuntimeConfig from container env vars
-      console.debug("Using production runtime config");
-      finalConfig = publicRuntimeConfig;
-    } else if (devConfig) {
+    if (devConfig) {
       // Development mode - use dev-runtime-config.js values
       console.debug("Using development runtime config");
-      finalConfig = devConfig;
-    } else {
-      // Fallback with empty values
-      console.warn("No runtime config found!");
-      finalConfig = {};
+      setConfig(devConfig);
+      setLoading(false);
+      return;
     }
 
-    console.debug("Runtime config values:", finalConfig);
-    setConfig(finalConfig);
+    // Production mode - fetch config from server API
+    const fetchConfig = async () => {
+      try {
+        const response = await axios.get('/api/config');
+        console.debug("Runtime config received:", response.data);
+        setConfig(response.data);
+      } catch (error) {
+        console.error("Failed to fetch runtime config:", error);
+        setConfig({}); // Empty config will trigger validation errors
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchConfig();
   }, []);
 
+  if (loading) {
+    // You could return a loading indicator here if needed
+    return null;
+  }
 
   return (
     <ConfigContext.Provider value={config}>
