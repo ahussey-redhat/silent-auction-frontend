@@ -5,10 +5,7 @@ import ErrorState from '@patternfly/react-component-groups/dist/dynamic/ErrorSta
 import UnavailableContent from '@patternfly/react-component-groups/dist/dynamic/UnavailableContent';
 import { redirect } from 'next/navigation';
 
-export default function  Error({
-   error,
-   reset,
-}: {
+export default function  Error({ error }: {
   error: Error & { digest?: string }
   reset: () => void
 }) {

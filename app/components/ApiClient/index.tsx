@@ -1,5 +1,5 @@
 'use client'
-import axios, { InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, InternalAxiosRequestConfig } from 'axios';
 import { useEffect, useState, useMemo } from "react";
 import { useConfig } from '@app/providers/Config';
 
@@ -36,7 +36,7 @@ export function useApiClient() {
   return { apiClient, isConfigured };
 }
 
-export const configureHeaders = (apiClient, token: string | null) => {
+export const configureHeaders = (apiClient: AxiosInstance, token: string | null) => {
   if (!apiClient || !token) return;
 
   const interceptorId = apiClient.interceptors.request.use(

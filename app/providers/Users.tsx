@@ -2,11 +2,11 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { useApiClient,  configureHeaders } from '@app/components/ApiClient';
 import { useAuth } from '@app/providers/Auth';
-import { User, UserDTO, Bid, BidDTO } from '@app/types';
+import { User, UserDTO } from '@app/types';
 
 interface UsersContextType {
   users: User[];
-  getUserDetails: (userId: string) => Promise<any>;
+  getUserDetails: (userId: string) => Promise<User>;
   loading: boolean;
   error: Error | null;
 }
@@ -51,28 +51,28 @@ export function UsersProvider({ children }: UsersProviderProps) {
     };
   };
 
-  const mapBid = ({
-                    id,
-                    auction_id,
-                    user_id,
-                    bid_time,
-                    bid_amount,
-                  }: BidDTO): Bid => ({
-    id,
-    auctionId: auction_id.toString(),
-    userId: user_id.toString(),
-    time: new Date(bid_time),
-    amount: bid_amount,
-  });
+  // const mapBid = ({
+  //                   id,
+  //                   auction_id,
+  //                   user_id,
+  //                   bid_time,
+  //                   bid_amount,
+  //                 }: BidDTO): Bid => ({
+  //   id,
+  //   auctionId: auction_id.toString(),
+  //   userId: user_id.toString(),
+  //   time: new Date(bid_time),
+  //   amount: bid_amount,
+  // });
 
-  async function getUserDetails(userId: string) {
+  async function getUserDetails(userId: string): Promise<User> {
     try {
       if (!token) throw new Error('Authentication required');
       if (!isConfigured) throw new Error('[UsersProvider] API client not configured yet');
 
       configureHeaders(apiClient, token);
       const response = await apiClient.get(`/api/v1/users/${userId}`);
-      return response;
+      return response.data.map(mapUser);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch user details'));
       throw err;

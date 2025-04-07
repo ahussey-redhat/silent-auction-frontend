@@ -22,6 +22,7 @@ export default ({ auction }: AuctionDescriptionListProps) => {
 
   const [auctionData, setAuctionData] = useState<Auction | null>(null);
   const [bidAmount, setBidAmount] = useState<number>(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

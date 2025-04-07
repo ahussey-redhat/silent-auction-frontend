@@ -15,7 +15,6 @@ import {
   Grid,
   GridItem,
   PageSection,
-  Spinner,
 } from '@patternfly/react-core';
 
 import { redirect } from 'next/navigation';

@@ -17,7 +17,7 @@ interface AuctionsContextType {
   getHighestBidForAuction: (auctionId: string) => Bid | null;
   getBidsForAuction: (auctionId: string) => Bid[];
   fetchBidsForAuction: (auctionId: string) => Promise<void>;
-  placeBid: (auctionId: string, bid: PlaceBidRequest) => Promise<any>;
+  placeBid: (auctionId: string, bid: PlaceBidRequest) => Promise<void>;
   loading: boolean;
   error: Error | null;
 }
@@ -139,18 +139,18 @@ export default function AuctionsProvider({ children }: { children: ReactNode }) 
     }
   }
 
-  async function placeBid(auctionId: string, bid: PlaceBidRequest): Promise<any> {
+  async function placeBid(auctionId: string, bid: PlaceBidRequest): Promise<void> {
     if (!token) throw new Error('Authentication required');
     if (!isConfigured) throw new Error('[AuctionsProvider] API client not configured yet');
 
     try {
       configureHeaders(apiClient, token);
       const response = await apiClient.post(`/api/v1/auctions/${auctionId}/bids`, bid);
-
-      // After placing a bid, refresh the bids for this auction
+      if (response.status !== 201){
+        console.warn(response.data);
+      }
       await fetchBidsForAuction(auctionId);
 
-      return response;
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to place bid'));
       throw err;

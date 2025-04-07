@@ -32,7 +32,6 @@ import { useAuth } from '@app/providers/Auth';
 
 import MoonIcon from '@patternfly/react-icons/dist/esm/icons/moon-icon';
 import SunIcon from '@patternfly/react-icons/dist/esm/icons/sun-icon';
-import Link from 'next/link';
 
 type AppMastheadProps = {
   isDarkThemeEnabled: boolean;
@@ -52,7 +51,7 @@ export default function AppMasthead(
   }: AppMastheadProps,
 ) {
 
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, logout } = useAuth();
 
   const onDarkThemeToggleClick = () => {
     setDarkThemeEnabled(!isDarkThemeEnabled);
@@ -188,7 +187,7 @@ export default function AppMasthead(
                   onSelect={onFullKebabSelect}
                   onOpenChange={setIsFullKebabDropdownOpen}
                   popperProps={{ position: 'right' }}
-                  toggle={(toggleRef: React.RefObject<any>) => (
+                  toggle={(toggleRef: React.RefObject<HTMLButtonElement>) => (
                     <MenuToggle
                       ref={toggleRef}
                       isExpanded={isFullKebabDropdownOpen}
@@ -209,7 +208,7 @@ export default function AppMasthead(
                   onSelect={onUserDropdownSelect}
                   onOpenChange={setIsUserDropdownOpen}
                   popperProps={{ position: 'right' }}
-                  toggle={(toggleRef: React.RefObject<any>) => (
+                  toggle={(toggleRef: React.RefObject<HTMLButtonElement>) => (
                     <MenuToggle
                       ref={toggleRef}
                       isExpanded={isUserDropdownOpen}

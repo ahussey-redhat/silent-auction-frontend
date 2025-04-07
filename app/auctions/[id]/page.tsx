@@ -13,16 +13,13 @@ import DetailsPage from '@patternfly/react-component-groups/dist/dynamic/Details
 import BidsDataList from './bids-data-list';
 import PlaceBidModal from './place-bid-modal';
 import { AuctionDescriptionList, SkeletonDescriptionList } from '@app/components/Auction';
-import { useAuth } from '@app/providers/Auth';
 import { useAuctions } from '@app/providers/Auctions';
 import { Auction} from '@app/types';
-// import './page.css';
 
 export default function AuctionDetailsPage() {
   const params = useParams();
   const auctionId = params.id as string;
 
-  const { user } = useAuth();
   const { getAuctionDetails, getHighestBidForAuction, placeBid } = useAuctions();
 
   const [auction, setAuction] = useState<Auction | null>(null);
@@ -238,10 +235,7 @@ export default function AuctionDetailsPage() {
           onClose={togglePlaceBidModalIsOpen}
           startingBid={auction.startingBid}
           currentHighestBid={getHighestBidForAuction(auctionId)?.amount}
-          onPlaceBid={(bidAmount) => {
-            placeBid(auction.id, { bid_amount: bidAmount });
-            togglePlaceBidModalIsOpen();
-          }}
+          onPlaceBid={ handlePlaceBid }
           placingBid={placingBid}
         />
       )}

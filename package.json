@@ -9,14 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@eslint/js": "^9.17.0",
     "@keycloak/keycloak-admin-client": "^26.1.4",
     "@patternfly/react-component-groups": "6.0.0-alpha.16",
     "@patternfly/react-core": "6.1.0",
     "@patternfly/react-icons": "6.1.0",
     "@patternfly/react-styles": "6.0.0-prerelease.6",
     "axios": "^1.8.4",
-    "eslint": "^9.16.0",
     "jwt-decode": "^4.0.0",
     "keycloak-js": "^26.2.0",
     "next": "^15.2.3",
@@ -26,16 +24,19 @@
     "use-debounce": "^10.0.4"
   },
   "devDependencies": {
+    "@eslint/js": "^9.24.0",
     "@types/chance": "^1.1.6",
     "@types/jest": "~29.5.14",
     "@types/node": "~22.10.1",
     "@types/react": "~18.3.12",
     "@types/react-dom": "~18.0.11",
     "chance": "^1.1.12",
+    "eslint": "^9.24.0",
     "eslint-config-next": "15.2.4",
     "lint-staged": "~13.1.4",
     "prettier": "~3.3.3",
     "rimraf": "~6.0.1",
-    "typescript": "~5.6.2"
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.29.0"
   }
 }

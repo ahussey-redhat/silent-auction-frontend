@@ -15,9 +15,8 @@ import { Page } from '@patternfly/react-core';
 export default function RootLayout({ children }: { children: React.ReactNode }){
   const [isDarkThemeEnabled, setDarkThemeEnabled] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [isNotificationDrawerOpen, setIsNotificationDrawerOpen] = React.useState(false);
-  const onCloseNotificationDrawer = () => {setIsNotificationDrawerOpen((prevState) => !prevState);};
-  const [userProfile] = React.useState(null);
+  // const [isNotificationDrawerOpen, setIsNotificationDrawerOpen] = React.useState(false);
+  // const onCloseNotificationDrawer = () => {setIsNotificationDrawerOpen((prevState) => !prevState);};
 
   /*
   * Handle Dark Theme

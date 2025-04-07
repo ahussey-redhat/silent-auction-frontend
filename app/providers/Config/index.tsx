@@ -25,7 +25,7 @@ export default function ConfigProvider({
     const publicRuntimeConfig = nextConfig?.publicRuntimeConfig;
 
     // Check if we're in development and have dev config
-    const devConfig = (window as any).__NEXT_RUNTIME_CONFIG;
+    const devConfig = (window as Window & { __NEXT_RUNTIME_CONFIG?: RuntimeConfig }).__NEXT_RUNTIME_CONFIG;
 
     // Determine which config to use
     let finalConfig: RuntimeConfig;
