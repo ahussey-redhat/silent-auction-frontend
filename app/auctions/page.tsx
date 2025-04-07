@@ -1,6 +1,6 @@
 'use client'
 
-import { useAuctions } from '@app/providers/Auctions/Auctions';
+import { useAuctions } from '@app/providers/Auctions';
 // import './page.css';
 
 import {

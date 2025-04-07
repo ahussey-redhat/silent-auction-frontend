@@ -6,8 +6,8 @@ import {
   DataListItemRow,
   Timestamp,
 } from '@patternfly/react-core';
-import { useAuctions } from '@app/providers/Auctions/Auctions';
-import { useUsers } from '@app/providers/Users/Users'
+import { useAuctions } from '@app/providers/Auctions';
+import { useUsers } from '@app/providers/Users'
 
 export default function BidsDataList({ auctionId }: { auctionId: string }) {
   const { auctionBids } = useAuctions();

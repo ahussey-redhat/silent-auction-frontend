@@ -5,7 +5,7 @@ import { useConfig } from '@app/providers/Config';
 
 import { jwtDecode } from "jwt-decode";
 
-import { useApiClient, configureHeaders } from "../../components/ApiClient";
+import { useApiClient, configureHeaders } from '@app/components/ApiClient';
 
 // -------- Context Setup -------- //
 type AuthContextValue = {

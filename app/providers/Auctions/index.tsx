@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react';
 import { useApiClient, configureHeaders } from '@app/components/ApiClient';
-import { useAuth } from '@app/providers/Auth/Auth';
+import { useAuth } from '@app/providers/Auth';
 import { Auction, AuctionDTO, Bid, BidDTO, PlaceBidRequest } from '@app/types';
 
 type AuctionBids = {

@@ -28,7 +28,7 @@ import { BarsIcon } from '@patternfly/react-icons/dist/esm/icons/bars-icon';
 import { EllipsisVIcon } from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
 import React, { MouseEvent as ReactMouseEvent, useCallback, useState } from 'react';
 import { useAsync } from 'react-use';
-import { useAuth } from '@app/providers/Auth/Auth';
+import { useAuth } from '@app/providers/Auth';
 
 import MoonIcon from '@patternfly/react-icons/dist/esm/icons/moon-icon';
 import SunIcon from '@patternfly/react-icons/dist/esm/icons/sun-icon';

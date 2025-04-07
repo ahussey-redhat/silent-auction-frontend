@@ -1,7 +1,7 @@
 'use client'
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { useApiClient,  configureHeaders } from '@app/components/ApiClient';
-import { useAuth } from '@app/providers/Auth/Auth';
+import { useAuth } from '@app/providers/Auth';
 import { User, UserDTO } from '@app/types';
 
 interface UsersContextType {
