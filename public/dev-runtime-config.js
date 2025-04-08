@@ -1,7 +1,7 @@
 window.__NEXT_RUNTIME_CONFIG = {
-  KEYCLOAK_URL: "http://localhost:8000/",
-  KEYCLOAK_REALM: "silent-auction",
-  KEYCLOAK_CLIENT_ID: "frontend",
-  BACKEND_URL: "http://localhost:6443/",
-  BID_INCREMENT: "10"
+  KEYCLOAK_URL: process.env.KEYCLOAK_URL,
+  KEYCLOAK_REALM: process.env.KEYCLOAK_REALM,
+  KEYCLOAK_CLIENT_ID: process.env.KEYCLOAK_CLIENT_ID,
+  BACKEND_URL: process.env.BACKEND_URL,
+  BID_INCREMENT: process.env.BID_INCREMENT,
 };

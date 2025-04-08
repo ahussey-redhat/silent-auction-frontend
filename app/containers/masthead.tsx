@@ -29,6 +29,7 @@ import { EllipsisVIcon } from '@patternfly/react-icons/dist/esm/icons/ellipsis-v
 import React, { MouseEvent as ReactMouseEvent, useCallback, useState } from 'react';
 import { useAsync } from 'react-use';
 import { useAuth } from '@app/providers/Auth';
+import { useConfig } from '@app/providers/Config';
 
 import MoonIcon from '@patternfly/react-icons/dist/esm/icons/moon-icon';
 import SunIcon from '@patternfly/react-icons/dist/esm/icons/sun-icon';
@@ -52,6 +53,7 @@ export default function AppMasthead(
 ) {
 
   const { user, logout } = useAuth();
+  const config = useConfig();
 
   const onDarkThemeToggleClick = () => {
     setDarkThemeEnabled(!isDarkThemeEnabled);
@@ -117,7 +119,7 @@ export default function AppMasthead(
         <Content
           {...props}
           component={ContentVariants.a}
-          href={`${process.env.KEYCLOAK_URL}/realms/${process.env.KEYCLOAK_REALM}/account/#/`}
+          href={`${config.KEYCLOAK_URL}/realms/${config.KEYCLOAK_REALM}/account/#/`}
           target="_blank"
           noreferrer="true"
           noopen="true"
@@ -219,6 +221,9 @@ export default function AppMasthead(
                           alt={`${user?.email}'s avatar image`}
                           className={"pf-v6-c-avatar pf-m-sm"}
                           style={{verticalAlign: "bottom"}}
+                          onError={(e) => {
+                            e.currentTarget.src = avatarImgSrc;
+                          }}
                           isBordered
                         />
                       }
