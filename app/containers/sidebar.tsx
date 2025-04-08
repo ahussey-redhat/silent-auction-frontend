@@ -10,6 +10,7 @@ import {
   PageSidebarBody,
 } from '@patternfly/react-core';
 import { useAuth } from '@app/providers/Auth';
+import { useConfig } from '@app/providers/Config';
 import { useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
@@ -25,6 +26,7 @@ export default function AppSideBar({
   }: AppSidebarProps) {
 
   const { user } = useAuth();
+  const config = useConfig();
   const onSidebarToggle = useCallback(() => {
     setSidebarOpen(!isSidebarOpen);
   }, [isSidebarOpen, setSidebarOpen]);
@@ -50,7 +52,7 @@ export default function AppSideBar({
             >
               <Link href="/auctions"><Content component={ContentVariants.p}>Auctions</Content></Link>
             </NavItem>
-            {user?.groups?.includes('admin') ? (
+            {user?.groups?.includes(config.ADMIN_GROUP_NAME ? config.ADMIN_GROUP_NAME:  'admin') ? (
               <>
                 <NavItem
                   id="nav-sidebar-link-highest-bids"

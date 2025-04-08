@@ -8,6 +8,7 @@ type RuntimeConfig = {
   KEYCLOAK_REALM?: string;
   KEYCLOAK_CLIENT_ID?: string;
   BID_INCREMENT?: string;
+  ADMIN_GROUP_NAME?: string;
 };
 
 const ConfigContext = createContext<RuntimeConfig>({});

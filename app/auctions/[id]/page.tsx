@@ -15,11 +15,13 @@ import PlaceBidModal from './place-bid-modal';
 import { AuctionDescriptionList, SkeletonDescriptionList } from '@app/components/Auction';
 import { useAuctions } from '@app/providers/Auctions';
 import { useAuth } from '@app/providers/Auth';
+import { useConfig } from '@app/providers/Config';
 import { Auction} from '@app/types';
 
 export default function AuctionDetailsPage() {
   const { user } = useAuth();
   const params = useParams();
+  const config = useConfig();
   const auctionId = params.id as string;
 
   const { getAuctionDetails, getHighestBidForAuction, placeBid } = useAuctions();
@@ -187,7 +189,7 @@ export default function AuctionDetailsPage() {
     }
   ]
 
-  if (user?.groups?.includes('admin')) {
+  if (user?.groups?.includes(config.ADMIN_GROUP_NAME ? config.ADMIN_GROUP_NAME:  'admin')) {
     tabs.push(
       {
         eventKey: 'bids',

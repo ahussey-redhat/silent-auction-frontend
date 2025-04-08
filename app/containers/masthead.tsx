@@ -54,6 +54,7 @@ export default function AppMasthead(
 
   const { user, logout } = useAuth();
   const config = useConfig();
+  const [avatarLoadFailed, setAvatarLoadFailed] = useState(false);
 
   const onDarkThemeToggleClick = () => {
     setDarkThemeEnabled(!isDarkThemeEnabled);
@@ -217,11 +218,12 @@ export default function AppMasthead(
                       onClick={onUserDropdownToggle}
                       icon={
                         <Avatar
-                          src={avatarUrl}
+                          src={avatarLoadFailed ? avatarImgSrc : avatarUrl}
                           alt={`${user?.email}'s avatar image`}
                           className={"pf-v6-c-avatar pf-m-sm"}
                           style={{verticalAlign: "bottom"}}
                           onError={(e) => {
+                            setAvatarLoadFailed(true);
                             e.currentTarget.src = avatarImgSrc;
                           }}
                           isBordered
